@@ -22,7 +22,7 @@ The workflow diagram below is the **complete diagram from my Video 02 notes**. I
 
 ## Complete workflow diagram
 
-![Complete HTTP request workflow from Video 02 notes](01_what-happens-http-request/assests/http-request-workflow.png)
+![Complete HTTP request workflow from Video 02 notes](assests/http-request-workflow.png)
 
 ## 1. Start with an API call
 
