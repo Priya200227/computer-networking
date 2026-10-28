@@ -1,12 +1,8 @@
-<div align="center">
-
 # Network, Host, and CIDR
 
 **Computer Networking · Concept Overview**
 
-[← Back to Repository](https://github.com/Priya200227/computer-networking) · **Next:** [IPv4 Addressing](../03-ipv4-addressing/)
-
-</div>
+[← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
@@ -50,11 +46,4 @@ The common total of 256 addresses and 254 usable host addresses applies to a con
 
 ---
 
-<div align="center">
-
-[← Back to Repository](https://github.com/Priya200227/computer-networking) · **Next:** [IPv4 Addressing](../03-ipv4-addressing/)
-
-**Coming up:** IPv4 Addressing → Subnet Masks → Default Gateway → MAC Address → IP vs. MAC → ARP
-
-</div>
-
+[←**Next:** [IPv4 Addressing](../03-ipv4-addressing/)
