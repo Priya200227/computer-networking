@@ -1,7 +1,5 @@
 # Network, Host, and CIDR
 
-**Computer Networking · Concept Overview**
-
 [← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
