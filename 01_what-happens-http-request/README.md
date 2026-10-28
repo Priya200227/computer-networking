@@ -16,7 +16,7 @@
 
 ## Overview
 
-When an application makes an HTTP request, several networking components work together to deliver it to a server and return the response. This video introduces the overall journey—from a frontend API call through DNS lookup and the operating system's networking stack, to transport and network addressing, local-network delivery, and transmission to the backend.
+When an application makes an HTTP request, several networking components work together to deliver it to a server and return the response. This video introduces the overall journey from a frontend API call through DNS lookup and the operating system's networking stack, to transport and network addressing, local-network delivery, and transmission to the backend.
 
 The diagram below brings these pieces together. It is an **overview**, not a detailed explanation of every protocol; each concept will be covered in its own topic.
 
