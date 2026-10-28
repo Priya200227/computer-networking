@@ -1,6 +1,10 @@
 # Network, Host, and CIDR
 
-[← Back to Repository](https://github.com/Priya200227/computer-networking) 
+> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=4)
+> 
+> **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
+
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
