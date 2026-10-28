@@ -1,6 +1,6 @@
 # What Really Happens When You Make an HTTP Request?
 
-> **Section:** Computer Networking — Video 02  
+> **Section:** Computer Networking — [Chai aur Networking - 02](https://www.youtube.com/watch?v=_dCmQCiQmPE&list=PLd1s-PEC5Pio&index=2)
 > **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
 
 ## Overview
