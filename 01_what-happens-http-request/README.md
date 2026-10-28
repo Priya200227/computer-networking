@@ -1,364 +1,284 @@
 # What Really Happens When You Make an HTTP Request?
 
-> **Learning note — Video 02, _Chai aur Computer Network_**  
-> This note explains the end-to-end journey of a browser request, from application code to network transmission and back. It is a conceptual overview; later notes should expand DNS, TCP, IP, Ethernet, ARP, TLS, and HTTP individually.
+> **Section:** Computer Networking — Video 02  
+> **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
 
-## Why this topic matters
+## Overview
 
-A request such as `fetch("https://api.example.com/profile")` looks like one line of JavaScript. In reality, several components cooperate:
+When frontend code calls an API, the request does not travel directly from JavaScript to the backend as a single object. The browser, operating system, transport protocol, IP layer, and local network each perform different jobs.
 
-- The browser and application code construct a request.
-- DNS may resolve the hostname to one or more IP addresses.
-- The operating system selects a route and a network interface.
-- A transport protocol carries the application data.
-- IP addresses identify the network-layer source and destination.
-- A link-layer frame carries the packet across the current local link.
-- Routers forward traffic between networks.
-- The server receives the request, processes it, and sends a response.
+This section connects the concepts that appear throughout the networking course:
 
-Understanding this flow provides context for HTTP/HTTPS, DNS, IP addressing, TCP/UDP, ports, sockets, ARP, routing, TLS, cloud networking, APIs, and troubleshooting.
+- HTTP requests and responses
+- DNS name resolution
+- TCP connections, ports, and segments
+- The operating system's TCP/IP networking stack
+- IP packets and IP addressing
+- Link-layer frames and MAC addresses
+- ARP and the default gateway
+- Physical or wireless transmission
 
-## The example
+The workflow diagram below is the **complete diagram from my Video 02 notes**. It is kept as supplied so that it can be reviewed alongside the explanation and corrections in this README.
 
-A browser running a React frontend on a laptop calls:
+## Complete workflow diagram
 
-```javascript
-const res = await fetch("https://api.example.com/profile");
-```
+![Complete HTTP request workflow from Video 02 notes](assets/http-request-workflow.png)
 
-Assume the service is hosted remotely and the browser uses HTTPS. The exact path depends on DNS answers, cached connections, proxies, VPNs, IPv4/IPv6, the server deployment, and the negotiated HTTP version.
+## 1. Start with an API call
 
-### Workflow diagram from the video screenshots
-
-The following images preserve the instructor's diagram as shown in your screenshots, in the order the workflow is built up during the video. The first image gives the high-level browser-to-server request and DNS mapping; the later images add the request bytes, TCP connection/segments, IP packet, link-layer frame, next-hop MAC address, transmission medium, and ARP.
-
-> These are the original screenshots, not a newly simplified or corrected redraw. Some labels are intentionally discussed and qualified in the notes below.
-
-**1. High-level request/response and DNS**
-
-![1. High-level request/response and DNS](http_request_flow_assets/01-high-level-request-and-dns.png)
-
-**2. HTTP request represented as bytes and sent through the OS networking stack**
-
-![2. HTTP request represented as bytes and sent through the OS networking stack](http_request_flow_assets/02-http-request-bytes-and-tcp.png)
-
-**3. Byte-sequence illustration in the diagram**
-
-![3. Byte-sequence illustration in the diagram](http_request_flow_assets/03-byte-sequence-illustration.png)
-
-**4. TCP handshake and segmentation illustration**
-
-![4. TCP handshake and segmentation illustration](http_request_flow_assets/04-tcp-handshake-and-segments.png)
-
-**5. TCP segment encapsulated in an IP packet**
-
-![5. TCP segment encapsulated in an IP packet](http_request_flow_assets/05-tcp-segment-inside-ip-packet.png)
-
-**6. Frame, source/destination addressing, and next-hop MAC**
-
-![6. Frame, source/destination addressing, and next-hop MAC](http_request_flow_assets/06-frame-and-next-hop-mac.png)
-
-**7. Transmission media, router, and ARP**
-
-![7. Transmission media, router, and ARP](http_request_flow_assets/07-transmission-and-arp.png)
-
-The screenshots show a teaching overview rather than a guaranteed packet-by-packet trace. A real request may reuse DNS results and existing connections, and the exact path depends on the network, deployment, and negotiated HTTP version.
-
-## The journey, step by step
-
-### 1. Application code requests a resource
-
-The browser executes:
+A frontend might contain code such as:
 
 ```javascript
 const res = await fetch("https://api.example.com/profile");
 ```
 
-`fetch()` is a browser API for making network requests. The URL identifies the scheme (`https`), hostname (`api.example.com`), and path (`/profile`). The default method is `GET` unless options specify another method.
+This asks the browser to make an HTTP request to the `/profile` resource on the host `api.example.com`. The call is asynchronous: `await` waits for the fetch operation to settle before the next line executes.
 
-The JavaScript code runs in the browser. It does not itself construct Ethernet frames or manually split the request into TCP segments.
+The browser handles the request on behalf of the JavaScript code. JavaScript does not manually construct Ethernet frames, calculate TCP sequence numbers, or transmit electrical/radio signals.
 
-### 2. DNS resolution finds an address
+## 2. DNS: translate a hostname into an IP address
 
-The browser or operating system needs an IP address for `api.example.com` unless a usable result is already cached or otherwise available. DNS can return IPv4 addresses (A records), IPv6 addresses (AAAA records), or other record types.
+A hostname such as `api.example.com` is a human-friendly name. To connect to a server, the client needs an appropriate IP address.
 
-Important distinction:
+The Domain Name System (DNS) provides records that help resolve names to addresses. A simplified view is:
 
-- **Hostname:** a human-friendly name, such as `api.example.com`.
-- **IP address:** a network-layer address used to route traffic.
-- **DNS:** a distributed naming system that can map names to address records.
+```text
+api.example.com
+      |
+      v
+     DNS
+      |
+      v
+an IP address (IPv4 and/or IPv6)
+```
 
-DNS does not necessarily return one fixed IP address forever. Results can change, and services may use multiple addresses, CDNs, load balancers, or other routing layers.
+Important details:
 
-### 3. The operating system selects a route
+- DNS resolution may be answered from browser, operating-system, or network caches; a new DNS query is not required for every request.
+- A hostname can resolve to multiple addresses, and the result can vary by resolver, network, region, or configuration.
+- The address returned for a public API may belong to a CDN, reverse proxy, or load balancer rather than directly to the application server.
+- A private address such as `10.0.0.1` can be valid inside a private cloud network, but it is not a globally routable public Internet destination.
 
-The client determines how to reach the destination using its routing information. If the destination is outside the local subnet, the next hop is typically a default gateway/router.
+DNS resolves names; it does **not** carry the HTTP request itself.
 
-The browser's local address is not necessarily the address the remote server sees. A laptop commonly has a private address on its local network; a home or corporate gateway may use NAT, and the public-facing address may differ. VPNs, proxies, and cloud networks can change the path further.
+## 3. HTTPS, HTTP, and the transport connection
 
-### 4. A transport connection is established or reused
+The URL starts with `https://`, which means the browser is expected to use HTTP securely over TLS.
 
-For HTTP/1.1 and HTTP/2, HTTP commonly runs over TCP. TCP provides a reliable, ordered byte stream and uses port numbers to identify communicating application endpoints.
+For the common combinations:
 
-A new TCP connection normally uses a three-way handshake:
+- **HTTP/1.1 and HTTP/2:** HTTP is carried over a TCP connection protected by TLS when using HTTPS.
+- **HTTP/3:** HTTP is carried over QUIC, which uses UDP, with security integrated into QUIC.
+
+Therefore, “HTTP always uses TCP” is not universally true. The negotiated HTTP version matters.
+
+For an HTTPS connection using TCP, the client and server normally establish a TCP connection before application data is exchanged. TCP's three-way handshake is commonly described as:
 
 1. Client sends `SYN`.
 2. Server responds with `SYN-ACK`.
 3. Client sends `ACK`.
 
-A browser may reuse an existing connection, so a new handshake is not required for every request.
+TLS then establishes the secure session before HTTP data is exchanged, unless an existing connection/session can be reused or a supported protocol mechanism changes the setup sequence.
 
-**Important modern exception:** HTTP/3 uses QUIC, which runs over UDP. Therefore, “HTTP always runs over TCP” is incorrect. For this example, assume HTTP/1.1 or HTTP/2 over TCP.
+A new TCP handshake and TLS handshake do **not** necessarily happen for every `fetch()` call: browsers can reuse existing connections.
 
-### 5. HTTPS protects the HTTP communication
+## 4. HTTP request: method, path, headers, and body
 
-For HTTPS over TCP, TLS is negotiated to provide encryption and integrity and to authenticate the server according to the client's certificate-validation rules.
-
-The browser then sends HTTP data through the protected connection. On the network, observers generally cannot read the HTTP path, headers, or body from the encrypted TLS application data alone, although metadata such as IP addresses, ports, traffic timing, and sizes may remain observable.
-
-Do not confuse these layers:
-
-- **HTTP:** application-level request/response semantics.
-- **TLS:** security for the connection.
-- **TCP:** reliable transport for HTTP/1.1 and HTTP/2 in this example.
-- **IP:** addressing and forwarding between networks.
-- **Ethernet/Wi-Fi:** link-layer delivery on a local network.
-
-### 6. Data is encapsulated as it moves down the stack
-
-A useful simplified model is:
-
-```text
-Application data: HTTP request
-          |
-          v
-Transport layer: TCP segment (TCP header + data)
-          |
-          v
-Network layer: IP packet (IP header + TCP segment)
-          |
-          v
-Link layer: frame (link header/trailer + IP packet)
-          |
-          v
-Physical medium: electrical, optical, or radio signals
-```
-
-The terminology matters:
-
-| Unit | Layer / context | What it contains |
-|---|---|---|
-| HTTP message/data | Application | Request or response semantics and content |
-| TCP segment | Transport | TCP header plus a portion of the byte stream |
-| IP packet (often called an IP datagram) | Internet/network | IP header plus transport-layer payload |
-| Ethernet frame | Link | Link-layer header/trailer plus payload, commonly an IP packet |
-| Bits/signals | Physical transmission | Encoded representation sent over a medium |
-
-This is a simplified encapsulation model. Real implementations can include additional headers, tunnels, VLAN tags, IP fragmentation in some circumstances, and other details.
-
-**A TCP segment is not the same thing as an IP packet, and neither is the same thing as an Ethernet frame.**
-
-### 7. TCP does not divide every request into a fixed number of equal chunks
-
-The video sketch shows sample hexadecimal bytes and “20 chunks.” Treat this only as an illustration that data is represented as bytes and may be carried across multiple segments.
-
-It is not a general rule that every HTTP request becomes 20 chunks. Segment sizes depend on factors such as the amount of data, maximum segment size (MSS), path MTU, TCP implementation, congestion control, offloading, and current network conditions. Small requests may fit in one segment; larger data streams may span many segments. Application writes do not map one-to-one to TCP segments.
-
-The hexadecimal sequence shown in a teaching diagram is illustrative; it should not be read as the actual bytes of the displayed request.
-
-### 8. Ethernet addressing and ARP on the local link
-
-For IPv4 over Ethernet, the client needs a link-layer destination address for the **next hop** on its local network.
-
-- If the destination IP is on the same local subnet, the next hop is the destination host.
-- If the destination is on another network, the next hop is usually the default gateway.
-
-If the required mapping is not already in the ARP cache, ARP can discover the Ethernet MAC address associated with the next-hop IPv4 address on that local link.
-
-**ARP does not discover the MAC address of a remote server across the internet.** MAC addresses are used for local-link delivery. As a packet crosses routers, each routed link uses its own link-layer framing; the Ethernet source and destination MAC addresses are replaced for each Ethernet hop, while the IP source and destination usually remain end-to-end, except where mechanisms such as NAT alter them.
-
-ARP is for IPv4 address resolution. IPv6 uses Neighbor Discovery rather than ARP.
-
-### 9. The server receives and handles the request
-
-At the destination, the networking stack processes the received frames and packets and delivers the transport data to the appropriate socket. The server software handles the HTTP request and routes it to the application.
-
-For example, the backend might handle:
+An HTTP request communicates what the client wants the server to do. A simplified conceptual request might be:
 
 ```http
 GET /profile HTTP/1.1
 Host: api.example.com
 Authorization: Bearer <token>
+Cookie: <cookie-value>
 ```
 
-This is an illustrative HTTP/1.1 request shape. With HTTPS, the HTTP content is carried inside TLS records on the network; with HTTP/2, the protocol representation uses frames rather than the HTTP/1.1 textual format.
+The actual headers depend on the browser, application, security policy, cookies, and server configuration. A `GET` request often has no body, but HTTP supports request bodies for methods and use cases that need them.
 
-The application may authenticate the user, read a database, call another service, and construct a response.
+With HTTPS, the HTTP request is encrypted in transit after TLS is established. A normal packet capture on the network cannot simply read the HTTP headers and body as plaintext without access to the relevant decryption keys or an endpoint-level view.
 
-### 10. The response returns to the client
+## 5. The browser and operating system hand off network data
 
-The server sends an HTTP response, such as:
+The browser prepares the request and uses operating-system networking facilities to send it. The operating system's networking stack handles transport and network-layer work, such as TCP/UDP and IP processing.
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+A useful conceptual sequence is:
+
+```text
+Frontend JavaScript
+        |
+        v
+Browser networking implementation
+        |
+        v
+Transport layer (TCP, or QUIC over UDP)
+        |
+        v
+IP layer
+        |
+        v
+Link layer / network interface
+        |
+        v
+Wi-Fi or Ethernet network
 ```
 
-```json
-{
-  "name": "Example User"
-}
+This is a conceptual layer model, not a promise that every implementation uses exactly the same internal components or call sequence.
+
+## 6. Ports: identify the application endpoint
+
+IP addresses help identify a host/interface at the IP layer. Transport-layer port numbers help identify the relevant communication endpoint on that host.
+
+For example, a server might accept HTTPS connections on port `443`. The client typically uses an **ephemeral source port** selected for the outbound connection.
+
+Do not confuse:
+
+- **Frontend development-server port:** for example, `3000`, where a local development server may listen.
+- **Client source port:** the ephemeral port used by the browser's outbound network connection.
+- **Server destination port:** often `443` for HTTPS.
+
+These can be different. A diagram that labels `3000` as the source port is illustrating a possible setup, not a rule that the browser's connection must use port 3000.
+
+## 7. Encapsulation: data, segment, packet, and frame
+
+As data moves through the networking stack, each layer adds the information it needs. This is called **encapsulation**.
+
+```text
+Application data
+      |
+      v
+TCP segment (TCP header + payload)
+      |
+      v
+IP packet (IP header + payload)
+      |
+      v
+Link-layer frame (link header/trailer + payload)
+      |
+      v
+Signals transmitted over the network medium
 ```
 
-The status and body above are illustrative. The response travels back through the network, is processed by the browser's networking stack, and becomes available to JavaScript through the `Response` object. `fetch()` does not automatically throw an exception for HTTP error statuses such as 404 or 500; application code should check `res.ok` or `res.status`.
+Terminology matters:
+
+- **HTTP message/data:** the application-level request or response.
+- **TCP segment:** TCP header plus a portion of the byte stream.
+- **IP packet** (often called an IP datagram): IP header plus its payload.
+- **Link-layer frame:** local-network framing, such as an Ethernet frame or a Wi-Fi data frame.
+- **Bits/signals:** the representation transmitted over a physical or radio medium.
+
+These units are related but are **not interchangeable**.
+
+TCP provides a reliable, ordered byte stream. An application write, HTTP message, TCP segment, IP packet, and link-layer frame do not necessarily map one-to-one. Segment count and size depend on factors such as path MTU, TCP behavior, congestion control, offloading, and implementation details. A diagram showing a fixed number of chunks is illustrative, not a general rule.
+
+## 8. IP addresses and MAC addresses do different jobs
+
+### IP address
+
+An IP address is used for logical addressing and routing between IP networks. In a simplified client-to-server view, the source and destination IP addresses identify the IP endpoints for the packet. Network Address Translation (NAT), proxies, VPNs, and other mechanisms can alter what addresses are seen at different points.
+
+### MAC address
+
+A MAC address is used for delivery on a local link, such as an Ethernet or Wi-Fi network. It is not normally used by Internet routers as the end-to-end address of the remote server.
+
+When a destination is outside the local subnet, the laptop generally sends the first frame to the **default gateway's MAC address**, not the remote server's MAC address. The IP packet is routed onward, and each routed link uses its own link-layer framing.
+
+Consequently:
+
+- The destination IP can represent a remote endpoint.
+- The destination MAC in the laptop's first outbound frame usually represents the next hop (often the default gateway).
+- The MAC header is replaced as the packet is forwarded across routed links; IP addresses usually remain the same end-to-end, except where mechanisms such as NAT or tunneling intervene.
+
+## 9. ARP: resolve a local IPv4 next-hop address
+
+Address Resolution Protocol (ARP) helps a device on an IPv4 local network discover the link-layer address associated with a local IPv4 address.
+
+For example, if a laptop needs to send traffic through a default gateway at `192.168.1.1`, it may need to learn the gateway's MAC address. It can use an ARP request on the local link if the mapping is not already cached.
+
+ARP does **not** discover the MAC address of an arbitrary remote Internet server across multiple routers. The laptop only needs the MAC address of the next hop on its local link.
+
+For IPv6, the equivalent neighbor-resolution functionality is provided by **Neighbor Discovery**, not ARP.
+
+## 10. Transmission and routing
+
+The local network interface transmits data using the available link technology—for example, Wi-Fi radio signals or electrical/optical signaling over wired media.
+
+If the destination is remote, routers forward IP packets between networks. At each link, the packet is carried inside the framing appropriate to that link. The remote server's network interface and operating system then process the incoming traffic and deliver it to the relevant transport endpoint and application.
+
+The backend application handles the request and creates an HTTP response. The response travels back through the networking stack to the client, though its route need not be identical to the request's route.
+
+## 11. The response returns to the frontend
+
+A server might return a successful response, such as `200 OK`, along with data. That status is only an example: the server may instead return another 2xx response, a redirect, or an error status such as 4xx or 5xx.
+
+With the Fetch API, an HTTP error status such as `404` or `500` does **not** usually cause `fetch()` to reject. Check `response.ok` or `response.status`:
 
 ```javascript
-const res = await fetch("https://api.example.com/profile");
+const response = await fetch("https://api.example.com/profile");
 
-if (!res.ok) {
-  throw new Error(`HTTP error: ${res.status}`);
+if (!response.ok) {
+  throw new Error(`HTTP error: ${response.status}`);
 }
 
-const data = await res.json();
-console.log(data);
+const data = await response.json();
 ```
 
-## Corrections and caveats from the video sketch
+This example assumes the response body contains JSON. Production code should also consider network failures, timeouts/abort signals, authentication, and response validation.
 
-The instructor's diagram is useful as a high-level orientation. The following details should not be copied literally into technical notes.
+## Corrections and precision notes for the diagram
 
-| Sketch / simplification | More accurate understanding |
+The diagram is useful as an end-to-end overview. Treat its concrete values and some simplified labels as examples rather than universal rules:
+
+| Diagram idea | More precise interpretation |
 |---|---|
-| Frontend source is `127.0.0.1:3000` and backend destination is `10.0.0.1:443` | `127.0.0.1` is a loopback address: it refers to the local machine, not a remote laptop address visible to an EC2 server. A browser request to a remote server uses the client's actual network path and source address as seen at each hop. |
-| `10.0.0.1` is shown as the public API's DNS answer | `10.0.0.1` is in a private IPv4 range. It can be valid inside a private network/VPC, but it is not globally routable over the public internet. A public API hostname may resolve to a public address, CDN, load balancer, or other endpoint; private DNS can return private addresses within an appropriate network. |
-| Source port is `3000` | Port 3000 may be the local development server's listening port for the frontend. A browser's outbound connection normally uses a client-side ephemeral source port; it is not generally the frontend server's listening port. |
-| HTTPS request bytes are shown as readable HTTP headers and arbitrary hex | With HTTPS, HTTP content is protected by TLS on the network. A packet capture without appropriate decryption keys generally does not reveal the HTTP headers/body as plaintext. |
-| HTTP is based on TCP | This is true for HTTP/1.1 and HTTP/2 in common deployments, but HTTP/3 uses QUIC over UDP. |
-| TCP always splits data into a fixed number of chunks | Segment sizes and counts vary. TCP presents a byte stream, not application-defined message boundaries. |
-| One frame contains the original source MAC and final server MAC | Ethernet MAC addresses are local-link addresses. A router normally replaces link-layer headers on the next link; the frame's destination MAC is the next hop, not a remote internet server's MAC. |
-| ARP maps any IP anywhere to its MAC address | ARP resolves IPv4-to-link-layer mappings on a local link. For a remote destination, the client normally resolves the default gateway's local MAC address. |
-| HTTP response `200 OK` is guaranteed | `200 OK` is only an example of a successful HTTP response. The actual status depends on the server and operation. |
+| `api.example.com → 10.0.0.1` | A possible private DNS mapping; public DNS may resolve to a public IP, CDN, or load balancer. `10.0.0.1` is a private IPv4 address. |
+| Frontend port `3000` is the source port | Port 3000 may be the local development server's listening port. The browser's outbound connection normally uses an ephemeral source port. |
+| Every request performs DNS resolution | Cached DNS results may be reused. |
+| Every request requires a new TCP handshake | Existing connections may be reused. HTTP/3 uses QUIC over UDP rather than TCP. |
+| HTTP headers are shown as bytes | With HTTPS, HTTP contents are encrypted on the network after TLS is established. |
+| TCP creates a fixed number of chunks | TCP segments and sizes vary; application data boundaries do not map one-to-one to TCP segments. |
+| TCP segment, IP packet, and frame are equivalent | They are different protocol-layer units created through encapsulation. |
+| Laptop sends to the remote server's MAC address | The first frame usually targets the local next hop, such as the default gateway. |
+| ARP finds any device's MAC address over the Internet | ARP resolves IPv4-to-link-layer mappings on the local link. IPv6 uses Neighbor Discovery. |
+| Response is always `200 OK` | The server can return many status codes; check `response.ok` in Fetch API code. |
 
-### A note about the example's IP addresses
+## Why this matters for data and AI engineering
 
-The screenshot combines a local loopback address (`127.0.0.1`) with a private IPv4 address (`10.0.0.1`) to illustrate source and destination fields. That is fine as a rough teaching sketch, but it should not be interpreted as a literal packet path from a laptop on the public internet to a public EC2 API.
+This workflow appears in everyday engineering work:
 
-For a real deployment, use the actual address and routing information of the environment. An EC2 instance's public and private DNS behavior depends on its networking configuration; AWS documents these details in its official DNS documentation.
+- **Data pipelines:** clients connect to APIs, databases, object storage, and orchestration services.
+- **Data engineering:** services communicate with warehouses, message brokers, compute clusters, and cloud storage.
+- **AI applications:** a frontend or backend calls model APIs, embedding services, vector databases, and retrieval services.
+- **Deployment and debugging:** DNS, ports, TLS certificates, firewall rules, routes, and connection timeouts are frequent sources of failures.
+- **Distributed systems:** a request often crosses multiple services and network boundaries before a result is returned.
 
-## The most important mental model
-
-Remember the responsibility of each layer:
-
-- **Application / HTTP:** What request is being made?
-- **DNS:** What address or service endpoint does this name resolve to?
-- **Transport / TCP or QUIC:** How is application data carried between endpoints?
-- **IP:** How are packets addressed and forwarded between networks?
-- **Link layer / Ethernet or Wi-Fi:** How does the packet cross the current local link?
-- **Physical layer:** What signals carry the bits?
-
-These are conceptual responsibilities, not a claim that every protocol maps perfectly to one layer in every model.
-
-## How this connects to data engineering and AI engineering
-
-This flow is directly relevant when you:
-
-- Ingest data from APIs using Python.
-- Connect applications to remote databases.
-- Deploy a FastAPI model-inference service.
-- Connect a RAG application to a vector database and an LLM provider.
-- Debug DNS, TLS, timeout, firewall, and connection errors.
-- Run containers and services in a cloud VPC.
-- Diagnose latency and throughput problems in distributed systems.
-
-For troubleshooting, distinguish these classes of failure:
-
-| Symptom | Areas to investigate first |
-|---|---|
-| Hostname cannot be resolved | DNS configuration, hostname, resolver |
-| Connection refused | Destination address/port, whether the service is listening, firewall behavior |
-| Connection timeout | Routing, firewall/security rules, unreachable or overloaded service, network path |
-| TLS certificate error | Certificate validity, hostname match, trust chain, system clock |
-| HTTP 401 / 403 | Authentication, authorization, application policy |
-| HTTP 404 | URL path, routing, resource existence |
-| HTTP 429 | Rate limits and retry policy |
-| HTTP 5xx | Server or upstream dependency, logs, capacity |
-| Slow response | Network latency, server processing, database or upstream latency, payload size |
-
-These are starting points, not definitive diagnoses. Similar symptoms can have different causes, and status codes alone do not prove where a failure occurred.
-
-## Key terms
-
-- **Client:** The program initiating a request.
-- **Server:** The software that receives requests and provides responses.
-- **DNS:** A distributed system for resolving names and storing related records.
-- **IP address:** A network-layer address.
-- **Port:** A transport-layer identifier for an application endpoint.
-- **Socket:** An operating-system communication endpoint; exact semantics depend on the API and protocol.
-- **TCP:** A connection-oriented transport protocol providing a reliable, ordered byte stream.
-- **TLS:** A protocol for securing communication, including confidentiality and integrity.
-- **Packet:** Commonly used for an IP packet, though usage varies by context.
-- **Frame:** A link-layer protocol data unit.
-- **MAC address:** A link-layer address used for delivery on a local network technology.
-- **ARP:** Address Resolution Protocol, used to resolve IPv4 addresses to link-layer addresses on a local link.
-- **Default gateway:** The router a host typically uses to reach destinations outside its directly connected network.
-- **Encapsulation:** Wrapping data with protocol-specific headers (and sometimes trailers) as it moves down the networking stack.
+Understanding the layers makes it easier to diagnose whether a failure is in application logic, name resolution, connectivity, transport, TLS, routing, or the remote service.
 
 ## Quick self-check
 
-1. Why is `127.0.0.1` not the remote server's view of a laptop's address?
-2. Why does a client usually resolve the gateway's MAC address rather than a remote server's MAC?
-3. What is the difference between a TCP segment, an IP packet, and an Ethernet frame?
-4. Why might a browser not perform a DNS lookup or TCP handshake for every request?
-5. What changes when HTTPS is used instead of plain HTTP?
-6. Why is “HTTP always uses TCP” inaccurate?
-7. Why can a request fail before the server returns any HTTP status code?
-8. Why is `200 OK` not proof that the returned business data is correct?
+Try answering these without looking back at the notes:
 
-## Reliable references
+1. Why does a client need an IP address after it already has a hostname?
+2. What is the difference between a TCP segment, an IP packet, and a link-layer frame?
+3. Why does a laptop usually send a frame to the default gateway's MAC address for a remote destination?
+4. What does a port number identify, and why might the browser's source port differ from the frontend development port?
+5. Why is it inaccurate to say that every HTTP request creates a new TCP connection?
+6. What changes when a request uses HTTPS rather than plain HTTP?
+7. Why does ARP not resolve the MAC address of a remote Internet server?
+8. What should frontend code check when `fetch()` receives an HTTP 404 or 500 response?
 
-Prefer standards and official documentation when checking protocol details.
+## References
 
-1. **MDN — Overview of HTTP**  
-   https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview  
-   Explains HTTP's client-server model, its place in the protocol stack, connection handling, and HTTP evolution.
+These primary or authoritative references are useful for deeper study:
 
-2. **IETF RFC 9110 — HTTP Semantics**  
-   https://www.rfc-editor.org/rfc/rfc9110.html  
-   The HTTP semantics specification, including methods, status codes, fields, and message semantics.
-
-3. **IETF RFC 9293 — Transmission Control Protocol (TCP)**  
-   https://www.rfc-editor.org/rfc/rfc9293.html  
-   The TCP specification.
-
-4. **IETF RFC 826 — An Ethernet Address Resolution Protocol (ARP)**  
-   https://www.rfc-editor.org/rfc/rfc826.html  
-   The original ARP specification and its role in mapping protocol addresses to local hardware addresses.
-
-5. **IETF RFC 8446 — The Transport Layer Security (TLS) Protocol Version 1.3**  
-   https://www.rfc-editor.org/rfc/rfc8446.html  
-   Defines TLS 1.3.
-
-6. **IETF RFC 9114 — HTTP/3**  
-   https://www.rfc-editor.org/rfc/rfc9114.html  
-   Defines HTTP/3, which uses QUIC.
-
-7. **AWS — Understanding Amazon DNS**  
-   https://docs.aws.amazon.com/vpc/latest/userguide/AmazonDNS-concepts.html  
-   Explains AWS DNS behavior, including EC2 hostname resolution.
-
-8. **AWS — EC2 Hostname Types**  
-   https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hostname-types.html  
-   Describes private and public hostname behavior.
-
-9. **Cloudflare Learning Center — What is a packet?**  
-   https://www.cloudflare.com/learning/network-layer/what-is-a-packet/  
-   A beginner-friendly explanation of packets and network communication.
+- [MDN — Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview)
+- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293.html)
+- [RFC 8446 — The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446.html)
+- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [RFC 826 — An Ethernet Address Resolution Protocol (ARP)](https://www.rfc-editor.org/rfc/rfc826.html)
+- [MDN — Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [AWS — DNS concepts for Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/AmazonDNS-concepts.html)
 
 ---
 
-## Summary
-
-An HTTP request is not simply sent directly from JavaScript to a server. Application code creates the request; name resolution and routing help locate the destination; transport and security protocols carry the communication; IP packets are forwarded across networks; link-layer frames carry packets over individual links; and the server processes the request and returns a response.
-
-The exact sequence varies with cached DNS, reused connections, proxies, the negotiated HTTP version, and the deployment architecture. Keep the layers distinct, and use this overview as the map for the deeper topics that follow.
-
+**Learning note:** This page is a conceptual map of the request path. Later sections should study DNS, TCP/UDP, ports and sockets, IP addressing and routing, Ethernet/Wi-Fi, ARP, TLS, and HTTP versions individually.
