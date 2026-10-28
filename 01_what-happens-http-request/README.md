@@ -1,8 +1,4 @@
-<div align="center">
-
 # What Really Happens When You Make an HTTP Request?
-
-</div>
 
 > **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=_dCmQCiQmPE&list=PLd1s-PEC5Pio&index=2)
 > 
