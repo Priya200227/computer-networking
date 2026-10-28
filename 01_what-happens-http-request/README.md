@@ -2,9 +2,11 @@
 
 # What Really Happens When You Make an HTTP Request?
 
-**Computer Networking · Video 02**
+> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=_dCmQCiQmPE&list=PLd1s-PEC5Pio&index=2)
+> 
+> **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) · **Next topic:** [DNS — Domain Name System](../03-dns/)
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
 
 </div>
 
@@ -18,7 +20,7 @@ The diagram below brings these pieces together. It is an **overview**, not a det
 
 ## Complete Workflow Diagram
 
-![Complete HTTP request workflow from Video 02 notes](assets/http-request-workflow.png)
+![Complete HTTP request workflow from Video 02 notes](assests/http-request-workflow.png)
 
 ## Workflow at a Glance
 
