@@ -43,9 +43,4 @@ An HTTP request is not sent directly from frontend code to a backend as one indi
 These are the building blocks for the next topics. DNS, TCP/UDP, ports, IP addressing, routing, MAC addresses, ARP, TLS, and HTTP versions will be explored separately rather than explained in depth here.
 
 ---
-
-<div align="center">
-
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) · **Next topic:** [DNS — Domain Name System](../03-dns/)
-
-</div>
+**Next topic:** []()
