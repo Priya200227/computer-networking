@@ -10,6 +10,10 @@
 
 An IPv4 address is commonly written in **dotted-decimal notation**: four decimal numbers, called *octets*, separated by periods.
 
+## Concept Diagram
+
+![IP concept](assests/IP.png)
+
 ## IPv4 Address Structure
 
 Example: `192.168.1.4`
