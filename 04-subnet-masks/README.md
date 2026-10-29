@@ -94,5 +94,8 @@ A subnet mask does not identify a device by itself. It lets a host calculate the
 - **Different subnet:** send to a router/next hop, usually the default gateway.
 
 ---
+## References
+- [How Subnet Masks Reveal Network Secrets: A Deep Dive](https://www.youtube.com/watch?v=KVujI1fsQQo&list=PLd1s-PEC5Pio&index=6)
 
+---
 **Next:** [Default Gateway](../05-default-gateway/)
