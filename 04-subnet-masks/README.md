@@ -1,12 +1,6 @@
-<div align="center">
-
 # Subnet Masks
 
-**Computer Networking · Section 04**
-
-[← Back to Repository](https://github.com/Priya200227/computer-networking) · **Next:** [Default Gateway](../05-default-gateway/)
-
-</div>
+[← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
@@ -101,11 +95,4 @@ A subnet mask does not identify a device by itself. It lets a host calculate the
 
 ---
 
-<div align="center">
-
-[← Back to Repository](https://github.com/Priya200227/computer-networking) · **Next:** [Default Gateway](../05-default-gateway/)
-
-**Coming up:** Default Gateway → How Default Gateways Work → MAC Address → IP vs. MAC Address → ARP
-
-</div>
-
+**Next:** [Default Gateway](../05-default-gateway/)
