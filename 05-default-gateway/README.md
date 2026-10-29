@@ -69,9 +69,9 @@ Both results are `192.168.1.0`, so the hosts are in the same IPv4 subnet.
 
 The switch or wireless access point may forward the frame across the local network, depending on the network setup. “Direct” here means that the host does not route the packet through its default gateway; it does not necessarily mean there is a dedicated physical cable between the two devices.
 
-## 4. Scenario 2 — The destination is in a different network
-
 ![Default gateway communication diagram showing Home Network 192.168.1.0/24 and Outside Network 192.168.2.0/24](assests/default-gateway-communication-scenarios.png)
+
+## 4. Scenario 2 — The destination is in a different network
 
 In the second scenario, Host A1 wants to send data to Host B3.
 
@@ -137,5 +137,4 @@ This is a simplified explanation of the usual IPv4 routing decision. A host's ro
 - [RFC 826 — An Ethernet Address Resolution Protocol (ARP)](https://www.rfc-editor.org/rfc/rfc826)
 
 ---
-
 [Next: MAC Address](../06-mac-address/README.md)
