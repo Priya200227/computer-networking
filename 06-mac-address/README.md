@@ -165,7 +165,7 @@ Suppose the laptop wants to reach `192.168.2.4` instead. With a local configurat
 
 ### Diagram from the study notes
 
-<img src="assets/03-ip-vs-mac-and-arp.png" alt="Study diagram comparing IP and MAC addressing and showing ARP mapping an IPv4 address to a MAC address" width="100%">
+<img src="assests/03-ip-vs-mac-and-arp.png" alt="Study diagram comparing IP and MAC addressing and showing ARP mapping an IPv4 address to a MAC address" width="100%">
 
 ---
 
