@@ -58,5 +58,8 @@ Private IPv4 addresses are commonly used in home networks, offices, and cloud pr
 IPv4 addresses are **32-bit values represented as four octets**. The network prefix or subnet mask tells us which bits identify the network and which belong to the host portion.
 
 ---
+## References
+- [Master Networking Basics: Network, Host, and CIDR Demystified](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
 
+---
 **Next:** [Subnet Masks](../04-subnet-masks/)
