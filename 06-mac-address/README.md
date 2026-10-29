@@ -4,17 +4,6 @@
 
 [← Back to Repository](../README.md)
 
-## Contents
-
-- [1. What is a network interface?](#1-what-is-a-network-interface)
-- [2. What is a MAC address?](#2-what-is-a-mac-address)
-- [3. Structure of a 48-bit MAC address](#3-structure-of-a-48-bit-mac-address)
-- [4. IP address vs. MAC address](#4-ip-address-vs-mac-address)
-- [5. How IP and MAC work together](#5-how-ip-and-mac-work-together)
-- [6. Where ARP fits in](#6-where-arp-fits-in)
-- [7. Important corrections and nuances](#7-important-corrections-and-nuances)
-- [References](#references)
-
 ---
 
 ## 1. What is a network interface?
