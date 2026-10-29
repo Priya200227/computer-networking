@@ -47,5 +47,8 @@ The common total of 256 addresses and 254 usable host addresses applies to a con
 **CIDR tells us how many leading bits identify the network prefix; the remaining bits form the host-address space.** This distinction is foundational to IPv4 addressing, subnet masks, and routing decisions.
 
 ---
+## References
+- [Master Networking Basics: Network, Host, and CIDR Demystified](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
 
-[←**Next:** [IPv4 Addressing](../03-ipv4-addressing/)
+---
+**Next:** [IPv4 Addressing](../03-ipv4-addressing/)
