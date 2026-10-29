@@ -102,7 +102,7 @@ This is a useful introductory model, but it is not a universal guarantee that th
 
 ### Diagram from the study notes
 
-<img src="assests/03-ip-vs-mac-and-arp.png" alt="Study diagram showing a 48-bit MAC address, hexadecimal bytes, the OUI, and different addresses on different interfaces" width="100%">
+<img src="assests/02-mac-address-structure.png" alt="Study diagram showing a 48-bit MAC address, hexadecimal bytes, the OUI, and different addresses on different interfaces" width="100%">
 
 ### 3.3 Two address bits worth knowing
 
