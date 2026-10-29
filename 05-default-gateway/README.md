@@ -1,4 +1,4 @@
-# 05 — Default Gateway
+# Default Gateway
 
 **How devices communicate with hosts inside and outside their local network**
 
@@ -47,7 +47,7 @@ The router can serve as the laptop's default gateway. When the laptop needs to r
 
 The exact default-gateway setting is usually supplied through network configuration, often by DHCP on a home network. It is not discovered simply because a device connects to a router.
 
-## 3. Scenario 1 — The destination is in the same network
+## 3. Scenario 1 - The destination is in the same network
 
 Suppose **Host A1** (`192.168.1.2`) wants to send data to **Host A3** (`192.168.1.4`). Both use the subnet mask `255.255.255.0` (`/24`).
 
@@ -71,7 +71,7 @@ The switch or wireless access point may forward the frame across the local netwo
 
 ![Default gateway communication diagram showing Home Network 192.168.1.0/24 and Outside Network 192.168.2.0/24](assests/default-gateway-communication-scenarios.png)
 
-## 4. Scenario 2 — The destination is in a different network
+## 4. Scenario 2 - The destination is in a different network
 
 In the second scenario, Host A1 wants to send data to Host B3.
 
@@ -131,10 +131,8 @@ This is a simplified explanation of the usual IPv4 routing decision. A host's ro
 - IP addressing and subnet masks help determine **where to route**; link-layer addresses are used to deliver frames over each local link.
 
 ## References
-
-- [RFC 1122 — Requirements for Internet Hosts: Communication Layers](https://www.rfc-editor.org/rfc/rfc1122)
-- [RFC 1812 — Requirements for IP Version 4 Routers](https://www.rfc-editor.org/rfc/rfc1812)
-- [RFC 826 — An Ethernet Address Resolution Protocol (ARP)](https://www.rfc-editor.org/rfc/rfc826)
+- [Understanding Default Gateway: The Key to Network Communication](https://www.youtube.com/watch?v=Ik-buVzjW3s&list=PLd1s-PEC5Pio&index=6)
+- [How Default Gateways Facilitate Network Communication](https://www.youtube.com/watch?v=PqdrgoYb3Vc&list=PLd1s-PEC5Pio&index=7)
 
 ---
 [Next: MAC Address](../06-mac-address/README.md)
