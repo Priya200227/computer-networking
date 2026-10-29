@@ -1,12 +1,8 @@
-<div align="center">
-
 # 05 — Default Gateway
 
 **How devices communicate with hosts inside and outside their local network**
 
-[← Back to Repository](../README.md) · [Next: MAC Address →](../06-mac-address/README.md)
-
-</div>
+[← Back to Repository](../README.md)
 
 ---
 
@@ -32,11 +28,11 @@ In a typical home network, the router's local interface is configured as the def
 
 The gateway address must be reachable on the host's local link. The host does not send an Ethernet frame directly to a remote host's MAC address; it sends the frame to the gateway's link-layer address, while the IP packet is addressed to the final destination.
 
-> **Remember:** The default gateway is not used for every packet. If the destination is on the same local subnet, the host normally sends directly to that destination on the local link.
+> **Remember:** The default gateway is not used for every packet. If the destination is on the same local subnet, the host normally sends it directly on the local link.
 
 ## 2. Overview: the default gateway in a local network
 
-![Default gateway overview showing a laptop, router, mobile, and tablet on a local network](images/default-gateway-overview.png)
+![Default gateway overview showing a laptop, router, mobile, and tablet on a local network](assests/default-gateway-overview.png)
 
 In this illustration, the devices are shown in the `192.168.1.0/24` network:
 
@@ -75,7 +71,7 @@ The switch or wireless access point may forward the frame across the local netwo
 
 ## 4. Scenario 2 — The destination is in a different network
 
-![Default gateway communication diagram showing Home Network 192.168.1.0/24 and Outside Network 192.168.2.0/24](images/default-gateway-communication-scenarios.png)
+![Default gateway communication diagram showing Home Network 192.168.1.0/24 and Outside Network 192.168.2.0/24](assests/default-gateway-communication-scenarios.png)
 
 In the second scenario, Host A1 wants to send data to Host B3.
 
@@ -107,7 +103,7 @@ Because `192.168.1.0` and `192.168.2.0` are different networks, Host A1 sends th
 4. If it has a valid route and forwarding is permitted, the router forwards the packet through the interface leading to Network B.
 5. Host B3 receives the traffic on the destination network.
 
-The router uses its interface on each network to communicate on that network. The IP packet's destination remains `192.168.2.4` during ordinary routing; the link-layer frame is rebuilt for each link. NAT, if configured, can change IP addresses, but it is not required merely because a router forwards between these two networks.
+The router uses its interface on each network to communicate on that network. The IP packet's destination remains `192.168.2.4` during ordinary routing; the router rebuilds the link-layer frame for each link. NAT, if configured, can change IP addresses, but it is not required merely because a router forwards between these two networks.
 
 ## 5. The key decision: local or remote?
 
@@ -142,9 +138,4 @@ This is a simplified explanation of the usual IPv4 routing decision. A host's ro
 
 ---
 
-<div align="center">
-
-[← Back to Repository](../README.md) · [Previous: Subnet Masks](../04-subnet-masks/README.md) · [Next: MAC Address](../06-mac-address/README.md)
-
-</div>
-
+[Next: MAC Address](../06-mac-address/README.md)
