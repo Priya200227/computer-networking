@@ -6,7 +6,7 @@
 
 ## Overview
 
-A **subnet mask** helps a device determine which part of an IPv4 address identifies the network and which part identifies the host. A device uses its IP address together with its subnet mask to calculate the network address.
+A **subnet mask** helps a device determine which part of an IP address identifies the network and which part identifies the host. A device uses its IP address together with its subnet mask to calculate the network address.
 
 This distinction helps the device decide whether a destination is on its **local subnet** or whether it should send the traffic to a router (typically its default gateway).
 
