@@ -135,4 +135,4 @@ This is a simplified explanation of the usual IPv4 routing decision. A host's ro
 - [How Default Gateways Facilitate Network Communication](https://www.youtube.com/watch?v=PqdrgoYb3Vc&list=PLd1s-PEC5Pio&index=7)
 
 ---
-[Next: MAC Address](../06-mac-address/README.md)
+**Next:** [MAC Address](../06-mac-address/README.md)
