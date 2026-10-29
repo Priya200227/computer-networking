@@ -38,7 +38,7 @@ The `/24` prefix means that the first 24 bits identify the network prefix and th
 
 ## 2. Scenario 1 — Devices on the Same Subnet
 
-![Scenario 1: Laptop and mobile on the same subnet](assets/scenario-1-same-subnet.png)
+![Scenario 1: Laptop and mobile on the same subnet](assests/scenario-1-same-subnet.png)
 
 Assume both devices use the subnet mask `255.255.255.0` (`/24`).
 
@@ -53,7 +53,7 @@ When the laptop sends traffic to the mobile, it can send the traffic directly ov
 
 ## 3. Scenario 2 — Devices on Different Subnets
 
-![Scenario 2: Laptop and mobile on different subnets](assets/scenario-2-different-subnets.png)
+![Scenario 2: Laptop and mobile on different subnets](assests/scenario-2-different-subnets.png)
 
 Assume the laptop and mobile both use a `/24` prefix.
 
