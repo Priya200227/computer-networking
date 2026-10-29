@@ -2,6 +2,8 @@
 
 > **Learning goal:** Understand what a MAC address identifies, how it is written, how it differs from an IP address, and why local-network delivery often needs both IP and MAC addressing.
 
+[← Back to Repository](../README.md)
+
 ## Contents
 
 - [1. What is a network interface?](#1-what-is-a-network-interface)
@@ -11,9 +13,6 @@
 - [5. How IP and MAC work together](#5-how-ip-and-mac-work-together)
 - [6. Where ARP fits in](#6-where-arp-fits-in)
 - [7. Important corrections and nuances](#7-important-corrections-and-nuances)
-- [8. Practical commands](#8-practical-commands)
-- [9. Quick revision](#9-quick-revision)
-- [10. Knowledge check](#10-knowledge-check)
 - [References](#references)
 
 ---
@@ -243,61 +242,12 @@ Avoid publishing your network details unnecessarily; these commands can reveal l
 
 ---
 
-## 9. Quick revision
-
-- A **network interface** connects a device or virtual system to a network.
-- A common Ethernet/Wi-Fi **MAC address** is 48 bits, displayed as six hexadecimal bytes.
-- The first 24 bits of many globally administered MAC addresses correspond to an organizational assignment, but local/randomized addresses complicate vendor identification.
-- **IP addresses** support network-layer addressing and routing.
-- **MAC addresses** support link-layer delivery on the current local network segment.
-- On the same subnet, a host generally resolves the destination's MAC address.
-- For a destination on another subnet, a host typically sends the frame to its default gateway's MAC address while retaining the remote destination IP in the IP packet.
-- **ARP** resolves IPv4-to-link-layer mappings on a local link; **IPv6 uses NDP**.
-- MAC addresses can change or be randomized; they are not guaranteed permanent device identifiers.
-
----
-
-## 10. Knowledge check
-
-Try to answer these without looking at the notes:
-
-1. Why does a laptop need both an IP address and a MAC address?
-2. How many bits and bytes are in a common 48-bit MAC address?
-3. What does one hexadecimal digit represent in binary?
-4. What is the difference between an IP packet's destination address and an Ethernet frame's destination address?
-5. If a laptop sends data to a host on another subnet, whose MAC address does it normally need for the first local frame?
-6. Does ARP discover the MAC address of a server anywhere on the Internet? Why or why not?
-7. Why is it inaccurate to say that a MAC address is always permanent and uniquely identifies a physical device?
-8. What protocol performs the corresponding neighbor address resolution for IPv6?
-
-<details>
-<summary><strong>Show concise answers</strong></summary>
-
-1. IP supports logical addressing/routing; MAC supports delivery over the current local link.
-2. 48 bits = 6 bytes.
-3. Four bits.
-4. The IP destination identifies the IP destination; the frame destination identifies the next interface on the current link.
-5. Usually the default gateway's local interface MAC address, assuming the normal route through that gateway.
-6. No. ARP is local-link IPv4 resolution; for a remote destination the host resolves the next hop.
-7. Addresses can be overridden, randomized, virtualized, and multiple interfaces can exist on one device.
-8. Neighbor Discovery Protocol (NDP).
-
-</details>
-
----
-
 ## References
 
-- **RFC 826 — An Ethernet Address Resolution Protocol:** https://www.rfc-editor.org/rfc/rfc826.html
-- **RFC 894 — A Standard for the Transmission of IP Datagrams over Ethernet Networks:** https://www.rfc-editor.org/rfc/rfc894.html
-- **RFC 791 — Internet Protocol (IPv4):** https://www.rfc-editor.org/rfc/rfc791.html
-- **RFC 4861 — Neighbor Discovery for IP version 6 (IPv6):** https://www.rfc-editor.org/rfc/rfc4861.html
-- **IEEE Registration Authority — MAC address blocks and identifiers:** https://standards.ieee.org/products-programs/regauth/
-- **Apple Platform Security — Private Wi-Fi addresses:** https://support.apple.com/en-us/102509
+-[What is a MAC Address? Understanding its Structure and Purpose](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
+- [IP vs MAC Addresses](https://youtu.be/sMDYh-II22Q?si=v8xHmElJn6yng7PP)
 
 ---
 
-## Next topic
-
-Continue with **IP vs. MAC addressing and ARP in more depth**. Focus on tracing what happens to the IP packet and the link-layer frame when a device communicates locally versus across a router.
+**Next:** [ARP](../07-arp/README.md)
 
