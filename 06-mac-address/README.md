@@ -32,7 +32,7 @@ A laptop can have several interfaces—for example, Wi-Fi, Ethernet, VPN, and vi
 
 ### Diagram from the study notes
 
-<img src="assets/01-network-interface-and-mac-address.png" alt="Study diagram introducing network interfaces, a MAC address, and an example laptop IP address changing after reconnecting" width="100%">
+<img src="a06-mac-address/assests/01-network-interface-and-mac-address.png" alt="Study diagram introducing network interfaces, a MAC address, and an example laptop IP address changing after reconnecting" width="100%">
 
 The diagram introduces an important distinction: a device's IP address can change when it reconnects to a network, while its interface's MAC address is normally configured independently of that IP address. However, MAC addresses are not guaranteed to be permanent or unchangeable; see [Important corrections and nuances](#7-important-corrections-and-nuances).
 
@@ -102,7 +102,7 @@ This is a useful introductory model, but it is not a universal guarantee that th
 
 ### Diagram from the study notes
 
-<img src="assets/02-mac-address-structure.png" alt="Study diagram showing a 48-bit MAC address, hexadecimal bytes, the OUI, and different addresses on different interfaces" width="100%">
+<img src="assests/03-ip-vs-mac-and-arp.png" alt="Study diagram showing a 48-bit MAC address, hexadecimal bytes, the OUI, and different addresses on different interfaces" width="100%">
 
 ### 3.3 Two address bits worth knowing
 
