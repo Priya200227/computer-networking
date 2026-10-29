@@ -244,10 +244,9 @@ Avoid publishing your network details unnecessarily; these commands can reveal l
 
 ## References
 
--[What is a MAC Address? Understanding its Structure and Purpose](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
+- [What is a MAC Address? Understanding its Structure and Purpose](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
 - [IP vs MAC Addresses](https://youtu.be/sMDYh-II22Q?si=v8xHmElJn6yng7PP)
 
 ---
 
 **Next:** [ARP](../07-arp/README.md)
-
