@@ -39,4 +39,8 @@ An HTTP request is not sent directly from frontend code to a backend as one indi
 These are the building blocks for the next topics. DNS, TCP/UDP, ports, IP addressing, routing, MAC addresses, ARP, TLS, and HTTP versions will be explored separately rather than explained in depth here.
 
 ---
+## References
+- [What Really Happens When You Make an HTTP Request?](https://www.youtube.com/watch?v=_dCmQCiQmPE&list=PLd1s-PEC5Pio&index=2)
+
+---
 **Next:** [Network-Host-CIDR](../02-network-host-cidr/)
