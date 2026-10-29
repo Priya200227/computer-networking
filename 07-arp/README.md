@@ -1,21 +1,8 @@
-# 08 — Address Resolution Protocol (ARP)
+# Address Resolution Protocol (ARP)
 
 > **Purpose:** Understand how a device on an IPv4 local network discovers the link-layer (MAC) address associated with a local IPv4 address, and how that mapping is temporarily stored in an ARP cache.
 
-## Table of Contents
-
-- [1. Why ARP Is Needed](#1-why-arp-is-needed)
-- [2. What the Diagram Shows](#2-what-the-diagram-shows)
-- [3. How ARP Works: Step by Step](#3-how-arp-works-step-by-step)
-- [4. ARP Request vs. ARP Reply](#4-arp-request-vs-arp-reply)
-- [5. The ARP Cache](#5-the-arp-cache)
-- [6. What Happens When the Destination Is Outside the Local Network?](#6-what-happens-when-the-destination-is-outside-the-local-network)
-- [7. Useful Commands](#7-useful-commands)
-- [8. Important Clarifications](#8-important-clarifications)
-- [9. How ARP Fits with IP, MAC, and the Default Gateway](#9-how-arp-fits-with-ip-mac-and-the-default-gateway)
-- [10. Key Takeaways](#10-key-takeaways)
-- [11. Check Your Understanding](#11-check-your-understanding)
-- [References](#references)
+[← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
@@ -42,7 +29,7 @@ The MAC addresses above are illustrative except for the Host A3 value shown in t
 
 ## 2. What the Diagram Shows
 
-![ARP request, local network, and ARP cache illustration](images/arp-local-network.png)
+![ARP request, local network, and ARP cache illustration](assessts/arp-local-network.png)
 
 The lesson diagram illustrates these ideas:
 
@@ -274,44 +261,10 @@ Encapsulate the IP packet in a link-layer frame and transmit
 - ARP is for IPv4; IPv6 uses Neighbor Discovery.
 - ARP itself does not assign IP addresses, choose internet routes, or carry application data.
 
-## 11. Check Your Understanding
-
-Try answering these without looking back:
-
-1. Why does Host A1 need a MAC address if it already knows Host A3's IP address?
-2. What does Host A1 do before broadcasting an ARP request?
-3. Why is an ARP request broadcast, while the typical reply is unicast?
-4. Does a router forward an ordinary ARP broadcast to another subnet?
-5. If `192.168.1.2/24` sends to `192.168.2.4`, whose MAC address does it need for the first Ethernet frame?
-6. What is the difference between ARP and DHCP?
-7. Which protocol provides related neighbor-discovery functionality for IPv6?
-
-<details>
-<summary><strong>Answer key</strong></summary>
-
-1. The local link-layer frame needs a destination MAC address for delivery on the current link.
-2. It checks its ARP cache for a usable mapping.
-3. The requester does not necessarily know which local host owns the target IP, so it broadcasts the query. The owner can normally reply directly to the requester.
-4. No. Ordinary ARP broadcasts stay within the local Layer 2 broadcast domain.
-5. The MAC address of the configured next-hop router/default gateway on the local link.
-6. ARP resolves IPv4-to-link-layer mappings; DHCP commonly supplies IP configuration to a host.
-7. IPv6 Neighbor Discovery Protocol (NDP), using ICMPv6.
-
-</details>
-
 ---
 
 ## References
-
-1. **RFC 826 — An Ethernet Address Resolution Protocol (ARP):** https://www.rfc-editor.org/rfc/rfc826
-2. **RFC 1122 — Requirements for Internet Hosts (Communication Layers):** https://www.rfc-editor.org/rfc/rfc1122
-3. **IANA — Address Resolution Protocol (ARP) Parameters:** https://www.iana.org/assignments/arp-parameters/arp-parameters.xhtml
-4. **Microsoft Learn — `arp` command:** https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/arp
-5. **Linux manual — `ip-neighbour`:** https://man7.org/linux/man-pages/man8/ip-neighbour.8.html
-6. **RFC 4861 — Neighbor Discovery for IP version 6 (IPv6):** https://www.rfc-editor.org/rfc/rfc4861
+- [How does ARP Work in Your Network](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
 
 ---
-
-**Suggested repository path:** `08-arp/README.md`  
-**Image path:** `08-arp/images/arp-local-network.png`
-
+**Next:** []()
