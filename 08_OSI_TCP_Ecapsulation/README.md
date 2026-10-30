@@ -223,8 +223,13 @@ For example, TLS is commonly described as sitting between application protocols 
 | Does HTTP always use TCP? | No. HTTP/3 uses QUIC over UDP; HTTP/1.1 and HTTP/2 commonly use TCP. |
 
 ---
+## Key takeaway
 
-## 11. References
+**The OSI model helps you organize networking concepts; the TCP/IP stack implements the protocols used in Internet communication.** When data travels between hosts, each layer has a responsibility, and encapsulation connects those responsibilities into an end-to-end communication process.
+
+---
+
+## References
 
 Primary standards and reliable technical references:
 
@@ -248,12 +253,8 @@ Primary standards and reliable technical references:
    https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf  
    A networking reference showing how the TCP/IP protocol suite relates to the OSI model.
 
-## References
+## Video
 - [What makes OSI and TCP/IP models Different](https://youtu.be/ZOLkWBVMcwU?si=WOa1_I2GkCjnJL8a)
 
 ---
-
-## Key takeaway
-
-**The OSI model helps you organize networking concepts; the TCP/IP stack implements the protocols used in Internet communication.** When data travels between hosts, each layer has a responsibility, and encapsulation connects those responsibilities into an end-to-end communication process.
-
+**Next:** []()
