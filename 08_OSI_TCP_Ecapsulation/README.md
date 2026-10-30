@@ -2,20 +2,11 @@
 
 > **Learning objective:** Understand why networking is described in layers, how the seven-layer OSI reference model relates to the TCP/IP model, and how data moves from an application on one host to an application on another host.
 
-These notes combine the lesson diagrams with clarifications needed to use them accurately. The diagrams are conceptual learning aids—not packet captures or a guarantee that every application follows the exact same sequence.
+[← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
-## Contents
-- [1. Why do we use layers?](#1-why-do-we-use-layers)
-- [2. The seven-layer OSI model](#2-the-seven-layer-osi-model)
-- [3. The TCP/IP model](#3-the-tcpip-model)
-- [4. OSI vs. TCP/IP](#4-osi-vs-tcpip)
-- [5. Encapsulation: following data from source to destination](#5-encapsulation-following-data-from-source-to-destination)
-- [6. What happens at a router?](#6-what-happens-at-a-router)
-- [7. Important corrections and nuances](#7-important-corrections-and-nuances)
-- [8. Why this matters for data and AI engineering](#8-why-this-matters-for-data-and-ai-engineering)
-- [9. Quick reference table](#9-quick-reference-table)
-- [10. Self-check questions](#10-self-check-questions)
-- [11. References](#11-references)
+---
+
+These notes combine the lesson diagrams with clarifications needed to use them accurately. The diagrams are conceptual learning aids—not packet captures or a guarantee that every application follows the same sequence.
 
 ---
 
@@ -216,21 +207,7 @@ For example, TLS is commonly described as sitting between application protocols 
 
 ---
 
-## 8. Why this matters for data and AI engineering
-
-Networking fundamentals become practical when data and AI systems communicate across processes, containers, machines, and cloud services.
-
-- **Data pipelines:** A Python job may call an API, connect to a database, or write to object storage. DNS, transport connectivity, TLS, routing, and firewall rules can all affect the job.
-- **Analytics and BI:** Dashboards and notebooks frequently query remote databases or services. Understanding layers helps distinguish authentication/application errors from name-resolution or connectivity failures.
-- **Data engineering:** Distributed processing systems communicate between workers, coordinators, storage, and message brokers. Network latency, ports, routing, and connection limits can affect reliability and performance.
-- **AI/ML applications:** An application may call an embedding service, vector database, model endpoint, or remote tool. A timeout may originate in the application, DNS, connection establishment, a proxy, network policy, or the remote service.
-- **Cloud and containers:** Virtual networks, subnets, routes, security groups, network policies, load balancers, and service discovery all build on these concepts.
-
-The OSI model will not solve these issues by itself. It gives you a systematic vocabulary for forming hypotheses and testing them.
-
----
-
-## 9. Quick reference table
+## 8. Quick reference table
 
 | Question | Short answer |
 |---|---|
@@ -244,23 +221,6 @@ The OSI model will not solve these issues by itself. It gives you a systematic v
 | Is an IP packet the same as a link-layer frame? | No. A link-layer frame carries an IP packet on a particular link. |
 | What does a router do? | Forwards IP packets between networks and uses link-layer framing appropriate to each outgoing link. |
 | Does HTTP always use TCP? | No. HTTP/3 uses QUIC over UDP; HTTP/1.1 and HTTP/2 commonly use TCP. |
-
----
-
-## 10. Self-check questions
-
-Try answering without looking at the notes.
-
-1. Why is layering useful when an application can run over Wi-Fi or Ethernet?
-2. Name all seven OSI layers in order, from Layer 1 to Layer 7.
-3. Which layer is primarily responsible for IP addressing and routing?
-4. What is the difference between a TCP segment, an IP packet, and a link-layer frame?
-5. Explain encapsulation and decapsulation in your own words.
-6. Why does a router replace the incoming link-layer frame before forwarding the IP packet on another link?
-7. What is the difference between the four-layer and five-layer versions of the TCP/IP model?
-8. Why is it incorrect to say that HTTP always runs over TCP?
-9. Does one application `write()` necessarily become exactly one TCP segment? Why not?
-10. A service hostname resolves successfully, but the connection times out. Which layers or components would you investigate next, and in what order?
 
 ---
 
