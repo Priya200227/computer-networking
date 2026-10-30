@@ -36,7 +36,7 @@ A **layered model** organizes these responsibilities into conceptual groups. Eac
 
 ### Image 1 — The OSI model at a glance
 
-![The seven layers of the OSI reference model and example responsibilities](images/01-osi-seven-layers.png)
+![The seven layers of the OSI reference model and example responsibilities](assests/01-osi-seven-layers.png)
 
 **How to read it:** Start at Layer 7 when thinking about the application's meaning and move down toward Layer 1 to think about transmission. The protocols and examples shown beside each layer are illustrative; the exact mapping of a technology to an OSI layer can depend on which function is being discussed.
 
@@ -67,7 +67,7 @@ The **Open Systems Interconnection (OSI) reference model** describes networking 
 
 ### Image 2 — Why separation of layers matters
 
-![Conceptual illustration of why network functions are separated into layers](images/02-why-layering-matters.png)
+![Conceptual illustration of why network functions are separated into layers](assests/02-why-layering-matters.png)
 
 The key idea in this diagram is **separation of responsibilities**. For example, application code can call a networking API while the operating system and network interface handle lower-level work. The same application may communicate over Wi-Fi, Ethernet, or a cellular network without application code having to manually encode radio or electrical signals.
 
@@ -93,7 +93,7 @@ In the common **four-layer TCP/IP model**, the Data Link and Physical layers are
 
 ### Image 3 — TCP/IP model
 
-![Five-layer TCP/IP teaching model](images/03-tcp-ip-model.png)
+![Five-layer TCP/IP teaching model](assests/03-tcp-ip-model.png)
 
 **How to use this diagram:** Map the OSI model to the TCP/IP model by responsibility, not by assuming a perfect one-to-one correspondence. The five-layer version is a teaching convention. A source may instead show four layers by combining Link and Physical.
 
@@ -141,7 +141,7 @@ Consider an application making a request to a remote server. A simplified path i
 
 ### Image 4 — Encapsulation through the layers
 
-![Conceptual view of data passing down the protocol stack and being encapsulated](images/04-encapsulation-through-layers.png)
+![Conceptual view of data passing down the protocol stack and being encapsulated](assests/04-encapsulation-through-layers.png)
 
 This image illustrates the idea of a message moving through the stack and gaining lower-layer protocol information. The byte values and the number/size of illustrated pieces are examples, not a literal encoding of a real HTTP request.
 
@@ -168,7 +168,7 @@ TCP provides an ordered byte stream. It does **not** preserve a one-to-one relat
 
 ### Image 5 — Source, router, and destination
 
-![Conceptual source-to-router-to-destination flow across a network](images/05-source-router-destination-flow.png)
+![Conceptual source-to-router-to-destination flow across a network](assests/05-source-router-destination-flow.png)
 
 This diagram follows a request from a frontend host, through a router, to a backend host. It highlights the distinction between information used for end-to-end delivery and information used for delivery on an individual link.
 
