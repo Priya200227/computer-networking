@@ -288,6 +288,9 @@ Primary standards and reliable technical references:
    https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf  
    A networking reference showing how the TCP/IP protocol suite relates to the OSI model.
 
+## References
+- [What makes OSI and TCP/IP models Different](https://youtu.be/ZOLkWBVMcwU?si=WOa1_I2GkCjnJL8a)
+
 ---
 
 ## Key takeaway
