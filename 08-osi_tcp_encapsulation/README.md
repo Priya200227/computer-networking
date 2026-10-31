@@ -207,21 +207,7 @@ For example, TLS is commonly described as sitting between application protocols 
 
 ---
 
-## 8. Why this matters for data and AI engineering
-
-Networking fundamentals become practical when data and AI systems communicate across processes, containers, machines, and cloud services.
-
-- **Data pipelines:** A Python job may call an API, connect to a database, or write to object storage. DNS, transport connectivity, TLS, routing, and firewall rules can all affect the job.
-- **Analytics and BI:** Dashboards and notebooks frequently query remote databases or services. Understanding layers helps distinguish authentication/application errors from name-resolution or connectivity failures.
-- **Data engineering:** Distributed processing systems communicate between workers, coordinators, storage, and message brokers. Network latency, ports, routing, and connection limits can affect reliability and performance.
-- **AI/ML applications:** An application may call an embedding service, vector database, model endpoint, or remote tool. A timeout may originate in the application, DNS, connection establishment, a proxy, network policy, or the remote service.
-- **Cloud and containers:** Virtual networks, subnets, routes, security groups, network policies, load balancers, and service discovery all build on these concepts.
-
-The OSI model will not solve these issues by itself. It gives you a systematic vocabulary for forming hypotheses and testing them.
-
----
-
-## 9. Quick reference table
+## 8. Quick reference table
 
 | Question | Short answer |
 |---|---|
