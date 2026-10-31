@@ -1,6 +1,6 @@
 # Routing and How Packets Travel Across Networks
 
-Learning objective: Understand how IP routing moves packets between networks, how hosts use subnet masks and default gateways to determine where to send traffic, how ARP resolves local IPv4 addresses to MAC addresses, and how switches and routers forward data from a source host to a destination host—including across multiple networks and toward cloud-hosted services such as AWS EC2.
+> **Learning objective:** Understand how IP routing moves packets between networks, how hosts use subnet masks and default gateways to determine where to send traffic, how ARP resolves local IPv4 addresses to MAC addresses, and how switches and routers forward data from a source host to a destination host—including across multiple networks and toward cloud-hosted services such as AWS EC2.
 
 [← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
