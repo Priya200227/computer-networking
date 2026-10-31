@@ -14,7 +14,7 @@ These notes combine the lesson diagrams with clarifications needed to use them a
 
 Networking involves several different jobs: applications define what messages mean; transport protocols support communication between processes; IP moves packets between networks; link technologies deliver data across one local link; and physical media carry signals.
 
-A **layered model** organizes these responsibilities into conceptual groups. Each layer offers services to the layer above and relies on services from the layer below.
+A **layered model** organizes these responsibilities into conceptual groups. Each layer provides services to the layer above and relies on the layer below.
 
 ### Why layering is useful
 - **Abstraction:** An application can use a network API without needing to manage radio waves, Ethernet signalling, or every router along the route.
@@ -27,7 +27,7 @@ A **layered model** organizes these responsibilities into conceptual groups. Eac
 
 ### Image 1 — The OSI model at a glance
 
-![The seven layers of the OSI reference model and example responsibilities](images/01-osi-seven-layers.png)
+![The seven layers of the OSI reference model and example responsibilities](assests/01-osi-seven-layers.png)
 
 **How to read it:** Start at Layer 7 when thinking about the application's meaning and move down toward Layer 1 to think about transmission. The protocols and examples shown beside each layer are illustrative; the exact mapping of a technology to an OSI layer can depend on which function is being discussed.
 
@@ -58,7 +58,7 @@ The **Open Systems Interconnection (OSI) reference model** describes networking 
 
 ### Image 2 — Why separation of layers matters
 
-![Conceptual illustration of why network functions are separated into layers](images/02-why-layering-matters.png)
+![Conceptual illustration of why network functions are separated into layers](assests/02-why-layering-matters.png)
 
 The key idea in this diagram is **separation of responsibilities**. For example, application code can call a networking API while the operating system and network interface handle lower-level work. The same application may communicate over Wi-Fi, Ethernet, or a cellular network without application code having to manually encode radio or electrical signals.
 
@@ -84,7 +84,7 @@ In the common **four-layer TCP/IP model**, the Data Link and Physical layers are
 
 ### Image 3 — TCP/IP model
 
-![Five-layer TCP/IP teaching model](images/03-tcp-ip-model.png)
+![Five-layer TCP/IP teaching model](assests/03-tcp-ip-model.png)
 
 **How to use this diagram:** Map the OSI model to the TCP/IP model by responsibility, not by assuming a perfect one-to-one correspondence. The five-layer version is a teaching convention. A source may instead show four layers by combining Link and Physical.
 
@@ -132,7 +132,7 @@ Consider an application making a request to a remote server. A simplified path i
 
 ### Image 4 — Encapsulation through the layers
 
-![Conceptual view of data passing down the protocol stack and being encapsulated](images/04-encapsulation-through-layers.png)
+![Conceptual view of data passing down the protocol stack and being encapsulated](assests/04-encapsulation-through-layers.png)
 
 This image illustrates the idea of a message moving through the stack and gaining lower-layer protocol information. The byte values and the number/size of illustrated pieces are examples, not a literal encoding of a real HTTP request.
 
@@ -159,7 +159,7 @@ TCP provides an ordered byte stream. It does **not** preserve a one-to-one relat
 
 ### Image 5 — Source, router, and destination
 
-![Conceptual source-to-router-to-destination flow across a network](images/05-source-router-destination-flow.png)
+![Conceptual source-to-router-to-destination flow across a network](assests/05-source-router-destination-flow.png)
 
 This diagram follows a request from a frontend host, through a router, to a backend host. It highlights the distinction between information used for end-to-end delivery and information used for delivery on an individual link.
 
@@ -237,50 +237,38 @@ The OSI model will not solve these issues by itself. It gives you a systematic v
 | Does HTTP always use TCP? | No. HTTP/3 uses QUIC over UDP; HTTP/1.1 and HTTP/2 commonly use TCP. |
 
 ---
-
-## 10. Self-check questions
-
-Try answering without looking at the notes.
-
-1. Why is layering useful when an application can run over Wi-Fi or Ethernet?
-2. Name all seven OSI layers in order, from Layer 1 to Layer 7.
-3. Which layer is primarily responsible for IP addressing and routing?
-4. What is the difference between a TCP segment, an IP packet, and a link-layer frame?
-5. Explain encapsulation and decapsulation in your own words.
-6. Why does a router replace the incoming link-layer frame before forwarding the IP packet on another link?
-7. What is the difference between the four-layer and five-layer versions of the TCP/IP model?
-8. Why is it incorrect to say that HTTP always runs over TCP?
-9. Does one application `write()` necessarily become exactly one TCP segment? Why not?
-10. A service hostname resolves successfully, but the connection times out. Which layers or components would you investigate next, and in what order?
-
----
-
-## 11. References
-
-Primary standards and reliable technical references:
-
-1. **RFC 1122 — Requirements for Internet Hosts: Communication Layers**  
-   https://www.rfc-editor.org/rfc/rfc1122.html  
-   Describes Internet host communication layers, including link, IP, and transport responsibilities.
-
-2. **RFC 9293 — Transmission Control Protocol (TCP)**  
-   https://www.rfc-editor.org/rfc/rfc9293.html  
-   Defines TCP and explains its reliable byte-stream service and segmentation behavior.
-
-3. **RFC 9114 — HTTP/3**  
-   https://www.rfc-editor.org/rfc/rfc9114.html  
-   Specifies HTTP semantics mapped over QUIC and clarifies that HTTP/3 does not use TCP as its transport.
-
-4. **ISO 7498-1 — OSI Basic Reference Model**  
-   https://www.iso.org/standard/20269.html  
-   ISO reference for the OSI basic reference model. Access to the full standard may require purchase.
-
-5. **Cisco — TCP/IP Overview (PDF)**  
-   https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf  
-   A networking reference showing how the TCP/IP protocol suite relates to the OSI model.
-
----
-
 ## Key takeaway
 
 **The OSI model helps you organize networking concepts; the TCP/IP stack implements the protocols used in Internet communication.** When data travels between hosts, each layer has a responsibility, and encapsulation connects those responsibilities into an end-to-end communication process.
+
+---
+
+## References
+
+Primary standards and reliable technical references:
+
+- **RFC 1122 — Requirements for Internet Hosts: Communication Layers**  
+   https://www.rfc-editor.org/rfc/rfc1122.html  
+   Describes Internet host communication layers, including link, IP, and transport responsibilities.
+
+-  **RFC 9293 — Transmission Control Protocol (TCP)**  
+   https://www.rfc-editor.org/rfc/rfc9293.html  
+   Defines TCP and explains its reliable byte-stream service and segmentation behavior.
+
+-  **RFC 9114 — HTTP/3**  
+   https://www.rfc-editor.org/rfc/rfc9114.html  
+   Specifies HTTP semantics mapped over QUIC and clarifies that HTTP/3 does not use TCP as its         transport.
+
+-  **ISO 7498-1 — OSI Basic Reference Model**  
+   https://www.iso.org/standard/20269.html  
+   ISO reference for the OSI basic reference model. Access to the full standard may require            purchase.
+
+- **Cisco — TCP/IP Overview (PDF)**  
+   https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf  
+   A networking reference showing how the TCP/IP protocol suite relates to the OSI model.
+
+- **Reference Video**: [What makes OSI and TCP/IP models Different](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
+
+---
+
+**Next**: [Routing-and-packet-travel](../09-routing-and-packet-travel/README.md)
