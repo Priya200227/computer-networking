@@ -232,29 +232,27 @@ For example, TLS is commonly described as sitting between application protocols 
 ## References
 
 Primary standards and reliable technical references:
-
-1. **RFC 1122 — Requirements for Internet Hosts: Communication Layers**  
+- **RFC 1122 — Requirements for Internet Hosts: Communication Layers**  
    https://www.rfc-editor.org/rfc/rfc1122.html  
    Describes Internet host communication layers, including link, IP, and transport responsibilities.
 
-2. **RFC 9293 — Transmission Control Protocol (TCP)**  
+- **RFC 9293 — Transmission Control Protocol (TCP)**  
    https://www.rfc-editor.org/rfc/rfc9293.html  
    Defines TCP and explains its reliable byte-stream service and segmentation behavior.
 
-3. **RFC 9114 — HTTP/3**  
+- **RFC 9114 — HTTP/3**  
    https://www.rfc-editor.org/rfc/rfc9114.html  
    Specifies HTTP semantics mapped over QUIC and clarifies that HTTP/3 does not use TCP as its transport.
 
-4. **ISO 7498-1 — OSI Basic Reference Model**  
+- **ISO 7498-1 — OSI Basic Reference Model**  
    https://www.iso.org/standard/20269.html  
    ISO reference for the OSI basic reference model. Access to the full standard may require purchase.
 
-5. **Cisco — TCP/IP Overview (PDF)**  
+- **Cisco — TCP/IP Overview (PDF)**  
    https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf  
    A networking reference showing how the TCP/IP protocol suite relates to the OSI model.
 
-## Video
-- [What makes OSI and TCP/IP models Different](https://youtu.be/ZOLkWBVMcwU?si=WOa1_I2GkCjnJL8a)
+- **Reference Video**: [What makes OSI and TCP/IP models Different](https://youtu.be/ZOLkWBVMcwU?si=WOa1_I2GkCjnJL8a)
 
 ---
 **Next:** [Routing](../09-routing-and-packet-travel/README.md)
