@@ -37,7 +37,7 @@ A host uses its IP address and subnet prefix/mask to decide whether a destinatio
 
 ## 2. Routing overview
 
-![Routing overview across a LAN, router, Internet hops, and an AWS network](images/01-routing-overview.png)
+![Routing overview across a LAN, router, Internet hops, and an AWS network](assests/01-routing-overview.png)
 
 The overview contains:
 - **Network 1:** hosts A, B, C and D connected through a switch. Example IP addresses include `10.0.0.2`, `10.0.0.3`, `10.0.0.4`, and `10.0.0.5`.
@@ -83,7 +83,7 @@ ARP is for IPv4. IPv6 uses Neighbor Discovery (NDP), not ARP.
 
 ## 4. Scenario A — A to D on the same subnet
 
-![Scenario A: A sends to D on the same local network and uses ARP if needed](images/02-same-network-arp-a-to-d.png)
+![Scenario A: A sends to D on the same local network and uses ARP if needed](assests/02-same-network-arp-a-to-d.png)
 
 Example addresses in the diagram:
 - A: `10.0.0.3`
@@ -111,7 +111,7 @@ The default gateway is not part of the ordinary forwarding path for this same-su
 
 ## 5. Scenario B — C to X on another subnet
 
-![Scenario B: C sends to X on a different subnet through the default gateway](images/03-cross-network-arp-c-to-x.png)
+![Scenario B: C sends to X on a different subnet through the default gateway](assests/03-cross-network-arp-c-to-x.png)
 
 Example addresses:
 - C in Network 1: `10.0.0.4`
@@ -144,7 +144,7 @@ The actual hexadecimal MAC addresses are not supplied in the diagrams; the names
 
 ## 6. Scenario C — C to a remote AWS EC2 instance
 
-![Scenario C: C sends toward a remote AWS EC2 instance through Internet routers](images/04-internet-and-aws-ec2-routing.png)
+![Scenario C: C sends toward a remote AWS EC2 instance through Internet routers](assests/04-internet-and-aws-ec2-routing.png)
 
 This is a simplified illustration of a local host sending traffic through an upstream network and multiple Internet routers toward a remote cloud-hosted destination. Addresses such as `2.3.4.5` and `3.4.5.6` are examples in the diagram, not real AWS configuration details.
 
