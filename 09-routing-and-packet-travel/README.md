@@ -1,25 +1,10 @@
 # Routing and How Packets Travel Across Networks
 
-**Video reference:** [How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+[← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
 ## Learning objectives
 
 By the end of this section, you should be able to explain how hosts decide whether a destination is local or remote, how ARP resolves a local IPv4 next hop, how switches forward Ethernet frames, how routers forward IP packets, why MAC addresses change at routed hops, and how these principles apply to a simplified Internet-to-AWS example.
-
-## Contents
-
-1. [Core idea](#1-core-idea)
-2. [Routing overview](#2-routing-overview)
-3. [Devices and tables](#3-devices-and-tables)
-4. [Scenario A — A to D on the same subnet](#4-scenario-a--a-to-d-on-the-same-subnet)
-5. [Scenario B — C to X on another subnet](#5-scenario-b--c-to-x-on-another-subnet)
-6. [Scenario C — C to a remote AWS EC2 instance](#6-scenario-c--c-to-a-remote-aws-ec2-instance)
-7. [What changes at each hop?](#7-what-changes-at-each-hop)
-8. [Important corrections and nuances](#8-important-corrections-and-nuances)
-9. [Troubleshooting checklist](#9-troubleshooting-checklist)
-10. [Quick revision](#10-quick-revision)
-11. [Self-check questions](#11-self-check-questions)
-12. [Reliable references](#12-reliable-references)
 
 ---
 
@@ -194,22 +179,7 @@ For ordinary routed IPv4 traffic **without NAT**:
 9. **AWS is not one ordinary LAN behind a single router.** VPC routes, gateways, virtual interfaces, security controls, and managed infrastructure all matter.
 10. **ARP caches are dynamic.** A host does not need a permanent entry for every device on its subnet; entries can be learned, refreshed, and expire.
 
-## 9. Troubleshooting checklist
-
-1. Is the host's IP address and subnet prefix/mask correct?
-2. Does the destination fall inside or outside the local subnet?
-3. If off-link, is the default gateway configured and reachable?
-4. Can the host resolve the local destination MAC or next-hop MAC?
-5. Are switch ports, VLANs, and link state correct?
-6. Does the router have a matching route, and is the next hop reachable?
-7. Is there a return route from the destination network?
-8. Could a firewall, security group, network ACL, or host firewall block the traffic?
-9. If NAT is expected, are translation and return mappings correct?
-10. Could an MTU issue or another network error prevent delivery?
-
-Useful commands include `ipconfig` on Windows; `ip addr`, `ip route`, and `ip neigh` on Linux; `arp -a`; `ping`; `tracert` on Windows; and `traceroute` or `tracepath` on Linux (availability varies). Interpret results carefully: ICMP may be filtered, so a failed ping does not prove that every application protocol is unreachable.
-
-## 10. Quick revision
+## 9. Quick revision
 
 | Term | Remember this |
 |---|---|
@@ -226,46 +196,22 @@ Useful commands include `ipconfig` on Windows; `ip addr`, `ip route`, and `ip ne
 | TTL | Limits the number of IPv4 router hops |
 | AWS VPC route table | Maps destination prefixes to targets such as local routes and gateways |
 
-## 11. Self-check questions
-
-Answer these without looking at the notes:
-
-1. If A and D are on the same subnet, why can A send directly to D without using the default gateway?
-2. When C sends to X on another subnet, which MAC does C need first: X's or the local router's?
-3. What does ARP resolve, and why does it not find an Internet server's MAC?
-4. Which device uses a MAC address table, and which uses an IP forwarding table?
-5. Why does a router create a new frame when forwarding a packet?
-6. Which fields normally remain the same end-to-end, and which change at each routed Ethernet hop?
-7. What happens to IPv4 TTL at a router?
-8. How can NAT make the statement “the IP source never changes” incorrect?
-9. Why does the destination network need a route back for a request/response exchange?
-10. Why is the AWS diagram a conceptual example rather than an exact topology?
-
-## 12. Reliable references
-
-These are primary standards and official cloud documentation, selected to avoid unverified or random sources.
-
-1. **RFC 1812 — Requirements for IP Version 4 Routers (RFC Editor).** Router behavior, forwarding, route tables, next-hop selection, TTL, and link-layer framing.  
-   https://www.rfc-editor.org/rfc/rfc1812.html
-
-2. **RFC 826 — An Ethernet Address Resolution Protocol (RFC Editor).** ARP and mapping protocol addresses to Ethernet addresses on a local network.  
-   https://www.rfc-editor.org/rfc/rfc826.html
-
-3. **RFC 1122 — Requirements for Internet Hosts: Communication Layers (RFC Editor).** Internet host requirements and the TCP/IP protocol layers.  
-   https://www.rfc-editor.org/rfc/rfc1122.html
-
-4. **Amazon VPC — Configure route tables (official AWS documentation).** Destination prefixes, route targets, and VPC traffic paths.  
-   https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html
-
-5. **Amazon VPC — Enable internet access using an Internet Gateway (official AWS documentation).** Internet Gateway routing, public subnet requirements, public IPv4 addressing, and IPv4 NAT behavior.  
-   https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
-
-6. **Reference video:**  
-   https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW
-
----
-
 ## Key takeaway
 
 **The IP destination tells routers where the packet ultimately needs to go; the link-layer destination MAC tells the current local network where to deliver the next frame.** A host uses ARP to find the local next hop on IPv4 Ethernet, switches forward frames within a LAN, and routers forward IP packets between networks while rebuilding link-layer framing for each outgoing link. NAT and cloud networking can add address translation and policy controls.
 
+## References
+
+These are primary standards and official cloud documentation, selected to avoid unverified or random sources.
+
+- **Amazon VPC — Configure route tables (official AWS documentation).** Destination prefixes, route targets, and VPC traffic paths.  
+   https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html
+
+- **Amazon VPC — Enable internet access using an Internet Gateway (official AWS documentation).** Internet Gateway routing, public subnet requirements, public IPv4 addressing, and IPv4 NAT behavior.  
+   https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
+
+-  **Reference video:**  
+   [ How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+
+---
+**Next:** []()
