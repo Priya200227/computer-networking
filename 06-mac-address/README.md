@@ -2,7 +2,7 @@
 
 > **Learning goal:** Understand what a MAC address identifies, how it is written, how it differs from an IP address, and why local-network delivery often needs both IP and MAC addressing.
 
-[← Back to Repository](../README.md)
+[← Back to Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
