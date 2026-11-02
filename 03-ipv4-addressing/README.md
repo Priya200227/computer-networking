@@ -1,6 +1,6 @@
 # IPv4 Addressing
 
-> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo)
+> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
 >
 > **Purpose:** Understand how IPv4 addresses identify network interfaces, how their 32-bit structure is represented in dotted-decimal notation, and how IPv4 addressing enables devices to communicate across local networks and routed networks.
 
@@ -58,13 +58,11 @@ The following ranges are reserved for private networks and are not globally rout
 
 Private IPv4 addresses are commonly used in home networks, offices, and cloud private networks. Devices accessing the public internet often do so through a gateway, commonly using Network Address Translation (NAT).
 
+---
+
 ## Key Takeaway
 
 IPv4 addresses are **32-bit values represented as four octets**. The network prefix or subnet mask tells us which bits identify the network and which belong to the host portion.
-
----
-## References
-- [Master Networking Basics: Network, Host, and CIDR Demystified](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
 
 ---
 **Next:** [Subnet Masks](../04-subnet-masks/)
