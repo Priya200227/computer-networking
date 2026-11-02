@@ -4,8 +4,6 @@
 >
 > **Purpose:** Understand how a host uses its IP address and subnet mask to determine whether a destination is local or remote, why traffic destined for another network is sent to a default gateway, and how routers forward packets between different IP networks.
 
----
-
 [← Back to Repository](https://github.com/Priya200227/computer-networking)
 
 ---
