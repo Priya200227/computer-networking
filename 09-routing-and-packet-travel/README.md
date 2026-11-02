@@ -1,8 +1,10 @@
 # Routing and How Packets Travel Across Networks
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+>
 > **Learning objective:** Understand how IP routing moves packets between networks, how hosts use subnet masks and default gateways to determine where to send traffic, how ARP resolves local IPv4 addresses to MAC addresses, and how switches and routers forward data from a source host to a destination host—including across multiple networks and toward cloud-hosted services such as AWS EC2.
 
-[← Back to Repository](https://github.com/Priya200227/computer-networking) 
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
@@ -209,7 +211,7 @@ These are primary standards and official cloud documentation, selected to avoid 
    https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 
 -  **Reference video:**  
-   [ How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+   [How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
 
 ---
 **Next:** []()
