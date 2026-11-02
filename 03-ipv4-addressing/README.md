@@ -4,8 +4,7 @@
 >
 > **Purpose:** Understand how IPv4 addresses identify network interfaces, how their 32-bit structure is represented in dotted-decimal notation, and how IPv4 addressing enables devices to communicate across local networks and routed networks.
 
----
-[← Back to Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
