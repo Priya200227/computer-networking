@@ -1,10 +1,12 @@
 # MAC Addresses: Structure, Purpose, and IP vs. MAC
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
+> 
 > **Learning goal:** Understand what a MAC address identifies, how it is written, how it differs from an IP address, and why local-network delivery often needs both IP and MAC addressing.
 
 [← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
----
 
+---
 ## 1. What is a network interface?
 
 A **network interface** is the point through which a device or virtual system connects to a network. Examples include:
