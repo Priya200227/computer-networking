@@ -269,4 +269,4 @@ Encapsulate the IP packet in a link-layer frame and transmit
 - [How does ARP Work in Your Network](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
 
 ---
-**Next:** [OSI_TCP_Ecapsulation](08-osi_tcp_encapsulation/README.md)
+**Next:** [OSI_TCP_Ecapsulation](../08-osi_tcp_encapsulation/README.md)
