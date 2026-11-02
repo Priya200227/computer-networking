@@ -4,7 +4,7 @@
 >
 > **Purpose:** Understand how subnet masks and CIDR prefixes divide an IPv4 address into network and host portions, how to calculate a network address, and how a device determines whether a destination belongs to its local subnet or requires forwarding through a router.
 
-[← Back to Repository](https://github.com/Priya200227/computer-networking) 
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
@@ -96,6 +96,10 @@ A subnet mask does not identify a device by itself. It lets a host calculate the
 
 - **Same subnet:** send locally, resolving the destination's MAC address when needed.
 - **Different subnet:** send to a router/next hop, usually the default gateway.
+
+---
+## Reference
+- [How Subnet Masks Reveal Network Secrets](https://www.youtube.com/watch?v=KVujI1fsQQo&list=PLd1s-PEC5Pio&index=6)
 
 ---
 **Next:** [Default Gateway](../05-default-gateway/)
