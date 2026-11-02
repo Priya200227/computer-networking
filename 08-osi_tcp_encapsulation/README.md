@@ -1,8 +1,10 @@
 # OSI Model, TCP/IP Model, and Data Encapsulation
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
+>
 > **Learning objective:** Understand why networking is described in layers, how the seven-layer OSI reference model relates to the TCP/IP model, and how data moves from an application on one host to an application on another host.
 
-[← Back to Repository](../README.md)
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
 
 ---
 
