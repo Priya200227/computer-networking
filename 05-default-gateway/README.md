@@ -1,8 +1,12 @@
 # Default Gateway
 
-**How devices communicate with hosts inside and outside their local network**
+> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=Ik-buVzjW3s&list=PLd1s-PEC5Pio&index=6)
+>
+> **Purpose:** Understand how a host uses its IP address and subnet mask to determine whether a destination is local or remote, why traffic destined for another network is sent to a default gateway, and how routers forward packets between different IP networks.
 
-[← Back to Repository](../README.md)
+---
+
+[← Back to Repository](https://github.com/Priya200227/computer-networking)
 
 ---
 
