@@ -1,6 +1,6 @@
 # Address Resolution Protocol (ARP)
 
-> **Section:** Computer Networking — [Chai aur Networking](\(https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
 > 
 > **Purpose:** Understand how a device on an IPv4 local network discovers the link-layer (MAC) address associated with a local IPv4 address, and how that mapping is temporarily stored in an ARP cache.
 
