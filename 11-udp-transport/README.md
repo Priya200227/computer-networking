@@ -1,6 +1,6 @@
 # User Datagram Protocol (UDP)
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/SjMw3nwAhuI?si=kkEmTjVjSTggHPmJ)
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/SjMw3nwAhuI?si=b5sY3gTxSDdbhS3h)
 >
 > **Learning objective:** Understand how UDP transports application messages with minimal protocol overhead, how ports identify application endpoints, how the eight-byte UDP header is structured, why applications choose UDP, and how to inspect UDP traffic—especially DNS queries—in Wireshark.
 
@@ -222,6 +222,93 @@ Wireshark can show UDP headers, ports, lengths, checksums, and protocols carried
 
 *The diagram illustrates a DNS request/response flow and UDP ports when querying a public DNS resolver. Addresses and example responses are illustrative; a live query may return different results.*
 
+
+### Layer-by-layer analysis: DNS query and response
+
+The following capture follows a DNS lookup for `github.com` using the resolver `8.8.8.8`. It shows how one DNS exchange is represented at the application, transport, network, and Ethernet layers.
+
+![Wireshark DNS query and response analyzed across protocol layers](assests/07-wireshark-dns-query-response-layer-analysis.png)
+
+#### 1. Generate and capture the DNS lookup
+
+The example runs:
+
+```bash
+nslookup github.com 8.8.8.8
+```
+
+The command asks the DNS resolver at `8.8.8.8` to resolve `github.com`. In Wireshark, the screenshot narrows the displayed packets with:
+
+```text
+ip.dst == 8.8.8.8 or ip.src == 8.8.8.8
+```
+
+This is a **display filter**: it filters packets already captured. It is not a capture filter.
+
+#### 2. Application layer — DNS message
+
+At the application layer, Wireshark decodes the payload as DNS.
+
+- The request is a DNS **standard query** for `github.com`.
+- The response contains the matching DNS transaction and an answer record.
+- The DNS transaction ID in the request and response is the same. This helps the requester associate the response with the outstanding query.
+- The DNS message carries the query name, query type/class, and response information.
+
+The DNS transaction ID is an application-layer correlation value. It is not the UDP source port and is not a TCP-style connection identifier.
+
+#### 3. Transport layer — UDP
+
+The packets use UDP destination port **53** at the resolver. In the example:
+
+| Field | DNS query | DNS response |
+|---|---:|---:|
+| Source UDP port | 56470 (client's temporary port) | 53 |
+| Destination UDP port | 53 | 56470 |
+| UDP length | 36 bytes | 52 bytes |
+| DNS message length | 28 bytes | 44 bytes |
+
+The UDP length field includes both the 8-byte UDP header and the UDP payload:
+
+```text
+Query:    8-byte UDP header + 28-byte DNS message = 36 bytes
+Response: 8-byte UDP header + 44-byte DNS message = 52 bytes
+```
+
+The response is larger in this capture because the DNS answer adds information beyond the original question. The UDP length is therefore different for the query and response.
+
+**These byte counts are specific to the packets shown.** Other DNS queries and responses can have different lengths.
+
+#### 4. Network layer — IPv4
+
+The IP source and destination addresses reverse between the request and response:
+
+| Field | DNS query | DNS response |
+|---|---|---|
+| Source IPv4 address | `192.168.1.7` | `8.8.8.8` |
+| Destination IPv4 address | `8.8.8.8` | `192.168.1.7` |
+
+The client sends the query to the resolver; the resolver sends the response back to the client. Other IPv4 fields, such as total length and header checksum, can also differ between the two packets.
+
+#### 5. Data-link layer — Ethernet
+
+The Ethernet source and destination MAC addresses also reverse between the outgoing query and incoming response on the captured local link.
+
+MAC addresses are used for delivery on a local Ethernet/Wi-Fi link; IP addresses identify network-layer endpoints across routed networks. For an off-subnet destination, the MAC address visible at the client is typically the next-hop device's MAC—not the remote DNS server's physical MAC address.
+
+#### 6. Correlating the request and response
+
+To verify that the two packets belong to the same DNS exchange, compare:
+
+- The DNS transaction ID — it should match for this query/response pair.
+- The queried name and query type.
+- The direction of the IP addresses.
+- The reversed UDP port pair (client temporary port ↔ server port 53).
+- The DNS message type/flags: query versus response.
+
+A matching transaction ID alone is not universal proof that two packets belong together; use the DNS question and endpoint/port context as well. In the screenshot, the matching DNS transaction ID and corresponding query/answer provide evidence that the response belongs to the displayed request.
+
+> **Layering takeaway:** The DNS message is carried inside UDP; UDP is carried inside IP; IP is carried inside an Ethernet frame on the local link. Each layer adds its own header. When the response returns, the endpoint addresses and ports are reversed, while the DNS transaction ID is retained to correlate the answer with the question.
+
 ### What to inspect
 
 - Source and destination IP addresses.
@@ -256,32 +343,15 @@ Incorrect. UDP does not provide TCP's reliability. QUIC implements its own trans
 ### “The port number is part of the IP address.”
 No. IP addresses belong to the network layer; UDP ports belong to the transport layer. Both help identify a network endpoint.
 
-## 10. Quick revision
-
-| Question | Answer |
-|---|---|
-| Which OSI layer is UDP associated with? | Layer 4 — Transport |
-| What is UDP's IP protocol number? | 17 |
-| What is UDP's data unit called? | Datagram |
-| How large is the UDP header? | 8 bytes |
-| What are the header fields? | Source port, destination port, length, checksum |
-| Does UDP establish a transport connection before sending? | No handshake is required |
-| Does UDP guarantee delivery or ordering? | No |
-| Does UDP retransmit lost datagrams by itself? | No |
-| What port is commonly used by DNS? | Port 53 over UDP or TCP |
-| Does QUIC run over UDP? | Yes; QUIC adds transport features above UDP |
-| Which Wireshark filter shows UDP? | `udp` |
-| Which filter shows DNS? | `dns` |
-| Does the UDP checksum encrypt data? | No |
-
 ## Key takeaway
 
 **UDP is a lightweight, connectionless transport protocol that sends independent datagrams with an 8-byte header.** It does not guarantee delivery, ordering, retransmission, or congestion control. Those trade-offs make UDP useful for applications that need low overhead or control their own transport behavior—but reliability and safe network behavior must be provided by the application or a higher-level protocol when required.
 
 ## References
 
-1. [RFC 768 — User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768.html) — UDP header format, fields, and best-effort delivery.
-2. [RFC 8085 — UDP Usage Guidelines](https://www.rfc-editor.org/rfc/rfc8085.html) — reliability, congestion control, and checksum guidance.
-3. [RFC 1035 — Domain Names: Implementation and Specification](https://www.rfc-editor.org/rfc/rfc1035.html) — DNS over UDP and TCP.
-4. [RFC 9000 — QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html) — QUIC's transport features over UDP.
-5. [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) — capture and display-filter reference.
+- [RFC 768 — User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768.html) — UDP header format, fields, and best-effort delivery.
+- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) — capture and display-filter reference.
+Video Reference:
+- [Why UDP is the Unsung Hero of Fast Internet Protocols](https://youtu.be/SjMw3nwAhuI?si=WEjvm4xnMToTRCeA)
+- [Unveiling the UDP Datagram: A Deep Dive into Its Structure](https://youtu.be/1mTI5X0pN6M?si=lT4WbaKw7teiSC_J)
+- [How to Inspect UDP Traffic Using Wireshark](https://youtu.be/_JeDNQ22Wxk?si=pVr9epPz-U3-0O4v)
