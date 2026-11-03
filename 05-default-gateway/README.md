@@ -8,16 +8,6 @@
 
 ---
 
-## Learning objectives
-
-By the end of this section, you should be able to explain:
-
-- What a **default gateway** is.
-- How a host uses its IP address and subnet mask to decide whether a destination is local or remote.
-- Why two hosts in the same subnet can communicate directly at the network layer.
-- Why traffic destined for another subnet is sent to a router.
-- The role of a router's interfaces in connecting different IP networks.
-
 ## 1. What is a default gateway?
 
 A **default gateway** is the next-hop router a host uses when it needs to send traffic to a destination that is not on its directly connected local network and no more specific route applies.
