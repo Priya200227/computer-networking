@@ -356,7 +356,7 @@ These are primary standards or official technical documentation.
 
 ### Video reference
 
-- **Lesson reference:** What Happens When You PING Google? `[YouTube video](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)`.
+- [What Happens When You PING Google?](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)
 
 ---
 
