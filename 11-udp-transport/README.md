@@ -349,8 +349,8 @@ No. IP addresses belong to the network layer; UDP ports belong to the transport 
 
 ## References
 
-- [RFC 768 — User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768.html) — UDP header format, fields, and best-effort delivery.
-- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) — capture and display-filter reference.
+- [RFC 768 — User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768.html) - UDP header format, fields, and best-effort delivery.
+- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) - capture and display-filter reference.
 Video Reference:
 - [Why UDP is the Unsung Hero of Fast Internet Protocols](https://youtu.be/SjMw3nwAhuI?si=WEjvm4xnMToTRCeA)
 - [Unveiling the UDP Datagram: A Deep Dive into Its Structure](https://youtu.be/1mTI5X0pN6M?si=lT4WbaKw7teiSC_J)
