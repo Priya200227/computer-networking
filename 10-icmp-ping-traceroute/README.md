@@ -61,7 +61,7 @@ An IPv4 Destination Unreachable message has different Codes for different condit
 
 ### Image 1 — ICMP messages, errors, and packet lifetime
 
-![ICMP overview, errors, and TTL]()
+![ICMP overview, errors, and TTL](assests/01-icmp-overview.png)
 
 The diagram introduces three important ideas:
 
