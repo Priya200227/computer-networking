@@ -323,6 +323,12 @@ For application-level diagnosis, use tools appropriate to the service—for exam
 
 ---
 
+## Key takeaway
+
+**ICMP helps devices report network-layer errors and perform diagnostics. `ping` uses Echo messages to test responsiveness and measure round-trip time. Traceroute uses progressively increasing TTL/Hop Limit values to identify routers that respond along a path.** These tools provide useful evidence, but filtering and policy mean that missing ICMP responses do not automatically indicate a failed host or broken route.
+
+---
+
 ## References
 
 These are primary standards or official technical documentation.
@@ -360,7 +366,5 @@ These are primary standards or official technical documentation.
 
 ---
 
-## Key takeaway
 
-**ICMP helps devices report network-layer errors and perform diagnostics. `ping` uses Echo messages to test responsiveness and measure round-trip time. Traceroute uses progressively increasing TTL/Hop Limit values to identify routers that respond along a path.** These tools provide useful evidence, but filtering and policy mean that missing ICMP responses do not automatically indicate a failed host or broken route.
 
