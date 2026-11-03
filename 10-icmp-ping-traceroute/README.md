@@ -291,40 +291,11 @@ tracert example.com
 tracert -d example.com
 ```
 
-### Linux
-
-```bash
-# Send four ICMP Echo Requests
-ping -c 4 example.com
-
-# Trace the route (traditional traceroute commonly uses UDP probes)
-traceroute example.com
-
-# Use ICMP Echo probes with traceroute, where supported
-traceroute -I example.com
-
-# Use TCP probes, where supported
-traceroute -T -p 443 example.com
-```
-
 Options vary by operating system and installed implementation. Check local manual pages or built-in help before relying on a particular option.
 
 ---
 
-## 9. Common misconceptions and technical clarifications
-
-1. **“ICMP uses ports.”** Incorrect. ICMP is carried directly inside IP and uses ICMP Type and Code fields, not TCP/UDP ports.
-2. **“Ping checks whether a website is working.”** Not by itself. Ping tests ICMP Echo responsiveness to an IP address; it does not test HTTP, HTTPS, or application health.
-3. **“If ping fails, the server is down.”** Not necessarily. ICMP may be blocked or rate-limited while the application remains reachable.
-4. **“TTL tells me the exact number of hops.”** Not from a single received TTL value. The initial TTL is chosen by the sender and may be unknown. Traceroute discovers hops by deliberately varying the initial TTL.
-5. **“Every router must appear in traceroute.”** No. Routers can forward packets without returning diagnostic responses.
-6. **“Traceroute always uses ICMP.”** No. The probe protocol varies by implementation. Traditional Unix/Linux traceroute commonly uses UDP; Windows `tracert` uses ICMP Echo probes.
-7. **“A TTL-expired router changes the original packet's source and destination IP addresses.”** Not in the normal TTL-expiry process. The router discards the expired original packet and generates a separate ICMP Time Exceeded error addressed back to the original sender. The ICMP error includes information about the packet that triggered it.
-8. **“A router always sends an ICMP error when a packet cannot be delivered.”** No. ICMP errors can be suppressed, filtered, or rate-limited, and protocol rules restrict when certain errors are sent.
-
----
-
-## 10. Using these tools in real troubleshooting
+## 9. Using these tools in real troubleshooting
 
 | Symptom | What to investigate next |
 |---|---|
@@ -339,7 +310,7 @@ For application-level diagnosis, use tools appropriate to the service—for exam
 
 ---
 
-## 11. Quick revision
+## 10. Quick revision
 
 - **ICMP:** Network-layer control and diagnostic protocol used with IP.
 - **Echo Request / Echo Reply:** ICMP messages commonly used by `ping`.
@@ -349,23 +320,6 @@ For application-level diagnosis, use tools appropriate to the service—for exam
 - **Traceroute:** Uses probes with increasing TTL/Hop Limit values to discover responding hops.
 - **Timeout (`*`):** No response was received in time; it does not automatically mean the router is down.
 - **No ports:** ICMP does not use TCP/UDP port numbers.
-
----
-
-## 12. Knowledge check
-
-Try answering these without looking at the notes:
-
-1. What problem does ICMP solve, and why does it not need TCP/UDP port numbers?
-2. What is the difference between an ICMP Echo Reply and an ICMP Destination Unreachable message?
-3. What does a successful `ping` actually confirm—and what does it not confirm?
-4. What does the `time` field in ping output represent?
-5. Why does a router decrement the IPv4 TTL when forwarding a packet?
-6. What happens when a packet's TTL expires at a router?
-7. How does traceroute use TTL values of 1, 2, 3, and so on?
-8. Why might a traceroute hop display `*` even though packets continue to later hops?
-9. Why can Windows `tracert` and Linux `traceroute` show different results?
-10. If ping succeeds but a website cannot be opened, what should you test next?
 
 ---
 
@@ -402,7 +356,7 @@ These are primary standards or official technical documentation.
 
 ### Video reference
 
-- **Lesson reference:** Add the exact video title and URL used for this section here: `[YouTube video](PASTE_VIDEO_URL_HERE)`.
+- **Lesson reference:** What Happens When You PING Google? `[YouTube video](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)`.
 
 ---
 
