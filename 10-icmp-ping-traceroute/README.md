@@ -61,7 +61,7 @@ An IPv4 Destination Unreachable message has different Codes for different condit
 
 ### Image 1 — ICMP messages, errors, and packet lifetime
 
-![ICMP overview, errors, and TTL](images/01-icmp-overview-and-errors.png)
+![ICMP overview, errors, and TTL](assests/01-icmp-overview-and-errors.png)
 
 The diagram introduces three important ideas:
 
@@ -91,8 +91,7 @@ At a high level:
 
 ### Image 2 — Reading ping output
 
-![Ping output and round-trip time](images/02-ping-output-and-round-trip-time.png)
-
+![Ping output and round-trip time](assests/02-ping-output-and-round-trip-time.png)
 The screenshot shows a Windows `ping` command and its output.
 
 | Output field | Meaning |
@@ -130,7 +129,7 @@ Consider the simplified example in the diagram: a machine sends an Echo Request 
 
 ### Image 3 — Ping across multiple routers
 
-![How ping works across routers](images/03-how-ping-works-end-to-end.png)
+![How ping works across routers](assests/03-how-ping-works-end-to-end.png)
 
 The conceptual flow is:
 
@@ -184,7 +183,8 @@ For IPv6, the equivalent field is called **Hop Limit**. Routers decrement it in 
 
 ### Image 4 — TTL expiry and route discovery
 
-![Traceroute TTL and hop discovery](images/04-traceroute-ttl-and-hop-discovery.png)
+![Traceroute TTL and hop discovery](assests/04-traceroute-ttl-and-hop-discovery.png)
+
 
 The diagram illustrates the increasing-TTL technique:
 
