@@ -21,25 +21,13 @@ ICMP does **not** use TCP or UDP port numbers. It is carried directly inside IP 
 
 > **Important:** ICMP diagnostics are evidence about network behaviour, not absolute proof that a host or application is healthy. Firewalls, filtering, rate limiting, routing policies, and return-path problems can affect results.
 
-## Learning objectives
-
-By the end of this section, you should be able to:
-
-- Explain the purpose of ICMP and why it does not use TCP/UDP ports.
-- Distinguish ICMP Echo Request/Reply messages from ICMP error messages.
-- Explain what `ping` tests and how RTT and packet loss are reported.
-- Describe how IPv4 TTL limits packet lifetime and how routers generate ICMP Time Exceeded messages.
-- Explain how traceroute uses probes with increasing TTL values to reveal responding hops.
-- Interpret common traceroute output, including timeouts.
-- Recognize the limitations of ping and traceroute when diagnosing real networks.
-
 ---
 
 ## 1. What is ICMP?
 
 **ICMP** stands for **Internet Control Message Protocol**. Hosts and routers use it to communicate network-layer control information, including certain delivery errors and diagnostic responses.
 
-ICMP is associated with the network layer (Layer 3 in the OSI teaching model). In IPv4, ICMP is identified in the IP header by protocol number **1**.
+ICMP operates at the network layer (Layer 3 in the OSI model). In IPv4, ICMP is identified in the IP header by protocol number **1**.
 
 ### Does ICMP use port numbers?
 
@@ -365,6 +353,4 @@ These are primary standards or official technical documentation.
 - [What Happens When You PING Google?](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)
 
 ---
-
-
-
+**Next:** [UDP](../11-udp-transport/README.md)
