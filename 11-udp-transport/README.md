@@ -78,11 +78,11 @@ UDP avoids TCP's transport connection setup and does not automatically retransmi
 
 > **Key principle:** UDP gives applications a lightweight datagram service. It does not automatically make an application reliable, secure, or congestion-safe.
 
-![UDP overview and use cases](images/01-udp-overview-and-use-cases.png)
+![UDP overview and use cases](assests/01-udp-overview-and-use-cases.png)
 
 *This diagram summarizes UDP's transport-layer role, small header, lack of a transport handshake, and examples of applications that use it. “Fast but unreliable” compares built-in transport services; it is not a universal performance guarantee.*
 
-![UDP use cases and message delivery](images/02-udp-use-cases-and-message-delivery.png)
+![UDP use cases and message delivery](assests/02-udp-use-cases-and-message-delivery.png)
 
 *The packet boxes illustrate discrete datagrams. Network delivery order is not guaranteed; a receiver may experience loss, duplication, or reordering. UDP itself does not restore missing messages.*
 
@@ -136,11 +136,11 @@ A UDP datagram consists of an **8-byte header** followed by application data. Th
 - **IPv4 and IPv6 checksum rules differ.** In IPv4, a zero UDP checksum can indicate that no checksum was generated. In IPv6, UDP checksums are generally required, subject to narrowly defined exceptions.
 - **The theoretical maximum length field is 65,535 bytes**, but practical payload size is constrained by IP packet size, path MTU, and fragmentation considerations. Avoid assuming very large datagrams will traverse the Internet intact.
 
-![UDP datagram with ports](images/04-udp-datagram-ports.png)
+![UDP datagram with ports](assests/04-udp-datagram-ports.png)
 
 *The diagram shows a datagram sent from a source port to a destination port, with a reply using the reversed endpoint ports. The specific IP addresses and ports are illustrative.*
 
-![UDP datagram header anatomy](images/05-udp-datagram-header-anatomy.png)
+![UDP datagram header anatomy](assests/05-udp-datagram-header-anatomy.png)
 
 *This diagram separates the four 16-bit header fields from application data. The UDP header is exactly 8 bytes; the payload size varies.*
 
@@ -173,7 +173,7 @@ DNS commonly uses **UDP port 53** for ordinary queries because a query/response 
 
 DNS messages contain a transaction ID that helps a resolver associate a response with a query. This ID is part of the DNS message, not a UDP header field.
 
-![DNS built on UDP versus TCP](images/03-dns-over-udp-vs-tcp.png)
+![DNS built on UDP versus TCP](assests/03-dns-over-udp-vs-tcp.png)
 
 *The left side illustrates a simple UDP query/response. The right side contrasts it with TCP connection setup and teardown. This is a conceptual illustration, not a universal packet count: exchanges depend on the response, transport, retries, and connection reuse. DNS over TCP does not necessarily create and close a new connection for every query.*
 
@@ -218,7 +218,7 @@ Wireshark can show UDP headers, ports, lengths, checksums, and protocols carried
 6. Select a packet and expand **User Datagram Protocol** in the packet-details pane.
 7. Inspect source port, destination port, length, and checksum. If Wireshark decodes the payload as DNS, expand the DNS section too.
 
-![Inspecting UDP traffic using Wireshark](images/06-inspecting-udp-dns-traffic.png)
+![Inspecting UDP traffic using Wireshark](assests/06-inspecting-udp-dns-traffic.png)
 
 *The diagram illustrates a DNS request/response flow and UDP ports when querying a public DNS resolver. Addresses and example responses are illustrative; a live query may return different results.*
 
@@ -274,18 +274,9 @@ No. IP addresses belong to the network layer; UDP ports belong to the transport 
 | Which filter shows DNS? | `dns` |
 | Does the UDP checksum encrypt data? | No |
 
-## 11. Self-check questions
+## Key takeaway
 
-1. Why might a video call prefer UDP for media packets?
-2. What is the difference between a UDP datagram and a TCP byte stream?
-3. Why is the UDP header 8 bytes?
-4. What does the UDP length field count?
-5. What is the purpose of source and destination ports?
-6. If a UDP datagram is lost, what does UDP do?
-7. Why can DNS use UDP and TCP?
-8. What does QUIC add that UDP does not provide on its own?
-9. Which Wireshark display filter finds UDP packets on port 53?
-10. Why is a UDP checksum not the same as encryption or authentication?
+**UDP is a lightweight, connectionless transport protocol that sends independent datagrams with an 8-byte header.** It does not guarantee delivery, ordering, retransmission, or congestion control. Those trade-offs make UDP useful for applications that need low overhead or control their own transport behavior—but reliability and safe network behavior must be provided by the application or a higher-level protocol when required.
 
 ## References
 
@@ -294,8 +285,3 @@ No. IP addresses belong to the network layer; UDP ports belong to the transport 
 3. [RFC 1035 — Domain Names: Implementation and Specification](https://www.rfc-editor.org/rfc/rfc1035.html) — DNS over UDP and TCP.
 4. [RFC 9000 — QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html) — QUIC's transport features over UDP.
 5. [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) — capture and display-filter reference.
-
-## Key takeaway
-
-**UDP is a lightweight, connectionless transport protocol that sends independent datagrams with an 8-byte header.** It does not guarantee delivery, ordering, retransmission, or congestion control. Those trade-offs make UDP useful for applications that need low overhead or control their own transport behavior—but reliability and safe network behavior must be provided by the application or a higher-level protocol when required.
-
