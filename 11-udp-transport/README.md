@@ -16,19 +16,6 @@ UDP provides **best-effort delivery**. It does not guarantee that a datagram wil
 
 UDP is useful when low overhead, low latency, message boundaries, or application-controlled behavior matter more than having TCP-like reliability built into the transport layer.
 
-## Learning objectives
-
-By the end of this section, you should be able to explain:
-
-- UDP's role at OSI Layer 4 and its relationship with IP.
-- What connectionless, best-effort, and message-oriented mean in practice.
-- How UDP source and destination ports help deliver data to the right application endpoint.
-- The four fields in a UDP header and why the minimum header is **8 bytes**.
-- Why DNS commonly uses UDP but can also use TCP.
-- How protocols such as QUIC can use UDP as a carrier while implementing additional transport features above it.
-- How to identify UDP and DNS traffic in Wireshark.
-- The trade-offs between UDP and TCP.
-
 ---
 
 ## 1. What is UDP?
@@ -345,7 +332,7 @@ No. IP addresses belong to the network layer; UDP ports belong to the transport 
 
 ## Key takeaway
 
-**UDP is a lightweight, connectionless transport protocol that sends independent datagrams with an 8-byte header.** It does not guarantee delivery, ordering, retransmission, or congestion control. Those trade-offs make UDP useful for applications that need low overhead or control their own transport behavior—but reliability and safe network behavior must be provided by the application or a higher-level protocol when required.
+**UDP is a lightweight, connectionless transport protocol that sends independent datagrams with an 8-byte header.** It does not guarantee delivery, ordering, retransmission, or congestion control. Those trade-offs make UDP useful for applications that need low overhead or control their own transport behavior, but applications or higher—level protocols must provide reliability and safe network behavior when required.
 
 ## References
 
@@ -355,3 +342,6 @@ Video Reference:
 - [Why UDP is the Unsung Hero of Fast Internet Protocols](https://youtu.be/SjMw3nwAhuI?si=WEjvm4xnMToTRCeA)
 - [Unveiling the UDP Datagram: A Deep Dive into Its Structure](https://youtu.be/1mTI5X0pN6M?si=lT4WbaKw7teiSC_J)
 - [How to Inspect UDP Traffic Using Wireshark](https://youtu.be/_JeDNQ22Wxk?si=pVr9epPz-U3-0O4v)
+
+---
+**Next:**[TCP]()
