@@ -52,7 +52,7 @@ The reply travels in the opposite direction:
 
 The IP addresses also reverse between the two directions. The port numbers identify transport-layer application endpoints; they are not IP addresses.
 
-![TCP use cases and segment ports](images/02-tcp-use-cases-and-segment-ports.png)
+![TCP use cases and segment ports](assests/02-tcp-use-cases-and-segment-ports.png)
 
 ### Common TCP use cases
 
@@ -93,7 +93,7 @@ Before normal data exchange, TCP endpoints synchronize connection state. This is
 2. Server → Client: `SYN + ACK`
 3. Client → Server: `ACK`
 
-![TCP three-way handshake](images/03-tcp-three-way-handshake.png)
+![TCP three-way handshake](assests/03-tcp-three-way-handshake.png)
 
 ### Step-by-step
 
@@ -126,7 +126,7 @@ TCP is full-duplex: each direction of data flow can be closed independently. A t
 3. The peer later sends its own `FIN` when it has finished sending.
 4. The first endpoint acknowledges that FIN with `ACK`.
 
-![TCP four-way connection termination](images/04-tcp-four-way-connection-termination.png)
+![TCP four-way connection termination](assests/04-tcp-four-way-connection-termination.png)
 
 ### Step-by-step
 
@@ -201,20 +201,8 @@ These distinctions are important when turning the diagrams into accurate technic
 - TCP includes retransmission, flow control, and congestion control.
 - TCP does not preserve application message boundaries.
 
-## 9. Self-check questions
 
-1. Why is TCP described as connection-oriented and stateful?
-2. What information is exchanged during the three-way handshake?
-3. Why does a SYN consume one sequence-number position?
-4. What is the difference between a TCP segment and an application message?
-5. What do sequence numbers and acknowledgment numbers represent?
-6. How are flow control and congestion control different?
-7. Why is TCP connection termination normally described as four-way?
-8. Under what condition can a FIN and ACK appear in the same segment?
-9. What is the purpose of the TIME-WAIT state?
-10. Why is it inaccurate to say that TCP is always slower than UDP?
-
-## 10. References
+## References
 
 ### Primary standards and authoritative documentation
 
