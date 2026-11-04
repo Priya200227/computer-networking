@@ -14,6 +14,8 @@
 
 TCP runs over IP. IP provides host-to-host packet delivery on a best-effort basis; TCP adds mechanisms that let applications exchange a reliable stream of bytes despite packet loss, duplication, or reordering in the network.
 
+![TCP Overview](assests/01-tcp-overview-and-reliable-byte-stream.png)
+
 TCP is:
 
 - **Connection-oriented:** endpoints establish connection state before normal data transfer.
@@ -204,17 +206,5 @@ These distinctions are important when turning the diagrams into accurate technic
 
 ## References
 
-### Primary standards and authoritative documentation
-
 - [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293) — current TCP specification.
-- [RFC 9293, Section 3.5 — Closing a Connection](https://www.rfc-editor.org/rfc/rfc9293#section-3.5) — connection closing behavior and states.
-- [RFC 9293, Section 3.5.2 — Reset Generation](https://www.rfc-editor.org/rfc/rfc9293#section-3.5.2) — reset behavior.
-- [RFC 5681 — TCP Congestion Control](https://www.rfc-editor.org/rfc/rfc5681) — congestion-control algorithms.
-- [RFC 7323 — TCP Extensions for High Performance](https://www.rfc-editor.org/rfc/rfc7323) — window scaling and timestamp options.
-- [RFC 7413 — TCP Fast Open](https://www.rfc-editor.org/rfc/rfc7413) — data on SYN segments in the TCP Fast Open extension.
-- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) — packet inspection and display filters.
-
-### Learning visuals
-
-The diagrams in `images/` are the supplied study screenshots, retained and embedded here. They are conceptual illustrations; the protocol details and corrections above follow the cited TCP standards.
-
+- [How TCP Connections End](https://youtu.be/ly6ixTfKpjM?si=aNttAkR9W902eMUn)
