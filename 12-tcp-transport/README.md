@@ -208,3 +208,6 @@ These distinctions are important when turning the diagrams into accurate technic
 
 - [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293) - current TCP specification.
 - [How TCP Connections End](https://youtu.be/ly6ixTfKpjM?si=aNttAkR9W902eMUn) - YouTube Video
+
+---
+**Next:**[TCP]()
