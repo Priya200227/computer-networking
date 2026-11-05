@@ -127,7 +127,7 @@ A UDP datagram consists of an **8-byte header** followed by application data. Th
 
 *The diagram shows a datagram sent from a source port to a destination port, with a reply using the reversed endpoint ports. The specific IP addresses and ports are illustrative.*
 
-![UDP datagram header anatomy](assests/05-udp-datagram-header-anatomy.png)
+![UDP datagram header anatomy](assests/05-udp-datagram-anatomy.png)
 
 *This diagram separates the four 16-bit header fields from application data. The UDP header is exactly 8 bytes; the payload size varies.*
 
