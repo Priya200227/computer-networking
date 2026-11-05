@@ -1,5 +1,7 @@
 # TCP Segment Anatomy
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/_d4_vkSQIEk?si=s3YnKpFmPkM1mjEQ)
+>
 > **Learning objective:** Understand the structure of a TCP segment, identify every field in the TCP header, calculate the minimum and maximum header sizes, and explain how options and control flags affect TCP communication.
 
 [← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
@@ -192,7 +194,7 @@ The final supplied image reproduces the TCP header format shown in RFC 9293. In 
 - The following row contains Checksum and Urgent Pointer.
 - Options appear only when present; Data follows the complete TCP header.
 
-![RFC 9293 TCP header format](assests/04-tcp-header-minimum-and-maximum-size.png)
+![RFC 9293 TCP header format](assests/05-rfc-9293-tcp-header-format.png)
 
 **Reference:** [RFC 9293 — Section 3.1, Header Format](https://datatracker.ietf.org/doc/html/rfc9293#name-header-format).
 
