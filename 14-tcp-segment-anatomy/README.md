@@ -21,7 +21,7 @@ The TCP header is at least **20 bytes** long. When TCP options are present, the 
 
 The authoritative format and field definitions are specified in [RFC 9293, Section 3.1 — Header Format](https://www.rfc-editor.org/rfc/rfc9293#section-3.1).
 
-![Annotated TCP segment anatomy](assests/01-tcp-segment-anatomy-annotated.png)
+![Annotated TCP segment anatomy](assests/01-tcp-segment-anatomy.png)
 
 ## 2. TCP header layout
 
