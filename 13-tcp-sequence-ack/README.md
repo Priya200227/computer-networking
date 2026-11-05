@@ -1,5 +1,7 @@
 # TCP Sequence Numbers and Acknowledgment Numbers
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/YryEKDfMXQw?si=TWe-l_NhKMEQCWXH)
+>
 > **Learning objective:** Understand how TCP sequence numbers identify byte positions in a connection, how acknowledgment numbers report the next byte expected, and how these mechanisms support ordered delivery, duplicate detection, and retransmission.
 
 [← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
@@ -35,7 +37,7 @@ If TCP sends the first five bytes in one segment, that segment's sequence number
 
 The receiver uses these byte positions to place received data in the correct order, even if segments arrive out of order.
 
-![TCP sequence numbers](images/01-tcp-sequence-numbers.png)
+![TCP sequence numbers](assests/01-tcp-sequence-numbers.png)
 
 **Important:** This is an illustrative split. TCP does not promise that an application write becomes one segment or that segments have a fixed size. Actual segmentation depends on factors such as MSS, path MTU, TCP options, and implementation behavior.
 
@@ -83,7 +85,7 @@ This means all bytes before sequence number `6` have been received in order, and
 
 TCP acknowledgments are generally **cumulative**. An ACK value of `6` acknowledges sequence-space positions before `6`; it does not mean “I received only segment number 6.”
 
-![TCP acknowledgment numbers](images/02-tcp-acknowledgment-numbers.png)
+![TCP acknowledgment numbers](assests/02-tcp-acknowledgment-numbers.png)
 
 ### 3.1 Missing data and out-of-order arrival
 
@@ -127,7 +129,7 @@ Together they help TCP:
 - determine which transmitted data has been acknowledged,
 - support retransmission and loss recovery.
 
-![Sequence and acknowledgment numbers together](images/03-sequence-and-acknowledgment-together.png)
+![Sequence and acknowledgment numbers together](assests/03-sequence-and-acknowledgment-together.png)
 
 ### Worked example
 
@@ -209,7 +211,5 @@ This is why the first data byte after a SYN normally starts at `ISN + 1`, and wh
 
 - [TCP Sequence Number and Acknowledgment Number](https://youtu.be/YryEKDfMXQw)
 
-### Image notes
-
-The three diagrams in `images/` are the supplied learning visuals. They are retained and embedded here. The explanations clarify the simplified examples and distinguish sequence-number values from byte counts and segment counts.
-
+---
+**Next:**[TCP]()
