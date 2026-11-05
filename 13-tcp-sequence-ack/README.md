@@ -1,4 +1,4 @@
-# TCP Sequence Numbers and Acknowledgment Numbers
+# TCP Sequence and Acknowledgment Numbers
 
 > **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/YryEKDfMXQw?si=TWe-l_NhKMEQCWXH)
 >
