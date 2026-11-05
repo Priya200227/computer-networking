@@ -210,4 +210,4 @@ These distinctions are important when turning the diagrams into accurate technic
 - [How TCP Connections End](https://youtu.be/ly6ixTfKpjM?si=aNttAkR9W902eMUn) - YouTube Video
 
 ---
-**Next:**[TCP](../13-tcp-sequence-ack/README.md)
+**Next:**[TCP Sequence & Acknowledgment Numbers](../13-tcp-sequence-ack/README.md)
