@@ -233,3 +233,6 @@ The final supplied image reproduces the TCP header format shown in RFC 9293. In 
 - [RFC 2018 — TCP Selective Acknowledgment Options](https://www.rfc-editor.org/rfc/rfc2018) — SACK option.
 - [RFC 5681 — TCP Congestion Control](https://www.rfc-editor.org/rfc/rfc5681) — congestion-control behavior.
 **Video Reference** - [Anatomy of a TCP Segment](https://youtu.be/_d4_vkSQIEk?si=SAah9ZQXfpgPaYnQ)
+
+---
+**NEXT:** [TCP]()
