@@ -185,31 +185,15 @@ This is why the first data byte after a SYN normally starts at `ISN + 1`, and wh
 - Duplicate ACKs can help TCP infer loss and perform fast retransmit.
 - Sequence and acknowledgment numbers work together to support reliable, ordered delivery.
 
-## 8. Self-check questions
-
-1. Does TCP assign sequence numbers to segments or to bytes?
-2. If a segment starts at sequence number `200` and carries 100 bytes, what sequence number does the next data byte use?
-3. If a receiver has received bytes through sequence number `499`, what ACK number should it send next?
-4. Why does a SYN with sequence number `x` lead to an acknowledgment of `x + 1`?
-5. What does a duplicate ACK tell the sender?
-6. Does a duplicate ACK always prove that a segment was lost?
-7. Why does the TCP sequence-number space wrap around?
-8. Do SYN, FIN, and ACK all consume sequence-number space?
-9. Why can a receiver get later segments while still acknowledging an earlier sequence number?
-10. How do sequence and acknowledgment numbers contribute to TCP reliability?
-
-## 9. References
-
-### Primary standards
+## References
 
 - [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293) — TCP header fields, sequence numbers, cumulative acknowledgments, and connection behavior.
 - [RFC 9293, Section 3.4 — Sequence Numbers](https://www.rfc-editor.org/rfc/rfc9293#section-3.4) — byte numbering, sequence-number space, SYN/FIN sequence-space behavior, and acknowledgment semantics.
 - [RFC 5681, Section 3.2 — Fast Retransmit/Fast Recovery](https://www.rfc-editor.org/rfc/rfc5681#section-3.2) — duplicate ACKs and fast retransmit.
 - [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) — inspecting TCP sequence and acknowledgment numbers in packet captures.
 
-### Video reference
-
-- [TCP Sequence Number and Acknowledgment Number](https://youtu.be/YryEKDfMXQw)
+**Video reference** - [TCP Sequence Number and Acknowledgment Number](https://youtu.be/YryEKDfMXQw)
 
 ---
+
 **Next:**[TCP]()
