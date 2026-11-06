@@ -1,5 +1,7 @@
 # MTU, MSS, and Path MTU Discovery (PMTUD)
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/18-nbrEEU9o?si=mvScSP4egtOtgLux)
+>
 > **Learning objective:** Distinguish MTU, Path MTU, and TCP MSS; calculate the TCP payload size for a given MTU; understand IPv4 fragmentation and its header fields; and explain how Path MTU Discovery helps endpoints avoid packets that are too large for a network path.
 
 [← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
@@ -17,7 +19,7 @@ MTU, MSS, and PMTUD describe related but different limits and mechanisms:
 
 These are not interchangeable. MTU and PMTU refer to IP packet size limits; MSS refers to TCP data size.
 
-![MTU and IP packet size](images/01-mtu-and-ip-packet-size.png)
+![MTU and IP packet size](assests/01-mtu-and-ip-packet-size.png)
 
 ## 2. MTU — Maximum Transmission Unit
 
@@ -99,7 +101,7 @@ MSS = 1500 - 20 - 20 = 1460\text{ bytes}
 
 For more detail, see [RFC 9293, Section 3.7.1 — Maximum Segment Size Option](https://www.rfc-editor.org/rfc/rfc9293#section-3.7.1).
 
-![TCP Maximum Segment Size](images/04-tcp-maximum-segment-size-mss.png)
+![TCP Maximum Segment Size](assests/04-tcp-maximum-segment-size-mss.png)
 
 ## 5. IP fragmentation
 
@@ -120,7 +122,7 @@ Fragments may travel independently and can arrive out of order. Reassembly is pe
 
 ![IPv4 fragmentation overview](images/02-ipv4-fragmentation-overview.png)
 
-![IPv4 fragment identification and flags](images/03-ipv4-fragment-identification-and-flags.png)
+![IPv4 fragment identification and flags](assests/03-ipv4-fragment-identification-and-flags.png)
 
 ### 5.2 Worked IPv4 fragmentation example
 
@@ -193,7 +195,7 @@ A simplified IPv4 PMTUD process is:
 5. The sender reduces its PMTU estimate and adjusts packetization.
 6. It continues using a size that can traverse the path without fragmentation.
 
-![Path MTU Discovery](images/05-path-mtu-discovery-pmtud.png)
+![Path MTU Discovery](assests/05-path-mtu-discovery-pmtud.png)
 
 The key point: in traditional PMTUD, an oversized packet is **dropped**, not fragmented by the router, because DF is set. The ICMP feedback tells the sender to use smaller packets.
 
@@ -232,7 +234,7 @@ TCP\ Data \leq \min(\text{peer-advertised MSS},\ PMTU - IP\ Header - TCP\ Header
 
 This is a conceptual calculation; real implementations also account for options, encapsulation, tunnels, and other packetization constraints.
 
-![MTU, MSS, PMTU, and PMTUD summary](images/06-mtu-mss-pmtu-summary.png)
+![MTU, MSS, PMTU, and PMTUD summary](assests/06-mtu-mss-pmtu-summary.png)
 
 ## 8. Common misconceptions and corrections
 
@@ -263,22 +265,7 @@ This is a conceptual calculation; real implementations also account for options,
 - IPv4 PMTUD uses ICMP “Fragmentation Needed”; IPv6 PMTUD uses ICMPv6 “Packet Too Big”.
 - PLPMTUD can help when ICMP-based PMTUD feedback is unreliable.
 
-## 10. Self-check questions
-
-1. What is the difference between MTU and MSS?
-2. Why is the Ethernet header not included in the usual 1500-byte Ethernet MTU?
-3. What is the Path MTU of a route whose link MTUs are 1500, 1420, and 9000 bytes?
-4. Calculate the TCP MSS for an MTU of 1500 bytes with a 20-byte IPv4 header and a 20-byte TCP header.
-5. Which IPv4 header fields help the receiver reassemble fragments?
-6. Why is the IPv4 Fragment Offset measured in units of 8 bytes?
-7. What happens when an IPv4 packet has DF set and is too large for the next-hop link?
-8. How does IPv6 handle a packet that is too large for a link?
-9. Why can blocking ICMP messages cause a PMTU black hole?
-10. How do MSS and PMTU jointly constrain TCP segment sizing?
-
-## 11. References
-
-### Primary standards
+## References
 
 - [RFC 1191 — Path MTU Discovery](https://www.rfc-editor.org/rfc/rfc1191) — IPv4 PMTUD and the DF / ICMP Fragmentation Needed mechanism.
 - [RFC 8201 — Path MTU Discovery for IPv6](https://www.rfc-editor.org/rfc/rfc8201) — IPv6 PMTUD and ICMPv6 Packet Too Big.
@@ -288,3 +275,6 @@ This is a conceptual calculation; real implementations also account for options,
 - [RFC 8200 — Internet Protocol, Version 6 (IPv6) Specification](https://www.rfc-editor.org/rfc/rfc8200) — IPv6 packet format and fragmentation behavior.
 - [RFC 4821 — Packetization Layer Path MTU Discovery](https://www.rfc-editor.org/rfc/rfc4821).
 - [RFC 8899 — Datagram Packetization Layer Path MTU Discovery](https://www.rfc-editor.org/rfc/rfc8899).
+
+---
+**NEXT:** [TCP Contol Flow]()
