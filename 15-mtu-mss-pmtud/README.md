@@ -120,7 +120,7 @@ The receiving host uses fields in the IPv4 header to reassemble fragments:
 
 Fragments may travel independently and can arrive out of order. Reassembly is performed by the destination host, not by every intermediate router.
 
-![IPv4 fragmentation overview](images/02-ipv4-fragmentation-overview.png)
+![IPv4 fragmentation overview](assests/02-ipv4-fragmentation-overview.png)
 
 ![IPv4 fragment identification and flags](assests/03-ipv4-fragment-identification-and-flags.png)
 
