@@ -167,6 +167,8 @@ That is approximately 15.9 MiB (16.64 MB in decimal units).
 
 **Do not interpret a shift count of 8 as multiplication by 8.** It means multiplication by \(2^8 = 256\).
 
+![Flow Control Summary](assests/06-flow-control-summary.png)
+
 ## 8. Flow control versus congestion control
 
 | Aspect | Flow control | Congestion control |
