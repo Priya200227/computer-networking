@@ -69,7 +69,7 @@ There is no single server containing every DNS record for every domain. Differen
 
 ## 3. The main DNS components
 
-![Recursive resolver and DNS hierarchy overview](images/03-recursive-resolution-and-dns-caching.png)
+![Recursive resolver and DNS hierarchy overview](assests/03-recursive-resolution-and-dns-caching.png)
 
 | Component | Responsibility |
 |---|---|
