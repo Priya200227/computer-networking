@@ -247,4 +247,4 @@ Conversely, if `rwnd` is large but `cwnd` is small, congestion control limits th
 
 ---
 
-**Next:** [TCP Inspect with Wireshark](../18-tcp-with-wireshark/README.md)
+**Next:** [How DNS Works](../18-how-dns-works/README.md)
