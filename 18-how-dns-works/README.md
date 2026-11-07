@@ -348,3 +348,6 @@ This is a conceptual learning flow, not a literal packet trace. In practice, bro
 - [RFC 8499 — DNS Terminology](https://www.rfc-editor.org/rfc/rfc8499.html)
 - [Microsoft Learn — DNS Queries and Lookups](https://learn.microsoft.com/en-us/windows-server/networking/dns/queries-lookups)
 - [IANA — Root Servers](https://www.iana.org/domains/root/servers)
+
+---
+**Next: ** [Major DNS Records](../19-major-dns-records/README.md)
