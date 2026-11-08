@@ -46,7 +46,7 @@ jyothipriya.in.  3600  IN  A  3.111.187.148
 
 **TTL is not the lifetime of a domain or server.** It is a caching duration. A resolver can reuse cached data until its TTL expires. If the authoritative record changes, cached answers may remain visible until their TTLs expire.
 
-![DNS resource record fields](images/01-dns-resource-record-fields.png)
+![DNS resource record fields](assests/01-dns-resource-record-fields.png)
 
 ## 3. A record — IPv4 address
 
@@ -69,7 +69,7 @@ Multiple addresses can support endpoint distribution, redundancy, or failover. B
 
 An A record stores a 32-bit IPv4 address, not an IPv6 address.
 
-![DNS A record](images/02-a-record-ipv4.png)
+![DNS A record](assests/02-a-record-ipv4.png)
 
 ## 4. AAAA record — IPv6 address
 
@@ -83,7 +83,7 @@ An `AAAA` query asks: *What IPv6 address is associated with this hostname?*
 
 IPv6 addresses are 128 bits. A hostname can have multiple AAAA records and may publish both A and AAAA records. The client and network determine which address family is used; publishing an AAAA record does not guarantee that a client's network has working IPv6 connectivity.
 
-![DNS AAAA record](images/03-aaaa-record-ipv6.png)
+![DNS AAAA record](assests/03-aaaa-record-ipv6.png)
 
 ## 5. MX record — mail exchange
 
@@ -113,7 +113,7 @@ The sending mail server resolves the selected MX hostname to an address, typical
 
 MX records do **not** store emails. They tell sending mail systems where to attempt delivery. Mail transfer uses SMTP; DNS supplies the routing information. Server-to-server SMTP commonly uses TCP port 25.
 
-![DNS MX record and mail-routing example](images/04-mx-record-mail-routing.png)
+![DNS MX record and mail-routing example](assests/04-mx-record-mail-routing.png)
 
 ## 6. CNAME record — canonical name / alias
 
@@ -138,7 +138,7 @@ A CNAME owner name generally cannot have other ordinary data records at the same
 
 A CNAME target must not create an alias loop; DNS resolution cannot follow a loop indefinitely.
 
-![DNS CNAME record](images/05-cname-record-alias.png)
+![DNS CNAME record](assests/05-cname-record-alias.png)
 
 ## 7. NS record — name server and delegation
 
@@ -173,7 +173,7 @@ api.jyothipriya.in.  3600  IN  A  19.20.21.22
 
 Some delegations require **glue records** in the parent zone: address records for delegated name servers that are needed to reach those servers without a circular dependency. Whether glue is needed depends on the name-server names and zone relationship.
 
-![DNS NS record and delegation](images/06-ns-record-and-dns-delegation.png)
+![DNS NS record and delegation](assests/06-ns-record-and-dns-delegation.png)
 
 ## 8. TXT record — text data and email authentication
 
@@ -209,7 +209,7 @@ SPF is evaluated by the receiving mail system using the connecting sender's IP a
 
 **Correction to the supplied diagram:** the record type shown beside the SPF value is labelled `CNAME`; it should be `TXT`.
 
-![DNS TXT record and SPF examples](images/07-txt-record-spf-and-email-authentication.png)
+![DNS TXT record and SPF examples](assests/07-txt-record-spf-and-email-authentication.png)
 
 ## 9. PTR record — reverse DNS
 
@@ -241,7 +241,7 @@ A common consistency check is:
 
 If it does, the relationship is forward-confirmed. This is useful validation, not cryptographic proof of identity. SPF, DKIM, DMARC, TLS, and other controls serve different purposes and may also be evaluated.
 
-![PTR record and forward-confirmed reverse DNS](images/08-ptr-record-reverse-dns-and-fcrdns.png)
+![PTR record and forward-confirmed reverse DNS](assests/08-ptr-record-reverse-dns-and-fcrdns.png)
 
 ## 10. Compare the major record types
 
@@ -331,3 +331,5 @@ dig +trace example.com A
 - [RFC 7208 — Sender Policy Framework (SPF)](https://www.rfc-editor.org/rfc/rfc7208)
 - [RFC 7489 — DMARC](https://www.rfc-editor.org/rfc/rfc7489)
 
+---
+**Next: ** []()
