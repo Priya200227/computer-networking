@@ -211,7 +211,7 @@ SPF is evaluated by the receiving mail system using the connecting sender's IP a
 
 **Correction to the supplied diagram:** the record type shown beside the SPF value is labelled `CNAME`; it should be `TXT`.
 
-![DNS TXT record and SPF examples](assests/07-txt-record-spf-and-email-authentication.png)
+![DNS TXT record and SPF examples](assests/07-txt-dns-record.png)
 
 ## 9. PTR record — reverse DNS
 
