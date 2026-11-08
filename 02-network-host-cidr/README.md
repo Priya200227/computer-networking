@@ -16,7 +16,7 @@ This page is a concise overview of the concepts shown in the diagram. Detailed I
 
 ## Concept Diagram
 
-![Network, host, and CIDR concept diagram](assests/network.png)
+![Network, host, and CIDR concept diagram](assests/network-host-and-cidr-notation.png)
 
 ## Key Ideas
 
