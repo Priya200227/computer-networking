@@ -16,7 +16,7 @@ An IPv4 address is commonly written in **dotted-decimal notation**: four decimal
 
 ## Concept Diagram
 
-![IP concept](assests/IP.png)
+![IP concept](assests/ipv4-dotted-quad-and-binary-representation.png)
 
 ## IPv4 Address Structure
 
