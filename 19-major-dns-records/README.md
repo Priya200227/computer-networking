@@ -1,5 +1,7 @@
 # DNS — Major Resource Record Types
 
+> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/_PugVKzp3ig?si=RXcOArwm-hRqYot9)
+>
 > **Learning objective:** Understand the purpose, structure, and practical use of the major DNS resource record types — A, AAAA, MX, CNAME, NS, TXT, and PTR — and how they support name resolution, mail routing, delegation, and reverse DNS.
 
 [← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
