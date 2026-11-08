@@ -16,7 +16,7 @@ The diagram below brings these pieces together. It is an **overview**, not a det
 
 ## Complete Workflow Diagram
 
-![Complete HTTP request workflow from Video 02 notes](assests/http-request-workflow.png)
+![Complete HTTP request workflow from Video 02 notes](assests/http-request-network-encapsulation-flow.png)
 
 ## Workflow at a Glance
 
