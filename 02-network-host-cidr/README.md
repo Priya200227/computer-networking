@@ -75,6 +75,18 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 ## Key Takeaway
 
 **CIDR tells us how many leading bits identify the network prefix; the remaining bits form the host-address space.** This distinction is foundational to IPv4 addressing, subnet masks, and routing decisions.
+1. For conventional IPv4 subnets, reserve one address for the network and one for broadcast. But special configurations, such as /31 point-to-point links, work differently.
+
+---
+**Note: **
+In the above image: 
+         Classful addressing means: Earlier, IPv4 addresses were divided into pre-defined classes:
+                  | Class | Default network size |
+                  |---|---|
+                  | A | `/8` |                  For example, Class C traditionally used /24, meaning
+                  | B | `/16` |                  4 bits for the network and 8 bits for hosts. 
+                  | C | `/24 ` |
+         *The Problem?* - You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
 
 ---
 ## References
