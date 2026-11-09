@@ -1,25 +1,23 @@
 # IPv4 Addressing
 
-> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
->
+> [!NOTE]
+> **Section:** Computer Networking — [Chai aur Networking](https://youtube.com)
+> 
 > **Purpose:** Understand how IPv4 addresses identify network interfaces, how their 32-bit structure is represented in dotted-decimal notation, and how IPv4 addressing enables devices to communicate across local networks and routed networks.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Computer Networking Repository](https://github.com) 
 
 ---
 
 ## Overview
 
-**Internet Protocol version 4 (IPv4)** uses **32-bit addresses** to identify network interfaces and support the delivery of packets between networks.
+**Internet Protocol version 4 (IPv4)** uses 32-bit addresses to identify network interfaces and support the delivery of packets between networks.
 
 An IPv4 address is commonly written in **dotted-decimal notation**: four decimal numbers, called *octets*, separated by periods.
 
-> [!IMPORTANT]
-> An IPv4 address contains **32 bits = 4 octets = 4 bytes**.
-
 ## Concept Diagram
 
-![IPv4 concept](assests/ipv4-dotted-quad-and-binary-representation.png)
+![IP concept](assests/ipv4-dotted-quad-and-binary-representation.png)
 
 ## IPv4 Address Structure
 
@@ -32,16 +30,11 @@ Example: `192.168.1.4`
 | 3 | `1` | `00000001` |
 | 4 | `4` | `00000100` |
 
-Each octet contains **8 bits** and can represent a value from `0` to `255`.
-
-<blockquote>
-
-**4 octets × 8 bits = 32 bits**
-
-</blockquote>
-
-> [!NOTE]
-> Each octet is converted into its 8-bit binary representation. The four octets together form the complete 32-bit IPv4 address.
+> [!TIP]
+> Each octet contains **8 bits** and can represent a value ranging from `0` to `255`. 
+> 
+> **Total Length Calculation:**  
+> $\color{#2ea44f}{\text{4 octets} \times \text{8 bits} = \text{32 bits total}}$
 
 ## Network Prefix and Host Portion
 
@@ -49,47 +42,29 @@ An IPv4 address is interpreted alongside a **network prefix** or subnet mask. Th
 
 For example, `192.168.1.4/24` belongs to the subnet `192.168.1.0/24`:
 
-| Component | Value |
-|---|---|
-| **Network address** | `192.168.1.0` |
-| **Example host address** | `192.168.1.4` |
-| **Prefix length** | `/24` — the first 24 bits are the network prefix. |
+- **Network address:** `192.168.1.0`
+- **Example host address:** `192.168.1.4`
+- **Prefix length:** `/24` — the first 24 bits are the network prefix.
 
-> [!IMPORTANT]
-> An IPv4 address alone does not tell us where the network portion ends. We also need the **prefix length or subnet mask** to identify the network and host portions.
+The address alone does not specify where the network portion ends; the prefix length or subnet mask is also needed.
 
 ## Private IPv4 Address Ranges
 
-The following ranges are reserved for private networks and are **not globally routable on the public internet**.
+The following ranges are reserved for private networks and are not globally routable on the public internet:
 
-| Private IPv4 range | CIDR notation |
+| Range | CIDR notation |
 |---|---|
 | `10.0.0.0` – `10.255.255.255` | `10.0.0.0/8` |
 | `172.16.0.0` – `172.31.255.255` | `172.16.0.0/12` |
 | `192.168.0.0` – `192.168.255.255` | `192.168.0.0/16` |
 
-Private IPv4 addresses are commonly used in:
-- Home networks
-- Office networks
-- Cloud private networks
-
-Devices accessing the public internet often do so through a gateway, commonly using **Network Address Translation (NAT)**.
-
-> [!TIP]
-> Remember these three private IPv4 ranges:
-> - `10.0.0.0/8`
-> - `172.16.0.0/12`
-> - `192.168.0.0/16`
+Private IPv4 addresses are commonly used in home networks, offices, and cloud private networks. Devices accessing the public internet often do so through a gateway, commonly using Network Address Translation (NAT).
 
 ---
 
-## Key Takeaway
+## 🌟 Key Takeaway
 
-> [!IMPORTANT]
-> **IPv4 addresses are 32-bit values represented as four 8-bit octets. The network prefix or subnet mask determines which bits identify the network and which bits belong to the host portion.**
-
-Understanding this structure is essential before moving on to subnet masks, CIDR notation, and subnet calculations.
+IPv4 addresses are **32-bit values represented as four octets**. The network prefix or subnet mask tells us which bits identify the network and which belong to the host portion.
 
 ---
-
 **Next:** [Subnet Masks](../04-subnet-masks/)
