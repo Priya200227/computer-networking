@@ -39,22 +39,28 @@ For a typical IPv4 `/24` subnet:
 | Total IPv4 addresses | 256|  
 | Typical usable host addresses | `192.168.1.1`–`192.168.1.254` |
 | Broadcast address | `192.168.1.255` |
+          |
+          V
+      It is a special IP address used to send a message to all devices in a particular network at once. Imagine you have a network with 254 usable devices: `192.168.1.1` to `192.168.1.254`
+If one device wants to send a message to every device in that network, it can send it to the broadcast address.
 
 The common total of 256 addresses and 254 usable host addresses applies to a conventional IPv4 subnet where the network and broadcast addresses are reserved. Special-purpose subnet sizes and point-to-point configurations can differ.
 
 ## *What does 256 total addresses but only 254 usable mean?*
 
-An IPv4 address has 32 bits. For /24 means 24 bits = Network portion & 8 bits = Host portion.
+An IPv4 address has 32 bits. A /24 means 24 bits = Network portion & 8 bits = Host portion.
 Each host bit can either be 0 or 1. So, 2^8 = 256 total addresses.
 
 But in a conventional IPv4 subnet, 2 addresses have special purposes:
 | Address |	Purpose |
 |---|---|
-| 192.168.1.0 |	Identifies the network itself |
-| 192.168.1.255 |	Broadcast address |
+| 192.168.1.0 |	Identifies the network itself (host bits are all 0) |
+| 192.168.1.255 |	Broadcast address  (host bits are all 1) |
 | 192.168.1.1 – 192.168.1.254 |	Usable host addresses |
 
-So: 256 - 2 = 254
+So: 256 - 2 = 254 usable addresses
+
+---
 
 ## Key Takeaway
 
