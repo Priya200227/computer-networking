@@ -69,7 +69,7 @@ A commonly used representation divides a globally administered MAC address into 
 - **First 24 bits — OUI:** Organizationally Unique Identifier, associated with an organization.
 - **Remaining 24 bits:** Used to distinguish addresses within that allocation.
 
-![MAC address structure](assests/02-mac-structure.png)
+![MAC address structure](assests/mac-structure.png)
 
 > [!NOTE]
 > This is a conventional allocation model. Locally administered or randomized MAC addresses may not identify the device manufacturer.
