@@ -74,8 +74,16 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 ---
 ## Key Takeaway
 
-**CIDR tells us how many leading bits identify the network prefix; the remaining bits form the host-address space.** This distinction is foundational to IPv4 addressing, subnet masks, and routing decisions.
-1. For conventional IPv4 subnets, reserve one address for the network and one for broadcast. But special configurations, such as /31 point-to-point links, work differently.
+- **IPv4:** A 32-bit address consisting of four 8-bit octets.
+- **Network portion:** Identifies the subnet to which an IP address belongs.
+- **Host portion:** Identifies an individual device within that subnet.
+- **CIDR notation:** Specifies the number of bits used for the network prefix. For example, `/24` means 24 network bits and 8 host bits.
+- **Network address:** Identifies the subnet itself. In a conventional `/24` subnet, it is `192.168.1.0`.
+- **Broadcast address:** Used to send a packet to all devices on the local IPv4 subnet. For this `/24` subnet, it is `192.168.1.255`.
+- **Usable host addresses:** A conventional `/24` subnet provides 254 usable host addresses (`192.168.1.1`–`192.168.1.254`).
+- **Special cases:** `/31` point-to-point links and `/32` host routes follow different addressing rules.
+
+**Remember:** CIDR determines how an IP address is divided into network and host portions. This is the foundation for understanding subnetting, network boundaries, and IP routing.
 
 ---
 ## **Note:**
