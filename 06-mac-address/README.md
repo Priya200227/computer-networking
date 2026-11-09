@@ -1,4 +1,4 @@
-# MAC Addresses: Structure, Purpose, and IP vs. MAC
+# Network Inference, MAC Addresses - Structure and IP vs. MAC
 
 > [!NOTE]
 > **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
