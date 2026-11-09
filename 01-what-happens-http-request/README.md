@@ -1,11 +1,11 @@
 # What Really Happens When You Make an HTTP Request?
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=_dCmQCiQmPE&list=PLd1s-PEC5Pio&index=2)
+> **Section:** Computer Networking — [Chai aur Networking](https://youtube.com)
 > 
 > **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
+[← Back to Computer Networking Repository](https://github.com) 
 
 ---
 
@@ -21,20 +21,20 @@ The diagram below brings these pieces together. It is an **overview**, not a det
 
 ## Workflow at a Glance
 
-### 1. 🌐 Application Layer
+### 🌐 1. Application Layer
 1. **Frontend API call:** The browser starts an HTTP request, for example, through JavaScript's `fetch()` function.
 2. **DNS lookup:** The domain hostname is resolved into an IP address so the client can identify the destination server.
 
-### 2. 📦 Transport and Operating System
-3. **Transport layer:** The request uses an appropriate transport protocol — TCP for HTTP/1.1 and HTTP/2, or QUIC over UDP for HTTP/3.
+### 📦 2. Transport & Operating System
+3. **Transport layer:** The request uses an appropriate transport protocol — `TCP` for HTTP/1.1 and HTTP/2, or `QUIC` over `UDP` for HTTP/3.
 4. **Operating-system networking stack:** The browser works with the OS networking stack to prepare and transmit the data.
 5. **Encapsulation and addressing:** Application data is encapsulated with transport-layer information (such as source and destination ports), IP addressing information, and local-link framing information.
 
-### 3. 📡 Network and Link-Layer Delivery
-6. **Local-network delivery:** The device prepares a frame for transmission over the local network. ARP helps resolve an IPv4 address to a MAC address when the next-hop MAC address is not already known.
+### 📡 3. Network & Link-Layer Delivery
+6. **Local-network delivery:** The device prepares a frame for transmission over the local network. <mark>**ARP**</mark> helps resolve an IPv4 address to a MAC address when the next-hop MAC address is not already known.
 7. **Routing and server processing:** Routers forward packets across networks towards the destination. The server receives the data, processes the request through its networking stack, and passes it to the backend application.
 
-### 4. Response
+### 🔄 4. Response
 8. **HTTP response:** The backend generates a response, which travels back through the network to the client, where the browser processes it.
 
 ---
