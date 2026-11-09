@@ -191,10 +191,6 @@ Host A1                 Default Gateway             Remote Host
 >
 > **Check ARP cache → Broadcast ARP request → Receive ARP reply → Cache mapping → Send frame**
 
-## References
-
-- [How Does ARP Work in Your Network?](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
-
 ---
 
 **Next:** [OSI and TCP Encapsulation](../08-osi_tcp_encapsulation/README.md)
