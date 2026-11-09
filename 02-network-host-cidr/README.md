@@ -50,13 +50,27 @@ An IPv4 address has 32 bits. A /24 means 24 bits = Network portion & 8 bits = Ho
 Each host bit can either be 0 or 1. So, 2^8 = 256 total addresses.
 
 But in a conventional IPv4 subnet, 2 addresses have special purposes:
-| Address |	Purpose |
+| Address | Purpose |
 |---|---|
-| 192.168.1.0 |	Identifies the network itself (host bits are all 0) |
+| 192.168.1.0 | Identifies the network itself (host bits are all 0) |
 | 192.168.1.255 |	Broadcast address  (host bits are all 1) |
-| 192.168.1.1 – 192.168.1.254 |	Usable host addresses |
+| 192.168.1.1 – 192.168.1.254 | Usable host addresses |
 
 So: 256 - 2 = 254 usable addresses
+
+---
+## *What does the special-purpose subnet sizes statement mean?*
+
+The 256 total and 254 usable rule is the conventional calculation for a normal IPv4 subnet such as /24.
+
+| Prefix | Total addresses | Typical usable hosts |
+|---|---|---|
+| /24 | 256 | 254 |
+| /30 | 4 | 2 |
+| /31 | 2 | 2 (point-to-point links) |
+| /32 | 1 | 1 (single host route) |
+
+A `/31` is a special case used for point-to-point links between two devices. Both addresses can be used as endpoint addresses, so the usual network/broadcast subtraction does not apply.
 
 ---
 
