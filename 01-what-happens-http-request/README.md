@@ -22,7 +22,6 @@ The diagram below brings these pieces together. It is an **overview**, not a det
 ## Workflow at a Glance
 
 > [!🌐 Application & Resolution Layers]
-> ### 🌐 Application & Resolution Layers
 > 1. **Frontend API call** — The browser starts a request, for example with a JavaScript `fetch()` function call.
 > 2. **DNS lookup** — The target domain hostname is resolved into a machine-readable IP address using a Domain Name System query.
 
