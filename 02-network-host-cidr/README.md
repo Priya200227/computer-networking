@@ -1,5 +1,6 @@
 # Network, Host, and CIDR
 
+> [!NOTE]
 > **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=4)
 > 
 > **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
@@ -40,25 +41,28 @@ For a typical IPv4 `/24` subnet:
 | Typical usable host addresses | `192.168.1.1`–`192.168.1.254` |
 | Broadcast address | `192.168.1.255` |
          
-  > The broadcast address is a special IP address used to send a message to all devices in a particular network at once. Imagine you have a network with 254 usable devices: `192.168.1.1` to `192.168.1.254`. If one device wants to send a message to every device in that network, it can send it to the broadcast address.
+> [!IMPORTANT]
+> **Broadcast Address**
+> The broadcast address is a special IP address used to send a message to all devices in a particular network at once. Imagine you have a network with 254 usable devices: `192.168.1.1` to `192.168.1.254`. If one device wants to send a message to every device in that network, it can send it to the broadcast address.
 
 The common total of 256 addresses and 254 usable host addresses applies to a conventional IPv4 subnet where the network and broadcast addresses are reserved. Special-purpose subnet sizes and point-to-point configurations can differ.
 
-## *What does 256 total addresses but only 254 usable mean?*
+### *What does 256 total addresses but only 254 usable mean?*
 
 An IPv4 address has 32 bits. A /24 means 24 bits = Network portion & 8 bits = Host portion.
-Each host bit can either be 0 or 1. So, 2^8 = 256 total addresses.
+Each host bit can either be 0 or 1. So, $\color{#2ea44f}{2^8 = 256}$ total addresses.
 
 But in a conventional IPv4 subnet, 2 addresses have special purposes:
+
 | Address | Purpose |
 |---|---|
 | 192.168.1.0 | Identifies the network itself (host bits are all 0) |
 | 192.168.1.255 |	Broadcast address  (host bits are all 1) |
 | 192.168.1.1 – 192.168.1.254 | Usable host addresses |
 
-So: 256 - 2 = 254 usable addresses
+So: $\color{#cb2431}{256 - 2 = 254}$ usable addresses
 
-## *What does the special-purpose subnet sizes statement mean?*
+### *What does the special-purpose subnet sizes statement mean?*
 
 The 256 total and 254 usable rule is the conventional calculation for a normal IPv4 subnet such as /24.
 
@@ -69,10 +73,11 @@ The 256 total and 254 usable rule is the conventional calculation for a normal I
 | /31 | 2 | 2 (point-to-point links) |
 | /32 | 1 | 1 (single host route) |
 
-A `/31` is a special case used for point-to-point links between two devices. Both addresses can be used as endpoint addresses, so the usual network/broadcast subtraction does not apply.
+> [!TIP]
+> A `/31` is a special case used for point-to-point links between two devices. Both addresses can be used as endpoint addresses, so the usual network/broadcast subtraction does not apply.
 
 ---
-## Key Takeaway
+## 🌟 Key Takeaway
 
 - **IPv4:** A 32-bit address consisting of four 8-bit octets.
 - **Network portion:** Identifies the subnet to which an IP address belongs.
@@ -83,14 +88,14 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 - **Usable host addresses:** A conventional `/24` subnet provides 254 usable host addresses (`192.168.1.1`–`192.168.1.254`).
 - **Special cases:** `/31` point-to-point links and `/32` host routes follow different addressing rules.
 
-**Remember:** CIDR determines how an IP address is divided into network and host portions. This is the foundation for understanding subnetting, network boundaries, and IP routing.
+> [!WARNING]
+> **Remember:** CIDR determines how an IP address is divided into network and host portions. This is the foundation for understanding subnetting, network boundaries, and IP routing.
 
 ---
-## **Note:**
-
+## 📝 Note:
 Explanation of the terms used in the image: 
 
-*1. Classful addressing:* Earlier, IPv4 addresses were divided into pre-defined classes:
+**1. Classful addressing:** Earlier, IPv4 addresses were divided into pre-defined classes:
 
  | Class | Default network size |
    |-------|----------------------|
@@ -102,7 +107,7 @@ Explanation of the terms used in the image:
 
 > *The problem:* You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
 
- *2. Classless addressing:* Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.
+ **2. Classless addressing:** Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.
 
 For example:
    - `192.168.1.0/24`
@@ -111,7 +116,7 @@ For example:
 
    The network size can be adjusted according to the need.
 
-*3. VLSM (Variable Length Subnet Masking):* It means dividing a network into smaller subnets with different sizes, depending on how many hosts each subnet needs.
+**3. VLSM (Variable Length Subnet Masking):** It means dividing a network into smaller subnets with different sizes, depending on how many hosts each subnet needs.
 
 Example:
 
