@@ -79,7 +79,6 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 
 ---
 ## **Note:**
-
 Explanation of the terms used in the image: 
 
 *1. Classful addressing:* Earlier, IPv4 addresses were divided into pre-defined classes:
