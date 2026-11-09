@@ -35,7 +35,7 @@ Suppose Host A1 wants to communicate with Host A3. It knows the destination IPv4
 
 ## 2. How ARP Works
 
-![ARP request, local network, and ARP cache illustration](assessts/arp-diagram.png)
+![ARP request, local network, and ARP cache illustration](assests/arp-diagram.png)
 
 Suppose Host A1 (`192.168.1.2/24`) wants to send data to Host A3 (`192.168.1.4/24`).
 
