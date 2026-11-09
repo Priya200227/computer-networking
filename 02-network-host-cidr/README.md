@@ -83,7 +83,7 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 
 In the above image: 
 
-**1. Classful addressing:** Earlier, IPv4 addresses were divided into pre-defined classes:
+*1. Classful addressing:* Earlier, IPv4 addresses were divided into pre-defined classes:
 
  | Class | Default network size |
    |-------|----------------------|
@@ -95,7 +95,7 @@ In the above image:
 
 > *The problem:* You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
 
- **2. Classless addressing:** Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.
+ *2. Classless addressing:* Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.
 
 For example:
    - `192.168.1.0/24`
@@ -104,7 +104,7 @@ For example:
 
    The network size can be adjusted according to the need.
 
-**3. VLSM (Variable Length Subnet Masking):** It means dividing a network into smaller subnets with different sizes, depending on how many hosts each subnet needs.
+*3. VLSM (Variable Length Subnet Masking):* It means dividing a network into smaller subnets with different sizes, depending on how many hosts each subnet needs.
 
 Example:
 
