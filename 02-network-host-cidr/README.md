@@ -40,7 +40,7 @@ For a typical IPv4 `/24` subnet:
 | Typical usable host addresses | `192.168.1.1`–`192.168.1.254` |
 | Broadcast address | `192.168.1.255` |
          
-  > It is a special IP address used to send a message to all devices in a particular network at once. Imagine you have a network with 254 usable devices: `192.168.1.1` to `192.168.1.254` If one device wants to send a message to every device in that network, it can send it to the broadcast address.
+  > The broadcast address is a special IP address used to send a message to all devices in a particular network at once. Imagine you have a network with 254 usable devices: `192.168.1.1` to `192.168.1.254`. If one device wants to send a message to every device in that network, it can send it to the broadcast address.
 
 The common total of 256 addresses and 254 usable host addresses applies to a conventional IPv4 subnet where the network and broadcast addresses are reserved. Special-purpose subnet sizes and point-to-point configurations can differ.
 
