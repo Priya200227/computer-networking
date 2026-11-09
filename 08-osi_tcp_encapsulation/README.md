@@ -1,262 +1,215 @@
 # OSI Model, TCP/IP Model, and Data Encapsulation
 
+> [!NOTE]
 > **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
 >
-> **Learning objective:** Understand why networking is described in layers, how the seven-layer OSI reference model relates to the TCP/IP model, and how data moves from an application on one host to an application on another host.
+> **Learning objective:** Understand the OSI and TCP/IP models, their layers and responsibilities, and how data is encapsulated and transmitted between networked devices.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
-
----
-
-These notes combine the lesson diagrams with clarifications needed to use them accurately. The diagrams are conceptual learning aids—not packet captures or a guarantee that every application follows the exact same sequence.
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
 
 ---
 
-## 1. Why do we use layers?
+## 1. Why Do We Use Network Layers?
 
-Networking involves several different jobs: applications define what messages mean; transport protocols support communication between processes; IP moves packets between networks; link technologies deliver data across one local link; and physical media carry signals.
+Networking involves several responsibilities: applications create messages, transport protocols handle process-to-process communication, IP forwards packets between networks, and link technologies deliver frames over local connections.
 
-A **layered model** organizes these responsibilities into conceptual groups. Each layer provides services to the layer above and relies on the layer below.
+A **layered model** organizes these responsibilities into manageable groups. Each layer provides services to the layer above and uses services from the layer below.
 
-### Why layering is useful
-- **Abstraction:** An application can use a network API without needing to manage radio waves, Ethernet signalling, or every router along the route.
-- **Modularity:** Different implementations can interoperate when they follow shared protocol specifications and interfaces.
-- **Replaceability:** A device can switch between Wi-Fi and Ethernet without requiring the application protocol to be rewritten.
-- **Troubleshooting:** Layering helps narrow down where a failure may be occurring—for example, DNS resolution, TCP connectivity, IP routing, or Wi-Fi association.
-- **Independent evolution:** Improvements at one layer often do not require redesigning every other layer, although layers are not completely independent in every practical situation.
+### Why layering matters
 
-**Important nuance:** Layers are a model for organizing responsibilities, not seven separate programs or physical components that every device must implement as isolated modules.
+- **Abstraction:** Applications do not need to manage the physical transmission of data.
+- **Modularity:** Different technologies can work together through standardized protocols.
+- **Flexibility:** Applications can communicate over Wi-Fi, Ethernet, or cellular networks without being rewritten.
+- **Troubleshooting:** Helps identify problems in areas such as DNS, transport connections, routing, or physical connectivity.
 
-### Image 1 — The OSI model at a glance
+![Seven layers of the OSI reference model](assests/01-osi-seven-layers.png)
 
-![The seven layers of the OSI reference model and example responsibilities](assests/01-osi-seven-layers.png)
+> [!NOTE]
+> Network layers are a conceptual way to organize responsibilities. They are not necessarily seven separate software modules inside every device.
 
-**How to read it:** Start at Layer 7 when thinking about the application's meaning and move down toward Layer 1 to think about transmission. The protocols and examples shown beside each layer are illustrative; the exact mapping of a technology to an OSI layer can depend on which function is being discussed.
+## 2. The OSI Model
 
----
+The **Open Systems Interconnection (OSI) model** is a seven-layer reference model used to understand how network communication works.
 
-## 2. The seven-layer OSI model
-
-The **Open Systems Interconnection (OSI) reference model** describes networking using seven layers. It is especially useful as a shared vocabulary for learning, design discussions, and troubleshooting.
-
-| Layer | Name | Main responsibility | Common examples / concepts |
+| Layer | Name | Main responsibility | Examples |
 |---:|---|---|---|
-| 7 | Application | Network services and message semantics used by applications | HTTP, DNS, SMTP, SSH |
-| 6 | Presentation | Data representation, format translation, serialization, and conceptual encryption/compression functions | Character encoding, data formats, serialization; TLS does not map perfectly to one OSI layer |
-| 5 | Session | Establishing, managing, and coordinating communication sessions | Session/dialog control concepts; some RPC/session mechanisms |
-| 4 | Transport | Communication between processes; ports; transport-specific reliability, ordering, and flow control | TCP, UDP; QUIC is commonly discussed at the transport layer, though it runs over UDP |
-| 3 | Network | Logical addressing and forwarding across interconnected networks | IPv4, IPv6, IP routing; ICMP is associated with the IP layer |
-| 2 | Data Link | Delivery over a local link, framing, and link-layer addressing | Ethernet, Wi-Fi MAC; MAC addresses |
-| 1 | Physical | Representing and transmitting bits as signals over a medium | Copper/electrical signalling, fiber-optic light, radio signals |
+| 7 | Application | Network services used by applications | HTTP, DNS, SMTP, SSH |
+| 6 | Presentation | Data representation, encoding, and transformation | Character encoding, serialization |
+| 5 | Session | Managing communication sessions | Session management concepts |
+| 4 | Transport | Process-to-process communication and transport services | TCP, UDP |
+| 3 | Network | Logical addressing and routing between networks | IPv4, IPv6, ICMP |
+| 2 | Data Link | Local-link framing and delivery | Ethernet, Wi-Fi MAC |
+| 1 | Physical | Transmission of bits as signals | Copper, fiber, radio |
 
-### Layer-by-layer mental model
-- **Layer 7 — Application:** What request or message does the application want to send? For example, an HTTP request for a profile.
-- **Layer 6 — Presentation:** How is the data represented or transformed? Think of encoding and serialization. Real protocol stacks do not always implement a distinct, separately visible “presentation layer.”
-- **Layer 5 — Session:** How is an ongoing exchange coordinated? The OSI session layer is a useful concept, but its functions are not always a separate layer in modern Internet implementations.
-- **Layer 4 — Transport:** Which process/service is involved, and what transport behavior is needed? TCP uses ports and provides a reliable ordered byte stream; UDP provides datagrams without TCP's built-in delivery guarantees.
-- **Layer 3 — Network:** What is the destination IP address, and which next hop should receive the packet?
-- **Layer 2 — Data Link:** How should data be delivered over this particular local link? On Ethernet and Wi-Fi, link-layer frames use link-layer addressing.
-- **Layer 1 — Physical:** How are the bits represented on the chosen medium?
+### Understanding the layers
 
-### Image 2 — Why separation of layers matters
+- **Layer 7 — Application:** Defines the network communication used by applications, such as an HTTP request.
+- **Layer 6 — Presentation:** Deals with data representation, encoding, and transformation.
+- **Layer 5 — Session:** Describes how communication sessions are established and managed.
+- **Layer 4 — Transport:** Supports communication between processes using protocols such as TCP and UDP.
+- **Layer 3 — Network:** Uses IP addresses to identify destinations and route packets.
+- **Layer 2 — Data Link:** Delivers frames across a local network link using link-layer addressing.
+- **Layer 1 — Physical:** Transmits bits through electrical, optical, or radio signals.
 
-![Conceptual illustration of why network functions are separated into layers](assests/02-why-layering-matters.png)
+![Why network layering matters](assests/02-why-layering-matters.png)
 
-The key idea in this diagram is **separation of responsibilities**. For example, application code can call a networking API while the operating system and network interface handle lower-level work. The same application may communicate over Wi-Fi, Ethernet, or a cellular network without application code having to manually encode radio or electrical signals.
+> [!TIP]
+> **Remember the direction:**
+> - Top to bottom: Data moves towards transmission.
+> - Bottom to top: Received data moves towards the application.
 
-Do not interpret “each layer is independent” as absolute independence. Layers interact, and real systems include cross-layer configuration, optimization, security controls, and implementation details.
+## 3. The TCP/IP Model
 
----
+The **TCP/IP model** describes the protocol architecture used by the Internet.
 
-## 3. The TCP/IP model
+It is commonly represented using either four or five layers. This repository uses the **five-layer teaching model** to make the Data Link and Physical responsibilities easier to understand.
 
-The **TCP/IP model** describes the protocol architecture used by the Internet. Teaching materials commonly show either a **four-layer** or **five-layer** version. Both are useful if the chosen convention is stated clearly.
-
-This repository uses the **five-layer teaching model**, which separates the link and physical responsibilities for learning:
-
-| Teaching layer | Responsibilities | Examples |
+| Layer | Main responsibility | Examples |
 |---|---|---|
-| Application | Application-level network protocols and data semantics | HTTP, DNS, SMTP, SSH |
-| Transport | Process-to-process communication | TCP, UDP; QUIC is built over UDP |
-| Network / Internet | IP addressing and routing between networks | IPv4, IPv6, ICMP |
-| Data Link | Local-link framing and delivery | Ethernet, Wi-Fi link layer |
-| Physical | Transmission of bits as signals | Radio, copper, fiber |
+| Application | Application-level network communication | HTTP, DNS, SMTP, SSH |
+| Transport | Process-to-process communication | TCP, UDP |
+| Network / Internet | IP addressing and routing | IPv4, IPv6, ICMP |
+| Data Link | Local-link framing and delivery | Ethernet, Wi-Fi |
+| Physical | Transmission of bits | Radio, copper, fiber |
 
-In the common **four-layer TCP/IP model**, the Data Link and Physical layers are combined into a single **Link / Network Access** layer. The Internet architecture does not define separate Presentation and Session layers in the same way as the OSI model; many such functions are handled within application protocols, libraries, or security protocols.
+![Five-layer TCP/IP model](assests/03-tcp-ip-model.png)
 
-### Image 3 — TCP/IP model
+> [!NOTE]
+> In the four-layer TCP/IP model, Data Link and Physical are combined into one **Link / Network Access** layer.
+>
+> The TCP/IP model does not define separate Presentation and Session layers in the same way as the OSI reference model. Their functions are handled by application protocols, libraries, and other mechanisms.
 
-![Five-layer TCP/IP teaching model](assests/03-tcp-ip-model.png)
+## 4. OSI vs. TCP/IP Model
 
-**How to use this diagram:** Map the OSI model to the TCP/IP model by responsibility, not by assuming a perfect one-to-one correspondence. The five-layer version is a teaching convention. A source may instead show four layers by combining Link and Physical.
+Both models describe networking responsibilities, but they organize them differently.
 
----
-
-## 4. OSI vs. TCP/IP
-
-| OSI model | Five-layer TCP/IP teaching model | Practical interpretation |
-|---|---|---|
-| Layer 7 — Application | Application | Application protocols such as HTTP and DNS |
-| Layer 6 — Presentation | Usually included in Application | Representation, serialization, and related functions |
-| Layer 5 — Session | Usually included in Application | Session/dialog functions where required |
-| Layer 4 — Transport | Transport | TCP, UDP; QUIC is built over UDP |
-| Layer 3 — Network | Network / Internet | IP addressing and routing |
-| Layer 2 — Data Link | Data Link | Local-link frames and link-layer addressing |
-| Layer 1 — Physical | Physical | Signals and transmission medium |
-
-The OSI model is a **reference model**; the TCP/IP model is more closely tied to the Internet protocol suite. Neither table nor diagram means every real-world protocol neatly belongs to exactly one layer in all contexts.
-
-### Why the distinction matters
-When debugging a request, you might ask:
-1. Is the application forming the correct request?
-2. Can the name resolve to an address?
-3. Can the required transport connection be established?
-4. Is IP routing working?
-5. Is the local link connected and functioning?
-
-This layered checklist helps structure the investigation. It does not guarantee that a failure belongs exclusively to one layer.
-
----
-
-## 5. Encapsulation: following data from source to destination
-
-**Encapsulation** is the process of adding protocol-specific information as data passes down the sender's networking stack. At the receiver, the relevant headers (and any trailers) are processed as the data moves up the stack. This is often called **decapsulation**.
-
-Consider an application making a request to a remote server. A simplified path is:
-
-1. **Application data:** The application creates data according to its protocol—for example, an HTTP request.
-2. **Transport:** If using TCP, TCP treats application data as a byte stream and sends it using TCP segments. Source and destination port numbers identify the transport endpoints. If using HTTP/3, QUIC runs over UDP instead of TCP.
-3. **Network:** IP adds source and destination IP addresses and creates an IP packet (often called an IP datagram).
-4. **Data Link:** The local network technology wraps the IP packet in a link-layer frame suitable for the next link. On an Ethernet/Wi-Fi network, this includes link-layer source and destination addresses.
-5. **Physical:** The frame is represented as signals and transmitted over the medium.
-6. **At a router:** The router receives a frame, processes the enclosed IP packet, chooses a next hop, and sends the packet using a new link-layer frame on the outgoing interface.
-7. **At the destination:** The destination processes the incoming frame, IP packet, and transport data, then delivers the data to the appropriate application.
-
-### Image 4 — Encapsulation through the layers
-
-![Conceptual view of data passing down the protocol stack and being encapsulated](assests/04-encapsulation-through-layers.png)
-
-This image illustrates the idea of a message moving through the stack and gaining lower-layer protocol information. The byte values and the number/size of illustrated pieces are examples, not a literal encoding of a real HTTP request.
-
-### Data-unit vocabulary
-
-| Layer / context | Common term | What it means |
-|---|---|---|
-| Application | Message / application data | Data defined by the application protocol |
-| TCP transport | TCP segment | TCP header plus a portion of the TCP byte stream |
-| UDP transport | UDP datagram | UDP header plus its payload |
-| IP network | IP packet / IP datagram | IP header plus its payload, which may contain a TCP segment or UDP datagram |
-| Link | Frame | Link-layer header/trailer plus payload, commonly carrying an IP packet |
-| Physical | Bits/signals | Representation transmitted across the medium |
-
-Terminology varies by protocol and context. “Chunk” is a generic word and should not be treated as a precise synonym for TCP segment, IP packet, or Ethernet frame.
-
-### One important TCP detail
-
-TCP provides an ordered byte stream. It does **not** preserve a one-to-one relationship between application writes and TCP segments. The operating system and TCP implementation choose segmentation based on multiple factors, and one application message may span multiple segments—or data from multiple writes may be combined. The receiver reconstructs the byte stream for the application. See [RFC 9293, TCP](https://www.rfc-editor.org/rfc/rfc9293.html).
-
----
-
-## 6. What happens at a router?
-
-### Image 5 — Source, router, and destination
-
-![Conceptual source-to-router-to-destination flow across a network](assests/05-source-router-destination-flow.png)
-
-This diagram follows a request from a frontend host, through a router, to a backend host. It highlights the distinction between information used for end-to-end delivery and information used for delivery on an individual link.
-
-At a high level:
-1. The source host decides that the destination is outside its local subnet and sends the packet to its configured next hop, commonly the default gateway.
-2. The source host needs the **link-layer address of that next hop** to send the first local frame. For IPv4 on Ethernet/Wi-Fi, ARP may be used to resolve the next-hop IPv4 address to a MAC address if the mapping is not already known.
-3. The router receives the frame and removes the incoming link-layer framing.
-4. It examines the destination IP address and consults its routing information to choose an outgoing interface/next hop.
-5. It encapsulates the IP packet in a new link-layer frame for the next link and forwards it.
-6. This repeats across routed hops until the packet reaches the destination network.
-
-### What usually changes at each hop?
-- **Link-layer frame and MAC addresses:** The frame is specific to a link and is replaced for the next link. The destination MAC on the source's first frame is usually the local router/default gateway—not the remote server's MAC address.
-- **IP packet:** The source and destination IP addresses generally remain the same across routed hops, except when mechanisms such as Network Address Translation (NAT) alter them. Other IP-header fields can change as packets are forwarded.
-- **Transport data:** The TCP segment or UDP datagram is carried inside the IP packet. Ordinary routers forward based primarily on network-layer information, although firewalls, NAT devices, load balancers, and other middleboxes may also inspect or modify transport-layer information.
-
-**Correction to a common oversimplification:** A router does not simply “convert the frame into a signal and send it to the destination.” It receives a frame on one link, processes the enclosed network-layer packet, selects a next hop, and builds an appropriate outgoing frame on another link. The physical interface then transmits that outgoing frame as signals.
-
----
-
-## 7. Important corrections and nuances
-
-Use these points to avoid memorizing simplified diagrams too literally.
-
-### 7.1 The OSI model is conceptual
-The OSI model has seven named layers, but a modern operating system does not necessarily implement seven distinct software modules that match those boundaries exactly. It is a reference framework for describing functions.
-
-### 7.2 TCP/IP is shown with different layer counts
-A four-layer TCP/IP model combines the link and physical responsibilities. A five-layer version separates them for teaching. State which version you are using rather than treating one diagram as the only valid one.
-
-### 7.3 HTTP does not always use TCP
-- HTTP/1.1 and HTTP/2 are commonly used over TCP (with TLS for HTTPS in typical deployments).
-- HTTP/3 maps HTTP semantics over QUIC, which uses UDP.
-
-Therefore, “HTTP is always based on TCP” is inaccurate. See [RFC 9114, HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html).
-
-### 7.4 HTTPS changes what is visible on the wire
-With HTTPS, HTTP contents are protected by TLS or, for HTTP/3, by QUIC's integrated TLS-based security. A packet capture may show network and transport metadata, but it ordinarily will not expose the encrypted HTTP headers and body as readable plaintext without suitable decryption context.
-
-### 7.5 TCP segments are not fixed-size “chunks”
-A diagram may show a stream split into several pieces to explain segmentation. It should not imply that TCP always creates a fixed number of chunks or that each application-level message maps to one segment. TCP segmentation depends on implementation and network conditions; application write boundaries are not preserved as TCP segment boundaries.
-
-### 7.6 Layer boundaries are useful, not absolute
-For example, TLS is commonly described as sitting between application protocols and transport, but its mapping to the OSI presentation/session layers is not exact. Similarly, QUIC implements transport-like functionality over UDP and includes security features. Treat layer labels as a way to reason about responsibilities, not as rigid boxes for every technology.
-
----
-
-## 8. Quick reference table
-
-| Question | Short answer |
+| OSI model | Five-layer TCP/IP model |
 |---|---|
-| Why have layers? | To separate responsibilities, enable interoperability, and make systems easier to reason about and troubleshoot. |
-| What is the OSI model? | A seven-layer reference model for describing networking functions. |
-| What is the TCP/IP model? | A model of the Internet protocol architecture, commonly taught as four or five layers. |
-| What does encapsulation mean? | Adding protocol information as data moves down the sender's stack. |
-| What does decapsulation mean? | Processing/removing relevant protocol information as data moves up the receiver's stack. |
-| What does TCP provide? | A reliable, ordered byte stream between transport endpoints. |
-| Is a TCP segment the same as an IP packet? | No. A TCP segment is carried inside an IP packet. |
-| Is an IP packet the same as a link-layer frame? | No. A link-layer frame carries an IP packet on a particular link. |
-| What does a router do? | Forwards IP packets between networks and uses link-layer framing appropriate to each outgoing link. |
-| Does HTTP always use TCP? | No. HTTP/3 uses QUIC over UDP; HTTP/1.1 and HTTP/2 commonly use TCP. |
+| Application (Layer 7) | Application |
+| Presentation (Layer 6) | Application |
+| Session (Layer 5) | Application |
+| Transport (Layer 4) | Transport |
+| Network (Layer 3) | Network / Internet |
+| Data Link (Layer 2) | Data Link |
+| Physical (Layer 1) | Physical |
+
+**Key distinction:**
+
+- **OSI:** A seven-layer reference model for understanding networking.
+- **TCP/IP:** A protocol architecture used for Internet communication.
+
+The mapping is based on responsibilities, not a perfect one-to-one relationship between protocols and layers.
+
+## 5. Data Encapsulation and Decapsulation
+
+**Encapsulation** is the process of adding protocol-specific information as data moves down the sender's networking stack.
+
+**Decapsulation** is the process of processing and removing that information as data moves up the receiver's networking stack.
+
+### How encapsulation works
+
+Consider an application sending a request to a remote server.
+
+1. **Application layer:** The application creates data, such as an HTTP request.
+2. **Transport layer:** TCP or UDP adds transport information, including source and destination ports.
+3. **Network layer:** IP adds source and destination IP addresses and creates an IP packet.
+4. **Data Link layer:** The packet is encapsulated inside a frame with link-layer addressing.
+5. **Physical layer:** The frame is transmitted as signals over the network medium.
+
+![Data encapsulation through the networking layers](assests/04-encapsulation-through-layers.png)
+
+### Protocol Data Units (PDUs)
+
+Each layer uses its own terminology for the data it processes.
+
+| Layer | Data unit |
+|---|---|
+| Application | Data / Message |
+| Transport (TCP) | Segment |
+| Transport (UDP) | Datagram |
+| Network | IP packet |
+| Data Link | Frame |
+| Physical | Bits / Signals |
+
+> [!IMPORTANT]
+> These terms are not interchangeable:
+> - A **TCP segment** is carried inside an IP packet.
+> - An **IP packet** is carried inside a link-layer frame.
+> - The frame is transmitted as physical signals.
+
+### What happens at the receiver?
+
+The receiving device processes the incoming data in the reverse direction:
+
+1. Physical layer receives the signals.
+2. Data Link layer processes the frame.
+3. Network layer processes the IP packet.
+4. Transport layer processes the TCP segment or UDP datagram.
+5. Application layer receives the application data.
+
+This reverse process is called **decapsulation**.
+
+> [!NOTE]
+> TCP provides an ordered byte stream. Application writes do not necessarily correspond one-to-one with TCP segments. TCP segmentation depends on implementation and network conditions.
+
+## 6. What Happens at a Router?
+
+![Source-to-router-to-destination network communication](assests/05-source-router-destination-flow.png)
+
+A router forwards IP packets between networks. It does not simply forward the original Ethernet frame unchanged.
+
+### Router forwarding process
+
+1. The source device determines that the destination is outside its local subnet.
+2. It sends the frame to its next hop, usually the default gateway.
+3. The router receives the frame and processes the enclosed IP packet.
+4. It examines the destination IP address and consults its routing table.
+5. It selects the outgoing interface and next hop.
+6. It encapsulates the packet in a new link-layer frame for the outgoing network.
+7. The process repeats across routed networks until the packet reaches its destination.
+
+### What changes during routing?
+
+| Information | What happens |
+|---|---|
+| MAC addresses | Link-layer addresses are replaced for each new link |
+| Source and destination IP | Generally remain unchanged during ordinary routing |
+| Other IP header fields | Some fields, such as TTL in IPv4, change during forwarding |
+| Transport information | Normally carried through unchanged by ordinary routers |
+
+> [!IMPORTANT]
+> **MAC addressing is hop-by-hop, while IP addressing is generally end-to-end.**
+>
+> NAT, firewalls, and other network devices may modify packet information, so this is the normal routing behaviour rather than an absolute rule.
+
+### Important protocol distinction
+
+- HTTP/1.1 and HTTP/2 commonly use TCP.
+- HTTP/3 uses QUIC over UDP.
+- HTTPS protects HTTP communication using TLS; HTTP/3 integrates TLS-based security through QUIC.
 
 ---
-## Key takeaway
 
-**The OSI model helps you organize networking concepts; the TCP/IP stack implements the protocols used in Internet communication.** When data travels between hosts, each layer has a responsibility, and encapsulation connects those responsibilities into an end-to-end communication process.
+## Key Takeaway
 
----
+> [!IMPORTANT]
+> The OSI model helps us understand networking responsibilities, while the TCP/IP architecture describes the protocols used for Internet communication.
+
+Remember the complete data journey:
+
+**Application Data → Transport Segment/Datagram → IP Packet → Link-Layer Frame → Physical Signals**
+
+At the receiver, the process happens in reverse through decapsulation.
 
 ## References
 
-Primary standards and reliable technical references:
-
-- **RFC 1122 — Requirements for Internet Hosts: Communication Layers**  
-   https://www.rfc-editor.org/rfc/rfc1122.html  
-   Describes Internet host communication layers, including link, IP, and transport responsibilities.
-
--  **RFC 9293 — Transmission Control Protocol (TCP)**  
-   https://www.rfc-editor.org/rfc/rfc9293.html  
-   Defines TCP and explains its reliable byte-stream service and segmentation behavior.
-
--  **RFC 9114 — HTTP/3**  
-   https://www.rfc-editor.org/rfc/rfc9114.html  
-   Specifies HTTP semantics mapped over QUIC and clarifies that HTTP/3 does not use TCP as its         transport.
-
--  **ISO 7498-1 — OSI Basic Reference Model**  
-   https://www.iso.org/standard/20269.html  
-   ISO reference for the OSI basic reference model. Access to the full standard may require            purchase.
-
-- **Cisco — TCP/IP Overview (PDF)**  
-   https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf  
-   A networking reference showing how the TCP/IP protocol suite relates to the OSI model.
-
-- **Reference Video**: [What makes OSI and TCP/IP models Different](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
+- [RFC 1122 — Requirements for Internet Hosts](https://www.rfc-editor.org/rfc/rfc1122.html)
+- [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293.html)
+- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [ISO 7498-1 — OSI Basic Reference Model](https://www.iso.org/standard/20269.html)
+- [Cisco — TCP/IP Overview](https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf)
+- [Reference Video — What Makes OSI and TCP/IP Models Different](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
 
 ---
 
-**Next**: [Routing-and-packet-travel](../09-routing-and-packet-travel/README.md)
+**Next:** [Routing and Packet Travel](../09-routing-and-packet-travel/README.md)
