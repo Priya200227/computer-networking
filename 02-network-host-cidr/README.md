@@ -83,7 +83,7 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 
 In the above image: 
 
-1. Classful addressing: Earlier, IPv4 addresses were divided into pre-defined classes:
+1. **Classful addressing:** Earlier, IPv4 addresses were divided into pre-defined classes:
 
  | Class | Default network size |
    |-------|----------------------|
@@ -93,23 +93,27 @@ In the above image:
 
    For example, Class C traditionally used `/24`, meaning 24 bits for the network and 8 bits for hosts.
 
-         *The problem:* You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
+> *The problem:* You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
 
- 2. Classless addressing: Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.            
-         For example:
-         - 192.168.1.0/24
-         - 192.168.1.0/26
-         - 192.168.1.0/28
-    
-    The network size can be adjusted according to the need.
+ 2. **Classless addressing:** Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.
 
-3. VLSM (Variable Length Subnet Masking): It means dividing a network into smaller subnets with different sizes, depending on how many hosts each subnet needs.
-   Example:
-            Suppose you have a network and need:
-                  - Department A: 100 devices
-                  - Department B: 50 devices
-                  - Department C: 10 devices
-Instead of giving every department an equally sized subnet, VLSM lets you allocate different subnet sizes to each.
+For example:
+   - `192.168.1.0/24`
+   - `192.168.1.0/26`
+   - `192.168.1.0/28`
+
+   The network size can be adjusted according to the need.
+
+3. **VLSM (Variable Length Subnet Masking):** It means dividing a network into smaller subnets with different sizes, depending on how many hosts each subnet needs.
+
+Example:
+
+   Suppose you have a network and need:
+   - Department A: 100 devices
+   - Department B: 50 devices
+   - Department C: 10 devices
+
+   Instead of giving every department an equally sized subnet, VLSM lets you allocate different subnet sizes to each.
 
 ---
 ## References
