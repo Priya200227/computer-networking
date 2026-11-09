@@ -63,7 +63,7 @@ A commonly used representation divides a globally administered MAC address into 
 
 ```text
 50:C2:E8 : 94:52:7F
-└── OUI ──┘ └ Interface-specific portion ┘
+└── OUI ──┘ └ Interface-specific portion 
 ```
 
 - **First 24 bits — OUI:** Organizationally Unique Identifier, associated with an organization.
