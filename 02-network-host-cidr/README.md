@@ -84,12 +84,16 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 In the above image: 
 
 1. Classful addressing: Earlier, IPv4 addresses were divided into pre-defined classes:
-                  | Class | Default network size |
-                  |---|---|
-                  | A | `/8` |                  For example, Class C traditionally used /24, meaning
-                  | B | `/16` |                  4 bits for the network and 8 bits for hosts. 
-                  | C | `/24 ` |
-         *The Problem?* - You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
+
+ | Class | Default network size |
+   |-------|----------------------|
+   | A     | `/8`                 |
+   | B     | `/16`                |
+   | C     | `/24`                |
+
+   For example, Class C traditionally used `/24`, meaning 24 bits for the network and 8 bits for hosts.
+
+         *The problem:* You couldn't easily choose a different network size to match your requirements. This could waste IP addresses.
 
  2. Classless addressing: Removes those fixed class boundaries. We can choose how many bits belong to the network using CIDR notation.            
          For example:
