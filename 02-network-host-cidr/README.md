@@ -78,10 +78,9 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 1. For conventional IPv4 subnets, reserve one address for the network and one for broadcast. But special configurations, such as /31 point-to-point links, work differently.
 
 ---
+## **Note:**
 
-**Note:**
-
-In the above image: 
+Explanation of the terms used in the image: 
 
 *1. Classful addressing:* Earlier, IPv4 addresses were divided into pre-defined classes:
 
