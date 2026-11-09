@@ -58,7 +58,6 @@ But in a conventional IPv4 subnet, 2 addresses have special purposes:
 
 So: 256 - 2 = 254 usable addresses
 
----
 ## *What does the special-purpose subnet sizes statement mean?*
 
 The 256 total and 254 usable rule is the conventional calculation for a normal IPv4 subnet such as /24.
@@ -73,7 +72,6 @@ The 256 total and 254 usable rule is the conventional calculation for a normal I
 A `/31` is a special case used for point-to-point links between two devices. Both addresses can be used as endpoint addresses, so the usual network/broadcast subtraction does not apply.
 
 ---
-
 ## Key Takeaway
 
 **CIDR tells us how many leading bits identify the network prefix; the remaining bits form the host-address space.** This distinction is foundational to IPv4 addressing, subnet masks, and routing decisions.
