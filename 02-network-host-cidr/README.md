@@ -87,6 +87,7 @@ A `/31` is a special case used for point-to-point links between two devices. Bot
 
 ---
 ## **Note:**
+
 Explanation of the terms used in the image: 
 
 *1. Classful addressing:* Earlier, IPv4 addresses were divided into pre-defined classes:
@@ -120,10 +121,6 @@ Example:
    - Department C: 10 devices
 
    Instead of giving every department an equally sized subnet, VLSM lets you allocate different subnet sizes to each.
-
----
-## References
-- [Master Networking Basics: Network, Host, and CIDR Demystified](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
 
 ---
 **Next:** [IPv4 Addressing](../03-ipv4-addressing/)
