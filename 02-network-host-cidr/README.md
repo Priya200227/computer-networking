@@ -42,7 +42,8 @@ For a typical IPv4 `/24` subnet:
 
 The common total of 256 addresses and 254 usable host addresses applies to a conventional IPv4 subnet where the network and broadcast addresses are reserved. Special-purpose subnet sizes and point-to-point configurations can differ.
 
-*What does 256 total addresses but only 254 usable mean?*
+## *What does 256 total addresses but only 254 usable mean?*
+
 An IPv4 address has 32 bits. For /24 means 24 bits = Network portion & 8 bits = Host portion.
 Each host bit can either be 0 or 1. So, 2^8 = 256 total addresses.
 
