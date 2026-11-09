@@ -21,20 +21,21 @@ The diagram below brings these pieces together. It is an **overview**, not a det
 
 ## Workflow at a Glance
 
-> [!🌐 Application & Resolution Layers]
-> 1. **Frontend API call** — The browser starts a request, for example with a JavaScript `fetch()` function call.
-> 2. **DNS lookup** — The target domain hostname is resolved into a machine-readable IP address using a Domain Name System query.
+### 1. 🌐 Application Layer
+1. **Frontend API call:** The browser starts an HTTP request, for example, through JavaScript's `fetch()` function.
+2. **DNS lookup:** The domain hostname is resolved into an IP address so the client can identify the destination server.
 
-> [!IMPORTANT]
-> ### 📦 OS & Encapsulation Stack
-> 3. **Transport connection** — The network request initiates transport configurations, utilizing TCP (HTTP/1.1 or HTTP/2) or QUIC over UDP (HTTP/3).
-> 4. **Operating-system networking stack** — The browser hands off raw network data processing down to the platform's kernel-level TCP/IP networking implementation.
-> 5. **Encapsulation and addressing** — Application data is broken into transport segments, wrapped in IP packets (network layer), and framed for local link interfaces (data link layer). Ports map application processes, while IP/MAC addresses route endpoints.
+### 2. 📦 Transport and Operating System
+3. **Transport layer:** The request uses an appropriate transport protocol — TCP for HTTP/1.1 and HTTP/2, or QUIC over UDP for HTTP/3.
+4. **Operating-system networking stack:** The browser works with the OS networking stack to prepare and transmit the data.
+5. **Encapsulation and addressing:** Application data is encapsulated with transport-layer information (such as source and destination ports), IP addressing information, and local-link framing information.
 
-> [!WARNING]
-> ### 📡 Routing & Local Link Delivery
-> 6. **Local-network delivery** — The device handles internal link routing to forward data frames out towards the default gateway router, using ARP to map local destination hardware tokens.
-> 7. **Transmission and server processing** — The binary streams bounce across inter-network routers until they land on the server network card, running up the reverse stack into server backend processing software.
+### 3. 📡 Network and Link-Layer Delivery
+6. **Local-network delivery:** The device prepares a frame for transmission over the local network. ARP helps resolve an IPv4 address to a MAC address when the next-hop MAC address is not already known.
+7. **Routing and server processing:** Routers forward packets across networks towards the destination. The server receives the data, processes the request through its networking stack, and passes it to the backend application.
+
+### 4. Response
+8. **HTTP response:** The backend generates a response, which travels back through the network to the client, where the browser processes it.
 
 ---
 
