@@ -1,7 +1,7 @@
 # HTTP: Overview, HTTP/1.0 and HTTP/1.1
 
 > [!NOTE]
-> **Section:** Computer Networking — HTTP Fundamentals
+> **Section:** Computer Networking - [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH)
 >
 > **Learning objective:** Understand HTTP as an application-layer protocol, how clients and servers exchange requests and responses, and how HTTP/1.0 and HTTP/1.1 differ in TCP connection management.
 
