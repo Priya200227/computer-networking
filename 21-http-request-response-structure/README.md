@@ -308,4 +308,4 @@ If the representation has changed, the server returns a new response, typically 
 
 ---
 
-**Next:** HTTP Methods and Status Codes
+**Next:** [HTTP 1.1 in action](../22-http1.1-connection-reuse-and-blocking-in-action/README.md)
