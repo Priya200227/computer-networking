@@ -1,7 +1,7 @@
 # HTTP Request and Response Structure
 
 > [!NOTE]
-> **Section:** Computer Networking — HTTP Fundamentals
+> **Section:** Computer Networking - [HTTP RR Structure ](https://youtu.be/rZNdo9UjF94?si=dIrhuhB6NJmPgxTN)
 >
 > **Learning objective:** Understand the structure of HTTP requests and responses, the purpose of commonly used headers, and how ETags support conditional requests and caching.
 
