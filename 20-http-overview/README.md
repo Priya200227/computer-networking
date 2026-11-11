@@ -1,9 +1,9 @@
 # HTTP: Overview, HTTP/1.0 and HTTP/1.1
 
 > [!NOTE]
-> **Section:** Computer Networking - [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH)
+> **Section:** Computer Networking — [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH)
 >
-> **Learning objective:** Understand HTTP as an application-layer protocol, how clients and servers exchange requests and responses, and how HTTP/1.0 and HTTP/1.1 differ in TCP connection management.
+> **Learning objective:** Understand HTTP client-server communication and how HTTP/1.0 and HTTP/1.1 differ in TCP connection management, connection reuse, and request pipelining.
 
 [← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
 
@@ -11,18 +11,15 @@
 
 ## 1. What Is HTTP?
 
-**HTTP (Hypertext Transfer Protocol)** is an application-layer protocol that defines how clients and servers communicate over a network.
+**HTTP (Hypertext Transfer Protocol)** is an **application-layer protocol** that defines how clients and servers exchange requests and responses over a network.
 
-It specifies the format and rules for exchanging requests and responses.
-
-The word *Hypertext* refers to text containing links that connect different documents or resources.
+The term *Hypertext* refers to text containing hyperlinks that connect different documents or resources.
 
 ### Key characteristics
 
-- **Application-layer protocol:** Operates at the application layer.
-- **Client-server communication:** A client sends a request, and a server returns a response.
-- **Stateless:** Each request is independent at the HTTP protocol level. HTTP does not inherently remember previous requests.
-- **Media independent:** Can transfer different types of content, including HTML, JSON, images, and videos.
+- **Client-server protocol:** A client sends a request, and a server returns a response.
+- **Stateless:** Each HTTP request is independent at the protocol level. HTTP does not inherently remember previous requests.
+- **Media independent:** Supports different types of content, including HTML, JSON, images, and videos.
 - **Language independent:** Can be used by applications written in Python, Java, JavaScript, Go, and other languages.
 - **No built-in encryption:** HTTPS uses TLS to protect HTTP communication.
 
@@ -33,9 +30,9 @@ The word *Hypertext* refers to text containing links that connect different docu
 
 ### HTTP and transport protocols
 
-HTTP defines application-level communication, while the underlying transport carries the data.
+HTTP defines application-level communication; the transport protocol carries the data between endpoints.
 
-| HTTP version | Underlying transport |
+| HTTP version | Transport |
 |---|---|
 | HTTP/1.0 | TCP |
 | HTTP/1.1 | TCP |
@@ -45,18 +42,20 @@ HTTP defines application-level communication, while the underlying transport car
 > [!NOTE]
 > QUIC is a transport protocol built over UDP. It provides reliability, congestion control, and connection management. HTTP/3 uses QUIC instead of TCP.
 
-### Basic client-server communication
+### Client-server communication
 
-![HTTP client-server request and response](assets/01-http-client-server-overview.png)
+![HTTP client-server request and response overview](assets/01-http-overview.png)
 
-Example:
+A simplified example:
+
+**Client request**
 
 ```http
 GET /profile HTTP/1.1
 Host: example.com
 ```
 
-The server processes the request and returns a response:
+**Server response**
 
 ```http
 HTTP/1.1 200 OK
@@ -65,7 +64,7 @@ Content-Type: application/json
 {"name": "Priya", "role": "Data Analyst"}
 ```
 
-The simplified application workflow is:
+The application workflow:
 
 1. The browser sends an HTTP request.
 2. The server receives and processes it.
@@ -73,72 +72,60 @@ The simplified application workflow is:
 4. The server sends an HTTP response.
 5. The browser processes the response.
 
-**Remember:** HTTP defines the request and response format; it does not define how the application internally retrieves or stores data.
+**Remember:** HTTP defines the request and response format. It does not dictate how the server internally retrieves or stores data.
 
 ---
 
-## 2. HTTP/1.0 — One Connection Per Request by Default
+## 2. HTTP/1.0 — Non-Persistent Connections by Default
 
-HTTP/0.9 was the earliest version of HTTP. HTTP/1.0 introduced important features such as request methods, headers, and status codes.
-
-### HTTP/0.9 — The beginning
-
-HTTP/0.9 was extremely simple:
+HTTP/0.9 was the earliest version of HTTP. It was extremely simple:
 
 - Supported only the `GET` method.
-- Used a simple request line.
 - Had no HTTP request or response headers.
-- Returned the resource body without a formal status line.
+- Returned the requested resource without a formal status line.
 - Was primarily designed for retrieving HTML documents.
 
-Example:
+HTTP/1.0 introduced important features such as request methods, headers, and status codes.
 
-```http
-GET /index.html
-```
+### HTTP/1.0 connection behaviour
 
-### HTTP/1.0 — Connection behaviour
-
-HTTP/1.0 generally opened a new TCP connection for each request/response exchange.
+HTTP/1.0 generally established a **new TCP connection for each request/response exchange**.
 
 Consider a browser requesting three resources:
 
-1. `index.html`
-2. `image.jpg`
-3. `about.html`
+- `index.html`
+- `image.jpg`
+- `about.html`
 
-The simplified sequence:
+![HTTP/1.0 separate TCP connections for individual requests](assets/02-http-1-0-overview.png)
 
-![HTTP 1.0 creates separate TCP connections for requests](assets/02-http-1-0-connection-behaviour.png)
+The simplified process:
 
-1. Establish TCP connection.
-2. Send request for `index.html`.
-3. Receive response.
-4. Close TCP connection.
-5. Establish another TCP connection for `image.jpg`.
+1. Establish a TCP connection.
+2. Send a request for `index.html`.
+3. Receive the response.
+4. Close the TCP connection.
+5. Establish another connection for `image.jpg`.
 6. Repeat the process for `about.html`.
 
-This creates additional connection-establishment overhead.
+This creates additional TCP connection-establishment overhead.
 
-> [!WARNING]
-> The diagram illustrates the default HTTP/1.0 behaviour. Persistent connections were possible through extensions, so a new TCP connection for every request was not an absolute requirement.
+> [!IMPORTANT]
+> This is the typical HTTP/1.0 behaviour, not an absolute rule. Persistent connections were possible through extensions such as Keep-Alive.
 
 ### HTTP/1.0 Keep-Alive
 
-HTTP/1.0 clients and servers could negotiate persistent connections using the `Keep-Alive` mechanism.
+HTTP/1.0 clients and servers could negotiate persistent connections using the Keep-Alive mechanism.
 
-Example:
+For example, a client could send:
 
 ```http
 Connection: Keep-Alive
-Keep-Alive: timeout=5, max=100
 ```
 
-This allowed multiple request/response exchanges to reuse a TCP connection when both sides supported the mechanism.
+When supported by both sides, the connection could be reused for multiple request/response exchanges instead of being closed after every exchange.
 
-![HTTP Keep-Alive header explanation](assets/03-http-keep-alive.png)
-
-**Key takeaway:** HTTP/1.0 generally closed the TCP connection after each exchange, but Keep-Alive extensions could allow connection reuse.
+**Key takeaway:** HTTP/1.0 used non-persistent connections by default, but Keep-Alive extensions allowed connection reuse.
 
 ---
 
@@ -148,7 +135,7 @@ HTTP/1.1 improved connection management by making **persistent connections the d
 
 Instead of establishing a new TCP connection for every request, a client can reuse the same connection for multiple requests.
 
-![HTTP 1.1 persistent connection behaviour](assets/04-http-1-1-persistent-connection.png)
+![HTTP/1.1 persistent TCP connection](assets/03-http-1-1-persistent-connection.png)
 
 ### How HTTP/1.1 works
 
@@ -163,7 +150,7 @@ The simplified process:
 1. Establish one TCP connection.
 2. Send the request for `index.html`.
 3. Receive its response.
-4. Reuse the same TCP connection for `image.jpg`.
+4. Reuse the same connection for `image.jpg`.
 5. Receive its response.
 6. Reuse the connection for `about.html`.
 7. Close the connection when it is no longer needed.
@@ -174,24 +161,24 @@ This reduces repeated TCP connection-establishment overhead.
 
 HTTP/1.1 uses persistent connections by default.
 
-To explicitly request connection closure:
+To explicitly request connection closure, a client can send:
 
 ```http
 Connection: close
 ```
 
-> [!IMPORTANT]
-> `Connection: keep-alive` is generally unnecessary in HTTP/1.1 because persistence is the default. `Connection: close` requests that the connection be closed after the current exchange.
+> [!TIP]
+> `Connection: keep-alive` is generally unnecessary in HTTP/1.1 because persistent connections are the default. `Connection: close` requests that the connection be closed after the current exchange.
 
 ---
 
 ## 4. HTTP/1.1 Pipelining
 
-HTTP/1.1 also introduced **pipelining**, which allows a client to send multiple requests over the same connection without waiting for each previous response.
+**HTTP/1.1 pipelining** allows a client to send multiple requests over the same TCP connection without waiting for the previous responses.
 
-Unlike ordinary sequential request handling, the client can send several requests in succession.
+This is different from ordinary sequential request handling, where the client waits for a response before sending the next request.
 
-![HTTP 1.1 pipelining request and response sequence](assets/05-http-1-1-pipelining.png)
+![HTTP/1.1 pipelining and head-of-line blocking](assets/04-http-1-1-pipelining.png)
 
 ### How pipelining works
 
@@ -209,13 +196,11 @@ With pipelining:
 2. Without waiting for its response, it sends Request 2.
 3. It then sends Request 3.
 4. The server processes the requests.
-5. The server must return the responses in the same order as the requests.
+5. The server returns responses in the same order as the requests.
 
 ### Limitation: Head-of-Line Blocking
 
-HTTP/1.1 pipelining has an important limitation.
-
-**Responses must be returned in request order.**
+HTTP/1.1 pipelining has an important limitation: **responses must be returned in request order**.
 
 Suppose:
 
@@ -223,12 +208,12 @@ Suppose:
 - Request 2 takes 1 second.
 - Request 3 takes 2 seconds.
 
-Even if responses for Requests 2 and 3 are ready earlier, they cannot be delivered ahead of Response 1 in the HTTP/1.1 pipeline.
+Even if the responses for Requests 2 and 3 are ready earlier, they cannot be delivered ahead of Response 1 in the pipeline.
 
 This is called **application-layer head-of-line blocking**.
 
 > [!WARNING]
-> HTTP/1.1 pipelining is not enabled by default and was not widely adopted because of implementation and interoperability limitations. Modern browsers generally rely on other connection-management strategies.
+> Pipelining is optional and was not widely adopted because of implementation and interoperability limitations. Modern browsers generally use other connection-management strategies.
 
 ---
 
@@ -236,26 +221,25 @@ This is called **application-layer head-of-line blocking**.
 
 | Feature | HTTP/1.0 | HTTP/1.1 |
 |---|---|---|
-| TCP connection | New connection per exchange by default | Persistent connection by default |
-| Connection reuse | Supported through Keep-Alive extensions | Built in by default |
-| Keep-Alive | Requires negotiation | Default behaviour |
+| TCP connection | Non-persistent by default | Persistent by default |
+| Connection reuse | Possible through Keep-Alive extensions | Built in by default |
+| Connection closure | Typically after each exchange | Remains open unless closed |
 | Multiple outstanding requests | No standard pipelining | Optional pipelining |
-| Pipelining | Not supported as a standard feature | Supported |
 | Response ordering | One exchange at a time in the basic model | Pipelined responses must follow request order |
 | Head-of-line blocking | No HTTP/1.1-style pipelining issue | Can occur with pipelining |
 
-### Main differences
+### The three differences to remember
 
-- **HTTP/1.0:** Typically establishes and closes a TCP connection for each request/response exchange.
-- **HTTP/1.1:** Reuses persistent TCP connections by default.
-- **HTTP/1.1 pipelining:** Allows multiple requests to be sent without waiting for previous responses, but responses must remain ordered.
+1. **HTTP/1.0:** Typically establishes a separate TCP connection for each request/response exchange.
+2. **HTTP/1.1:** Reuses persistent TCP connections by default.
+3. **HTTP/1.1 pipelining:** Allows multiple requests to be sent without waiting for previous responses, but responses must remain ordered.
 
 ---
 
 ## Key Takeaways
 
 > [!IMPORTANT]
-> The biggest difference between HTTP/1.0 and HTTP/1.1 is **TCP connection management**.
+> The biggest improvement from HTTP/1.0 to HTTP/1.1 is **persistent TCP connection management**.
 
 | Concept | Remember |
 |---|---|
@@ -263,14 +247,14 @@ This is called **application-layer head-of-line blocking**.
 | Statelessness | HTTP does not inherently maintain application session state |
 | HTTP/0.9 | Simple GET-only protocol |
 | HTTP/1.0 | Non-persistent connections by default |
-| Keep-Alive | Allows HTTP/1.0 connection reuse through negotiation |
+| Keep-Alive | Extension that allowed HTTP/1.0 connection reuse |
 | HTTP/1.1 | Persistent connections by default |
 | Pipelining | Multiple requests sent without waiting for earlier responses |
 | Head-of-Line Blocking | A delayed earlier response holds up later pipelined responses |
 
 **Core idea:**
 
-HTTP/1.0 generally created a separate TCP connection for each request, while HTTP/1.1 improved efficiency by allowing multiple requests to reuse a persistent connection.
+HTTP/1.0 generally created a separate TCP connection for each request/response exchange, while HTTP/1.1 improved efficiency by allowing multiple exchanges to reuse a persistent connection.
 
 ## References
 
