@@ -1,7 +1,7 @@
 # HTTP: Overview, HTTP/1.0 and HTTP/1.1
 
 > [!NOTE]
-> **Section:** Computer Networking — [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH), [HTTP 1.0 vs HTTP 1.1](https://youtu.be/tNulpc4RLWU?si=cVeK7pRQJ1BlA1Zx)
+> **Section:** Computer Networking — [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH) [HTTP 1.0 vs HTTP 1.1](https://youtu.be/tNulpc4RLWU?si=cVeK7pRQJ1BlA1Zx)
 >
 > **Learning objective:** Understand HTTP client-server communication and how HTTP/1.0 and HTTP/1.1 differ in TCP connection management, connection reuse, and request pipelining.
 
