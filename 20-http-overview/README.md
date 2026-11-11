@@ -97,7 +97,7 @@ Consider a browser requesting three resources:
 - `image.jpg`
 - `about.html`
 
-![HTTP/1.0 separate TCP connections for individual requests](assets/02-http-1-0-overview.png)
+![HTTP/1.0 separate TCP connections for individual requests](assets/02-http-1-0-keep-alive-overview.png)
 
 The simplified process:
 
