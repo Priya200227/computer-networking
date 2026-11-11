@@ -1,7 +1,7 @@
 # HTTP/1.1 in Action: Connection Reuse and Head-of-Line Blocking
 
 > [!NOTE]
-> **Section:** Computer Networking — HTTP Fundamentals
+> **Section:** Computer Networking - [HTTP 1.1 in action](https://youtu.be/bIPvH42Jesk?si=YPh1Qa94zegwLtQv) & [HTTP 1.1 head of line blocking in action](https://youtu.be/zoKBDaihBlU?si=r8fqC2LQaugz1Z81)
 >
 > **Learning objective:** Observe HTTP/1.1 persistent connection reuse in browser developer tools and Wireshark, understand the difference between TCP Keep-Alive and HTTP Keep-Alive, and investigate head-of-line blocking.
 
