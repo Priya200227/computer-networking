@@ -1,217 +1,246 @@
-# Routing and How Packets Travel Across Networks
+# Routing: How Packets Travel Across Networks
 
+>[!NOTE]
 > **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
 >
-> **Learning objective:** Understand how IP routing moves packets between networks, how hosts use subnet masks and default gateways to determine where to send traffic, how ARP resolves local IPv4 addresses to MAC addresses, and how switches and routers forward data from a source host to a destination host—including across multiple networks and toward cloud-hosted services such as AWS EC2.
+> **Learning objective:** Understand how routers forward IP packets between networks, how switches deliver frames within a LAN, and how ARP and default gateways help devices communicate with local, remote, and cloud-hosted destinations.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking) 
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
 
 ---
 
-## 1. Core idea
+## 1. What Is Routing?
 
-**Routing selects the next hop and outgoing interface for an IP packet so it can move toward its destination network.** A router usually does not calculate the entire end-to-end path for each packet. It makes a local forwarding decision using its routing/forwarding information.
+**Routing** is the process of selecting the next hop and outgoing interface for an IP packet so that it can move toward its destination network.
 
-| Function | Question answered | Typical mechanism/device |
+A router makes forwarding decisions using its **routing/forwarding table**. It does not need to calculate the entire end-to-end path for every packet.
+
+### Three important networking operations
+
+| Operation | Purpose | Device / mechanism |
 |---|---|---|
-| Address resolution | Which link-layer address reaches this local next hop? | ARP for IPv4 on Ethernet |
-| Switching | Which local port should receive this frame? | Ethernet switch and MAC address table |
-| Routing/forwarding | Which interface or next hop should receive this IP packet? | IP router and forwarding table |
+| Address resolution | Find the MAC address of a local next hop | ARP (IPv4) |
+| Switching | Forward frames within a local network | Layer 2 switch |
+| Routing | Forward packets between IP networks | Router |
 
-A host uses its IP address and subnet prefix/mask to decide whether a destination is on-link. If the destination is local, the host sends a frame to the destination host's MAC address. If it is off-link, the host sends the frame to its configured default gateway's MAC address. The IP packet remains addressed to the final destination IP unless a function such as NAT changes it.
+A host uses its IP address and subnet prefix to determine whether a destination is local or remote.
 
-## 2. Routing overview
+- **Same subnet:** Send the frame to the destination's MAC address.
+- **Different subnet:** Send the frame to the next-hop router, usually the default gateway.
+
+> [!IMPORTANT]
+> The IP packet contains the final destination IP address. The frame's destination MAC address identifies the next hop on the current local link.
+
+## 2. Routing Overview and Network Devices
 
 ![Routing overview across a LAN, router, Internet hops, and an AWS network](assests/01-routing-overview.png)
 
-The overview contains:
-- **Network 1:** hosts A, B, C and D connected through a switch. Example IP addresses include `10.0.0.2`, `10.0.0.3`, `10.0.0.4`, and `10.0.0.5`.
-- **Router:** connects Network 1 (`10.0.0.1`) and Network 2 (`192.168.1.1`).
-- **Network 2:** includes host X (`192.168.1.5`).
-- **Internet/cloud path:** shows the concept of forwarding through multiple routers toward a remote AWS-hosted destination.
+The diagram illustrates three parts:
 
-All addresses and devices are illustrative. This is a learning diagram, not a real routing table or a literal map of the Internet or AWS infrastructure.
+- **Network 1:** Hosts A, B, C, and D connected through a switch (`10.0.0.0/24`).
+- **Network 2:** A separate network connected through a router (`192.168.1.0/24`).
+- **Internet / AWS:** A remote destination reached through multiple routers.
 
-## 3. Devices and tables
+The addresses are illustrative, not an actual Internet or AWS topology.
 
-### 3.1 Ethernet switch
+### 2.1 Ethernet Switch
 
-A typical Layer 2 switch learns source-MAC-to-port mappings and uses its MAC address table to forward known unicast frames to the appropriate port. If a destination MAC is unknown, it generally floods the frame within the VLAN (except the incoming port). Broadcast frames are also flooded within the VLAN.
+A **Layer 2 switch** forwards Ethernet frames within a local network using its MAC address table.
 
-A normal Ethernet switch does not choose Internet routes based on the destination IP address. Its ordinary Layer 2 forwarding decision uses the destination MAC address.
+- Learns MAC addresses from incoming frames.
+- Forwards known unicast frames to the appropriate port.
+- Floods unknown unicast and broadcast frames within the relevant VLAN, subject to switch configuration.
 
-### 3.2 Router and routing table
+> [!NOTE]
+> A normal Layer 2 switch makes forwarding decisions using MAC addresses, not Internet destination IP addresses.
 
-A router connects IP networks. For a packet that must be forwarded, it examines the destination IP and uses its forwarding information to select an outgoing interface and, where necessary, a next-hop IP address. When multiple routes match, IP routers use the **longest matching prefix**.
+### 2.2 Router and Routing Table
 
-Illustrative route-table entries might look like this:
+A **router** connects different IP networks and forwards packets toward their destinations.
 
-| Destination prefix | Target | Meaning |
-|---|---|---|
-| `10.0.0.0/24` | Connected interface | Network 1 is directly connected |
-| `192.168.1.0/24` | Connected interface | Network 2 is directly connected |
-| `0.0.0.0/0` | Upstream next hop | Default route if no more-specific route matches |
+It examines the destination IP address and selects an outgoing interface and next hop using its forwarding information.
 
-These are examples only, not the exact configuration shown in the image.
+When multiple routes match, routers use **Longest Prefix Match**: the most specific matching network prefix is preferred.
 
-### 3.3 Default gateway
+Example routing table:
 
-A default gateway is the first-hop router a host uses for off-link destinations when no more-specific route applies. A host normally needs a suitable IP address, subnet prefix/mask, and default gateway to communicate outside its local subnet.
+| Destination | Target |
+|---|---|
+| `10.0.0.0/24` | Directly connected |
+| `192.168.1.0/24` | Directly connected |
+| `0.0.0.0/0` | Upstream next hop (default route) |
 
-### 3.4 ARP — Address Resolution Protocol
+### 2.3 Default Gateway and ARP
 
-ARP discovers the link-layer address associated with an IPv4 address on the local link. Devices cache learned mappings in an ARP cache/table.
+- **Default gateway:** The first-hop router used for off-subnet destinations when no more-specific route applies.
+- **ARP:** Resolves a known IPv4 address to its MAC address on the local link.
 
-**Critical distinction:** ARP does not discover a remote Internet server's MAC address. ARP requests are local-link broadcasts and are not forwarded by routers as ordinary routed traffic. For an off-subnet destination, a host usually ARPs for the default gateway's MAC address. The router may then use ARP on its own outgoing Ethernet link to resolve the next hop there.
+> [!IMPORTANT]
+> ARP does not discover a remote Internet server's MAC address. For remote communication, a host normally uses ARP to resolve its **default gateway's MAC address**.
+>
+> IPv6 uses Neighbor Discovery Protocol (NDP) instead of ARP.
 
-ARP is for IPv4. IPv6 uses Neighbor Discovery (NDP), not ARP.
-
-## 4. Scenario A — A to D on the same subnet
+## 3. Scenario A — Communication Within the Same Network
 
 ![Scenario A: A sends to D on the same local network and uses ARP if needed](assests/02-same-network-arp-a-to-d.png)
 
-Example addresses in the diagram:
-- A: `10.0.0.3`
-- D: `10.0.0.5`
-- B: `10.0.0.2`
-- C: `10.0.0.4`
+Suppose Host A wants to send data to Host D.
 
-Assume A's subnet prefix says D is on the same subnet.
-
-1. **A checks the destination IP.** A compares `10.0.0.5` with its own subnet and determines D is on-link.
-2. **A checks its ARP cache.** If it has a valid mapping for `10.0.0.5`, it can use it. Otherwise, A broadcasts an ARP request asking which device owns that IP.
-3. **D replies.** D provides its MAC address; A caches the mapping.
-4. **A builds a frame.** Ethernet source MAC = A's MAC; Ethernet destination MAC = D's MAC. The encapsulated IP packet has source IP `10.0.0.3` and destination IP `10.0.0.5`.
-5. **The switch forwards the frame.** It uses its MAC address table to select D's port.
-6. **D receives the frame.** D processes the Ethernet frame, then the IP packet and its payload.
-
-| Field | Value/meaning |
+| Host | IPv4 address |
 |---|---|
-| IP source | `10.0.0.3` (A) |
-| IP destination | `10.0.0.5` (D) |
-| Ethernet source MAC | A's MAC |
-| Ethernet destination MAC | D's MAC |
+| A | `10.0.0.3` |
+| B | `10.0.0.2` |
+| C | `10.0.0.4` |
+| D | `10.0.0.5` |
 
-The default gateway is not part of the ordinary forwarding path for this same-subnet exchange. ARP is skipped if A already has a usable cache entry.
+Assume both A and D belong to the same subnet.
 
-## 5. Scenario B — C to X on another subnet
+### Communication process
+
+1. **Check destination:** A determines that D (`10.0.0.5`) is on the same subnet.
+2. **Check ARP cache:** A checks whether D's MAC address is already known.
+3. **ARP request:** If the mapping is missing, A broadcasts an ARP request.
+4. **ARP reply:** D responds with its MAC address.
+5. **Frame delivery:** A creates an Ethernet frame addressed to D's MAC address.
+6. **Switch forwarding:** The switch uses its MAC address table to forward the frame to D's port.
+
+### Addresses during communication
+
+| Field | Value |
+|---|---|
+| Source IP | `10.0.0.3` |
+| Destination IP | `10.0.0.5` |
+| Source MAC | A's MAC |
+| Destination MAC | D's MAC |
+
+> [!TIP]
+> **Same subnet → Resolve destination MAC (if needed) → Switch forwards frame → Destination receives data.**
+>
+> The default gateway is not needed for this ordinary same-subnet communication.
+
+## 4. Scenario B — Communication Between Different Networks
 
 ![Scenario B: C sends to X on a different subnet through the default gateway](assests/03-cross-network-arp-c-to-x.png)
 
-Example addresses:
-- C in Network 1: `10.0.0.4`
-- Router's Network 1 interface: `10.0.0.1`
-- Router's Network 2 interface: `192.168.1.1`
-- X in Network 2: `192.168.1.5`
+Now suppose Host C wants to communicate with Host X on another network.
 
-1. **C checks X's IP.** Using its subnet mask/prefix, C determines that `192.168.1.5` is off-link.
-2. **C chooses its default gateway.** It sends the packet toward `10.0.0.1`.
-3. **C resolves the gateway MAC.** If necessary, C ARPs for `10.0.0.1`—not for X's MAC across Network 1.
-4. **C sends the first-hop frame.** Ethernet destination MAC = router's Network 1 MAC. The IP source and destination remain `10.0.0.4` and `192.168.1.5` in this no-NAT example.
-5. **The router receives the frame.** It removes the incoming link-layer framing and examines the IP packet.
-6. **The router looks up the destination.** Its forwarding table indicates that Network 2 is directly connected (assuming the example topology).
-7. **The router resolves X's MAC if needed.** It uses ARP on Network 2 for `192.168.1.5`, unless a valid cache entry already exists.
-8. **The router creates a new frame.** Ethernet source MAC = router's Network 2 interface MAC; Ethernet destination MAC = X's MAC.
-9. **X receives the packet.** X processes the frame and the enclosed IP packet.
+| Device | IPv4 address |
+|---|---|
+| Host C | `10.0.0.4` |
+| Router interface (Network 1) | `10.0.0.1` |
+| Router interface (Network 2) | `192.168.1.1` |
+| Host X | `192.168.1.5` |
 
-### Why do MAC addresses change but IP addresses usually do not?
+### Communication process
 
-MAC addresses deliver frames over a single local link. A router terminates the incoming link-layer frame and creates a new frame for the outgoing link. Therefore, link-layer source and destination addresses are local to each link.
+1. **Check destination:** C determines that `192.168.1.5` is outside its local subnet.
+2. **Select next hop:** C chooses its default gateway (`10.0.0.1`).
+3. **Resolve gateway MAC:** C checks its ARP cache or broadcasts an ARP request for `10.0.0.1`.
+4. **Send first frame:** C sends the frame to the router's Network 1 MAC address.
+5. **Router processes packet:** The router removes the incoming link-layer framing and examines the destination IP.
+6. **Routing decision:** The router checks its forwarding table and selects Network 2.
+7. **Resolve destination MAC:** If necessary, the router uses ARP on Network 2 to discover X's MAC address.
+8. **Create new frame:** The router builds a new frame addressed to X's MAC address.
+9. **Deliver packet:** X receives and processes the packet.
 
-IP source and destination addresses normally identify the end hosts across routed networks. Ordinary routing does not replace them at each hop. However, routers decrement IPv4 TTL and update the IPv4 header checksum. NAT and other middleboxes can also change IP addresses or transport ports.
+### Why do MAC addresses change while IP addresses usually remain the same?
 
-| Link | Ethernet source MAC | Ethernet destination MAC | IP source | IP destination |
-|---|---|---|---|---|
-| C → router on Network 1 | C's MAC | Router's Network 1 MAC | `10.0.0.4` | `192.168.1.5` |
-| Router → X on Network 2 | Router's Network 2 MAC | X's MAC | `10.0.0.4` | `192.168.1.5` |
+A MAC address is used for delivery over a particular local link. When a router forwards a packet, it creates a new link-layer frame for the outgoing link.
 
-The actual hexadecimal MAC addresses are not supplied in the diagrams; the names above are conceptual.
+The IP source and destination addresses generally remain unchanged during ordinary routing, unless NAT or another mechanism modifies them.
 
-## 6. Scenario C — C to a remote AWS EC2 instance
+| Information | C → Router | Router → X |
+|---|---|---|
+| Source MAC | C's MAC | Router's Network 2 MAC |
+| Destination MAC | Router's Network 1 MAC | X's MAC |
+| Source IP | `10.0.0.4` | `10.0.0.4` |
+| Destination IP | `192.168.1.5` | `192.168.1.5` |
+
+> [!IMPORTANT]
+> **MAC addresses are hop-by-hop. IP addresses are generally end-to-end.**
+>
+> Routers also decrement the IPv4 TTL and update the IPv4 header checksum when forwarding packets.
+
+## 5. Scenario C — Communication With a Remote AWS EC2 Instance
 
 ![Scenario C: C sends toward a remote AWS EC2 instance through Internet routers](assests/04-internet-and-aws-ec2-routing.png)
 
-This is a simplified illustration of a local host sending traffic through an upstream network and multiple Internet routers toward a remote cloud-hosted destination. Addresses such as `2.3.4.5` and `3.4.5.6` are examples in the diagram, not real AWS configuration details.
+This scenario illustrates how a local device can communicate with a remote cloud-hosted service.
 
-1. **C determines the destination is off-link.** It sends the first frame to its default gateway.
-2. **C resolves the local gateway.** It uses a cached ARP mapping or ARPs for the router's local interface.
-3. **The edge router forwards upstream.** It consults its forwarding table and selects a next hop. If NAT is configured, the edge device may translate the private source IP to a public IP and may translate transport ports as well.
-4. **Upstream routers forward the packet.** Each router uses its own forwarding information. The actual path depends on routing policies, topology, and current network conditions.
-5. **Link-layer framing is rebuilt at each routed Ethernet hop.** A remote server's MAC address is not carried end-to-end over the Internet.
-6. **The packet travels through multiple networks.** The diagram's intermediate routers are conceptual placeholders, not named or guaranteed Internet devices.
-7. **The destination cloud network receives the traffic.** Cloud routing and network controls determine how the packet reaches the intended virtual network and instance interface.
-8. **The final link delivers the frame to the destination interface.** IP addresses remain the same unless a NAT or other middlebox changes them.
+### Simplified communication process
 
-### How this relates to AWS
+1. The source host identifies the destination as off-subnet.
+2. It sends the first frame to its default gateway.
+3. The gateway forwards the packet to an upstream network.
+4. Multiple Internet routers forward the packet using their forwarding tables.
+5. The destination cloud network receives the traffic.
+6. Cloud routing and network controls determine how the traffic reaches the intended EC2 instance.
 
-In Amazon VPC, route tables map destination prefixes to targets. A public subnet can have a default IPv4 route (`0.0.0.0/0`) pointing to an Internet Gateway. A private subnet commonly uses a NAT Gateway or another configured egress path when instances need outbound IPv4 Internet access.
+> [!NOTE]
+> The intermediate routers and example IP addresses in the diagram are illustrative. The actual Internet route depends on network topology and routing policies.
 
-An Internet Gateway route alone does not make every instance reachable. Public addressing, subnet routing, security groups, network ACLs, host configuration, and other controls matter. AWS networking is virtualized and managed; this diagram is not an exact representation of AWS's internal network.
+### How does AWS handle routing?
 
-## 7. What changes at each hop?
+In Amazon VPC, **route tables** determine where network traffic is directed.
 
-For ordinary routed IPv4 traffic **without NAT**:
+- A public subnet can use a default IPv4 route (`0.0.0.0/0`) pointing to an Internet Gateway.
+- A private subnet commonly uses a NAT Gateway or another configured egress path for outbound IPv4 Internet access.
+- Security groups and network ACLs control permitted traffic.
 
-- **Ethernet frame:** removed on ingress and rebuilt for the outgoing link. MAC addresses change from one Ethernet hop to the next.
-- **IP source and destination:** generally remain the same end-to-end.
-- **IPv4 TTL:** decremented by every router that forwards the packet. When TTL reaches zero, the packet is discarded; an ICMP Time Exceeded message may be generated.
-- **IPv4 header checksum:** updated when the IPv4 header changes, including TTL.
-- **NAT:** can change source and/or destination IP addresses and often transport ports.
-- **Middleboxes:** firewalls, proxies, load balancers, and tunnels can inspect, modify, or encapsulate traffic according to their roles.
+> [!IMPORTANT]
+> An Internet Gateway route alone does not make an EC2 instance publicly reachable. Public addressing, routing, security rules, and host configuration must also be correct.
 
-| Field | Same-subnet A → D | Routed C → X | Internet path with NAT |
-|---|---|---|---|
-| Ethernet MAC addresses | A MAC → D MAC | Rebuilt at router | Rebuilt on each Ethernet hop |
-| IP source/destination | A IP → D IP | Usually C IP → X IP | May change at NAT boundaries |
-| IPv4 TTL | No router decrement if no router is traversed | Decremented by each router | Decremented by each forwarding router |
-| ARP | Local LAN only | Used on each Ethernet link as needed | Not end-to-end; local next hops are resolved per link |
+## 6. What Changes at Each Router Hop?
 
-## 8. Important corrections and nuances
+For ordinary IPv4 routing without NAT:
 
-1. **ARP resolves a local next hop.** For a remote destination, the host normally ARPs for its default gateway, not the remote host's MAC.
-2. **Routers do not forward the same Ethernet frame unchanged.** They process the IP packet and create new link-layer framing for the outgoing interface.
-3. **“IP addresses never change” is too absolute.** They usually remain unchanged during ordinary routing, but NAT, proxies, and tunnels can change or encapsulate addressing. IPv4 TTL changes at each routed hop.
-4. **Routers do not need to discover the complete route for every packet.** Routing protocols/configuration populate routing information; forwarding uses the resulting table.
-5. **Switching is more than reading a destination MAC.** Switches learn source MAC-to-port mappings and forward using their MAC table. Unknown-unicast and broadcast handling depends on VLAN and switch configuration.
-6. **The subnet mask/prefix matters.** Similar-looking IP addresses do not by themselves prove that hosts are on the same subnet.
-7. **NAT and routing are different functions.** Routing selects a next hop; NAT translates address/port information. A device can perform both.
-8. **The return path may differ.** Internet routing can be asymmetric; successful request delivery does not by itself guarantee a working response path.
-9. **AWS is not one ordinary LAN behind a single router.** VPC routes, gateways, virtual interfaces, security controls, and managed infrastructure all matter.
-10. **ARP caches are dynamic.** A host does not need a permanent entry for every device on its subnet; entries can be learned, refreshed, and expire.
-
-## 9. Quick revision
-
-| Term | Remember this |
+| Field | Behaviour |
 |---|---|
-| Routing | Selects the next hop/interface for an IP packet |
-| Forwarding table | Used for per-packet forwarding decisions |
-| Longest-prefix match | Prefer the matching route with the most specific prefix |
-| Default gateway | First-hop router for off-link destinations |
-| ARP | Resolves IPv4 addresses to link-layer addresses on a local link |
-| MAC address | Link-layer address used to deliver a frame over a local segment |
-| IP address | Network-layer address used to route packets across networks |
-| Switch | Forwards Layer 2 frames using MAC learning and forwarding information |
-| Router | Forwards IP packets between networks and rebuilds link-layer framing |
+| Ethernet MAC addresses | Rebuilt for each outgoing link |
+| Source IP | Generally remains unchanged |
+| Destination IP | Generally remains unchanged |
+| IPv4 TTL | Decremented by each forwarding router |
+| IPv4 header checksum | Updated when the IPv4 header changes |
+| NAT | Can translate IP addresses and transport ports |
+
+Other devices, such as firewalls, proxies, load balancers, and tunnels, may inspect or modify traffic.
+
+### Quick revision
+
+| Concept | Remember |
+|---|---|
+| Routing | Selects the next hop for an IP packet |
+| Forwarding table | Used to make packet-forwarding decisions |
+| Longest Prefix Match | Selects the most specific matching route |
+| Default gateway | First-hop router for off-subnet traffic |
+| ARP | Resolves IPv4 addresses to local MAC addresses |
+| Switch | Forwards frames using MAC address information |
+| Router | Forwards IP packets between networks |
 | NAT | Translates IP addresses and often transport ports |
-| TTL | Limits the number of IPv4 router hops |
-| AWS VPC route table | Maps destination prefixes to targets such as local routes and gateways |
+| TTL | Limits how many IPv4 router hops a packet can traverse |
 
-## Key takeaway
+---
 
-**The IP destination tells routers where the packet ultimately needs to go; the link-layer destination MAC tells the current local network where to deliver the next frame.** A host uses ARP to find the local next hop on IPv4 Ethernet, switches forward frames within a LAN, and routers forward IP packets between networks while rebuilding link-layer framing for each outgoing link. NAT and cloud networking can add address translation and policy controls.
+## Key Takeaway
+
+> [!IMPORTANT]
+> **IP addresses identify the packet's destination; MAC addresses deliver the frame to the next hop on the current local link.**
+
+The complete communication process:
+
+**Host → Switch → Default Gateway → Routers → Destination Network → Destination Host**
+
+- Switches forward frames within local networks.
+- Routers forward packets between IP networks.
+- ARP resolves local IPv4 next-hop addresses to MAC addresses.
+- Routing tables determine where packets should go next.
 
 ## References
 
-These are primary standards and official cloud documentation, selected to avoid unverified or random sources.
-
-- **Amazon VPC — Configure route tables (official AWS documentation).** Destination prefixes, route targets, and VPC traffic paths.  
-   https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html
-
-- **Amazon VPC — Enable internet access using an Internet Gateway (official AWS documentation).** Internet Gateway routing, public subnet requirements, public IPv4 addressing, and IPv4 NAT behavior.  
-   https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
-
--  **Reference video:**  
-   [How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+- [Amazon VPC — Configure Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
+- [Amazon VPC — Internet Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
+- [Reference Video — How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
 
 ---
-**Next:** [ICMP-PING-TraceRoute](../10-icmp-ping-traceroute/README.md)
+
+**Next:** [ICMP, Ping and Traceroute](../10-icmp-ping-traceroute/README.md)
