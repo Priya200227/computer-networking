@@ -267,4 +267,4 @@ HTTP/1.0 generally created a separate TCP connection for each request/response e
 
 ---
 
-**Next:** 
+**Next:** [HTTP Request Response Structure](../21-http-request-response-structure/README.md)
