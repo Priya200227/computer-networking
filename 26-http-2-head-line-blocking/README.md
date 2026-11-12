@@ -1,7 +1,8 @@
 # HTTP/2 Head-of-Line Blocking
 
 > [!NOTE]
-> **Section:** Computer Networking — HTTP/2  
+> **Section:** Computer Networking — HTTP/2
+>  
 > **Learning objective:** Understand why HTTP/2 multiplexing does not completely eliminate head-of-line blocking, how TCP packet loss affects multiple HTTP/2 streams, and why HTTP/3 uses QUIC.
 
 [← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
