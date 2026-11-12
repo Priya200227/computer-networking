@@ -151,4 +151,4 @@ Reusing an existing connection avoids repeating connection establishment for eve
 
 ---
 
-**Next:** HTTP/2 — Multiplexing and Stream-Level Head-of-Line Blocking
+**Next:** [HTTP/2: Multiplexing, Streams and Frames](../23-http-2-multiplexing-streams-framess)
