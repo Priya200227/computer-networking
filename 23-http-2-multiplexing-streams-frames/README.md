@@ -22,6 +22,7 @@ Unlike HTTP/1.1, where pipelined responses must follow request order, HTTP/2 all
 Each request/response exchange belongs to a separate **stream**, identified by a Stream ID.
 
 ![HTTP/2 multiplexing and Server Push](assests/01-http-2-multiplexing-and-server-push.png)
+
 For example, a browser can request:
 
 - `GET /index.html` — Stream ID 1
@@ -74,8 +75,6 @@ For example:
 3. The server anticipates that the browser will need `script.js` and `main.css`.
 4. The server proactively pushes those resources.
 
-![HTTP/2 Server Push example](assets/01-http-2-multiplexing-and-server-push.png)
-
 Server Push was intended to reduce additional request latency when the server could predict which resources the client would need.
 
 > [!WARNING]
@@ -96,7 +95,7 @@ A frame contains:
 
 A request or response can consist of multiple frames.
 
-![HTTP/2 frames and streams](assets/02-http-2-frames-and-streams.png)
+![HTTP/2 frames and streams](assests/02-http-2-frames-and-streams.png)
 
 ### Example: Multiple Requests
 
@@ -178,7 +177,7 @@ The receiver uses Stream IDs to associate each frame with its corresponding stre
 
 Every HTTP/2 frame begins with a fixed-size **9-byte frame header**, followed by a payload.
 
-![HTTP/2 frame structure and Wireshark packet inspection](assets/03-http-2-frame-structure-and-wireshark.png)
+![HTTP/2 frame structure and Wireshark packet inspection](assests/03-http-2-frame-structure-and-wireshark.png)
 
 ### Frame Header Layout
 
