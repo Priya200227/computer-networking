@@ -151,4 +151,4 @@ Reusing an existing connection avoids repeating connection establishment for eve
 
 ---
 
-**Next:** [HTTP/2: Multiplexing, Streams and Frames](../23-http-2-multiplexing-streams-framess)
+**Next:** [HTTP/2: Multiplexing, Streams and Frames](../23-http-2-multiplexing-streams-frames/README.md)
