@@ -1,4 +1,4 @@
-# HPACK — HTTP/2 Header Compression
+# HPACK - HTTP/2 Header Compression
 
 > [!NOTE]
 > **Section:** Computer Networking - [HTTP/2 - HPACK Header Compression](https://youtu.be/M5ecS9oPRtk?si=opC6x84Wg3kF6zJd)  
