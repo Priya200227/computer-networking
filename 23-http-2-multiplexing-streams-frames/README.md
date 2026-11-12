@@ -21,8 +21,7 @@ Unlike HTTP/1.1, where pipelined responses must follow request order, HTTP/2 all
 
 Each request/response exchange belongs to a separate **stream**, identified by a Stream ID.
 
-![HTTP/2 multiplexing and Server Push](assets/01-http-2-multiplexing-and-server-push.png)
-
+![HTTP/2 multiplexing and Server Push](assests/01-http-2-multiplexing-and-server-push.png)
 For example, a browser can request:
 
 - `GET /index.html` — Stream ID 1
