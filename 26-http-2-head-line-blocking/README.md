@@ -100,7 +100,7 @@ What happens?
 
 The important point is that TCP does not understand HTTP/2 stream IDs. It sees one ordered byte stream.
 
-![HTTP/2 transport-level head-of-line blocking](assets/http2-head-of-line-blocking.png)
+![HTTP/2 transport-level head-of-line blocking](assests/http2-head-of-line-blocking.png)
 
 ## 4. Why Does HTTP/3 Use QUIC?
 
