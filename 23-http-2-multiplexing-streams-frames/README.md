@@ -278,4 +278,4 @@ In the packet capture, observe:
 
 ---
 
-**Next:** [Why HTTP/2 is binary protocol](../24-http-2-binary-protocol)
+**Next:** [Why HTTP/2 is binary protocol](../24-http-2-binary-protocol/README.md)
