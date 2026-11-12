@@ -246,4 +246,4 @@ Frames from different streams can be interleaved over the same TCP connection. T
 
 ---
 
-**Next:** HPACK — Header Compression in HTTP/2
+**Next:** HPACK — [HTTP/2 Header Compression - HPACK](../25-hpack-header-compression/README.md)
