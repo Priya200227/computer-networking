@@ -85,7 +85,7 @@ Instead of transmitting HTTP messages as textual request and response lines, HTT
 
 Each frame contains a structured header and a payload.
 
-![HTTP/2 binary framing overview](assets/02-http-1-1-text-vs-http-2-binary-overview.png)
+![HTTP/2 binary framing overview](assets/01-why-http-2-is-binary.png)
 
 ### Why use binary framing?
 
