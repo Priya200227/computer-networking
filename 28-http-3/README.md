@@ -1,4 +1,4 @@
-# HTTP/3 — How It Uses QUIC
+# HTTP/3 - How It Uses QUIC
 
 > [!NOTE]
 > **Section:** Computer Networking - [HTTP/3 how it uses QUIC](https://youtu.be/CI7Dx-m1eQ4?si=vHDAn_C5h9V3myJ3)
