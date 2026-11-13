@@ -1,7 +1,8 @@
 # QUIC Protocol Overview
 
 > [!NOTE]
-> **Section:** Computer Networking — QUIC Protocol  
+> **Section:** Computer Networking - [QUIC Protocol](https://youtu.be/ZAJVKmZ-dh4?si=LAKHD-NTw6_mELT_)
+> 
 > **Learning objective:** Understand why QUIC was developed, why it uses UDP, how it integrates TLS 1.3, how it reduces connection-establishment latency, and how connection migration works.
 
 [← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
