@@ -94,17 +94,6 @@ Understand how communication is protected over untrusted networks.
 
 [Explore TLS & Security →](./05-tls-and-security/)
 
-### 06. Packet Analysis
-
-A practical module for examining network traffic and connecting theoretical concepts with actual packets.
-
-- Wireshark fundamentals
-- Packet inspection
-- Protocol analysis
-- Practical networking exercises
-
-[Explore Packet Analysis →](./06-packet-analysis/)
-
 ---
 
 ## How the Notes Are Structured
