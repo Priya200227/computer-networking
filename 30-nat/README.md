@@ -113,7 +113,8 @@ When a response arrives, it checks the destination public IP and port against th
 
 ![PAT translation table and packet flow](assets/nat-pat-translation-table-and-packet-flow.png)
 
-**Important:** A real NAT/PAT table can contain additional information, including transport protocol, connection state, destination details and timeouts. The diagram shows a simplified representation.
+> [!IMPORTANT]
+> A real NAT/PAT table can contain additional information, including transport protocol, connection state, destination details and timeouts. The diagram shows a simplified representation.
 
 ---
 
