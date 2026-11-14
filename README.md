@@ -19,7 +19,7 @@ The repository is organized into six subject-based modules.
 | 03 | [DNS](./03-dns/) | How DNS works, DNS resolution, major DNS record types |
 | 04 | [HTTP & Web](./04-http-and-web/) | HTTP fundamentals, request-response structure, HTTP/1.1, HTTP/2, multiplexing, HPACK, QUIC and HTTP/3 |
 | 05 | [TLS & Security](./05-tls-and-security/) | TLS overview, certificates, TLS 1.2 handshake and TLS 1.3 handshake |
-| 06 | [Packet Analysis](./06-packet-analysis/) | Practical packet inspection and Wireshark exercises — planned |
+| 06 | [Packet Analysis](./06-packet-analysis/) | Practical packet inspection and Wireshark exercises - planned |
 
 ---
 
