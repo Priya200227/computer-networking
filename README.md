@@ -114,11 +114,11 @@ The notes are developed using a combination of structured video lessons, technic
 
 Some primary references include:
 
-- [RFC Editor](https://www.rfc-editor.org/) — Internet protocol specifications.
-- [IETF Datatracker](https://datatracker.ietf.org/) — Internet standards and working-group documents.
-- [MDN Web Docs](https://developer.mozilla.org/) — HTTP and web technology documentation.
-- [Wireshark Documentation](https://www.wireshark.org/docs/) — Packet analysis and protocol inspection.
-- [Computer Networking — Chai aur Code](https://www.youtube.com/@chaiaurcode) — Video-based learning resource.
+- [RFC Editor](https://www.rfc-editor.org/) - Internet protocol specifications.
+- [IETF Datatracker](https://datatracker.ietf.org/) - Internet standards and working-group documents.
+- [MDN Web Docs](https://developer.mozilla.org/) - HTTP and web technology documentation.
+- [Wireshark Documentation](https://www.wireshark.org/docs/) - Packet analysis and protocol inspection.
+- [Computer Networking — Chai aur Code](https://www.youtube.com/@chaiaurcode) - Video-based learning resource.
 
 Relevant RFCs and documentation are linked within individual topic notes wherever applicable.
 
@@ -143,25 +143,10 @@ Each module contains its own topic folders and supporting resources.
 
 ---
 
-## Progress & Future Work
-
-This is an evolving learning repository. Topics are added, reviewed and improved as the learning journey progresses.
-
-**Upcoming focus:**
-- Complete TLS 1.2 and TLS 1.3 handshake analysis.
-- Build practical Wireshark packet-inspection exercises.
-- Continue exploring networking concepts through packet-level examples.
-
----
-
 ## Why This Repository?
 
-Networking is a foundational skill for understanding backend systems, distributed applications, cloud infrastructure and data engineering.
+Networking is a foundational skill for understanding backend systems, distributed applications, cloud infrastructure, and data engineering.
 
 This repository is intended to serve as both a personal technical reference and a resource for anyone who wants to understand computer networking beyond surface-level definitions.
 
 **Learn the concepts. Understand the protocols. Follow the packets.**
-
----
-
-*Maintained as a continuously evolving computer networking learning project.*
