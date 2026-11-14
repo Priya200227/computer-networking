@@ -1,8 +1,9 @@
 # NAT (Network Address Translation)
 
-## 🎯 Purpose
-
-Understand how devices using private IPv4 addresses communicate with the public Internet through NAT, and how PAT allows multiple devices to share a single public IPv4 address.
+> [!NOTE]
+> **Section:** Computer Networking — [NAT](https://youtu.be/VdfL9H2vEkU?si=_Zjj1XtqcFM4SXGT)
+>
+>**Purpose:** Understand how devices using private IPv4 addresses communicate with the public Internet through NAT, and how PAT allows multiple devices to share a single public IPv4 address.
 
 ---
 
