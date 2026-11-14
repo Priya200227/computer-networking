@@ -56,7 +56,7 @@ When a device wants to access the Internet, it sends the packet to its default g
 
 The router translates the packet's source address from the private IP to its public IP before forwarding it externally.
 
-![NAT overview: private devices sharing a public IP](assests/nat-overview-private-to-public-ip.png)
+![NAT overview: private devices sharing a public IP](assets/nat-overview-private-to-public-ip.png)
 
 ### Basic packet flow
 
@@ -111,7 +111,7 @@ The router stores mapping information in a translation table.
 
 When a response arrives, it checks the destination public IP and port against the table and forwards the packet to the corresponding internal device.
 
-![PAT translation table and packet flow](assests/nat-pat-translation-table-and-packet-flow.png)
+![PAT translation table and packet flow](assets/nat-pat-translation-table-and-packet-flow.png)
 
 **Important:** A real NAT/PAT table can contain additional information, including transport protocol, connection state, destination details and timeouts. The diagram shows a simplified representation.
 
