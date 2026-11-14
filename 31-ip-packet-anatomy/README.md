@@ -18,7 +18,7 @@ An IPv4 packet consists of two main parts:
 1. **IP Header** – Contains information required to route and process the packet.
 2. **Payload** – Contains the data being carried, such as a TCP segment, UDP datagram, or ICMP message.
 
-![IPv4 packet structure and header fields](assests/ipv4-packet-anatomy.png)
+![IPv4 packet structure and header fields](ipv4-packet-anatomy.png)
 
 ---
 
