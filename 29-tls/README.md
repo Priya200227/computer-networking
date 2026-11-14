@@ -188,5 +188,5 @@ An attacker observing the network traffic cannot simply read the protected HTTP 
 
 ---
 
-**Next topic:** [TLS Certificates Explained in Depth](../tls-certificates/README.md)
+**Next topic:** [TLS Certificates Explained in Depth](../29-tls/tls-certificates/README.md)
 
