@@ -1,6 +1,6 @@
-# Computer Networking — From Fundamentals to Protocol Internals
+# Computer Networking - From Fundamentals to Protocol Internals
 
-A structured, practical journey through computer networking — from understanding how devices communicate to exploring the internal mechanisms behind modern Internet protocols.
+A structured, practical journey through computer networking - from understanding how devices communicate to exploring the internal mechanisms behind modern Internet protocols.
 
 This repository contains **technical notes, diagrams, protocol breakdowns, practical examples, and learning resources** created while studying computer networking.
 
