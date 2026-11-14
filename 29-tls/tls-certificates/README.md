@@ -238,4 +238,4 @@ Try replacing `example.com` with another HTTPS website and compare the certifica
 
 ---
 
-**Next topic:** TLS 1.2 Handshake
+**Next topic:** [TLS 1.2 Handshake](29-tls/tls-1.2-handshake/README.md)
