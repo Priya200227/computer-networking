@@ -1,5 +1,6 @@
 # IPv4 Packet Anatomy
 
+>[!NOTE]
 >**Section:** Computer Networking - [IP packet anatomy](https://youtu.be/UzWpKcMlaMg?si=9vVa5lKbaLSyhSF_)
 >
 >**Purpose:** Understand the structure of an IPv4 packet, the purpose of each IP header field, and how IPv4 handles packet fragmentation.
