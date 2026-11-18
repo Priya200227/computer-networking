@@ -1,4 +1,4 @@
-# DHCP — Dynamic Host Configuration Protocol
+# DHCP - Dynamic Host Configuration Protocol
 
 > [!NOTE]
 > **Section:** Computer Networking - [DHCP & DORA PAcket Flow](https://youtu.be/jhpiuyNEpIc?si=oHkRlkKLCCxqmfnZ)
