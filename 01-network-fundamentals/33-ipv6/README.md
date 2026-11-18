@@ -1,7 +1,8 @@
 # IPv6 — Internet Protocol Version 6
 
 > [!NOTE]
-> **Section:** Computer Networking — Network Fundamentals  
+> **Section:** Computer Networking - [IPv6 Addressing](https://youtu.be/G4gQJGfHFsM?si=9gAr5iJtWWewKss3)
+>   
 > **Learning objective:** Understand why IPv6 was introduced, how IPv6 addresses are written and shortened, how IPv6 differs from IPv4, and the key mechanisms used for IPv6 addressing and communication.
 
 [← Back to Computer Networking Repository](../../README.md)
