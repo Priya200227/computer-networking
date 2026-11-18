@@ -1,4 +1,4 @@
-# DHCP — Dynamic Host Configuration Protocol
+# DHCP - Dynamic Host Configuration Protocol
 
 > [!NOTE]
 > **Section:** Computer Networking - [DHCP & DORA Packet Flow](https://youtu.be/jhpiuyNEpIc?si=oHkRlkKLCCxqmfnZ)
@@ -15,11 +15,11 @@
 
 A DHCP server can provide:
 
-- **IP address** — identifies the device on the IP network.
-- **Subnet mask** — identifies the network and host portions of the address.
-- **Default gateway** — provides the next hop for traffic destined outside the local network.
-- **DNS server** — resolves domain names into IP addresses.
-- **Lease time** — determines how long the client may use the assigned configuration.
+- **IP address** - identifies the device on the IP network.
+- **Subnet mask** - identifies the network and host portions of the address.
+- **Default gateway** - provides the next hop for traffic destined outside the local network.
+- **DNS server** - resolves domain names into IP addresses.
+- **Lease time** - determines how long the client may use the assigned configuration.
 
 ### Key facts
 
@@ -36,14 +36,14 @@ A DHCP server can provide:
 
 ---
 
-## 2. How DHCP Works — DORA
+## 2. How DHCP Works - DORA
 
 During the typical initial IPv4 address allocation, DHCP uses a four-message exchange known as **DORA**:
 
-1. **Discover** — the client searches for DHCP servers.
-2. **Offer** — a server offers an IP address and configuration.
-3. **Request** — the client requests the offered configuration from its selected server.
-4. **Acknowledgement (ACK)** — the server confirms the assignment.
+1. **Discover** - the client searches for DHCP servers.
+2. **Offer** - a server offers an IP address and configuration.
+3. **Request** - the client requests the offered configuration from its selected server.
+4. **Acknowledgement (ACK)** - the server confirms the assignment.
 
 ![DHCP DORA overview](assets/01-dhcp-dora-overview.png)
 
@@ -116,12 +116,12 @@ The client selects an offer and sends a DHCP Request to indicate which server an
 
 The message commonly includes:
 
-- **Requested IP address (Option 50)** — the address the client is requesting.
-- **Server identifier (Option 54)** — identifies the selected DHCP server.
+- **Requested IP address (Option 50)** - the address the client is requesting.
+- **Server identifier (Option 54)** - identifies the selected DHCP server.
 
 During the initial allocation process, this message is commonly broadcast. This also informs other DHCP servers that their offers were not selected.
 
-### 2.4 DHCP ACK — Acknowledgement
+### 2.4 DHCP ACK - Acknowledgement
 
 **Direction:** DHCP server → Client
 
@@ -190,7 +190,7 @@ DHCP Message
 | L3 — Network | IPv4 | Carries source and destination IP addresses |
 | L2 — Data Link | Ethernet | Carries source and destination MAC addresses |
 
-### DHCP Discover — packet details
+### DHCP Discover - packet details
 
 ![DHCP DORA packet details and encapsulation](assets/03-dhcp-dora-packet-encapsulation.png)
 
@@ -253,7 +253,7 @@ This can allow limited communication with other devices on the same local link t
 
 ---
 
-## 7. Final Configuration — What the Client Receives
+## 7. Final Configuration - What the Client Receives
 
 After a successful DHCP exchange, the client configures its network interface using the parameters supplied by the DHCP server.
 
@@ -293,7 +293,6 @@ The lease is temporary. The client must renew it according to DHCP's lease-renew
 - [RFC 2131 — Dynamic Host Configuration Protocol](https://datatracker.ietf.org/doc/html/rfc2131)
 - [RFC 2132 — DHCP Options and BOOTP Vendor Extensions](https://datatracker.ietf.org/doc/html/rfc2132)
 - [Microsoft — Automatic Private IP Addressing](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/automatic-private-ip-addressing)
-- [Video — DHCP & DORA Packet Flow](https://youtu.be/jhpiuyNEpIc?si=oHkRlkKLCCxqmfnZ)
 
 ---
 
