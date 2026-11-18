@@ -1,7 +1,7 @@
 # DHCP - Dynamic Host Configuration Protocol
 
 > [!NOTE]
-> **Section:** Computer Networking - [DHCP & DORA PAcket Flow](https://youtu.be/jhpiuyNEpIc?si=oHkRlkKLCCxqmfnZ)
+> **Section:** Computer Networking - [DHCP & DORA Packet Flow](https://youtu.be/jhpiuyNEpIc?si=oHkRlkKLCCxqmfnZ)
 > 
 > **Learning objective:** Understand how a device automatically obtains an IP address and other network settings, how DHCP's DORA process works, and how DHCP messages travel through the network layers.
 
