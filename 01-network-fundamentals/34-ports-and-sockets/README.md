@@ -85,7 +85,7 @@ This is commonly described as a **4-tuple** for TCP (the protocol is understood 
 This distinction matters because many clients can connect to the same server IP and port. Their different client-side IP/port combinations distinguish the connections.
 
 >[!NOTE]
-> **Avoid this oversimplification - **“A socket is just an IP address + port.” That describes an IP socket address/endpoint in a simplified way, not every aspect of a socket object or a complete TCP connection.
+> **Avoid this oversimplification -** “A socket is just an IP address + port.” That describes an IP socket address/endpoint in a simplified way, not every aspect of a socket object or a complete TCP connection.
 
 ## 3. How an application uses sockets
 
