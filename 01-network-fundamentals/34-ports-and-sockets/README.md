@@ -1,5 +1,7 @@
 # Ports and Sockets
 
+>[!NOTE]
+>
 > **Learning objective:** Understand how transport-layer port numbers identify application endpoints, how operating systems expose network communication through sockets, and how TCP and UDP sockets differ.
 
 [← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
@@ -82,7 +84,8 @@ This is commonly described as a **4-tuple** for TCP (the protocol is understood 
 
 This distinction matters because many clients can connect to the same server IP and port. Their different client-side IP/port combinations distinguish the connections.
 
-> **Avoid this oversimplification:** “A socket is just an IP address + port.” That describes an IP socket address/endpoint in a simplified way, not every aspect of a socket object or a complete TCP connection.
+> **Avoid this oversimplification:**
+> “A socket is just an IP address + port.” That describes an IP socket address/endpoint in a simplified way, not every aspect of a socket object or a complete TCP connection.
 
 ## 3. How an application uses sockets
 
