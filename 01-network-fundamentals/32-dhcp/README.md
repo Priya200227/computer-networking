@@ -5,7 +5,8 @@
 >   
 > **Learning objective:** Understand how a device automatically obtains an IPv4 configuration, how DHCP's DORA process works, and how DHCP messages are encapsulated and delivered.
 
-[← Back to Computer Networking Repository](../../README.md)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+
 
 ---
 
@@ -290,10 +291,10 @@ The lease is temporary. The client must renew it according to DHCP's lease-renew
 
 ## 9. References
 
-- [RFC 2131 — Dynamic Host Configuration Protocol](https://datatracker.ietf.org/doc/html/rfc2131)
-- [RFC 2132 — DHCP Options and BOOTP Vendor Extensions](https://datatracker.ietf.org/doc/html/rfc2132)
-- [Microsoft — Automatic Private IP Addressing](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/automatic-private-ip-addressing)
+- [RFC 2131 - Dynamic Host Configuration Protocol](https://datatracker.ietf.org/doc/html/rfc2131)
+- [RFC 2132 - DHCP Options and BOOTP Vendor Extensions](https://datatracker.ietf.org/doc/html/rfc2132)
+- [Microsoft - Automatic Private IP Addressing](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/automatic-private-ip-addressing)
 
 ---
 
-**Next topic:** Add the next topic link here when its README is ready.
+**Next:** [IPv6](../33-ipv6/README.md)
