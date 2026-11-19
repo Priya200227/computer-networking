@@ -208,4 +208,4 @@ Because fields such as TTL change during forwarding, routers must update the hea
 
 ---
 
-**Next:**[DHCP](../32-dhcp/README.md)
+**Next:** [DHCP](../32-dhcp/README.md)
