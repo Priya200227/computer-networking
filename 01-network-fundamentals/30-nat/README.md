@@ -5,6 +5,8 @@
 >
 >**Purpose:** Understand how devices using private IPv4 addresses communicate with the public Internet through NAT, and how PAT allows multiple devices to share a single public IPv4 address.
 
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+
 ---
 
 ## 1. What is NAT?
@@ -159,8 +161,9 @@ This is one of the techniques that helped extend the practical usability of IPv4
 
 ## References
 
-1. [RFC 1918 – Address Allocation for Private Internets](https://datatracker.ietf.org/doc/html/rfc1918)
-2. [RFC 3022 – Traditional IP Network Address Translator](https://datatracker.ietf.org/doc/html/rfc3022)
+- [RFC 1918 – Address Allocation for Private Internets](https://datatracker.ietf.org/doc/html/rfc1918)
+-  [RFC 3022 – Traditional IP Network Address Translator](https://datatracker.ietf.org/doc/html/rfc3022)
 
 ---
+**Next:* [IP Packet Anatomy](../31-ip-packet-anatomy)
 
