@@ -1,7 +1,7 @@
 # Default Gateway
 
 > [!NOTE]
-> **Section:** Computer Networking - [Default Gateway](https://www.youtube.com/watch?v=Ik-buVzjW3s&list=PLd1s-PEC5Pio&index=6)
+> **Section:** Computer Networking - [Default Gateway](https://youtu.be/Ik-buVzjW3s?si=fM6VNYhYahx2WihW) , [DG Network Communication](https://youtu.be/PqdrgoYb3Vc?si=1VcKa63kTdkW18K4)
 >
 > **Purpose:** Understand how a host uses its IP address and subnet mask to determine whether a destination is local or remote, why traffic destined for another network is sent to a default gateway, and how routers forward packets between different IP networks.
 
@@ -200,13 +200,6 @@ Remember these fundamental concepts:
 |---|---|
 | Network Layer (IP) | Determines where the packet needs to go. |
 | Data Link Layer (MAC) | Delivers the frame to the next hop on the local link. |
-
----
-
-## References
-
-- [Understanding Default Gateway: The Key to Network Communication — Video](https://www.youtube.com/watch?v=Ik-buVzjW3s&list=PLd1s-PEC5Pio&index=6)
-- [How Default Gateways Facilitate Network Communication — Video](https://www.youtube.com/watch?v=PqdrgoYb3Vc&list=PLd1s-PEC5Pio&index=7)
 
 ---
 
