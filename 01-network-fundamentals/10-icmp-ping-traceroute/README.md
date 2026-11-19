@@ -154,6 +154,7 @@ TTL prevents packets from circulating indefinitely if a routing loop occurs.
 
 For IPv6, the equivalent field is called **Hop Limit**. Routers decrement it in the same general way; an expired IPv6 Hop Limit is reported using ICMPv6 Time Exceeded.
 
+> [!NOTE]
 > TTL is not a counter that starts at zero and records the number of routers. The sender chooses an initial TTL, and routers decrement it as they forward the packet. The received TTL alone does not reliably reveal the exact hop count because the initial value may be unknown.
 
 ---
