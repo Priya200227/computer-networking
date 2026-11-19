@@ -1,7 +1,7 @@
 # Routing: How Packets Travel Across Networks
 
 >[!NOTE]
-> **Section:** Computer Networking - [Routing](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+> **Section:** Computer Networking - [Routing & packet Travel](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
 >
 > **Learning objective:** Understand how routers forward IP packets between networks, how switches deliver frames within a LAN, and how ARP and default gateways help devices communicate with local, remote, and cloud-hosted destinations.
 
