@@ -1,11 +1,11 @@
 # Network Inference, MAC Addresses - Structure and IP vs. MAC
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
+> **Section:** Computer Networking - [MAC Address](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT) , [IP vs MAC](https://youtu.be/sMDYh-II22Q?si=v8xHmElJn6yng7PP)
 >
 > **Learning objective:** Understand what a MAC address identifies, how it is structured, how it differs from an IP address, and how both work together during network communication.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -160,11 +160,6 @@ The discovered mapping can be stored temporarily in the ARP cache.
 | ARP | Resolves IPv4 addresses to link-layer addresses on the local link |
 
 **Core idea:** IP addressing helps determine where a packet needs to go; MAC addressing helps deliver the frame over the current local link.
-
-## References
-
-- [What Is a MAC Address? Understanding Its Structure and Purpose](https://youtu.be/jKWlJPpkp9o?si=OfX5f-Y3lhJOMpIT)
-- [IP vs. MAC Addresses](https://youtu.be/sMDYh-II22Q?si=v8xHmElJn6yng7PP)
 
 ---
 
