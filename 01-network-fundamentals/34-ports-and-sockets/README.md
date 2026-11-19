@@ -108,7 +108,7 @@ A simplified TCP client lifecycle:
 
 The TCP three-way handshake (SYN, SYN-ACK, ACK) establishes the TCP connection. It is not repeated before every application message.
 
-### Where the socket API fits
+### Where the socket API fits?
 
 The application calls the socket API to request communication. The operating system's networking stack performs transport/network processing such as TCP segmentation, retransmission, flow control and IP routing. A socket is an interface to that machinery—not a device that independently performs all those functions.
 
@@ -124,13 +124,13 @@ The application calls the socket API to request communication. The operating sys
 | Transport mechanisms | Retransmission, flow control and congestion control | No equivalent built-in reliability/flow-control service |
 | Common uses | Web traffic over TCP, database connections, file transfer, SSH | DNS queries, real-time media, gaming, QUIC transport |
 
-### Important TCP clarification
+### Important TCP clarification - 
 
 TCP provides a **byte stream**, not a message-oriented protocol. If an application writes two separate chunks, the receiving application is not guaranteed to read them as two matching chunks. Applications that need message boundaries must define framing (for example, length-prefixing or delimiters).
 
 TCP's reliability means it retransmits lost data and delivers bytes in order to the receiving application. It does not mean every connection will always succeed; network failures, resets and timeouts still occur.
 
-### Important UDP clarification
+### Important UDP clarification - 
 
 UDP is often described as “unreliable,” but that means UDP itself does not guarantee delivery, ordering or duplicate suppression. It does not mean every UDP packet is lost or corrupted. An application can build additional mechanisms on top of UDP when required. QUIC, for example, uses UDP as its underlying transport while implementing its own reliability and security mechanisms.
 
@@ -151,7 +151,7 @@ The server listens on port `5432`. The database host's firewall/security rules m
 
 This is why understanding ports and sockets is useful when diagnosing database connection errors: the database may be running, but the network path or port may still be blocked, misconfigured or unreachable.
 
-## 8. References
+## References
 
 - [IANA – Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml)
 - [RFC 6335 – Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number Registry](https://www.rfc-editor.org/rfc/rfc6335)
