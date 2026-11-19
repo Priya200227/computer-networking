@@ -5,7 +5,7 @@
 > 
 > **Purpose:** Build an end-to-end mental model of how a browser request travels from application code through the operating system and network, reaches a server, and returns a response.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking/01-networking-fundamentals) 
+[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
