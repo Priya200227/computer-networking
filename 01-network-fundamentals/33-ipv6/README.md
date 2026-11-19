@@ -199,27 +199,12 @@ Networks use transition techniques to support coexistence:
 - The IPv6 base header is fixed at 40 bytes; routers do not fragment packets.
 - Dual Stack, tunneling, and translation help IPv4 and IPv6 coexist.
 
-> **In one sentence:** IPv6 expands the Internet's address space and updates packet handling and neighbor discovery to support scalable IP communication.
+> [!NOTE]
+> IPv6 expands the Internet's address space and updates packet handling and neighbor discovery to support scalable IP communication.
 
 ---
 
-## 9. What You Should Learn Next
-
-The supplied notes introduce IPv6, but they are **not sufficient for a complete practical understanding**. Make sure you can explain and work through these topics:
-
-1. **IPv6 address types and scopes** - global unicast, link-local, unique local, multicast, anycast.
-2. **Prefix notation and subnetting** - especially `/64`, network prefixes, and interface identifiers.
-3. **SLAAC and Router Advertisements** - how hosts learn prefixes and default routers.
-4. **DHCPv6** — stateful vs stateless DHCPv6 and how it differs from DHCPv4.
-5. **NDP and ICMPv6** - Neighbor Solicitation, Neighbor Advertisement, Router Solicitation, Router Advertisement, and Duplicate Address Detection.
-6. **IPv6 packet header and extension headers** - including the Fragment header.
-7. **IPv6 routing and transition mechanisms** - dual stack, tunneling, and NAT64/DNS64.
-
-Prioritise address types, `/64` prefixes, SLAAC, NDP, and the IPv6 header first. You do not need to master every extension header or transition mechanism immediately.
-
----
-
-## 10. References
+## References
 
 - [RFC 8200 — Internet Protocol, Version 6 (IPv6) Specification](https://datatracker.ietf.org/doc/html/rfc8200)
 - [RFC 4291 — IP Version 6 Addressing Architecture](https://datatracker.ietf.org/doc/html/rfc4291)
