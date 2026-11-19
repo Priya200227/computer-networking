@@ -345,7 +345,7 @@ These are primary standards or official technical documentation.
 - **Microsoft Learn - `tracert` command.** Official Windows route-tracing command reference.  
    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert
 
-= **Linux man-pages - `ping(8)`.** Reference for the Linux ping utility.  
+- **Linux man-pages - `ping(8)`.** Reference for the Linux ping utility.  
    https://man7.org/linux/man-pages/man8/ping.8.html
 
 - **Linux man-pages - `traceroute(8)`.** Reference for the traceroute utility where provided by the relevant package.  
