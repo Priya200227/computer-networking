@@ -1,7 +1,7 @@
 # Address Resolution Protocol (ARP)
 
 > [!NOTE]
-> **Section:** Computer Networking — [ARP](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
+> **Section:** Computer Networking - [ARP](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
 >
 > **Learning objective:** Understand how ARP resolves an IPv4 address to a MAC address on a local network, how ARP requests and replies work, and how the ARP cache stores discovered mappings.
 
