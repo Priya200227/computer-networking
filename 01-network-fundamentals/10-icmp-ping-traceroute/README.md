@@ -1,10 +1,10 @@
 # ICMP, Ping, and Traceroute
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)
+> **Section:** Computer Networking - [Chai aur Networking](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)
 >
 > **Purpose:** Understand how ICMP communicates network-layer errors and diagnostic information, how `ping` uses ICMP Echo messages to test reachability and measure round-trip time, and how `traceroute`/`tracert` uses IP Time to Live (TTL) or Hop Limit values to discover responding routers along a network path.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -47,7 +47,7 @@ ICMP messages have their own **Type** and **Code** fields. The Type identifies t
 
 An IPv4 Destination Unreachable message has different Codes for different conditions, including network unreachable, host unreachable, and port unreachable.
 
-### Image 1 — ICMP messages, errors, and packet lifetime
+### Image 1 - ICMP messages, errors, and packet lifetime
 
 ![ICMP overview, errors, and TTL](./assests/01-icmp-overview.png)
 
@@ -77,7 +77,7 @@ At a high level:
 4. If the destination receives and permits the request, it may send an ICMP Echo Reply.
 5. The sender measures the elapsed time between sending the request and receiving the reply.
 
-### Image 2 — Reading ping output
+### Image 2 - Reading ping output
 
 ![Ping output and round-trip time](./assests/02-ping-output-and-round-trip-time.png)
 The screenshot shows a Windows `ping` command and its output.
@@ -115,7 +115,7 @@ A server or firewall may block ICMP while allowing HTTPS. Conversely, a host may
 
 Consider the simplified example in the diagram: a machine sends an Echo Request to a destination represented as `google.com`.
 
-### Image 3 — Ping across multiple routers
+### Image 3 - Ping across multiple routers
 
 ![How ping works across routers](./assests/03-how-ping-works-end-to-end.png)
 
@@ -169,7 +169,7 @@ For IPv6, the equivalent field is called **Hop Limit**. Routers decrement it in 
 5. The tool continues increasing the TTL, recording responses from successive hops.
 6. When a probe reaches the destination, the destination may respond in a way that lets the tool identify that it has been reached.
 
-### Image 4 — TTL expiry and route discovery
+### Image 4 - TTL expiry and route discovery
 
 ![Traceroute TTL and hop discovery](./assests/04-traceroute-ttl-and-hop-discovery.png)
 
@@ -327,30 +327,27 @@ These are primary standards or official technical documentation.
 2. **RFC 1122 — Requirements for Internet Hosts: Communication Layers.** Specifies host requirements for the Internet protocol suite, including ICMP behaviour.  
    https://www.rfc-editor.org/rfc/rfc1122
 
-3. **RFC 1812 — Requirements for IP Version 4 Routers.** Defines IPv4 router behaviour, including forwarding and ICMP error generation.  
+3. **RFC 1812 - Requirements for IP Version 4 Routers.** Defines IPv4 router behaviour, including forwarding and ICMP error generation.  
    https://www.rfc-editor.org/rfc/rfc1812
 
-4. **RFC 8200 — Internet Protocol, Version 6 (IPv6) Specification.** Defines IPv6 and its Hop Limit field.  
+4. **RFC 8200 - Internet Protocol, Version 6 (IPv6) Specification.** Defines IPv6 and its Hop Limit field.  
    https://www.rfc-editor.org/rfc/rfc8200
 
-5. **RFC 4443 — Internet Control Message Protocol (ICMPv6).** Defines ICMP for IPv6, including Echo and error messages.  
+5. **RFC 4443 - Internet Control Message Protocol (ICMPv6).** Defines ICMP for IPv6, including Echo and error messages.  
    https://www.rfc-editor.org/rfc/rfc4443
 
-6. **Microsoft Learn — `ping` command.** Official Windows command reference.  
+6. **Microsoft Learn - `ping` command.** Official Windows command reference.  
    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping
 
-7. **Microsoft Learn — `tracert` command.** Official Windows route-tracing command reference.  
+7. **Microsoft Learn - `tracert` command.** Official Windows route-tracing command reference.  
    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert
 
-8. **Linux man-pages — `ping(8)`.** Reference for the Linux ping utility.  
+8. **Linux man-pages - `ping(8)`.** Reference for the Linux ping utility.  
    https://man7.org/linux/man-pages/man8/ping.8.html
 
-9. **Linux man-pages — `traceroute(8)`.** Reference for the traceroute utility where provided by the relevant package.  
+9. **Linux man-pages - `traceroute(8)`.** Reference for the traceroute utility where provided by the relevant package.  
    https://man7.org/linux/man-pages/man8/traceroute.8.html
 
-### Video reference
-
-- [What Happens When You PING Google?](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)
-
 ---
+
 **Next:** [UDP](../../02-transport-layer/11-udp-transport/README.md)
