@@ -165,5 +165,5 @@ This is one of the techniques that helped extend the practical usability of IPv4
 -  [RFC 3022 – Traditional IP Network Address Translator](https://datatracker.ietf.org/doc/html/rfc3022)
 
 ---
-**Next:* [IP Packet Anatomy](../31-ip-packet-anatomy)
+**Next:** [IP Packet Anatomy](../31-ip-packet-anatomy)
 
