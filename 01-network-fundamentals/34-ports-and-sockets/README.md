@@ -2,6 +2,10 @@
 
 > **Learning objective:** Understand how transport-layer port numbers identify application endpoints, how operating systems expose network communication through sockets, and how TCP and UDP sockets differ.
 
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+
+---
+
 ## 1. Port numbers
 
 A **port number** is a 16-bit value in the TCP or UDP header. It helps the receiving host deliver transport-layer data to the appropriate application process or socket.
@@ -152,9 +156,8 @@ This is why understanding ports and sockets is useful when diagnosing database c
 - [RFC 768 – User Datagram Protocol (UDP)](https://www.rfc-editor.org/rfc/rfc768)
 - [Linux manual – socket(2)](https://man7.org/linux/man-pages/man2/socket.2.html)
 - [Python – Socket Programming HOWTO](https://docs.python.org/3/howto/sockets.html)
-- [PostgreSQL – Connection Parameters](https://www.postgresql.org/docs/current/libpq-connect.html)
 
 ---
 
-**Next topic:** Firewalls and security groups.
+**Next:** Firewalls and security groups.
 
