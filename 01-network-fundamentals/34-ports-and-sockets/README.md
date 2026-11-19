@@ -107,8 +107,6 @@ The application calls the socket API to request communication. The operating sys
 
 ## 4. TCP sockets vs UDP sockets
 
-![TCP vs UDP sockets](assets/tcp-vs-udp-sockets.png)
-
 | Feature | TCP socket | UDP socket |
 |---|---|---|
 | Communication model | Connection-oriented | Connectionless datagrams |
