@@ -1,11 +1,11 @@
 # Address Resolution Protocol (ARP)
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
+> **Section:** Computer Networking — [ARP](https://youtu.be/kDAnEyg9nCg?si=sgF39bBdRmovp-Am)
 >
 > **Learning objective:** Understand how ARP resolves an IPv4 address to a MAC address on a local network, how ARP requests and replies work, and how the ARP cache stores discovered mappings.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -39,14 +39,14 @@ Suppose Host A1 wants to communicate with Host A3. It knows the destination IPv4
 
 Suppose Host A1 (`192.168.1.2/24`) wants to send data to Host A3 (`192.168.1.4/24`).
 
-### Step 1 — Check the ARP Cache
+### Step 1 - Check the ARP Cache
 
 Host A1 first checks its ARP cache for an existing mapping of `192.168.1.4` to a MAC address.
 
 - If a valid entry exists, it can use that mapping.
 - If the entry is missing, it needs to perform ARP resolution.
 
-### Step 2 — Send an ARP Request
+### Step 2 - Send an ARP Request
 
 Host A1 broadcasts an ARP request asking:
 
@@ -60,7 +60,7 @@ FF:FF:FF:FF:FF:FF
 
 All devices in the same Layer 2 broadcast domain can receive the request.
 
-### Step 3 — Receive an ARP Reply
+### Step 3 - Receive an ARP Reply
 
 Host A3 recognizes its own IPv4 address and responds with its MAC address.
 
@@ -70,11 +70,11 @@ Host A3 recognizes its own IPv4 address and responds with its MAC address.
 
 The reply is normally sent directly (unicast) to Host A1.
 
-### Step 4 — Store the Mapping
+### Step 4 - Store the Mapping
 
 Host A1 stores the discovered IPv4-to-MAC mapping in its ARP cache.
 
-### Step 5 — Send the Data Frame
+### Step 5 - Send the Data Frame
 
 Host A1 can now send the IP packet inside a link-layer frame addressed to Host A3's MAC address.
 
