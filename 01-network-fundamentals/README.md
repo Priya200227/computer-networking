@@ -1,6 +1,6 @@
 # Network Fundamentals
 
-> IPv4 addressing, subnetting, local communication, routing, NAT and IP packet structure.
+> IPv4 addressing, subnetting, local communication, routing, NAT, and IP packet structure.
 
 [⬅️ Back to Computer Networking](../README.md)
 
@@ -17,4 +17,7 @@
 - [Icmp Ping Traceroute](./10-icmp-ping-traceroute/README.md)
 - [Nat](./30-nat/README.md)
 - [Ip Packet Anatomy](./31-ip-packet-anatomy/README.md)
+- [DHCP - DORA](../32-dhcp/README.md)
+- [IPv6](../33-ipv6/README.md)
+- [Port and Sockets](../34-ports-and-sockets/README.md)
 
