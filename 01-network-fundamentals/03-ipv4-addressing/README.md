@@ -1,11 +1,11 @@
 # IPv4 Addressing
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
+> **Section:** Computer Networking - [Ipv4](https://www.youtube.com/watch?v=8QJ8k7jd-K0&list=PLd1s-PEC5Pio&index=5)
 >
 > **Purpose:** Understand how IPv4 addresses identify network interfaces, how their 32-bit structure is represented in dotted-decimal notation, and how IPv4 addressing enables devices to communicate across local networks and routed networks.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
