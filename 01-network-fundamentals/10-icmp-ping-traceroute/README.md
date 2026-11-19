@@ -1,5 +1,6 @@
 # ICMP, Ping, and Traceroute
 
+>[!NOTE]
 > **Section:** Computer Networking - [Chai aur Networking](https://youtu.be/VzPFY40qAhQ?si=TZzJqRroCzU8ixEX)
 >
 > **Purpose:** Understand how ICMP communicates network-layer errors and diagnostic information, how `ping` uses ICMP Echo messages to test reachability and measure round-trip time, and how `traceroute`/`tracert` uses IP Time to Live (TTL) or Hop Limit values to discover responding routers along a network path.
