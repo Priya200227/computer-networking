@@ -1,11 +1,11 @@
 # OSI Model, TCP/IP Model, and Data Encapsulation
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
+> **Section:** Computer Networking — [OSI & TCP/IP Model](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
 >
 > **Learning objective:** Understand the OSI and TCP/IP models, their layers and responsibilities, and how data is encapsulated and transmitted between networked devices.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
