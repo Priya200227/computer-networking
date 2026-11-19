@@ -5,6 +5,8 @@
 >
 >**Purpose:** Understand the structure of an IPv4 packet, the purpose of each IP header field, and how IPv4 handles packet fragmentation.
 
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+
 ---
 
 ## 1. What is an IP Packet?
@@ -199,11 +201,11 @@ Because fields such as TTL change during forwarding, routers must update the hea
 
 ## References
 
-1. [RFC 791 – Internet Protocol (IPv4)](https://datatracker.ietf.org/doc/html/rfc791)
-2. [RFC 790 - Assigned Numbers (Page - 6)](https://datatracker.ietf.org/doc/html/rfc790)
-3. [RFC 2474 – Differentiated Services Field](https://datatracker.ietf.org/doc/html/rfc2474)
-4. [IANA – Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+- [RFC 791 – Internet Protocol (IPv4)](https://datatracker.ietf.org/doc/html/rfc791)
+- [RFC 790 - Assigned Numbers (Page - 6)](https://datatracker.ietf.org/doc/html/rfc790)
+- [RFC 2474 – Differentiated Services Field](https://datatracker.ietf.org/doc/html/rfc2474)
+- [IANA – Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 
 ---
 
-[⬅️ Back to Computer Networking](../README.md)
+**Next:**[DHCP](../32-dhcp/README.md)
