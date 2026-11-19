@@ -186,10 +186,10 @@ DHCP Message
 
 | Layer | Protocol / Data | Purpose |
 |---|---|---|
-| L7 — Application | DHCP | Discover, Offer, Request, ACK |
-| L4 — Transport | UDP | Uses client/server ports 68 and 67 |
-| L3 — Network | IPv4 | Carries source and destination IP addresses |
-| L2 — Data Link | Ethernet | Carries source and destination MAC addresses |
+| L7 - Application | DHCP | Discover, Offer, Request, ACK |
+| L4 - Transport | UDP | Uses client/server ports 68 and 67 |
+| L3 - Network | IPv4 | Carries source and destination IP addresses |
+| L2 - Data Link | Ethernet | Carries source and destination MAC addresses |
 
 ### DHCP Discover - packet details
 
