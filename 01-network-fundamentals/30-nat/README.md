@@ -70,7 +70,8 @@ The router translates the packet's source address from the private IP to its pub
 6. The router checks its translation table and identifies the original internal device.
 7. The router translates the destination back to the internal IP and forwards the response.
 
-**Key point:** The router maintains translation information so that response traffic can be delivered to the correct internal device.
+>[!Key point:]
+>The router maintains translation information so that response traffic can be delivered to the correct internal device.
 
 ---
 
