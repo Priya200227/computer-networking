@@ -1,11 +1,11 @@
 # Routing: How Packets Travel Across Networks
 
 >[!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
+> **Section:** Computer Networking - [Chai aur Networking](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
 >
 > **Learning objective:** Understand how routers forward IP packets between networks, how switches deliver frames within a LAN, and how ARP and default gateways help devices communicate with local, remote, and cloud-hosted destinations.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -80,7 +80,7 @@ Example routing table:
 >
 > IPv6 uses Neighbor Discovery Protocol (NDP) instead of ARP.
 
-## 3. Scenario A — Communication Within the Same Network
+## 3. Scenario A - Communication Within the Same Network
 
 ![Scenario A: A sends to D on the same local network and uses ARP if needed](./assests/02-same-network-arp-a-to-d.png)
 
@@ -118,7 +118,7 @@ Assume both A and D belong to the same subnet.
 >
 > The default gateway is not needed for this ordinary same-subnet communication.
 
-## 4. Scenario B — Communication Between Different Networks
+## 4. Scenario B -Communication Between Different Networks
 
 ![Scenario B: C sends to X on a different subnet through the default gateway](./assests/03-cross-network-arp-c-to-x.png)
 
@@ -161,7 +161,7 @@ The IP source and destination addresses generally remain unchanged during ordina
 >
 > Routers also decrement the IPv4 TTL and update the IPv4 header checksum when forwarding packets.
 
-## 5. Scenario C — Communication With a Remote AWS EC2 Instance
+## 5. Scenario C - Communication With a Remote AWS EC2 Instance
 
 ![Scenario C: C sends toward a remote AWS EC2 instance through Internet routers](./assests/04-internet-and-aws-ec2-routing.png)
 
@@ -239,7 +239,6 @@ The complete communication process:
 
 - [Amazon VPC — Configure Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 - [Amazon VPC — Internet Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
-- [Reference Video — How Routing Determines Your Data's Journey Across Networks](https://youtu.be/GBhaNXK-ows?si=MQEk14etHW1qwOwW)
 
 ---
 
