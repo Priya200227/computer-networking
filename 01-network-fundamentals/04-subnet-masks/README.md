@@ -1,7 +1,7 @@
 # Subnet Masks
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=KVujI1fsQQo&list=PLd1s-PEC5Pio&index=6)
+> **Section:** Computer Networking - [Subnet Masks](https://www.youtube.com/watch?v=KVujI1fsQQo&list=PLd1s-PEC5Pio&index=6)
 >
 > **Purpose:** Understand how subnet masks and CIDR prefixes divide an IPv4 address into network and host portions, how to calculate a network address, and how a device determines whether a destination belongs to its local subnet or requires forwarding through a router.
 
