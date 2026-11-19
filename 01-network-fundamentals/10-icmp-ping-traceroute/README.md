@@ -20,7 +20,8 @@ Two familiar utilities use ICMP-related behaviour:
 
 ICMP does **not** use TCP or UDP port numbers. It is carried directly inside IP packets.
 
-> [!Important:] ICMP diagnostics are evidence about network behaviour, not absolute proof that a host or application is healthy. Firewalls, filtering, rate limiting, routing policies, and return-path problems can affect results.
+> [!IMPORTANT]
+> ICMP diagnostics are evidence about network behaviour, not absolute proof that a host or application is healthy. Firewalls, filtering, rate limiting, routing policies, and return-path problems can affect results.
 
 ---
 
