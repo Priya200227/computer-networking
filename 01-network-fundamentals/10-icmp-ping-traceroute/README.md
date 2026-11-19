@@ -324,31 +324,31 @@ For application-level diagnosis, use tools appropriate to the service—for exam
 
 These are primary standards or official technical documentation.
 
-1. **RFC 792 — Internet Control Message Protocol (ICMP).** Defines ICMP for IPv4, including Echo, Destination Unreachable, and Time Exceeded messages.  
+- **RFC 792 — Internet Control Message Protocol (ICMP).** Defines ICMP for IPv4, including Echo, Destination Unreachable, and Time Exceeded messages.  
    https://www.rfc-editor.org/rfc/rfc792
 
-2. **RFC 1122 — Requirements for Internet Hosts: Communication Layers.** Specifies host requirements for the Internet protocol suite, including ICMP behaviour.  
+- **RFC 1122 — Requirements for Internet Hosts: Communication Layers.** Specifies host requirements for the Internet protocol suite, including ICMP behaviour.  
    https://www.rfc-editor.org/rfc/rfc1122
 
-3. **RFC 1812 - Requirements for IP Version 4 Routers.** Defines IPv4 router behaviour, including forwarding and ICMP error generation.  
+- **RFC 1812 - Requirements for IP Version 4 Routers.** Defines IPv4 router behaviour, including forwarding and ICMP error generation.  
    https://www.rfc-editor.org/rfc/rfc1812
 
-4. **RFC 8200 - Internet Protocol, Version 6 (IPv6) Specification.** Defines IPv6 and its Hop Limit field.  
+- **RFC 8200 - Internet Protocol, Version 6 (IPv6) Specification.** Defines IPv6 and its Hop Limit field.  
    https://www.rfc-editor.org/rfc/rfc8200
 
-5. **RFC 4443 - Internet Control Message Protocol (ICMPv6).** Defines ICMP for IPv6, including Echo and error messages.  
+- **RFC 4443 - Internet Control Message Protocol (ICMPv6).** Defines ICMP for IPv6, including Echo and error messages.  
    https://www.rfc-editor.org/rfc/rfc4443
 
-6. **Microsoft Learn - `ping` command.** Official Windows command reference.  
+- **Microsoft Learn - `ping` command.** Official Windows command reference.  
    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping
 
-7. **Microsoft Learn - `tracert` command.** Official Windows route-tracing command reference.  
+- **Microsoft Learn - `tracert` command.** Official Windows route-tracing command reference.  
    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert
 
-8. **Linux man-pages - `ping(8)`.** Reference for the Linux ping utility.  
+= **Linux man-pages - `ping(8)`.** Reference for the Linux ping utility.  
    https://man7.org/linux/man-pages/man8/ping.8.html
 
-9. **Linux man-pages - `traceroute(8)`.** Reference for the traceroute utility where provided by the relevant package.  
+- **Linux man-pages - `traceroute(8)`.** Reference for the traceroute utility where provided by the relevant package.  
    https://man7.org/linux/man-pages/man8/traceroute.8.html
 
 ---
