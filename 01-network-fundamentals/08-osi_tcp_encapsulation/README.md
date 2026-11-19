@@ -1,7 +1,7 @@
 # OSI Model, TCP/IP Model, and Data Encapsulation
 
 > [!NOTE]
-> **Section:** Computer Networking — [OSI & TCP/IP Model](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
+> **Section:** Computer Networking - [OSI & TCP/IP Model](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
 >
 > **Learning objective:** Understand the OSI and TCP/IP models, their layers and responsibilities, and how data is encapsulated and transmitted between networked devices.
 
@@ -208,7 +208,6 @@ At the receiver, the process happens in reverse through decapsulation.
 - [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
 - [ISO 7498-1 — OSI Basic Reference Model](https://www.iso.org/standard/20269.html)
 - [Cisco — TCP/IP Overview](https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf)
-- [Reference Video — What Makes OSI and TCP/IP Models Different](https://youtu.be/ZOLkWBVMcwU?si=ZLqjeaR1zeGbco4D)
 
 ---
 
