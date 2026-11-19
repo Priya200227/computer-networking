@@ -1,11 +1,11 @@
-# IPv6 — Internet Protocol Version 6
+# IPv6 - Internet Protocol Version 6
 
 > [!NOTE]
 > **Section:** Computer Networking - [IPv6 Addressing](https://youtu.be/G4gQJGfHFsM?si=9gAr5iJtWWewKss3)
 >   
 > **Learning objective:** Understand why IPv6 was introduced, how IPv6 addresses are written and shortened, how IPv6 differs from IPv4, and the key mechanisms used for IPv6 addressing and communication.
 
-[← Back to Computer Networking Repository](../../README.md)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -40,7 +40,7 @@ Each hexadecimal digit represents 4 bits. Therefore:
 
 ### 2.1 IPv6 address shortening rules
 
-**Rule 1 — Remove leading zeros in each group**
+**Rule 1 - Remove leading zeros in each group**
 
 ```text
 2001:0db8:0000:0000:0000:ff00:0042:8329
@@ -50,7 +50,7 @@ Each hexadecimal digit represents 4 bits. Therefore:
 
 Only zeros at the beginning of an individual group can be removed. Do not remove zeros at the end of a group.
 
-**Rule 2 — Replace one consecutive sequence of zero groups with `::`**
+**Rule 2 - Replace one consecutive sequence of zero groups with `::`**
 
 ```text
 2001:db8:0:0:0:ff00:42:8329
@@ -147,7 +147,7 @@ NDP helps devices:
 
 ---
 
-## 6. IPv6 Header — What Changes?
+## 6. IPv6 Header - What Changes?
 
 The IPv6 base header is simpler than the IPv4 header and has a fixed size of **40 bytes**.
 
@@ -207,13 +207,13 @@ Networks use transition techniques to support coexistence:
 
 The supplied notes introduce IPv6, but they are **not sufficient for a complete practical understanding**. Make sure you can explain and work through these topics:
 
-1. **IPv6 address types and scopes** — global unicast, link-local, unique local, multicast, anycast.
-2. **Prefix notation and subnetting** — especially `/64`, network prefixes, and interface identifiers.
-3. **SLAAC and Router Advertisements** — how hosts learn prefixes and default routers.
+1. **IPv6 address types and scopes** - global unicast, link-local, unique local, multicast, anycast.
+2. **Prefix notation and subnetting** - especially `/64`, network prefixes, and interface identifiers.
+3. **SLAAC and Router Advertisements** - how hosts learn prefixes and default routers.
 4. **DHCPv6** — stateful vs stateless DHCPv6 and how it differs from DHCPv4.
-5. **NDP and ICMPv6** — Neighbor Solicitation, Neighbor Advertisement, Router Solicitation, Router Advertisement, and Duplicate Address Detection.
-6. **IPv6 packet header and extension headers** — including the Fragment header.
-7. **IPv6 routing and transition mechanisms** — dual stack, tunneling, and NAT64/DNS64.
+5. **NDP and ICMPv6** - Neighbor Solicitation, Neighbor Advertisement, Router Solicitation, Router Advertisement, and Duplicate Address Detection.
+6. **IPv6 packet header and extension headers** - including the Fragment header.
+7. **IPv6 routing and transition mechanisms** - dual stack, tunneling, and NAT64/DNS64.
 
 Prioritise address types, `/64` prefixes, SLAAC, NDP, and the IPv6 header first. You do not need to master every extension header or transition mechanism immediately.
 
@@ -230,5 +230,5 @@ Prioritise address types, `/64` prefixes, SLAAC, NDP, and the IPv6 header first.
 
 ---
 
-**Next topic:** Add the next topic link here when its README is ready.
+**Next:** [Port and Sockets](../34-ports-and-sockets/README.md)
 
