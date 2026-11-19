@@ -1,11 +1,11 @@
 # Default Gateway
 
 > [!NOTE]
-> **Section:** Computer Networking — [Chai aur Networking](https://www.youtube.com/watch?v=Ik-buVzjW3s&list=PLd1s-PEC5Pio&index=6)
+> **Section:** Computer Networking - [Default Gateway](https://www.youtube.com/watch?v=Ik-buVzjW3s&list=PLd1s-PEC5Pio&index=6)
 >
 > **Purpose:** Understand how a host uses its IP address and subnet mask to determine whether a destination is local or remote, why traffic destined for another network is sent to a default gateway, and how routers forward packets between different IP networks.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -55,7 +55,7 @@ When the laptop needs to reach a destination outside its local subnet, it forwar
 > [!NOTE]
 > The default-gateway setting is usually supplied through network configuration, often using **DHCP** on a home network. It is not discovered simply because a device connects to a router.
 
-## 3. Scenario 1 — Destination Is in the Same Network
+## 3. Scenario 1 - Destination Is in the Same Network
 
 Suppose **Host A1** (`192.168.1.2`) wants to send data to **Host A3** (`192.168.1.4`).
 
@@ -94,7 +94,7 @@ The switch or wireless access point may forward the frame across the local netwo
 
 Here, "directly" means that the host does not route the packet through its default gateway. It does not necessarily mean there is a dedicated physical cable between the two devices.
 
-## 4. Scenario 2 — Destination Is in a Different Network
+## 4. Scenario 2 - Destination Is in a Different Network
 
 Now suppose Host A1 wants to send data to **Host B3**.
 
@@ -140,7 +140,7 @@ Therefore, the devices belong to **different IPv4 subnets**.
 >
 > During ordinary routing, the packet's destination IP remains `192.168.2.4`. NAT, if configured, can modify IP addresses, but NAT is not required simply because a router forwards traffic between two networks.
 
-## 5. The Key Decision — Local or Remote?
+## 5. The Key Decision - Local or Remote?
 
 A host uses its IP configuration, particularly its IP address and subnet mask, to determine whether a destination is local.
 
