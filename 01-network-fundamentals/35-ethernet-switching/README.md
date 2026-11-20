@@ -1,5 +1,6 @@
 # Ethernet Switching Fundamentals
 
+>[!NOTE]
 > **Learning objective:** Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also explains unknown-unicast flooding, MAC address aging, MAC flooding attacks, MAC address flapping, VLAN-aware switching, and the difference between Layer 2 and Layer 3 switches.
 
 ## Why this topic matters
@@ -32,7 +33,8 @@ A switch is more selective than an Ethernet hub: it can send a known unicast fra
 | Shared bandwidth; traditionally half-duplex | Dedicated port bandwidth; commonly full-duplex |
 | Does not selectively forward a frame to one destination port | Forwards known unicast frames to the destination port |
 
-**Important:** A hub is a Layer 1 repeater, not an intelligent frame-forwarding device. Hubs are largely obsolete in modern Ethernet networks.
+> [!IMPORTANT] 
+> A hub is a Layer 1 repeater, not an intelligent frame-forwarding device. Hubs are largely obsolete in modern Ethernet networks.
 
 ---
 
@@ -128,7 +130,8 @@ PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learn
 
 The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in its table and forwards the frame only through Port 3.
 
-**Key takeaway:** The switch learns source MAC addresses; it looks up destination MAC addresses to make forwarding decisions.
+> [!NOTE] 
+> The switch learns source MAC addresses; it looks up destination MAC addresses to make forwarding decisions.
 
 ---
 
@@ -183,7 +186,8 @@ Why aging is useful:
 
 If an entry has aged out and a frame later arrives for that destination, the switch may treat the destination as unknown and flood the frame within the VLAN.
 
-**Note:** The aging interval is configurable and vendor/platform dependent. Do not treat a particular value, such as 300 seconds, as a universal Ethernet standard.
+> [!NOTE] 
+> The aging interval is configurable and vendor/platform dependent. Do not treat a particular value, such as 300 seconds, as a universal Ethernet standard.
 
 ---
 
