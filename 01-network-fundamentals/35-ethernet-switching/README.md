@@ -314,24 +314,7 @@ A **broadcast domain** is the Layer 2 network area in which a broadcast frame is
 
 ---
 
-## 13. What you should be able to explain
-
-- [ ] Explain the difference between a hub and a switch.
-- [ ] Explain how a switch learns a source MAC address.
-- [ ] Explain how the MAC address table is used to forward frames.
-- [ ] Walk through PC1 sending its first frame to an unknown PC3 destination.
-- [ ] Explain unknown-unicast flooding and why the ingress port is excluded.
-- [ ] Explain why the reply allows the switch to learn PC3's MAC address.
-- [ ] Explain MAC address aging.
-- [ ] Explain how two switches learn MAC addresses across an inter-switch link.
-- [ ] Distinguish normal unknown-unicast flooding from a MAC flooding attack.
-- [ ] Explain port security at a conceptual level.
-- [ ] Explain MAC address flapping.
-- [ ] Explain why MAC learning is VLAN-aware.
-- [ ] Distinguish Layer 2 and Layer 3 switches.
-- [ ] Distinguish collision domains from broadcast domains.
-
-## 14. References
+## References
 
 1. [Cisco — Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) — source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
 2. [Cisco — Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) — explains unknown-unicast flooding and why it occurs.
@@ -339,15 +322,10 @@ A **broadcast domain** is the Layer 2 network area in which a broadcast frame is
 4. [Cisco Press — Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) — switching fundamentals and MAC address table overflow attacks.
 5. [Cisco — Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) — port security and CAM table overflow mitigation.
 
-## 15. Related topics in this repository
+## Related topics in this repository
 
 - [MAC Address](../06-mac-address/README.md)
 - [IP Address vs MAC Address](../07-ip-vs-mac-address/README.md)
 - [ARP](../08-arp/README.md)
 - VLAN — link this to the existing VLAN README once its exact path is confirmed.
-- STP — a related follow-up topic if you decide to study Layer 2 loop prevention.
-
----
-
-**Scope note:** This README focuses on understanding Ethernet switching behaviour. It does not cover switch CLI configuration, detailed STP operation, VLAN configuration commands, enterprise campus design, or advanced switch hardware architecture. Those are separate topics.
-
+  
