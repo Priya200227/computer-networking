@@ -16,6 +16,8 @@ A **firewall** is a hardware, software or cloud-based security control that moni
 
 A firewall can inspect traffic entering a protected environment (**ingress**) or leaving it (**egress**).
 
+![What is Firewall](assets/firewall-security-operations-center.png)
+
 ### Why use firewalls?
 
 - **Access control:** restrict which systems and services can communicate.
