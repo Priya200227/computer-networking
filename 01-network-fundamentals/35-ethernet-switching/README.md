@@ -70,7 +70,7 @@ A switch is more selective than an Ethernet hub: it can send a **known unicast**
 
 ---
 
-## 2. 🧠 The MAC Address Table (CAM Table)
+## 2. The MAC Address Table (CAM Table)
 
 A switch maintains a §§**MAC address table**§§, commonly called a §§**CAM table**§§ (Content Addressable Memory table).
 
@@ -86,7 +86,7 @@ A simplified entry looks like this:
 
 The actual table can contain additional information, such as whether an entry is dynamic or static and its aging information. The same MAC address can have separate entries in different **VLAN** contexts.
 
-### How does a switch learn a MAC address?
+### *How does a switch learn a MAC address?*
 
 A switch learns from the §§**source MAC address**§§ of an incoming Ethernet frame.
 
@@ -99,7 +99,7 @@ For example:
 
 The switch does not need to know the destination device before learning the source. Learning happens as frames arrive.
 
-### How does the switch forward a frame?
+### *How does the switch forward a frame?*
 
 After learning/refreshing the **source MAC address**, the switch checks the frame's §§**destination MAC address**§§.
 
@@ -114,7 +114,7 @@ Multicast forwarding can depend on switch configuration and features such as IGM
 
 ---
 
-## 3. 📦 Example: PC1 Sends a Frame to PC3
+## 3. Example: PC1 Sends a Frame to PC3
 
 Assume four PCs are connected to one switch:
 
@@ -125,7 +125,7 @@ Assume four PCs are connected to one switch:
 
 Initially, the switch's **MAC address table** is empty.
 
-### Step 1 — PC1 sends a frame
+### Step 1 - PC1 sends a frame
 
 PC1 sends an Ethernet frame addressed to PC3.
 
@@ -135,13 +135,13 @@ The switch receives the frame on Port 1 and learns PC1's **source** MAC address:
 |---|---|
 | PC1 MAC | Port 1 |
 
-### Step 2 — The switch looks up PC3
+### Step 2 - The switch looks up PC3
 
 The switch checks the **destination MAC address**, but PC3 is not yet in the table.
 
 The destination is an §§**un**known unicast****§§ destination.
 
-### Step 3 — The switch floods the frame
+### Step 3 - The switch floods the frame
 
 The switch sends a copy of the frame out the other eligible ports in the same **VLAN**, excluding Port 1.
 
@@ -150,7 +150,7 @@ PC2 and PC4 receive the frame but discard it because the **destination MAC addre
 > [!NOTE]
 > Flooding does not send the frame back through the port on which it arrived. The ingress port is excluded.
 
-### Step 4 — PC3 replies
+### Step 4 - PC3 replies
 
 PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learns PC3's **source MAC address**:
 
@@ -159,7 +159,7 @@ PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learn
 | PC1 MAC | Port 1 |
 | PC3 MAC | Port 3 |
 
-### Step 5 — Subsequent frames are forwarded directly
+### Step 5 - Subsequent frames are forwarded directly
 
 The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in its table and forwards the frame only through Port 3.
 
@@ -168,11 +168,11 @@ The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in it
 
 ---
 
-## 4. 🚨 Unknown-Unicast Flooding vs MAC Flooding Attack
+## 4. Unknown-Unicast Flooding vs MAC Flooding Attack
 
 These terms sound similar but describe different things.
 
-### Unknown-unicast flooding — normal switch behaviour
+### Unknown-unicast flooding - normal switch behaviour
 
 This happens when a switch receives a unicast frame but does not have an entry for its **destination MAC address** in the relevant **VLAN**'s **MAC address table**.
 
@@ -206,7 +206,7 @@ Port security is a mitigation, not a complete security strategy. Its configurati
 
 ---
 
-## 5. ⏳ MAC Address Aging
+## 5. MAC Address Aging
 
 Dynamic MAC address entries are not permanent.
 
@@ -225,7 +225,7 @@ If an entry has aged out and a frame later arrives for that destination, the swi
 
 ---
 
-## 6. 🔗 MAC Address Learning Across Multiple Switches
+## 6. MAC Address Learning Across Multiple Switches
 
 Switches learn MAC addresses from frames they receive, including frames arriving from another switch.
 
@@ -247,7 +247,7 @@ Both switches build their own forwarding information. They do not need to exchan
 
 ---
 
-## 7. ⚠️ MAC Address Flapping
+## 7. MAC Address Flapping
 
 §§**MAC address flapping**§§ occurs when a switch repeatedly learns the same MAC address on different ports over a short period.
 
@@ -264,7 +264,7 @@ Do not confuse **MAC address flapping** with a normal device move. A single legi
 
 ---
 
-## 8. 🧩 CAM Table and **TCAM** — Are They the Same?
+## 8. CAM Table and **TCAM** - Are They the Same?
 
 They are related hardware concepts, but they are not interchangeable.
 
@@ -275,7 +275,7 @@ For this topic, remember the distinction only. You do not need to study switch A
 
 ---
 
-## 9. 🏷️ **VLAN**-Aware MAC Address Learning
+## 9. **VLAN**-Aware MAC Address Learning
 
 A switch's MAC forwarding decision is made in a **VLAN** context.
 
@@ -296,7 +296,7 @@ This connects directly to the earlier **VLAN** topic: ****VLAN**s separate **bro
 
 ---
 
-## 10. 🌐 Layer 2 Switch vs Layer 3 Switch
+## 10. Layer 2 Switch vs Layer 3 Switch
 
 | **Layer 2 switch** | **Layer 3 switch** |
 |---|---|
@@ -309,14 +309,14 @@ A **Layer 3 switch** is also called a **multilayer switch**. It can perform inte
 
 ---
 
-## 11. 🔍 Collision Domains and Broadcast Domains
+## 11. Collision Domains and Broadcast Domains
 
 ### Collision domain
 
 A §§**collision domain**§§ is a network segment in which devices share a medium where simultaneous transmissions can collide.
 
 - A traditional Ethernet hub places all connected devices in one shared **collision domain**.
-- A switch separates **collision domain**s by port in the traditional Ethernet model.
+- A switch separates **collision domains** by port in the traditional Ethernet model.
 - Modern switched Ethernet links commonly operate full-duplex, so ordinary Ethernet collisions do not occur on those links.
 
 ### Broadcast domain
@@ -332,7 +332,7 @@ A §§**broadcast domain**§§ is the Layer 2 network area in which a broadcast 
 
 ---
 
-## 12. ⚡ Quick Revision
+## 12. Quick Revision
 
 | Question | Short answer |
 |---|---|
@@ -351,32 +351,11 @@ A §§**broadcast domain**§§ is the Layer 2 network area in which a broadcast 
 
 ---
 
-## 13. ✅ Learning Checklist
+## References
 
-- [ ] Explain the difference between a hub and a switch.
-- [ ] Explain how a switch learns a **source MAC address**.
-- [ ] Explain how the **MAC address table** is used to forward frames.
-- [ ] Walk through PC1 sending its first frame to an unknown PC3 destination.
-- [ ] Explain **unknown-unicast flooding** and why the ingress port is excluded.
-- [ ] Explain why the reply allows the switch to learn PC3's MAC address.
-- [ ] Explain MAC address aging.
-- [ ] Explain how two switches learn MAC addresses across an inter-switch link.
-- [ ] Distinguish normal **unknown-unicast flooding** from a **MAC flooding attack**.
-- [ ] Explain **port security** at a conceptual level.
-- [ ] Explain **MAC address flapping**.
-- [ ] Explain why MAC learning is **VLAN**-aware.
-- [ ] Distinguish Layer 2 and **Layer 3 switch**es.
-- [ ] Distinguish **collision domain**s from **broadcast domain**s.
+1. [Cisco - Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) - source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
+2. [Cisco - Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) - explains **unknown-unicast flooding** and why it occurs.
+3. [Cisco - CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) - MAC learning, **VLAN** context, CAM entries and flooding.
+4. [Cisco Press - Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) - switching fundamentals and **MAC address table** overflow attacks.
+5. [Cisco - Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) - **port security** and **CAM table** overflow mitigation.
 
-## 14. 📚 References
-
-1. [Cisco — Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) — source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
-2. [Cisco — Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) — explains **unknown-unicast flooding** and why it occurs.
-3. [Cisco — CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) — MAC learning, **VLAN** context, CAM entries and flooding.
-4. [Cisco Press — Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) — switching fundamentals and **MAC address table** overflow attacks.
-5. [Cisco — Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) — **port security** and **CAM table** overflow mitigation.
-
----
-
-> [!NOTE]
-> **Scope:** This README focuses on understanding Ethernet switching behaviour. It does not cover switch CLI configuration, detailed STP operation, **VLAN** configuration commands, enterprise campus design, or advanced switch hardware architecture. Those are separate topics.
