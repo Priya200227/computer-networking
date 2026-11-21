@@ -1,7 +1,5 @@
 # Proxies and Reverse Proxies
 
-**How intermediary servers sit between clients, the internet, and backend applications**
-
 > [!NOTE]
 >
 > **Section:** Computer Networking - [Source 1](https://youtu.be/2fsilBrlNsY?si=c-DrzkR7hvV2u1wh) , [Source 2](https://youtu.be/HrG0MHkSsCA?si=By0hAbTfVMbhumzL)
