@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
-> **Section:** Computer Networking - []()
+> **Section:** Computer Networking - [Source 1](https://youtu.be/2fPgKvDBfbs) , [Source 2]((https://youtu.be/NbkPRn1mqlU)
 > 
 > **Learning objective:** Understand what a VPC is, how it relates to a public cloud, how subnets divide its IP space, how route tables direct traffic, and how internet/VPN connectivity is provided. The examples use AWS terminology because the reference documentation supplied for this topic is AWS documentation.
 
@@ -21,7 +21,7 @@ A company has two broad options:
 
 For example, an organization can run its web application, application servers and database on its own hardware—or deploy those resources using cloud services.
 
-> [!IMPORTANT DISTINCTION]
+> [!IMPORTANT]
 
 > The cloud is not literally “just someone else's computer” from an architecture point of view. A cloud provider operates large physical data centres and exposes computing, storage and networking capabilities as services. Customers provision and manage resources through a console, CLI, API or infrastructure-as-code tools.
 
@@ -80,7 +80,7 @@ A VPC brings those concepts together in a cloud environment.
 
 ---
 
-## 4. VPC CIDR and subnets
+## 4. VPC, CIDR and subnets
 
 When creating a VPC, you specify an IP address range using CIDR notation.
 
@@ -259,7 +259,7 @@ A route table can also contain routes to NAT Gateways, VPN connections, VPC peer
 - A subnet uses the main route table by default unless you explicitly associate it with another route table.
 - Multiple subnets can use the same route table.
 
-### Longest-prefix match — connect it to your earlier lesson
+### Longest-prefix match - connect it to your earlier lesson
 
 If multiple routes match a destination, AWS selects the most specific matching route: the **longest-prefix match**.
 
@@ -287,7 +287,7 @@ For example, an application running in AWS may need to retrieve data from a data
 
 ---
 
-## 10. Security inside a VPC — how the pieces fit
+## 10. Security inside a VPC - how the pieces fit
 
 You have already studied firewalls and have a separate topic for security groups and network ACLs. Here is their place in the VPC picture:
 
@@ -306,96 +306,16 @@ Do not mix up routing and filtering:
 
 ---
 
-## 11. What the two videos contribute
+## References
 
-### PowerCert Animated Videos
-
-The video introduces:
-
-- Public cloud vs on-premises infrastructure.
-- VPC as an isolated virtual network in a public cloud.
-- The use of subnets to separate web-facing and database resources.
-- Internet Gateway and route-table configuration for internet connectivity.
-- VPN connectivity for access to private resources.
-- The security, scalability and cost benefits of cloud infrastructure.
-
-**Clarification:** The video's apartment-building analogy is useful for understanding logical separation, but a VPC is not a physically separate building or dedicated set of physical servers.
-
-### IBM Technology
-
-The video emphasizes the networking functions that make a virtual network useful:
-
-- Network segmentation.
-- Routing between segments when permitted.
-- Firewall functions to filter traffic.
-- NAT for internet connectivity.
-- VPN connectivity to an enterprise network.
-- Provisioning network functions through cloud services, UI, CLI or APIs instead of manually managing physical appliances.
-
-This is the important architectural idea: **the cloud provider exposes networking capabilities as services, while you configure how those capabilities connect and control your workloads.**
-
----
-
-## 12. What you should know — and what you can skip for now
-
-### Must understand
-
-- [ ] What public cloud means.
-- [ ] What a VPC is and what logical isolation means.
-- [ ] VPC CIDR vs subnet CIDR.
-- [ ] Why subnets are created.
-- [ ] AWS subnet and Availability Zone relationship.
-- [ ] Public subnet vs private subnet based on routing.
-- [ ] What an Internet Gateway does.
-- [ ] What a NAT Gateway does.
-- [ ] How a subnet route table directs traffic.
-- [ ] How longest-prefix match applies to VPC routes.
-- [ ] How a Site-to-Site VPN connects on-premises and cloud networks.
-- [ ] Difference between routing and security filtering.
-
-### Skip for now
-
-These are useful later, but not necessary to understand the basic VPC architecture:
-
-- Advanced VPC peering and complex transitive routing.
-- Transit Gateway architecture.
-- Direct Connect design.
-- VPC Flow Logs analysis.
-- Traffic Mirroring.
-- IPv6-only subnet architecture.
-- Advanced endpoint policies and private service connectivity.
-- Multi-account network architecture.
-- Infrastructure-as-code implementation details.
-
-**Your target is to understand how an application is placed inside a cloud network and how its traffic reaches other services—not to become an AWS network specialist.**
-
----
-
-## 13. References
-
-### Videos
-
-1. [Virtual Private Cloud (VPC) Explained — PowerCert Animated Videos](https://youtu.be/2fPgKvDBfbs)
-2. [What is a Virtual Private Cloud? — IBM Technology](https://youtu.be/NbkPRn1mqlU)
-
-### AWS documentation
-
-1. [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
-2. [How Amazon VPC works](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)
-3. [Subnets for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
-4. [Subnet route tables](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html)
-5. [Enable internet access for a VPC using an Internet Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
-6. [Connect to the internet or other networks using NAT devices](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat.html)
-7. [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html)
-8. [Compare security groups and network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html)
-
----
-
-<div align="center">
-
-**Cloud Networking → Virtual Private Cloud (VPC)**
-
-[⬅ Back to Computer Networking Repository](../README.md)
+- [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [How Amazon VPC works](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)
+- [Subnets for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html)
+- [Subnet route tables](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html)
+- [Enable internet access for a VPC using an Internet Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
+- [Connect to the internet or other networks using NAT devices](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat.html)
+- [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html)
+- [Compare security groups and network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html)
 
 </div>
 
