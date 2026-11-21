@@ -176,11 +176,9 @@ You only need to recognize these names and their broad roles at this stage. Do n
 
 ---
 
-## References and learning sources
+## References
 
-### Videos used as learning inputs
-
-- [NGINX — Reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy) — how NGINX forwards requests and responses.
-- [Cloudflare - Reverse Proxy](https://www.cloudflare.com/en-in/learning/cdn/glossary/reverse-proxy/?utm_source=chatgpt.com)
+- [NGINX — Reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy) - how NGINX forwards requests and responses.
+- [Cloudflare - Reverse Proxy](https://www.cloudflare.com/en-in/learning/cdn/glossary/reverse-proxy/?utm_source=chatgpt.com) - about proxy server and reverse proxy
 
 
