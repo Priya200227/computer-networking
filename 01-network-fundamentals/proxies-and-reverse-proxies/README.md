@@ -1,15 +1,11 @@
-<div align="center">
-
 # Proxies and Reverse Proxies
 
 **How intermediary servers sit between clients, the internet, and backend applications**
 
-![Networking](https://img.shields.io/badge/Networking-Application%20%26%20Infrastructure-2563EB?style=for-the-badge)
-![Level](https://img.shields.io/badge/Level-Fundamentals-16A085?style=for-the-badge)
-
-</div>
-
 > [!NOTE]
+>
+> **Section:** Computer Networking - [Source 1](https://youtu.be/2fsilBrlNsY?si=c-DrzkR7hvV2u1wh) , [Source 2](https://youtu.be/HrG0MHkSsCA?si=By0hAbTfVMbhumzL)
+> 
 > **Learning objective:** Understand what a proxy does, distinguish a forward proxy from a reverse proxy, trace request/response flow, and recognize why reverse proxies are common in web application architecture. This is a conceptual networking note—not an NGINX administration guide.
 
 ---
@@ -182,56 +178,11 @@ You only need to recognize these names and their broad roles at this stage. Do n
 
 ---
 
-## 8. What you should know — and what you can skip
-
-### Must understand
-
-- [x] What a proxy server is
-- [x] Forward proxy vs reverse proxy
-- [x] Request and response flow through each
-- [x] Why organizations use forward proxies
-- [x] Why applications use reverse proxies
-- [x] Reverse proxy vs load balancer
-- [x] Basic purpose of TLS termination
-- [x] Why `X-Forwarded-For` exists and why forwarded headers must be trusted carefully
-
-### Not required for your current learning goal
-
-- Detailed NGINX configuration syntax
-- Building a proxy server from scratch
-- Squid administration
-- SOCKS protocol internals
-- Transparent proxy deployment
-- Deep TLS interception architecture
-- Service mesh internals
-- Proxy performance tuning and advanced routing policies
-
-**Stop here once you can explain the diagrams without reading the notes.** Your next topic should be **Load Balancers**, where you can build on the reverse-proxy concept.
-
----
-
-## 9. References and learning sources
+## References and learning sources
 
 ### Videos used as learning inputs
 
-1. [Understanding Proxy Servers and Reverse Proxies — Antisyphon Training](https://youtu.be/2fsilBrlNsY)
-2. [Understanding Proxy, Forward Proxy, and Reverse Proxy — Arpit Bhayani](https://youtu.be/HrG0MHkSsCA)
+- [NGINX — Reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy) — how NGINX forwards requests and responses.
+- [Cloudflare - Reverse Proxy](https://www.cloudflare.com/en-in/learning/cdn/glossary/reverse-proxy/?utm_source=chatgpt.com)
 
-### Documentation
-
-1. [MDN — Proxy servers and tunneling](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling) — forward proxies, reverse proxies, forwarded headers, and HTTP `CONNECT`.
-2. [MDN — Proxy server glossary](https://developer.mozilla.org/en-US/docs/Glossary/Proxy_server) — concise definition and distinction.
-3. [NGINX — Reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy) — how NGINX forwards requests and responses.
-4. [NGINX — HTTP load balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/) — optional preview for the next topic.
-5. [Arpit Bhayani — Understanding Proxy, Forward Proxy, and Reverse Proxy](https://edge.arpitbhayani.me/videos/understanding-proxy-forward-proxy-and-reverse-proxy) — accompanying article.
-
----
-
-<div align="center">
-
-**Networking → Proxies and Reverse Proxies**
-
-[⬅ Back to Computer Networking Repository](../README.md)
-
-</div>
 
