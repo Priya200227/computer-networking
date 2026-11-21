@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
-> **Source:** [Firewall Fundamentals Explained | Network Security for Beginners — Antisyphon Training](https://youtu.be/K4ilFsm2GvA)
+> **Section:** Computer Networking - [Firewall Fundamentals Explained](https://youtu.be/K4ilFsm2GvA)
 > 
 > **Learning objective:** Understand what a firewall does, where it is placed, how traffic rules work, and the difference between stateless and stateful inspection. Learn enough to reason about network security in application and cloud architecture—not to administer enterprise firewalls.
 
