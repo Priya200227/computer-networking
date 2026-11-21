@@ -154,11 +154,7 @@ Neither approach is automatically sufficient on its own for every security requi
 
 The video presents four useful categories. Treat them as conceptual approaches with increasing inspection context—not as a strict, universally accepted historical generation sequence.
 
-### Common firewall approaches
-
-<figure>
-  <img src="assets/04-firewall-types.png" alt="Conceptual comparison of packet filtering, stateful inspection, proxy firewalls and next generation firewalls" width="100%">
-</figure>
+[](/assets/firewall-types.png)
 
 ### 5.1 Packet-filtering firewall
 
