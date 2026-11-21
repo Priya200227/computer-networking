@@ -1,25 +1,17 @@
-# 🔌 Ethernet Switching Fundamentals
+# Ethernet Switching Fundamentals
 
 >[!NOTE]
 >
-> 🎯 **Learning objective:**  Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attacks**, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switching**.
+> **Learning objective:**  Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attacks**, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switching**.
 
 
-## 💡 Why This Topic Matters
+## Why This Topic Matters
 
 Devices on the same Ethernet LAN need a way to deliver frames without sending every frame to every device. An Ethernet switch learns which MAC addresses are reachable through which ports and uses that information to forward frames selectively.
 
 This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, and **VLAN**s. Add links to those existing README files using the correct paths in your repository.
 
 ---
-
-## 🖼️ Visual Revision Diagrams
-
-Keep these PNG files in the `assets/` folder beside this README.
-
-### 1. MAC learning and **unknown-unicast flooding**
-
-![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
 
 ### 2. Unknown-unicast flooding vs known-unicast forwarding
 
@@ -31,13 +23,6 @@ Keep these PNG files in the `assets/` folder beside this README.
 
 ![**MAC flooding attack** and **port security** mitigation](assets/04-mac-flooding-attack-and-port-security.png)
 
-### 5. Layer 2 vs **Layer 3 switch**ing
-
-![Comparison of Layer 2 and **Layer 3 switch**ing](assets/05-layer2-vs-layer3-switching.png)
-
-### 6. Collision domains vs **broadcast domain**s
-
-![Comparison of **collision domain**s and **broadcast domain**s](assets/06-collision-vs-broadcast-domains.png)
 
 ---
 
@@ -315,9 +300,11 @@ A **Layer 3 switch** is also called a **multilayer switch**. It can perform inte
 
 ## 11. Collision Domains and Broadcast Domains
 
+![Comparison of **collision domain**s and **broadcast domain**s](assets/06-collision-vs-broadcast-domains.png)
+
 ### Collision domain
 
-A §§**collision domain**§§ is a network segment in which devices share a medium where simultaneous transmissions can collide.
+A **collision domain** is a network segment in which devices share a medium where simultaneous transmissions can collide.
 
 - A traditional Ethernet hub places all connected devices in one shared **collision domain**.
 - A switch separates **collision domains** by port in the traditional Ethernet model.
@@ -325,7 +312,7 @@ A §§**collision domain**§§ is a network segment in which devices share a med
 
 ### Broadcast domain
 
-A §§**broadcast domain**§§ is the Layer 2 network area in which a broadcast frame is propagated.
+A **broadcast domain** is the Layer 2 network area in which a broadcast frame is propagated.
 
 - A **VLAN** defines a separate Layer 2 **broadcast domain**.
 - Switches forward broadcasts within the relevant **VLAN**.
