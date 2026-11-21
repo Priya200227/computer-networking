@@ -2,7 +2,7 @@
 
 >[!NOTE]
 >
-> 🎯 **Learning objective:** Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attacks **, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switching **.
+> 🎯 **Learning objective:**  Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attacks**, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switching**.
 
 
 ## 💡 Why This Topic Matters
