@@ -12,6 +12,7 @@ Devices on the same Ethernet LAN need a way to deliver frames without sending ev
 This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, and **VLAN**s. Add links to those existing README files using the correct paths in your repository.
 
 ---
+![Ethernet Switching Overview](assets/Ethernet-Switching.png)
 
 ## 1. What Is an Ethernet Switch?
 
