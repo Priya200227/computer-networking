@@ -13,7 +13,7 @@ This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, a
 
 ---
 
-## 1. 🔀 What Is an Ethernet Switch?
+## 1. What Is an Ethernet Switch?
 
 ![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
 
@@ -270,7 +270,7 @@ The same MAC value can appear in separate **VLAN** contexts. A MAC address learn
 
 When the destination is unknown, flooding is limited to eligible ports in the frame's **VLAN**. A **Layer 2 switch** does not flood a **VLAN** 10 frame into **VLAN** 20.
 
-This connects directly to the earlier **VLAN** topic: ****VLAN**s separate **broadcast domain**s, and MAC learning/forwarding is **VLAN**-aware.**
+This connects directly to the earlier **VLAN** topic: **VLAN**s separate **broadcast domain**s, and MAC learning/forwarding is **VLAN**-aware.**
 
 ---
 
@@ -291,8 +291,6 @@ A **Layer 3 switch** is also called a **multilayer switch**. It can perform inte
 
 ## 11. Collision Domains and Broadcast Domains
 
-![Comparison of **collision domain**s and **broadcast domain**s](assets/06-collision-vs-broadcast-domains.png)
-
 ### Collision domain
 
 A **collision domain** is a network segment in which devices share a medium where simultaneous transmissions can collide.
@@ -300,6 +298,8 @@ A **collision domain** is a network segment in which devices share a medium wher
 - A traditional Ethernet hub places all connected devices in one shared **collision domain**.
 - A switch separates **collision domains** by port in the traditional Ethernet model.
 - Modern switched Ethernet links commonly operate full-duplex, so ordinary Ethernet collisions do not occur on those links.
+
+![Comparison of **collision domain**s and **broadcast domain**s](assets/06-collision-vs-broadcast-domains.png)
 
 ### Broadcast domain
 
@@ -335,9 +335,9 @@ A **broadcast domain** is the Layer 2 network area in which a broadcast frame is
 
 ## References
 
-1. [Cisco - Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) - source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
-2. [Cisco - Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) - explains **unknown-unicast flooding** and why it occurs.
-3. [Cisco - CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) - MAC learning, **VLAN** context, CAM entries and flooding.
-4. [Cisco Press - Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) - switching fundamentals and **MAC address table** overflow attacks.
-5. [Cisco - Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) - **port security** and **CAM table** overflow mitigation.
+- [Cisco - Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) - source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
+- [Cisco - Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) - explains **unknown-unicast flooding** and why it occurs.
+- [Cisco - CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) - MAC learning, **VLAN** context, CAM entries and flooding.
+- [Cisco Press - Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) - switching fundamentals and **MAC address table** overflow attacks.
+- [Cisco - Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) - **port security** and **CAM table** overflow mitigation.
 
