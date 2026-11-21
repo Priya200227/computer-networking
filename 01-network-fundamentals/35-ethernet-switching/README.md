@@ -93,7 +93,7 @@ Assume four PCs are connected to one switch:
 
 Initially, the switch's MAC address table is empty.
 
-### Step 1 — PC1 sends a frame
+### Step 1 - PC1 sends a frame
 
 PC1 sends an Ethernet frame addressed to PC3.
 
@@ -103,13 +103,13 @@ The switch receives the frame on Port 1 and learns PC1's **source** MAC address:
 |---|---|
 | PC1 MAC | Port 1 |
 
-### Step 2 — The switch looks up PC3
+### Step 2 - The switch looks up PC3
 
 The switch checks the destination MAC address, but PC3 is not yet in the table.
 
 The destination is an **unknown unicast** destination.
 
-### Step 3 — The switch floods the frame
+### Step 3 - The switch floods the frame
 
 The switch sends a copy of the frame out the other eligible ports in the same VLAN, excluding Port 1.
 
@@ -117,7 +117,7 @@ PC2 and PC4 receive the frame but discard it because the destination MAC address
 
 > Flooding is not the switch sending the frame back through the port on which it arrived. The ingress port is excluded.
 
-### Step 4 — PC3 replies
+### Step 4 - PC3 replies
 
 PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learns PC3's source MAC address:
 
@@ -126,7 +126,7 @@ PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learn
 | PC1 MAC | Port 1 |
 | PC3 MAC | Port 3 |
 
-### Step 5 — Subsequent frames are forwarded directly
+### Step 5 - Subsequent frames are forwarded directly
 
 The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in its table and forwards the frame only through Port 3.
 
@@ -139,7 +139,7 @@ The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in it
 
 These terms sound similar but describe different things.
 
-### Unknown-unicast flooding — normal switch behaviour
+### Unknown-unicast flooding - normal switch behaviour
 
 This happens when a switch receives a unicast frame but does not have an entry for its destination MAC address in the relevant VLAN's MAC address table.
 
@@ -232,7 +232,7 @@ Do not confuse MAC address flapping with a normal device move. A single legitima
 
 ---
 
-## 8. CAM table and TCAM — are they the same?
+## 8. CAM table and TCAM - are they the same?
 
 They are related hardware concepts, but they are not interchangeable.
 
@@ -320,16 +320,16 @@ A **broadcast domain** is the Layer 2 network area in which a broadcast frame is
 
 ## References
 
-1. [Cisco — Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) — source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
-2. [Cisco — Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) — explains unknown-unicast flooding and why it occurs.
-3. [Cisco — CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) — MAC learning, VLAN context, CAM entries and flooding.
-4. [Cisco Press — Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) — switching fundamentals and MAC address table overflow attacks.
-5. [Cisco — Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) — port security and CAM table overflow mitigation.
+1. [Cisco — Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) - source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
+2. [Cisco — Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) - explains unknown-unicast flooding and why it occurs.
+3. [Cisco — CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) - MAC learning, VLAN context, CAM entries and flooding.
+4. [Cisco Press — Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) - switching fundamentals and MAC address table overflow attacks.
+5. [Cisco — Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) - port security and CAM table overflow mitigation.
 
 ## Related topics in this repository
 
 - [MAC Address](../06-mac-address/README.md)
 - [IP Address vs MAC Address](../07-ip-vs-mac-address/README.md)
 - [ARP](../08-arp/README.md)
-- VLAN — link this to the existing VLAN README once its exact path is confirmed.
+- VLAN - link this to the existing VLAN README once its exact path is confirmed.
   
