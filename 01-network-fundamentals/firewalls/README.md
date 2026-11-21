@@ -4,9 +4,9 @@
 >
 > **Section:** Computer Networking - [Firewall Fundamentals Explained](https://youtu.be/K4ilFsm2GvA)
 > 
-> **Learning objective:** Understand what a firewall does, where it is placed, how traffic rules work, and the difference between stateless and stateful inspection. Learn enough to reason about network security in application and cloud architecture—not to administer enterprise firewalls.
+> **Purpose:** Understand what a firewall does, where it is placed, how traffic rules work, and the difference between stateless and stateful inspection. Learn enough to reason about network security in application and cloud architecture—not to administer enterprise firewalls.
 
-[⬅️ Back to Computer Networking repository](../README.md)
+[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
 
 ---
 
@@ -33,9 +33,10 @@ A firewall can inspect traffic entering a protected environment (**ingress**) or
 
 Firewalls are not only installed at the boundary between an organisation and the Internet.
 
+### Common firewall placement patterns
+
 <figure>
   <img src="assets/01-firewall-placement.png" alt="Firewall placement at the network perimeter and between internal zones" width="100%">
-  <figcaption><strong>Figure 1.</strong> Common firewall placement patterns.</figcaption>
 </figure>
 
 ### 2.1 Perimeter / edge firewall
@@ -80,9 +81,10 @@ A firewall evaluates traffic against rules or policies. A rule commonly contains
 
 A firewall may also consider connection state, interface, user identity, application identity, time, or other attributes depending on its capabilities.
 
+### Conceptual firewall rule evaluation
+
 <figure>
   <img src="assets/02-firewall-rule-evaluation.png" alt="Firewall rule evaluation flow from packet attributes through policy to allow or deny" width="100%">
-  <figcaption><strong>Figure 2.</strong> Conceptual firewall rule evaluation.</figcaption>
 </figure>
 
 ### Rule order
@@ -109,9 +111,10 @@ The exact default behaviour varies by product and configuration. A secure design
 
 This is one of the most important distinctions to understand.
 
+### Stateless and stateful traffic inspection
+
 <figure>
   <img src="assets/03-stateful-vs-stateless.png" alt="Comparison of stateless packet-by-packet evaluation and stateful connection tracking" width="100%">
-  <figcaption><strong>Figure 3.</strong> Stateless and stateful traffic inspection.</figcaption>
 </figure>
 
 ### 4.1 Stateless filtering
@@ -151,9 +154,10 @@ Neither approach is automatically sufficient on its own for every security requi
 
 The video presents four useful categories. Treat them as conceptual approaches with increasing inspection context—not as a strict, universally accepted historical generation sequence.
 
+### Common firewall approaches
+
 <figure>
   <img src="assets/04-firewall-types.png" alt="Conceptual comparison of packet filtering, stateful inspection, proxy firewalls and next generation firewalls" width="100%">
-  <figcaption><strong>Figure 4.</strong> Common firewall approaches.</figcaption>
 </figure>
 
 ### 5.1 Packet-filtering firewall
@@ -271,66 +275,19 @@ Official AWS references:
 
 ---
 
-## 9. Knowledge check
+## References
 
-You should be able to answer these without looking at the notes:
-
-1. What is the purpose of a firewall?
-2. What is the difference between ingress and egress?
-3. Where can firewalls be deployed?
-4. What information can a firewall rule evaluate?
-5. What does default deny mean?
-6. How does stateful inspection differ from stateless filtering?
-7. What does a proxy firewall inspect?
-8. What additional capabilities may an NGFW provide?
-9. Why is a firewall not a complete security solution?
-10. How do AWS Security Groups differ from NACLs?
+- [Cisco - What Is a Firewall?](https://www.cisco.com/site/us/en/learn/topics/security/what-is-a-firewall.html)
+- [AWS - Infrastructure security in Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html)
+- [AWS - Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
+- [AWS - Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
 
 ---
 
-## 10. Learning boundary — what you need and what you can skip
-
-For your current networking foundation, learn to:
-
-- Explain the purpose and placement of a firewall.
-- Read a basic source/destination/protocol/port/action rule.
-- Explain default deny.
-- Distinguish stateful from stateless inspection.
-- Recognise packet filtering, proxy firewalls and NGFWs.
-- Understand how Security Groups and NACLs fit into AWS VPC networking.
-
-You do **not** need to study:
-- Vendor-specific firewall command-line configuration.
-- Building complex enterprise firewall rule sets.
-- IPS signature tuning or threat-hunting workflows.
-- Deep packet inspection internals.
-- SOC operations or advanced incident response.
-
-That is a different learning path. For your data, backend and cloud goals, conceptual understanding and the ability to reason about application connectivity are enough at this stage.
-
----
-
-## 📚 11. References
-
-### Video used for this chapter
-
-- [Firewall Fundamentals Explained | Network Security for Beginners — Antisyphon Training](https://youtu.be/K4ilFsm2GvA)
-
-### Documentation
-
-- [Cisco — What Is a Firewall?](https://www.cisco.com/site/us/en/learn/topics/security/what-is-a-firewall.html)
-- [AWS — Infrastructure security in Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html)
-- [AWS — Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
-- [AWS — Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
-
----
-
-## ➡️ 12. Where this fits in the learning path
+## Where this fits in the learning path
 
 Firewall fundamentals connect directly to:
 - [VPC and cloud networking](../03-aws-vpc-security-groups-nacls/README.md)
 - [Security Groups and NACLs](../03-aws-vpc-security-groups-nacls/README.md)
 - [Proxies and reverse proxies](../04-proxy-and-reverse-proxy/README.md)
-
-[⬅️ Back to Computer Networking repository](../README.md)
 
