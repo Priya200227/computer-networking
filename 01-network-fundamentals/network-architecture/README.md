@@ -2,7 +2,9 @@
 
 >[!NOTE]
 >
->  **Learning objective:** Understand what a computer network is, why networks exist, how common network types are organised, and what the main networking devices do. This chapter establishes the foundation for the later topics in this repository: IP addressing, subnetting, Ethernet switching, routing, DNS, TCP, HTTP, TLS and cloud networking.
+> **Section:** Computer Networking - [Network Basics](https://youtu.be/HTTANnOjl8c?si=qIRmTp5WuzGgEmH-)
+>
+>  **Purpose:** Understand what a computer network is, why networks exist, how common network types are organised, and what the main networking devices do. This chapter establishes the foundation for the later topics in this repository: IP addressing, subnetting, Ethernet switching, routing, DNS, TCP, HTTP, TLS and cloud networking.
 
 [← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals)
 
