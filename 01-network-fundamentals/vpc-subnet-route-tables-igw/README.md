@@ -1,16 +1,9 @@
-<div align="center">
-
 # Virtual Private Cloud (VPC), Subnets & Route Tables
 
-**How cloud networks are isolated, segmented and connected**
-
-![Topic](https://img.shields.io/badge/Topic-Cloud%20Networking-2563EB?style=for-the-badge)
-![Level](https://img.shields.io/badge/Level-Foundational-16A085?style=for-the-badge)
-![Focus](https://img.shields.io/badge/Focus-AWS%20VPC%20examples-F59E0B?style=for-the-badge)
-
-</div>
-
 > [!NOTE]
+>
+> **Section:** Computer Networking - []()
+> 
 > **Learning objective:** Understand what a VPC is, how it relates to a public cloud, how subnets divide its IP space, how route tables direct traffic, and how internet/VPN connectivity is provided. The examples use AWS terminology because the reference documentation supplied for this topic is AWS documentation.
 
 ---
@@ -28,9 +21,9 @@ A company has two broad options:
 
 For example, an organization can run its web application, application servers and database on its own hardware—or deploy those resources using cloud services.
 
-### Important distinction
+> [! IMPORTANTDISTINCTION]
 
-The cloud is not literally “just someone else's computer” from an architecture point of view. A cloud provider operates large physical data centres and exposes computing, storage and networking capabilities as services. Customers provision and manage resources through a console, CLI, API or infrastructure-as-code tools.
+> The cloud is not literally “just someone else's computer” from an architecture point of view. A cloud provider operates large physical data centres and exposes computing, storage and networking capabilities as services. Customers provision and manage resources through a console, CLI, API or infrastructure-as-code tools.
 
 ---
 
