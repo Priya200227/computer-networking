@@ -21,7 +21,7 @@ A company has two broad options:
 
 For example, an organization can run its web application, application servers and database on its own hardware—or deploy those resources using cloud services.
 
-> [!IMPORTANT DISTINCTION]
+> [!IMPORTANT]
 > The cloud is not literally “just someone else's computer” from an architecture point of view. A cloud provider operates large physical data centres and exposes computing, storage and networking capabilities as services. Customers provision and manage resources through a console, CLI, API or infrastructure-as-code tools.
 
 ---
