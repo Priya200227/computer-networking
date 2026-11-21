@@ -1,8 +1,8 @@
 # 🔌 Ethernet Switching Fundamentals
 
-> 🎯 **Learning objective:** Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attack**s, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switch**ing.
-
-> **🟦 Core switching behaviour** · **🟩 Correct forwarding / learning** · **🟧 Flooding / caution** · **🟥 Security risk**
+>[!NOTE]
+>
+> 🎯 **Learning objective:** Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attacks **, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switching **.
 
 
 ## 💡 Why This Topic Matters
@@ -25,9 +25,7 @@ Keep these PNG files in the `assets/` folder beside this README.
 
 ![Comparison of **unknown-unicast flooding** and known-unicast forwarding](assets/02-unknown-flooding-vs-known-forwarding.png)
 
-### 3. **MAC address table** learning sequence
 
-![How the **MAC address table** is populated as devices exchange frames](assets/03-mac-table-learning-sequence.png)
 
 ### 4. **MAC flooding attack** and port-security mitigation
 
@@ -45,12 +43,14 @@ Keep these PNG files in the `assets/` folder beside this README.
 
 ## 1. 🔀 What Is an Ethernet Switch?
 
-An **Ethernet switch** connects devices within a Local Area Network (LAN). A typical **Layer 2 switch** makes forwarding decisions using the §§**destination MAC address**§§ in an Ethernet frame.
+![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
+
+An **Ethernet switch** connects devices within a Local Area Network (LAN). A typical **Layer 2 switch** makes forwarding decisions using the **destination MAC address** in an Ethernet frame.
 
 When a frame arrives, the switch:
 
-1. Learns or refreshes the §§**source MAC address**§§ against the ingress port and **VLAN**.
-2. Looks up the §§**destination MAC address**§§ in its **MAC address table**.
+1. Learns or refreshes the **source MAC address** against the ingress port and **VLAN**.
+2. Looks up the **destination MAC address** in its **MAC address table**.
 3. Forwards, floods, or filters the frame based on the lookup result.
 
 A switch is more selective than an Ethernet hub: it can send a **known unicast** frame only through the port leading to the destination device.
@@ -73,6 +73,8 @@ A switch is more selective than an Ethernet hub: it can send a **known unicast**
 ## 2. The MAC Address Table (CAM Table)
 
 A switch maintains a §§**MAC address table**§§, commonly called a §§**CAM table**§§ (Content Addressable Memory table).
+
+![How the **MAC address table** is populated as devices exchange frames](assets/03-mac-table-learning-sequence.png)
 
 The table maps a learned MAC address to the interface/port and **VLAN** where the switch learned it.
 
@@ -297,6 +299,8 @@ This connects directly to the earlier **VLAN** topic: ****VLAN**s separate **bro
 ---
 
 ## 10. Layer 2 Switch vs Layer 3 Switch
+
+![Comparison of Layer 2 and **Layer 3 switch**ing](assets/05-layer2-vs-layer3-switching.png)
 
 | **Layer 2 switch** | **Layer 3 switch** |
 |---|---|
