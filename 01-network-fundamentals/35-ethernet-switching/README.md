@@ -13,19 +13,6 @@ This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, a
 
 ---
 
-### 2. Unknown-unicast flooding vs known-unicast forwarding
-
-![Comparison of **unknown-unicast flooding** and known-unicast forwarding](assets/02-unknown-flooding-vs-known-forwarding.png)
-
-
-
-### 4. **MAC flooding attack** and port-security mitigation
-
-![**MAC flooding attack** and **port security** mitigation](assets/04-mac-flooding-attack-and-port-security.png)
-
-
----
-
 ## 1. 🔀 What Is an Ethernet Switch?
 
 ![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
@@ -159,6 +146,8 @@ The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in it
 
 These terms sound similar but describe different things.
 
+![Comparison of **unknown-unicast flooding** and known-unicast forwarding](assets/02-unknown-flooding-vs-known-forwarding.png)
+
 ### Unknown-unicast flooding - normal switch behaviour
 
 This happens when a switch receives a unicast frame but does not have an entry for its **destination MAC address** in the relevant **VLAN**'s **MAC address table**.
@@ -173,6 +162,8 @@ It can happen when:
 - The switch has not yet learned the **destination MAC address**.
 
 ### **MAC flooding attack** (**CAM table** overflow attack)
+
+![**MAC flooding attack** and **port security** mitigation](assets/04-mac-flooding-attack-and-port-security.png)
 
 A **MAC flooding attack** is a Layer 2 attack in which an attacker sends many Ethernet frames with numerous forged **source MAC address**es in an attempt to consume the switch's MAC address-table capacity.
 
