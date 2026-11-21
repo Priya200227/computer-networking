@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
-> **Section:** Computer Networking - [Source 1](https://youtu.be/2fPgKvDBfbs) , [Source 2]((https://youtu.be/NbkPRn1mqlU)
+> **Section:** Computer Networking - [Source 1](https://youtu.be/2fPgKvDBfbs) , [Source 2](https://youtu.be/NbkPRn1mqlU)
 > 
 > **Learning objective:** Understand what a VPC is, how it relates to a public cloud, how subnets divide its IP space, how route tables direct traffic, and how internet/VPN connectivity is provided. The examples use AWS terminology because the reference documentation supplied for this topic is AWS documentation.
 
