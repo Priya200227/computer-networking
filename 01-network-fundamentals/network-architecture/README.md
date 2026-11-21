@@ -1,14 +1,15 @@
-# 🌐 Networking Fundamentals and Network Architecture
+# Network Architecture
 
-> 🎯 **Learning objective:** Understand what a computer network is, why networks exist, how common network types are organised, and what the main networking devices do. This chapter establishes the foundation for the later topics in this repository: IP addressing, subnetting, Ethernet switching, routing, DNS, TCP, HTTP, TLS and cloud networking.
+>[!NOTE]
+>
+>  **Learning objective:** Understand what a computer network is, why networks exist, how common network types are organised, and what the main networking devices do. This chapter establishes the foundation for the later topics in this repository: IP addressing, subnetting, Ethernet switching, routing, DNS, TCP, HTTP, TLS and cloud networking.
 
-> **Scope:** Conceptual understanding for application development, data engineering, cloud and backend systems. This is not an enterprise network-engineering or device-configuration guide.
 
 [⬅️ Back to Computer Networking repository](../README.md)
 
 ---
 
-## 🧭 1. What is a computer network?
+## 1. What is a computer network?
 
 A **computer network** is a group of interconnected devices that communicate and exchange data using agreed rules called **protocols**.
 
@@ -39,7 +40,7 @@ A network may connect laptops, phones, servers, printers, storage systems, camer
 
 ---
 
-## 🔌 2. How devices connect: Ethernet and Wi-Fi
+## 2. How devices connect: Ethernet and Wi-Fi
 
 ### Ethernet
 
@@ -66,7 +67,7 @@ A network may connect laptops, phones, servers, printers, storage systems, camer
 
 ---
 
-## 🧰 3. Core networking devices
+## 3. Core networking devices
 
 The most important distinction is the job each device performs.
 
@@ -115,7 +116,7 @@ An AP is not necessarily a router. In many enterprise networks, the router, swit
 
 ---
 
-## 🗺️ 4. Types and scopes of networks
+## 4. Types and scopes of networks
 
 Network labels describe different things: geographic scope, organisational context or deployment environment. They are useful categories, but not all are mutually exclusive.
 
@@ -124,7 +125,7 @@ Network labels describe different things: geographic scope, organisational conte
   <figcaption><strong>Figure 3.</strong> Common network scopes and deployment contexts.</figcaption>
 </figure>
 
-### 4.1 PAN — Personal Area Network
+### 4.1 PAN - Personal Area Network
 
 A **Personal Area Network** connects devices around an individual over a short range.
 
@@ -132,7 +133,7 @@ Examples:
 - Phone connected to wireless earbuds using Bluetooth.
 - Laptop connected to a phone hotspot.
 
-### 4.2 LAN — Local Area Network
+### 4.2 LAN - Local Area Network
 
 A **Local Area Network** connects devices within a limited area, such as a home, office, floor or building.
 
@@ -143,13 +144,13 @@ Typical characteristics:
 
 A LAN is not defined solely by being owned by one organisation.
 
-### 4.3 MAN — Metropolitan Area Network
+### 4.3 MAN - Metropolitan Area Network
 
 A **Metropolitan Area Network** connects networks across a city or metropolitan region.
 
 Example: connecting multiple offices or facilities across a city.
 
-### 4.4 WAN — Wide Area Network
+### 4.4 WAN - Wide Area Network
 
 A **Wide Area Network** connects networks over large geographic areas, such as between cities, countries or continents.
 
@@ -170,7 +171,7 @@ The **Internet** is a global system of interconnected networks that communicate 
 
 It is not one giant LAN. It is a network of networks connected through service providers, routing systems and interconnection points.
 
-### 4.6 SOHO — Small Office / Home Office
+### 4.6 SOHO - Small Office / Home Office
 
 SOHO describes a small-office or home-office environment. It is a deployment context, not a separate protocol or strict network-size category.
 
@@ -203,16 +204,16 @@ For example, an AWS **Virtual Private Cloud (VPC)** provides a logically isolate
 
 ---
 
-## 🏷️ 5. VLAN — Virtual LAN
+## 5. VLAN - Virtual LAN
 
 A **VLAN (Virtual Local Area Network)** logically separates a switched Layer 2 network into multiple broadcast domains.
 
 A single physical switch can carry traffic for multiple VLANs.
 
 Example:
-- VLAN 10 — Engineering
-- VLAN 20 — Finance
-- VLAN 30 — Guest Wi-Fi
+- VLAN 10 - Engineering
+- VLAN 20 - Finance
+- VLAN 30 - Guest Wi-Fi
 
 Devices in different VLANs are logically separated at Layer 2, even if they connect to the same physical switch.
 
@@ -234,7 +235,7 @@ It can be provided by:
 
 ---
 
-## 🏢 6. Campus network architecture
+## 6. Campus network architecture
 
 Larger campus networks are often organised into layers. This makes the network easier to scale, operate and protect.
 
@@ -282,7 +283,7 @@ Modern applications often generate significant east–west traffic because appli
 
 ---
 
-## 🔐 7. WAN connectivity and VPN
+## 7. WAN connectivity and VPN
 
 ### 7.1 Common WAN connectivity options
 
@@ -296,7 +297,7 @@ Modern applications often generate significant east–west traffic because appli
 
 You only need to recognise what these options are used for. Detailed provider configuration is outside this chapter's scope.
 
-### 7.2 VPN — Virtual Private Network
+### 7.2 VPN - Virtual Private Network
 
 A **VPN** creates a protected logical connection across an underlying network. VPN technologies commonly use encryption and authentication to protect traffic.
 
@@ -316,7 +317,7 @@ Two common use cases:
 
 ---
 
-## ☁️ 8. On-premises vs cloud and service models
+## 8. On-premises vs cloud and service models
 
 ### On-premises
 
@@ -330,91 +331,23 @@ A cloud provider delivers computing resources and services over a network. The c
 
 | Model | What the provider offers | Conceptual example |
 |---|---|---|
-| IaaS — Infrastructure as a Service | Virtual machines, storage and networking building blocks | Rent virtual servers and configure the OS and application |
-| PaaS — Platform as a Service | A managed platform for building and deploying applications | Deploy application code to a managed application platform |
-| SaaS — Software as a Service | A complete application delivered to users | Use an application through a browser |
+| IaaS - Infrastructure as a Service | Virtual machines, storage and networking building blocks | Rent virtual servers and configure the OS and application |
+| PaaS - Platform as a Service | A managed platform for building and deploying applications | Deploy application code to a managed application platform |
+| SaaS - Software as a Service | A complete application delivered to users | Use an application through a browser |
 
 > [!NOTE]
 > IaaS, PaaS and SaaS are **cloud service models**, not types of computer networks. The amount of infrastructure you manage decreases as you move from IaaS toward SaaS, although the exact responsibility split varies by service.
 
 ---
 
-## ⚡ 9. Quick revision — one-line definitions
+## References 
 
-| Term | Remember it as |
-|---|---|
-| Network | Connected devices exchanging data |
-| Ethernet | Common wired LAN technology |
-| Wi-Fi | Wireless LAN technology using radio |
-| Switch | Connects devices and forwards frames using MAC information |
-| Router | Connects IP networks and forwards packets |
-| Layer 3 switch | Switch that can also route between IP networks |
-| Access point | Connects wireless clients to a LAN |
-| LAN | Network within a limited local area |
-| WAN | Connects networks over large geographic areas |
-| Internet | Global interconnection of networks |
-| SOHO | Small office / home office environment |
-| VLAN | Logical Layer 2 network / broadcast domain |
-| Inter-VLAN routing | Layer 3 communication between VLANs |
-| Campus LAN | Network connecting an organisation's campus |
-| Data centre | Facility housing compute, storage and network systems |
-| North–south traffic | Traffic entering or leaving a data centre |
-| East–west traffic | Traffic between systems inside a data centre |
-| VPN | Protected logical connection over an underlying network |
-| IaaS | Infrastructure as a Service |
-| PaaS | Platform as a Service |
-| SaaS | Software as a Service |
-
----
-
-## 🧠 10. What you should be able to explain
-
-Use this checklist to test whether you understand the chapter.
-
-- [ ] What is a computer network, and why do we need one?
-- [ ] How are Ethernet and Wi-Fi different?
-- [ ] What is the difference between a switch, router and access point?
-- [ ] What is the difference between a Layer 2 switch and a Layer 3 switch?
-- [ ] What are PAN, LAN, MAN and WAN?
-- [ ] How is the Internet different from a LAN or WAN?
-- [ ] What is SOHO?
-- [ ] What is a VLAN, and why do organisations use it?
-- [ ] Why is Layer 3 routing needed for communication between VLANs?
-- [ ] What are access, distribution and core layers?
-- [ ] What is the difference between two-tier and three-tier campus design?
-- [ ] What is a data centre?
-- [ ] What is the difference between north–south and east–west traffic?
-- [ ] What is the difference between site-to-site and remote-access VPN?
-- [ ] How do IaaS, PaaS and SaaS differ?
-
----
-
-## 📚 11. References and further reading
-
-These are reference materials for definitions and architecture concepts. You do not need to read every page in depth.
-
-1. [Cisco — What Is a Computer Network?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-computer-network.html)
-2. [Cisco — What Is a LAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html)
-3. [Cisco — What Is a WAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-wan-wide-area-network.html)
-4. [Cisco — What Is a Network Switch?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-network-switch.html)
-5. [Cisco — What Is a Router?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-router.html)
-6. [Cisco — What Is a VLAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-vlan-virtual-local-area-network.html)
-7. [Cisco — Campus LAN and Wireless LAN Design Guide](https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html)
-8. [AWS — What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
-9. [AWS — Cloud Computing Concepts: IaaS, PaaS and SaaS](https://aws.amazon.com/types-of-cloud-computing/)
-
----
-
-## ➡️ 12. Where this fits in the learning path
-
-This chapter gives the vocabulary and architecture context for the rest of the repository.
-
-**Suggested next topics:**
-- [IP addressing and IPv4](../03-ipv4-addressing/README.md)
-- [Subnet masks](../04-subnet-masks/README.md)
-- [Default gateway](../05-default-gateway/README.md)
-- [MAC address](../06-mac-address/README.md)
-- [ARP](../08-arp/README.md)
-
-> **Revision principle:** Understand what each network component does, what kind of traffic it handles, and where it fits. You do not need to learn enterprise device configuration or advanced network engineering for this learning goal.
-
+- [Cisco — What Is a Computer Network?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-computer-network.html)
+- [Cisco — What Is a LAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html)
+- [Cisco — What Is a WAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-wan-wide-area-network.html)
+- [Cisco — What Is a Network Switch?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-network-switch.html)
+- [Cisco — What Is a Router?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-router.html)
+- [Cisco — What Is a VLAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-vlan-virtual-local-area-network.html)
+- [Cisco — Campus LAN and Wireless LAN Design Guide](https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html)
+- [AWS — What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [AWS — Cloud Computing Concepts: IaaS, PaaS and SaaS](https://aws.amazon.com/types-of-cloud-computing/)
