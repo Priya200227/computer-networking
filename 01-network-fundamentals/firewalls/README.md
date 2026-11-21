@@ -154,7 +154,7 @@ Neither approach is automatically sufficient on its own for every security requi
 
 The video presents four useful categories. Treat them as conceptual approaches with increasing inspection context—not as a strict, universally accepted historical generation sequence.
 
-[](/assets/firewall-types.png)
+![](/assets/firewall-types.png)
 
 ### 5.1 Packet-filtering firewall
 
