@@ -57,7 +57,7 @@ A switch is more selective than an Ethernet hub: it can send a **known unicast**
 
 ## 2. The MAC Address Table (CAM Table)
 
-A switch maintains a §§**MAC address table**§§, commonly called a §§**CAM table**§§ (Content Addressable Memory table).
+A switch maintains a **MAC address table**, commonly called a **CAM table** (Content Addressable Memory table).
 
 ![How the **MAC address table** is populated as devices exchange frames](assets/03-mac-table-learning-sequence.png)
 
@@ -75,7 +75,7 @@ The actual table can contain additional information, such as whether an entry is
 
 ### *How does a switch learn a MAC address?*
 
-A switch learns from the §§**source MAC address**§§ of an incoming Ethernet frame.
+A switch learns from the **source MAC address** of an incoming Ethernet frame.
 
 For example:
 
@@ -88,7 +88,7 @@ The switch does not need to know the destination device before learning the sour
 
 ### *How does the switch forward a frame?*
 
-After learning/refreshing the **source MAC address**, the switch checks the frame's §§**destination MAC address**§§.
+After learning/refreshing the **source MAC address**, the switch checks the frame's **destination MAC address**.
 
 | Destination lookup result | Switch action |
 |---|---|
@@ -126,7 +126,7 @@ The switch receives the frame on Port 1 and learns PC1's **source** MAC address:
 
 The switch checks the **destination MAC address**, but PC3 is not yet in the table.
 
-The destination is an §§**un**known unicast****§§ destination.
+The destination is an **unknown** unicast destination.
 
 ### Step 3 - The switch floods the frame
 
@@ -174,9 +174,9 @@ It can happen when:
 
 ### **MAC flooding attack** (**CAM table** overflow attack)
 
-A §§**MAC flooding attack**§§ is a Layer 2 attack in which an attacker sends many Ethernet frames with numerous forged **source MAC address**es in an attempt to consume the switch's MAC address-table capacity.
+A **MAC flooding attack** is a Layer 2 attack in which an attacker sends many Ethernet frames with numerous forged **source MAC address**es in an attempt to consume the switch's MAC address-table capacity.
 
-If the table cannot accommodate additional entries, the switch may be unable to learn some legitimate **destination MAC address**es. Frames for those unknown destinations may then be flooded within the relevant **VLAN**, depending on the switch's implementation and configuration.
+If the table cannot accommodate additional entries, the switch may be unable to learn some legitimate **destination MAC addresses**. Frames for those unknown destinations may then be flooded within the relevant **VLAN**, depending on the switch's implementation and configuration.
 
 > [!WARNING]
 > This can increase traffic exposure and may allow an attacker on the same **VLAN** to observe traffic that would otherwise be selectively forwarded. It does **not** mean every switch universally changes into a hub or enters a guaranteed “fail-open mode”.
@@ -236,7 +236,7 @@ Both switches build their own forwarding information. They do not need to exchan
 
 ## 7. MAC Address Flapping
 
-§§**MAC address flapping**§§ occurs when a switch repeatedly learns the same MAC address on different ports over a short period.
+**MAC address flapping** occurs when a switch repeatedly learns the same MAC address on different ports over a short period.
 
 Possible causes include:
 
