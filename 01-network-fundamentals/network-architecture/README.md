@@ -22,10 +22,11 @@ A network may connect laptops, phones, servers, printers, storage systems, camer
 - **Internet access:** reach services outside the local network.
 - **Collaboration:** allow users and systems to work with shared information.
 
+### **The building blocks of a network.**
+
 <figure>
   <img src="assets/01-networking-building-blocks.png" alt="Networking building blocks: end devices, connection methods and network devices" width="100%">
-  <figcaption><strong>Figure 1.</strong> The building blocks of a network.</figcaption>
-</figure>
+ </figure>
 
 ### Basic components
 
