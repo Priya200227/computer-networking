@@ -1,88 +1,120 @@
-# Ethernet Switching Fundamentals
+# 🔌 Ethernet Switching Fundamentals
 
->[!NOTE]
-> **Learning objective:** Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also explains unknown-unicast flooding, MAC address aging, MAC flooding attacks, MAC address flapping, VLAN-aware switching, and the difference between Layer 2 and Layer 3 switches.
+> 🎯 **Learning objective:** Understand how Ethernet switches learn MAC addresses, build forwarding tables, and decide where to send frames. This note also covers **unknown-unicast flooding**, MAC address aging, **MAC flooding attack**s, **MAC address flapping**, **VLAN**-aware forwarding, and Layer 2 vs **Layer 3 switch**ing.
 
-## Why this topic matters
+> **🟦 Core switching behaviour** · **🟩 Correct forwarding / learning** · **🟧 Flooding / caution** · **🟥 Security risk**
 
-Devices on the same Ethernet LAN need a way to deliver frames to one another without sending every frame to every device. An Ethernet switch does this by learning which MAC addresses are reachable through which switch ports and using that information to forward frames selectively.
 
-This topic builds on the earlier notes about [MAC addresses](../06-mac-address/README.md), [IP vs MAC addresses](../07-ip-vs-mac-address/README.md), [ARP](../08-arp/README.md), and [VLANs](../vlan/README.md) if those paths match the repository structure. Update relative paths if your folder names differ.
+## 💡 Why This Topic Matters
+
+Devices on the same Ethernet LAN need a way to deliver frames without sending every frame to every device. An Ethernet switch learns which MAC addresses are reachable through which ports and uses that information to forward frames selectively.
+
+This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, and **VLAN**s. Add links to those existing README files using the correct paths in your repository.
 
 ---
 
-## 1. What is an Ethernet switch?
+## 🖼️ Visual Revision Diagrams
 
-An **Ethernet switch** connects devices within a Local Area Network (LAN). A typical Layer 2 switch makes forwarding decisions using the **destination MAC address** in an Ethernet frame.
+Keep these PNG files in the `assets/` folder beside this README.
+
+### 1. MAC learning and **unknown-unicast flooding**
+
+![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
+
+### 2. Unknown-unicast flooding vs known-unicast forwarding
+
+![Comparison of **unknown-unicast flooding** and known-unicast forwarding](assets/02-unknown-flooding-vs-known-forwarding.png)
+
+### 3. **MAC address table** learning sequence
+
+![How the **MAC address table** is populated as devices exchange frames](assets/03-mac-table-learning-sequence.png)
+
+### 4. **MAC flooding attack** and port-security mitigation
+
+![**MAC flooding attack** and **port security** mitigation](assets/04-mac-flooding-attack-and-port-security.png)
+
+### 5. Layer 2 vs **Layer 3 switch**ing
+
+![Comparison of Layer 2 and **Layer 3 switch**ing](assets/05-layer2-vs-layer3-switching.png)
+
+### 6. Collision domains vs **broadcast domain**s
+
+![Comparison of **collision domain**s and **broadcast domain**s](assets/06-collision-vs-broadcast-domains.png)
+
+---
+
+## 1. 🔀 What Is an Ethernet Switch?
+
+An **Ethernet switch** connects devices within a Local Area Network (LAN). A typical **Layer 2 switch** makes forwarding decisions using the §§**destination MAC address**§§ in an Ethernet frame.
 
 When a frame arrives, the switch:
 
-1. Learns or refreshes the **source MAC address** against the ingress port and VLAN.
-2. Looks up the **destination MAC address** in its MAC address table.
+1. Learns or refreshes the §§**source MAC address**§§ against the ingress port and **VLAN**.
+2. Looks up the §§**destination MAC address**§§ in its **MAC address table**.
 3. Forwards, floods, or filters the frame based on the lookup result.
 
-A switch is more selective than an Ethernet hub: it can send a known unicast frame only through the port leading to the destination device.
+A switch is more selective than an Ethernet hub: it can send a **known unicast** frame only through the port leading to the destination device.
 
 ### Hub vs switch
 
 | Ethernet hub | Ethernet switch |
 |---|---|
 | Repeats incoming signals to its other ports | Makes forwarding decisions using MAC address information |
-| Does not learn MAC addresses | Learns source MAC addresses |
-| All connected devices share one collision domain | Each switch port is a separate collision domain in the traditional Ethernet model |
+| Does not learn MAC addresses | Learns **source MAC address**es |
+| All connected devices share one **collision domain** | Each switch port is a separate **collision domain** in the traditional Ethernet model |
 | Shared bandwidth; traditionally half-duplex | Dedicated port bandwidth; commonly full-duplex |
-| Does not selectively forward a frame to one destination port | Forwards known unicast frames to the destination port |
+| Does not selectively forward a frame to one destination port | Forwards **known unicast** frames to the destination port |
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > A hub is a Layer 1 repeater, not an intelligent frame-forwarding device. Hubs are largely obsolete in modern Ethernet networks.
 
 ---
 
-## 2. The MAC address table (CAM table)
+## 2. 🧠 The MAC Address Table (CAM Table)
 
-A switch maintains a **MAC address table**, commonly called a **CAM table** (Content Addressable Memory table).
+A switch maintains a §§**MAC address table**§§, commonly called a §§**CAM table**§§ (Content Addressable Memory table).
 
-The table maps a learned MAC address to the interface/port and VLAN where the switch learned it.
+The table maps a learned MAC address to the interface/port and **VLAN** where the switch learned it.
 
 A simplified entry looks like this:
 
-| VLAN | MAC address | Switch port |
+| **VLAN** | MAC address | Switch port |
 |---:|---|---|
 | 10 | `AA:AA:AA:AA:AA:AA` | `Gi0/1` |
 | 10 | `BB:BB:BB:BB:BB:BB` | `Gi0/2` |
 | 20 | `CC:CC:CC:CC:CC:CC` | `Gi0/3` |
 
-The actual table can contain additional information, such as whether an entry is dynamic or static and its aging information. The same MAC address can have separate entries in different VLAN contexts.
+The actual table can contain additional information, such as whether an entry is dynamic or static and its aging information. The same MAC address can have separate entries in different **VLAN** contexts.
 
 ### How does a switch learn a MAC address?
 
-A switch learns from the **source MAC address** of an incoming Ethernet frame.
+A switch learns from the §§**source MAC address**§§ of an incoming Ethernet frame.
 
 For example:
 
 - PC1 is connected to switch port 1.
 - PC1 sends a frame.
-- The switch reads PC1's source MAC address.
-- It records: `PC1 MAC → Port 1` in the relevant VLAN.
+- The switch reads PC1's **source MAC address**.
+- It records: `PC1 MAC → Port 1` in the relevant **VLAN**.
 
 The switch does not need to know the destination device before learning the source. Learning happens as frames arrive.
 
 ### How does the switch forward a frame?
 
-After learning/refreshing the source MAC address, the switch checks the frame's **destination MAC address**.
+After learning/refreshing the **source MAC address**, the switch checks the frame's §§**destination MAC address**§§.
 
 | Destination lookup result | Switch action |
 |---|---|
-| Destination MAC is known on another port | Forward the frame only out of that port (known unicast forwarding) |
-| Destination MAC is unknown in that VLAN | Flood the frame out eligible ports in that VLAN, except the ingress port (unknown-unicast flooding) |
+| Destination MAC is known on another port | Forward the frame only out of that port (**known unicast** forwarding) |
+| Destination MAC is unknown in that **VLAN** | Flood the frame out eligible ports in that **VLAN**, except the ingress port (**unknown-unicast flooding**) |
 | Destination MAC is learned on the same ingress port | Filter/drop the frame instead of sending it back out the same port |
-| Destination is an Ethernet broadcast address | Flood within the VLAN, except the ingress port |
+| Destination is an Ethernet broadcast address | Flood within the **VLAN**, except the ingress port |
 
 Multicast forwarding can depend on switch configuration and features such as IGMP snooping; do not assume every multicast frame is always handled identically.
 
 ---
 
-## 3. Example: PC1 sends a frame to PC3
+## 3. 📦 Example: PC1 Sends a Frame to PC3
 
 Assume four PCs are connected to one switch:
 
@@ -91,9 +123,9 @@ Assume four PCs are connected to one switch:
 - PC3 → Port 3
 - PC4 → Port 4
 
-Initially, the switch's MAC address table is empty.
+Initially, the switch's **MAC address table** is empty.
 
-### Step 1 - PC1 sends a frame
+### Step 1 — PC1 sends a frame
 
 PC1 sends an Ethernet frame addressed to PC3.
 
@@ -103,66 +135,68 @@ The switch receives the frame on Port 1 and learns PC1's **source** MAC address:
 |---|---|
 | PC1 MAC | Port 1 |
 
-### Step 2 - The switch looks up PC3
+### Step 2 — The switch looks up PC3
 
-The switch checks the destination MAC address, but PC3 is not yet in the table.
+The switch checks the **destination MAC address**, but PC3 is not yet in the table.
 
-The destination is an **unknown unicast** destination.
+The destination is an §§**un**known unicast****§§ destination.
 
-### Step 3 - The switch floods the frame
+### Step 3 — The switch floods the frame
 
-The switch sends a copy of the frame out the other eligible ports in the same VLAN, excluding Port 1.
+The switch sends a copy of the frame out the other eligible ports in the same **VLAN**, excluding Port 1.
 
-PC2 and PC4 receive the frame but discard it because the destination MAC address is not theirs. PC3 accepts and processes it.
+PC2 and PC4 receive the frame but discard it because the **destination MAC address** is not theirs. PC3 accepts and processes it.
 
-> Flooding is not the switch sending the frame back through the port on which it arrived. The ingress port is excluded.
+> [!NOTE]
+> Flooding does not send the frame back through the port on which it arrived. The ingress port is excluded.
 
-### Step 4 - PC3 replies
+### Step 4 — PC3 replies
 
-PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learns PC3's source MAC address:
+PC3 sends a reply. When the reply reaches the switch on Port 3, the switch learns PC3's **source MAC address**:
 
 | MAC address | Port |
 |---|---|
 | PC1 MAC | Port 1 |
 | PC3 MAC | Port 3 |
 
-### Step 5 - Subsequent frames are forwarded directly
+### Step 5 — Subsequent frames are forwarded directly
 
 The next time PC1 sends a frame to PC3, the switch finds PC3's MAC address in its table and forwards the frame only through Port 3.
 
-> [!NOTE] 
-> The switch learns source MAC addresses; it looks up destination MAC addresses to make forwarding decisions.
+> [!TIP]
+> **Key takeaway:** The switch learns ****source MAC address**es**; it looks up ****destination MAC address**es** to make forwarding decisions.
 
 ---
 
-## 4. Unknown-unicast flooding vs MAC flooding attack
+## 4. 🚨 Unknown-Unicast Flooding vs MAC Flooding Attack
 
 These terms sound similar but describe different things.
 
-### Unknown-unicast flooding - normal switch behaviour
+### Unknown-unicast flooding — normal switch behaviour
 
-This happens when a switch receives a unicast frame but does not have an entry for its destination MAC address in the relevant VLAN's MAC address table.
+This happens when a switch receives a unicast frame but does not have an entry for its **destination MAC address** in the relevant **VLAN**'s **MAC address table**.
 
-The switch floods the frame through eligible ports in that VLAN, except the ingress port. This helps the frame reach the destination while the switch learns where devices are connected.
+The switch floods the frame through eligible ports in that **VLAN**, except the ingress port. This helps the frame reach the destination while the switch learns where devices are connected.
 
 It can happen when:
 
 - The switch has just started and its dynamic MAC table is empty.
 - A device has not transmitted recently and its entry has aged out.
 - A device has moved to another switch port.
-- The switch has not yet learned the destination MAC address.
+- The switch has not yet learned the **destination MAC address**.
 
-### MAC flooding attack (CAM table overflow attack)
+### **MAC flooding attack** (**CAM table** overflow attack)
 
-A **MAC flooding attack** is a Layer 2 attack in which an attacker sends many Ethernet frames with numerous forged source MAC addresses in an attempt to consume the switch's MAC address-table capacity.
+A §§**MAC flooding attack**§§ is a Layer 2 attack in which an attacker sends many Ethernet frames with numerous forged **source MAC address**es in an attempt to consume the switch's MAC address-table capacity.
 
-If the table cannot accommodate additional entries, the switch may be unable to learn some legitimate destination MAC addresses. Frames for those unknown destinations may then be flooded within the relevant VLAN, depending on the switch's implementation and configuration.
+If the table cannot accommodate additional entries, the switch may be unable to learn some legitimate **destination MAC address**es. Frames for those unknown destinations may then be flooded within the relevant **VLAN**, depending on the switch's implementation and configuration.
 
-This can increase traffic exposure and may allow an attacker on the same VLAN to observe traffic that would otherwise have been selectively forwarded. It does **not** mean every switch universally changes into a hub or enters a guaranteed “fail-open mode”.
+> [!WARNING]
+> This can increase traffic exposure and may allow an attacker on the same **VLAN** to observe traffic that would otherwise be selectively forwarded. It does **not** mean every switch universally changes into a hub or enters a guaranteed “fail-open mode”.
 
 ### How can it be mitigated?
 
-One relevant Layer 2 control is **switch port security**:
+One relevant Layer 2 control is **switch **port security****:
 
 - Limit the number of MAC addresses that a switch port can learn.
 - Optionally allow specified MAC addresses.
@@ -172,11 +206,11 @@ Port security is a mitigation, not a complete security strategy. Its configurati
 
 ---
 
-## 5. MAC address aging
+## 5. ⏳ MAC Address Aging
 
 Dynamic MAC address entries are not permanent.
 
-A switch maintains an aging timer for dynamic entries. If it does not receive traffic from a learned source MAC address within the configured aging period, it can remove that entry.
+A switch maintains an aging timer for dynamic entries. If it does not receive traffic from a learned **source MAC address** within the configured aging period, it can remove that entry.
 
 Why aging is useful:
 
@@ -184,14 +218,14 @@ Why aging is useful:
 - Old entries should not remain in the table indefinitely.
 - The switch can relearn a device's current location when it transmits again.
 
-If an entry has aged out and a frame later arrives for that destination, the switch may treat the destination as unknown and flood the frame within the VLAN.
+If an entry has aged out and a frame later arrives for that destination, the switch may treat the destination as unknown and flood the frame within the **VLAN**.
 
-> [!NOTE] 
+> [!NOTE]
 > The aging interval is configurable and vendor/platform dependent. Do not treat a particular value, such as 300 seconds, as a universal Ethernet standard.
 
 ---
 
-## 6. MAC address learning across multiple switches
+## 6. 🔗 MAC Address Learning Across Multiple Switches
 
 Switches learn MAC addresses from frames they receive, including frames arriving from another switch.
 
@@ -202,22 +236,20 @@ PC-A ── Switch 1 ───── Switch 2 ── PC-B
 ```
 
 1. PC-A sends a frame towards PC-B.
-2. Switch 1 learns PC-A's source MAC address on the port connected to PC-A.
-3. If PC-B's destination MAC is unknown, Switch 1 floods the frame within the relevant VLAN, including towards the inter-switch link if it is an eligible forwarding port.
-4. Switch 2 receives the frame and learns PC-A's source MAC address on its inter-switch port.
+2. Switch 1 learns PC-A's **source MAC address** on the port connected to PC-A.
+3. If PC-B's destination MAC is unknown, Switch 1 floods the frame within the relevant **VLAN**, including towards the inter-switch link if it is an eligible forwarding port.
+4. Switch 2 receives the frame and learns PC-A's **source MAC address** on its inter-switch port.
 5. PC-B receives the frame and replies.
-6. Switch 2 learns PC-B's source MAC address on the port connected to PC-B.
-7. Switch 1 learns PC-B's source MAC address on the inter-switch port.
+6. Switch 2 learns PC-B's **source MAC address** on the port connected to PC-B.
+7. Switch 1 learns PC-B's **source MAC address** on the inter-switch port.
 
 Both switches build their own forwarding information. They do not need to exchange ordinary host MAC-table entries with one another for this basic learning process.
 
 ---
 
-## 7. MAC address flapping
+## 7. ⚠️ MAC Address Flapping
 
-**MAC address flapping** occurs when a switch repeatedly learns the same MAC address on different ports over a short period.
-
-For example, a MAC address may appear to move between Port 1 and Port 5 repeatedly.
+§§**MAC address flapping**§§ occurs when a switch repeatedly learns the same MAC address on different ports over a short period.
 
 Possible causes include:
 
@@ -228,108 +260,123 @@ Possible causes include:
 
 Frequent flapping can make forwarding unstable and may indicate a network design or configuration problem.
 
-Do not confuse MAC address flapping with a normal device move. A single legitimate move can cause the switch to update its entry; repeated rapid movement is the warning sign.
+Do not confuse **MAC address flapping** with a normal device move. A single legitimate move can cause the switch to update its entry; repeated rapid movement is the warning sign.
 
 ---
 
-## 8. CAM table and TCAM - are they the same?
+## 8. 🧩 CAM Table and **TCAM** — Are They the Same?
 
 They are related hardware concepts, but they are not interchangeable.
 
 - **CAM (Content Addressable Memory):** Commonly used for exact-match lookups, such as Ethernet MAC address forwarding entries.
-- **TCAM (Ternary Content Addressable Memory):** Supports matching values with `0`, `1`, and “don't care” bits. It is commonly used for more flexible matching, such as access-control and policy rules.
+- ****TCAM** (Ternary Content Addressable Memory):** Supports matching values with `0`, `1`, and “don't care” bits. It is commonly used for more flexible matching, such as access-control and policy rules.
 
 For this topic, remember the distinction only. You do not need to study switch ASIC architecture or memory implementation details.
 
 ---
 
-## 9. VLAN-aware MAC address learning
+## 9. 🏷️ **VLAN**-Aware MAC Address Learning
 
-A switch's MAC forwarding decision is made in a VLAN context.
+A switch's MAC forwarding decision is made in a **VLAN** context.
 
-A VLAN creates a separate Layer 2 broadcast domain. The switch therefore needs to consider both the destination MAC address and the VLAN when forwarding a frame.
+A **VLAN** creates a separate Layer 2 **broadcast domain**. The switch therefore needs to consider both the **destination MAC address** and the **VLAN** when forwarding a frame.
 
 For example:
 
-| VLAN | MAC address | Port |
+| **VLAN** | MAC address | Port |
 |---:|---|---|
 | 10 | `AA:AA:AA:AA:AA:AA` | Port 1 |
 | 20 | `AA:AA:AA:AA:AA:AA` | Port 5 |
 
-The same MAC value can appear in separate VLAN contexts. A MAC address learned in VLAN 10 does not automatically provide a forwarding entry for VLAN 20.
+The same MAC value can appear in separate **VLAN** contexts. A MAC address learned in **VLAN** 10 does not automatically provide a forwarding entry for **VLAN** 20.
 
-When the destination is unknown, flooding is limited to eligible ports in the frame's VLAN. A Layer 2 switch does not flood a VLAN 10 frame into VLAN 20.
+When the destination is unknown, flooding is limited to eligible ports in the frame's **VLAN**. A **Layer 2 switch** does not flood a **VLAN** 10 frame into **VLAN** 20.
 
-This connects directly to the earlier VLAN topic: **VLANs separate broadcast domains, and MAC learning/forwarding is VLAN-aware.**
+This connects directly to the earlier **VLAN** topic: ****VLAN**s separate **broadcast domain**s, and MAC learning/forwarding is **VLAN**-aware.**
 
 ---
 
-## 10. Layer 2 switch vs Layer 3 switch
+## 10. 🌐 Layer 2 Switch vs Layer 3 Switch
 
-| Layer 2 switch | Layer 3 switch |
+| **Layer 2 switch** | **Layer 3 switch** |
 |---|---|
-| Forwards Ethernet frames using MAC addresses | Performs Layer 2 switching and can also route IP packets |
+| Forwards Ethernet frames using MAC addresses | Performs **Layer 2 switch**ing and can also route IP packets |
 | Operates primarily at OSI Layer 2 | Operates at Layers 2 and 3 |
-| Does not route between IP subnets by ordinary Layer 2 forwarding alone | Can route between VLANs/subnets using Layer 3 interfaces |
+| Does not route between IP subnets by ordinary Layer 2 forwarding alone | Can route between **VLAN**s/subnets using Layer 3 interfaces |
 | Uses a MAC address forwarding table | Uses MAC forwarding and IP routing/forwarding information |
 
-A Layer 3 switch is also called a **multilayer switch**. It can perform inter-VLAN routing, often in hardware. It does not make routers obsolete: dedicated routers and Layer 3 switches serve different roles depending on network scale, features and design.
+A **Layer 3 switch** is also called a **multilayer switch**. It can perform inter-**VLAN** routing, often in hardware. It does not make routers obsolete: dedicated routers and **Layer 3 switch**es serve different roles depending on network scale, features and design.
 
 ---
 
-## 11. Collision domains and broadcast domains
+## 11. 🔍 Collision Domains and Broadcast Domains
 
 ### Collision domain
 
-A **collision domain** is a network segment in which devices share a medium where simultaneous transmissions can collide.
+A §§**collision domain**§§ is a network segment in which devices share a medium where simultaneous transmissions can collide.
 
-- A traditional Ethernet hub places all connected devices in one shared collision domain.
-- A switch separates collision domains by port in the traditional Ethernet model.
+- A traditional Ethernet hub places all connected devices in one shared **collision domain**.
+- A switch separates **collision domain**s by port in the traditional Ethernet model.
 - Modern switched Ethernet links commonly operate full-duplex, so ordinary Ethernet collisions do not occur on those links.
 
 ### Broadcast domain
 
-A **broadcast domain** is the Layer 2 network area in which a broadcast frame is propagated.
+A §§**broadcast domain**§§ is the Layer 2 network area in which a broadcast frame is propagated.
 
-- A VLAN defines a separate Layer 2 broadcast domain.
-- Switches forward broadcasts within the relevant VLAN.
-- Routers do not normally forward Layer 2 broadcasts between IP networks/VLANs.
+- A **VLAN** defines a separate Layer 2 **broadcast domain**.
+- Switches forward broadcasts within the relevant **VLAN**.
+- Routers do not normally forward Layer 2 broadcasts between IP networks/**VLAN**s.
 
-**Do not mix these up:** A switch separates collision domains, while VLANs (and Layer 3 boundaries) define broadcast-domain separation.
+> [!IMPORTANT]
+> **Do not mix these up:** A switch separates **collision domain**s, while **VLAN**s (and Layer 3 boundaries) define broadcast-domain separation.
 
 ---
 
-## 12. Quick revision
+## 12. ⚡ Quick Revision
 
 | Question | Short answer |
 |---|---|
 | What address does a switch learn from an incoming frame? | Source MAC address |
 | What address does it look up to decide where to send the frame? | Destination MAC address |
-| What does the MAC/CAM table map? | MAC address + VLAN context to a switch port |
+| What does the MAC/**CAM table** map? | MAC address + **VLAN** context to a switch port |
 | What happens when the destination MAC is known? | Forward to the associated port |
-| What happens when the destination MAC is unknown? | Flood within the VLAN, except the ingress port |
+| What happens when the destination MAC is unknown? | Flood within the **VLAN**, except the ingress port |
 | Why does a switch age MAC entries? | To remove stale dynamic mappings |
-| What is MAC flooding? | An attack that attempts to exhaust the MAC address table using many forged source MAC addresses |
-| What is MAC address flapping? | A MAC address repeatedly appearing on different switch ports |
-| What is port security used for? | Limiting or controlling MAC addresses learned on a switch port |
-| What does a Layer 3 switch add? | IP routing, including inter-VLAN routing |
-| What separates broadcast domains? | VLANs / Layer 3 boundaries |
-| What separates collision domains on a switch? | Individual switch ports |
+| What is MAC flooding? | An attack that attempts to exhaust the **MAC address table** using many forged **source MAC address**es |
+| What is **MAC address flapping**? | A MAC address repeatedly appearing on different switch ports |
+| What is **port security** used for? | Limiting or controlling MAC addresses learned on a switch port |
+| What does a **Layer 3 switch** add? | IP routing, including inter-**VLAN** routing |
+| What separates **broadcast domain**s? | **VLAN**s / Layer 3 boundaries |
+| What separates **collision domain**s on a switch? | Individual switch ports |
 
 ---
 
-## References
+## 13. ✅ Learning Checklist
 
-1. [Cisco - Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) - source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
-2. [Cisco - Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) - explains unknown-unicast flooding and why it occurs.
-3. [Cisco - CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) - MAC learning, VLAN context, CAM entries and flooding.
-4. [Cisco Press - Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) - switching fundamentals and MAC address table overflow attacks.
-5. [Cisco - Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) - port security and CAM table overflow mitigation.
+- [ ] Explain the difference between a hub and a switch.
+- [ ] Explain how a switch learns a **source MAC address**.
+- [ ] Explain how the **MAC address table** is used to forward frames.
+- [ ] Walk through PC1 sending its first frame to an unknown PC3 destination.
+- [ ] Explain **unknown-unicast flooding** and why the ingress port is excluded.
+- [ ] Explain why the reply allows the switch to learn PC3's MAC address.
+- [ ] Explain MAC address aging.
+- [ ] Explain how two switches learn MAC addresses across an inter-switch link.
+- [ ] Distinguish normal **unknown-unicast flooding** from a **MAC flooding attack**.
+- [ ] Explain **port security** at a conceptual level.
+- [ ] Explain **MAC address flapping**.
+- [ ] Explain why MAC learning is **VLAN**-aware.
+- [ ] Distinguish Layer 2 and **Layer 3 switch**es.
+- [ ] Distinguish **collision domain**s from **broadcast domain**s.
 
-## Related topics in this repository
+## 14. 📚 References
 
-- [MAC Address](../06-mac-address/README.md)
-- [IP Address vs MAC Address](../07-ip-vs-mac-address/README.md)
-- [ARP](../08-arp/README.md)
-- VLAN - link this to the existing VLAN README once its exact path is confirmed.
-  
+1. [Cisco — Configure MAC Address Learning and Forwarding](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/cdp-lldp-mac-udld/cdp-lldp-mac-udld-configuration-guide/c-configure-mac.html) — source MAC learning, destination lookup, forwarding, flooding, filtering and aging.
+2. [Cisco — Unicast Flooding in Switched Campus Networks](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html) — explains **unknown-unicast flooding** and why it occurs.
+3. [Cisco — CAM Table Issues and Troubleshooting](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html) — MAC learning, **VLAN** context, CAM entries and flooding.
+4. [Cisco Press — Routing and Switching Essentials, Chapter 2](https://www.ciscopress.com/content/images/9781587133183/samplepages/1587133180.pdf) — switching fundamentals and **MAC address table** overflow attacks.
+5. [Cisco — Layer 2 Security Features](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/72846-layer2-secftrs-catl3fixed.pdf) — **port security** and **CAM table** overflow mitigation.
+
+---
+
+> [!NOTE]
+> **Scope:** This README focuses on understanding Ethernet switching behaviour. It does not cover switch CLI configuration, detailed STP operation, **VLAN** configuration commands, enterprise campus design, or advanced switch hardware architecture. Those are separate topics.
