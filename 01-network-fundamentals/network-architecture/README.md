@@ -22,7 +22,7 @@ A network may connect laptops, phones, servers, printers, storage systems, camer
 - **Internet access:** reach services outside the local network.
 - **Collaboration:** allow users and systems to work with shared information.
 
-### **The building blocks of a network.**
+### **The Building Blocks of a Network**
 
 <figure>
   <img src="assets/01-networking-building-blocks.png" alt="Networking building blocks: end devices, connection methods and network devices" width="100%">
@@ -71,9 +71,9 @@ A network may connect laptops, phones, servers, printers, storage systems, camer
 
 The most important distinction is the job each device performs.
 
+### **Main Network Devices and Their Roles**
 <figure>
   <img src="assets/02-switch-router-access-point.png" alt="Switch, router, access point and Layer 3 switch comparison" width="100%">
-  <figcaption><strong>Figure 2.</strong> Main network devices and their roles.</figcaption>
 </figure>
 
 ### 3.1 Switch
@@ -120,9 +120,10 @@ An AP is not necessarily a router. In many enterprise networks, the router, swit
 
 Network labels describe different things: geographic scope, organisational context or deployment environment. They are useful categories, but not all are mutually exclusive.
 
+### **Common Network Scopes and Deployment Contexts**
+
 <figure>
   <img src="assets/03-network-types-and-scopes.png" alt="Network scope overview showing LAN, WAN, Internet, SOHO, campus, data centre and cloud" width="100%">
-  <figcaption><strong>Figure 3.</strong> Common network scopes and deployment contexts.</figcaption>
 </figure>
 
 ### 4.1 PAN - Personal Area Network
@@ -217,9 +218,10 @@ Example:
 
 Devices in different VLANs are logically separated at Layer 2, even if they connect to the same physical switch.
 
+### **VLANs Create Separate Layer 2 Broadcast Domains; Layer 3 Routing Enables Communication Between Them**
+
 <figure>
   <img src="assets/04-vlan-and-intervlan-routing.png" alt="VLAN segmentation and inter-VLAN routing diagram" width="100%">
-  <figcaption><strong>Figure 4.</strong> VLANs create separate Layer 2 broadcast domains; Layer 3 routing enables communication between them.</figcaption>
 </figure>
 
 ### Inter-VLAN routing
@@ -239,9 +241,10 @@ It can be provided by:
 
 Larger campus networks are often organised into layers. This makes the network easier to scale, operate and protect.
 
+### **Conceptual Three-tier and Two-tier Campus Network Designs**
+
 <figure>
   <img src="assets/05-campus-two-tier-three-tier.png" alt="Three-tier campus architecture compared with two-tier collapsed-core architecture" width="100%">
-  <figcaption><strong>Figure 5.</strong> Conceptual three-tier and two-tier campus network designs.</figcaption>
 </figure>
 
 ### 6.1 Three-tier architecture
@@ -274,9 +277,10 @@ Two useful terms describe traffic in a data centre:
 - **North–south traffic:** traffic entering or leaving the data-centre environment, such as a browser request reaching an application.
 - **East–west traffic:** traffic moving between systems inside the data centre, such as an application server calling a database or another service.
 
+### **High-level Data Centre Traffic Directions and VPN Use Case**
+
 <figure>
   <img src="assets/06-data-centre-traffic-and-vpn.png" alt="Data centre north-south and east-west traffic, plus site-to-site and remote access VPN concepts" width="100%">
-  <figcaption><strong>Figure 6.</strong> High-level data-centre traffic directions and VPN use cases.</figcaption>
 </figure>
 
 Modern applications often generate significant east–west traffic because application services, caches, databases and other components communicate with one another.
