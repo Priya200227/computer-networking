@@ -15,8 +15,6 @@ This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, a
 
 ## 1. What Is an Ethernet Switch?
 
-![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
-
 An **Ethernet switch** connects devices within a Local Area Network (LAN). A typical **Layer 2 switch** makes forwarding decisions using the **destination MAC address** in an Ethernet frame.
 
 When a frame arrives, the switch:
@@ -26,6 +24,8 @@ When a frame arrives, the switch:
 3. Forwards, floods, or filters the frame based on the lookup result.
 
 A switch is more selective than an Ethernet hub: it can send a **known unicast** frame only through the port leading to the destination device.
+
+![A switch learns the **source MAC address** and floods an unknown destination frame](assets/01-mac-learning-unknown-unicast.png)
 
 ### Hub vs switch
 
