@@ -28,7 +28,7 @@ The repository is organised into eight subject-based modules.
 | 04 | [DNS](./04-dns/) | DNS architecture, hierarchy, resolution, caching and DNS record types |
 | 05 | [HTTP & Web](./05-http-and-web/) | HTTP fundamentals, request-response structure, HTTP/1.1, HTTP/2, multiplexing, HPACK, QUIC and HTTP/3 |
 | 06 | [Security](./06-security/) | TLS, encryption, digital certificates, certificate authorities and secure connection establishment |
-| 07 | [Cloud Networking](./07-cloud-networking/) | Virtual Private Cloud (VPC), subnets, route tables, Internet Gateway and cloud network isolation |
+| 07 | [Cloud Networking](./07-cloud-networking/) | Virtual Private Cloud (VPC), subnets, route tables, Internet Gateway and cloud network isolation, security groups |
 | 08 | [Application Traffic & Reliability](./08-application-traffic-and-reliability/) | Proxies, reverse proxies, load balancing, connection pooling and timeouts |
 
 ---
