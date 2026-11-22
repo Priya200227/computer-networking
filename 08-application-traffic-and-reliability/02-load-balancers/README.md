@@ -1,14 +1,16 @@
 # Load Balancers
 
-> A load balancer is an entry point that distributes incoming connections or requests across a pool of backend targets according to a routing policy, while helping applications scale and remain available.
+> [!NOTE]
+>
+> **Purpose**: Understand why load balancers exist, how they select backend targets, what Layer 4 and Layer 7 mean, and how health checks, TLS, proxies and observability fit into a production application.
 
-**Module:** [08 — Application Traffic & Reliability](../README.md)  
-**Topic:** Load balancing  
-**Learning objective:** Understand why load balancers exist, how they select backend targets, what Layer 4 and Layer 7 mean, and how health checks, TLS, proxies and observability fit into a production application.
+[← Back to Application Traffic & Reliability Repository](https://github.com/Priya200227/computer-networking/tree/main/08-application-traffic-and-reliability)
 
 ---
 
 ## 1. Why do we need a load balancer?
+
+> A load balancer is an entry point that distributes incoming connections or requests across a pool of backend targets according to a routing policy, while helping applications scale and remain available.
 
 Imagine a web application initially runs on one application server.
 
