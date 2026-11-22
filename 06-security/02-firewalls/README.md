@@ -6,7 +6,7 @@
 > 
 > **Purpose:** Understand what a firewall does, where it is placed, how traffic rules work, and the difference between stateless and stateful inspection. Learn enough to reason about network security in application and cloud architecture—not to administer enterprise firewalls.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to Security Repository](https://github.com/Priya200227/computer-networking/tree/main/06-security)
 
 ---
 
