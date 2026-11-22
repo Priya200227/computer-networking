@@ -5,7 +5,7 @@
 >
 > **Purpose:** Understand how ICMP communicates network-layer errors and diagnostic information, how `ping` uses ICMP Echo messages to test reachability and measure round-trip time, and how `traceroute`/`tracert` uses IP Time to Live (TTL) or Hop Limit values to discover responding routers along a network path.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
