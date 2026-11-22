@@ -5,7 +5,7 @@
 >   
 > **Learning objective:** Understand how a device automatically obtains an IPv4 configuration, how DHCP's DORA process works, and how DHCP messages are encapsulated and delivered.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 
 ---
