@@ -5,7 +5,7 @@
 >  
 > **Learning objective:** Understand why HTTP/2 multiplexing does not completely eliminate head-of-line blocking, how TCP packet loss affects multiple HTTP/2 streams, and why HTTP/3 uses QUIC.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -151,12 +151,10 @@ This avoids TCP-level cross-stream head-of-line blocking.
 
 ## References
 
-- [RFC 9113 — HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
-- [RFC 9000 — QUIC Transport Protocol](https://www.rfc-editor.org/rfc/rfc9000.html)
-- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
-- [Cloudflare — HTTP/2 and HTTP/3](https://www.cloudflare.com/learning/performance/http2-vs-http3/)
-
----
+- [RFC 9113 - HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
+- [RFC 9000 - QUIC Transport Protocol](https://www.rfc-editor.org/rfc/rfc9000.html)
+- [RFC 9114 - HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [Cloudflare - HTTP/2 and HTTP/3](https://www.cloudflare.com/learning/performance/http2-vs-http3/)
 
 **Next:** [QUIC Protocol Overview](../27-quic-protocol-overview/README.md)
 
