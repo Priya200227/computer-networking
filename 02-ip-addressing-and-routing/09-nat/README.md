@@ -5,7 +5,7 @@
 >
 >**Purpose:** Understand how devices using private IPv4 addresses communicate with the public Internet through NAT, and how PAT allows multiple devices to share a single public IPv4 address.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
