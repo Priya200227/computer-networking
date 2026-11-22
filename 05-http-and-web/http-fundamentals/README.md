@@ -1,10 +1,11 @@
-# HTTP Fundamentals — Requests, Responses, Methods, Cookies & HTTPS
+# HTTP Fundamentals - Requests, Responses, Methods, Cookies & HTTPS
 
 > [!NOTE]
-> **Section:** Computer Networking — HTTP  
+> **Section:** Computer Networking - HTTP
+> 
 > **Learning objective:** Understand HTTP's client-server model, statelessness, URL structure, request and response semantics, methods, status codes, headers, cookies, sessions, and HTTPS.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -297,9 +298,9 @@ These terms are related but not identical.
 
 | Term | Meaning |
 |---|---|
-| URI | Uniform Resource Identifier — identifies a resource |
-| URL | Uniform Resource Locator — identifies a resource by describing how and where to access it |
-| URN | Uniform Resource Name — identifies a resource by name within a namespace |
+| URI | Uniform Resource Identifier - identifies a resource |
+| URL | Uniform Resource Locator - identifies a resource by describing how and where to access it |
+| URN | Uniform Resource Name - identifies a resource by name within a namespace |
 
 **Relationship:** A URL and a URN are both types of URI.
 
@@ -551,7 +552,7 @@ Suppose a user resource contains:
 }
 ```
 
-**PUT — Replace the resource representation**
+**PUT - Replace the resource representation**
 
 A PUT request might send:
 
@@ -565,7 +566,7 @@ A PUT request might send:
 
 The target resource is replaced according to the server's PUT semantics.
 
-**PATCH — Apply a partial modification**
+**PATCH - Apply a partial modification**
 
 A PATCH request might send:
 
@@ -904,15 +905,11 @@ HTTP
 
 ## References
 
-- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
-- [RFC 9111 — HTTP Caching](https://www.rfc-editor.org/rfc/rfc9111.html)
-- [RFC 9112 — HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
-- [RFC 9113 — HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
-- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
-- [RFC 8446 — TLS 1.3](https://www.rfc-editor.org/rfc/rfc8446.html)
-- [RFC 6265 — HTTP State Management Mechanism (Cookies)](https://www.rfc-editor.org/rfc/rfc6265.html)
-- [RFC 6455 — The WebSocket Protocol](https://www.rfc-editor.org/rfc/rfc6455.html)
-
----
-
-**Suggested next topics:** HTTP caching in depth, authentication and authorization, CORS, and API design.
+- [RFC 9110 - HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC 9111 - HTTP Caching](https://www.rfc-editor.org/rfc/rfc9111.html)
+- [RFC 9112 - HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
+- [RFC 9113 - HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
+- [RFC 9114 - HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [RFC 8446 - TLS 1.3](https://www.rfc-editor.org/rfc/rfc8446.html)
+- [RFC 6265 - HTTP State Management Mechanism (Cookies)](https://www.rfc-editor.org/rfc/rfc6265.html)
+- [RFC 6455 - The WebSocket Protocol](https://www.rfc-editor.org/rfc/rfc6455.html)
