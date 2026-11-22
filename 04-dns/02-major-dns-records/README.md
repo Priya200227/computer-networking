@@ -1,10 +1,10 @@
-# DNS — Major Resource Record Types
+# DNS - Major Resource Record Types
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/_PugVKzp3ig?si=RXcOArwm-hRqYot9)
+> **Section:** Computer Networking — [Major DNS records explained](https://youtu.be/_PugVKzp3ig?si=RXcOArwm-hRqYot9)
 >
-> **Learning objective:** Understand the purpose, structure, and practical use of the major DNS resource record types — A, AAAA, MX, CNAME, NS, TXT, and PTR — and how they support name resolution, mail routing, delegation, and reverse DNS.
+> **Learning objective:** Understand the purpose, structure, and practical use of the major DNS resource record types - A, AAAA, MX, CNAME, NS, TXT, and PTR - and how they support name resolution, mail routing, delegation, and reverse DNS.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to DNS Repository](https://github.com/Priya200227/computer-networking/tree/main/04-dns)
 
 ---
 
@@ -50,7 +50,7 @@ jyothipriya.in.  3600  IN  A  3.111.187.148
 
 ![DNS resource record fields](./assests/01-dns-resource-record-fields.png)
 
-## 3. A record — IPv4 address
+## 3. A record - IPv4 address
 
 An `A` record maps a hostname to an IPv4 address.
 
@@ -73,7 +73,7 @@ An A record stores a 32-bit IPv4 address, not an IPv6 address.
 
 ![DNS A record](./assests/02-a-record-ipv4.png)
 
-## 4. AAAA record — IPv6 address
+## 4. AAAA record - IPv6 address
 
 An `AAAA` record maps a hostname to an IPv6 address.
 
@@ -87,7 +87,7 @@ IPv6 addresses are 128 bits. A hostname can have multiple AAAA records and may p
 
 ![DNS AAAA record](./assests/03-aaaa-record-ipv6.png)
 
-## 5. MX record — mail exchange
+## 5. MX record - mail exchange
 
 An `MX` record identifies the mail server hostname(s) responsible for receiving email for a domain.
 
@@ -117,7 +117,7 @@ MX records do **not** store emails. They tell sending mail systems where to atte
 
 ![DNS MX record and mail-routing example](./assests/04-mx-record-mail-routing.png)
 
-## 6. CNAME record — canonical name / alias
+## 6. CNAME record - canonical name/alias
 
 A `CNAME` record makes one hostname an alias of another hostname.
 
@@ -142,7 +142,7 @@ A CNAME target must not create an alias loop; DNS resolution cannot follow a loo
 
 ![DNS CNAME record](./assests/05-cname-record-alias.png)
 
-## 7. NS record — name server and delegation
+## 7. NS record - name server and delegation
 
 An `NS` record identifies the authoritative name servers for a DNS zone.
 
@@ -177,7 +177,7 @@ Some delegations require **glue records** in the parent zone: address records fo
 
 ![DNS NS record and delegation](./assests/06-ns-record-and-dns-delegation.png)
 
-## 8. TXT record — text data and email authentication
+## 8. TXT record - text data and email authentication
 
 A `TXT` record stores text strings associated with a DNS name.
 
@@ -213,7 +213,7 @@ SPF is evaluated by the receiving mail system using the connecting sender's IP a
 
 ![DNS TXT record and SPF examples](./assests/07-txt-dns-record.png)
 
-## 9. PTR record — reverse DNS
+## 9. PTR record - reverse DNS
 
 A `PTR` record is used for reverse DNS: it maps an IP address to a hostname.
 
@@ -227,7 +227,7 @@ Reverse DNS uses special namespaces:
 
 For IPv4, the address octets are reversed under `in-addr.arpa`. IPv6 reverse names are represented using reversed hexadecimal nibbles under `ip6.arpa`.
 
-PTR records are commonly managed by whoever controls the IP address allocation — often an ISP, hosting provider, or cloud provider — rather than the owner of an unrelated forward DNS domain.
+PTR records are commonly managed by whoever controls the IP address allocation - often an ISP, hosting provider, or cloud provider - rather than the owner of an unrelated forward DNS domain.
 
 ### PTR and email reputation
 
@@ -323,15 +323,14 @@ dig +trace example.com A
 
 ## 15. References
 
-- [RFC 1034 — Domain Names: Concepts and Facilities](https://www.rfc-editor.org/rfc/rfc1034)
-- [RFC 1035 — Domain Names: Implementation and Specification](https://www.rfc-editor.org/rfc/rfc1035)
-- [RFC 2181 — Clarifications to the DNS Specification](https://www.rfc-editor.org/rfc/rfc2181)
-- [RFC 2308 — Negative Caching of DNS Queries](https://www.rfc-editor.org/rfc/rfc2308)
-- [RFC 3596 — DNS Extensions to Support IP Version 6](https://www.rfc-editor.org/rfc/rfc3596)
-- [RFC 5321 — Simple Mail Transfer Protocol](https://www.rfc-editor.org/rfc/rfc5321)
-- [RFC 6376 — DomainKeys Identified Mail (DKIM)](https://www.rfc-editor.org/rfc/rfc6376)
-- [RFC 7208 — Sender Policy Framework (SPF)](https://www.rfc-editor.org/rfc/rfc7208)
-- [RFC 7489 — DMARC](https://www.rfc-editor.org/rfc/rfc7489)
+- [RFC 1034 - Domain Names: Concepts and Facilities](https://www.rfc-editor.org/rfc/rfc1034)
+- [RFC 1035 - Domain Names: Implementation and Specification](https://www.rfc-editor.org/rfc/rfc1035)
+- [RFC 2181 - Clarifications to the DNS Specification](https://www.rfc-editor.org/rfc/rfc2181)
+- [RFC 2308 - Negative Caching of DNS Queries](https://www.rfc-editor.org/rfc/rfc2308)
+- [RFC 3596 - DNS Extensions to Support IP Version 6](https://www.rfc-editor.org/rfc/rfc3596)
+- [RFC 5321 - Simple Mail Transfer Protocol](https://www.rfc-editor.org/rfc/rfc5321)
+- [RFC 6376 - DomainKeys Identified Mail (DKIM)](https://www.rfc-editor.org/rfc/rfc6376)
+- [RFC 7208 - Sender Policy Framework (SPF)](https://www.rfc-editor.org/rfc/rfc7208)
+- [RFC 7489 - DMARC](https://www.rfc-editor.org/rfc/rfc7489)
 
----
 **Next: ** [HTTP Overview](../../04-http-and-web/20-http-overview/README.md)
