@@ -1,10 +1,12 @@
 # TLS 1.2 Handshake
 
-> **Section:** Computer Networking - [TLS and Security](https://youtu.be/x1AY140_JXE?si=nYh8SNW87cef-S_a)
+> [!NOTE]
+>
+>**Section:** Computer Networking - [TLS and Security](https://youtu.be/x1AY140_JXE?si=nYh8SNW87cef-S_a)
 >   
-> **Learning objective:** Understand how a client and server negotiate TLS 1.2 parameters, authenticate the server, derive shared traffic keys, and verify that the handshake has not been tampered with.
+> **Purpose:** Understand how a client and server negotiate TLS 1.2 parameters, authenticate the server, derive shared traffic keys, and verify that the handshake has not been tampered with.
 
-[← Back to TLS](../README.md) · [← Back to Computer Networking Repository](../../../README.md)
+[← Back to Security Repository](https://github.com/Priya200227/computer-networking/tree/main/06-security)
 
 ---
 
@@ -36,7 +38,7 @@ The following is a simplified full handshake. It illustrates the common certific
 
 ![ClientHello, ServerHello and server certificate exchange](assets/02-client-hello-server-hello-and-certificate.png)
 
-### Step 1 — ClientHello
+### Step 1 - ClientHello
 
 The client starts the handshake and sends information such as:
 
@@ -46,7 +48,7 @@ The client starts the handshake and sends information such as:
 - Supported cipher suites.
 - Extensions, such as Server Name Indication (SNI), supported groups and signature algorithms.
 
-### Step 2 — ServerHello
+### Step 2 - ServerHello
 
 The server selects parameters for the connection and responds with:
 
@@ -58,7 +60,7 @@ The server selects parameters for the connection and responds with:
 
 The client checks that the selected parameters are acceptable and were among the options it offered.
 
-### Step 3 — Certificate
+### Step 3 - Certificate
 
 The server sends its certificate chain. The leaf certificate identifies the server's hostname and contains the server's public key.
 
@@ -71,7 +73,7 @@ The client validates the certificate chain and checks, among other things:
 
 A certificate is not itself the symmetric session key. It supports authentication and, depending on the key-exchange method, may provide a public key used in the handshake.
 
-### Step 4 — Key-exchange messages
+### Step 4 - Key-exchange messages
 
 The messages depend on the negotiated cipher suite.
 
@@ -123,10 +125,10 @@ A TLS 1.2 cipher-suite name describes a set of cryptographic choices. For exampl
 
 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 
-- `ECDHE` — ephemeral elliptic-curve Diffie–Hellman key exchange.
-- `RSA` — RSA is used for server authentication/signatures.
-- `AES_128_GCM` — authenticated symmetric encryption for record data.
-- `SHA256` — hash function used by the suite's TLS 1.2 PRF construction.
+- `ECDHE` - ephemeral elliptic-curve Diffie–Hellman key exchange.
+- `RSA` - RSA is used for server authentication/signatures.
+- `AES_128_GCM` - authenticated symmetric encryption for record data.
+- `SHA256` - hash function used by the suite's TLS 1.2 PRF construction.
 
 The exact interpretation depends on the suite. In particular, `RSA` in an ECDHE-RSA suite means RSA authentication; it does **not** mean RSA encrypts the pre-master secret.
 
@@ -144,13 +146,15 @@ The screenshot also shows `TLS_RSA_WITH_AES_128_CBC_SHA256`. This is a legacy RS
 | PRF | Derives key material from the secret and handshake random values |
 | Finished | Verifies the handshake transcript and possession of the negotiated secret |
 
-## 8. TLS 1.2 vs TLS 1.3 — preview
+## 8. TLS 1.2 vs TLS 1.3 - preview
 
 TLS 1.3 simplifies the handshake, removes several legacy algorithms and uses ephemeral (EC)DHE or PSK-based key establishment. It does not use the TLS 1.2 RSA key-transport mechanism. TLS 1.3 also encrypts more of the handshake after the ServerHello.
 
 Study TLS 1.3 separately rather than assuming the TLS 1.2 message sequence applies unchanged.
 
-## 9. Key takeaways
+---
+
+## Key takeaways
 
 - TLS protects application traffic after a handshake establishes security parameters and traffic keys.
 - The client and server negotiate a cipher suite and exchange random values.
@@ -162,13 +166,11 @@ Study TLS 1.3 separately rather than assuming the TLS 1.2 message sequence appli
 
 ## References
 
-- [RFC 5246 — The Transport Layer Security (TLS) Protocol Version 1.2](https://datatracker.ietf.org/doc/html/rfc5246)
-  - [Section 7.4 — Handshake Protocol](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4)
-  - [Section 7.4.9 — Finished](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.9)
-  - [Section 6.3 — Key Calculation](https://datatracker.ietf.org/doc/html/rfc5246#section-6.3)
-- [RFC 8446 — The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446)
+- [RFC 5246 - The Transport Layer Security (TLS) Protocol Version 1.2](https://datatracker.ietf.org/doc/html/rfc5246)
+  - [Section 7.4 - Handshake Protocol](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4)
+  - [Section 7.4.9 - Finished](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.9)
+  - [Section 6.3 - Key Calculation](https://datatracker.ietf.org/doc/html/rfc5246#section-6.3)
+- [RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446)
 
-## Next topic
-
-[ TLS 1.3 Handshake ](../tls-1.3-handshake/README.md)
+**Next:** [TLS 1.3 Handshake ](../tls-1.3-handshake/README.md)
 
