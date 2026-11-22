@@ -5,7 +5,7 @@
 > 
 > **Learning objective:** Understand how HTTP/3 uses QUIC for communication, how HTTP/3 frames differ from HTTP/2 frames, and how QUIC streams reduce transport-level head-of-line blocking.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -250,11 +250,9 @@ You do not need to learn QPACK's internal encoding instructions in depth at this
 
 ## References
 
-- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
-- [RFC 9000 — QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html)
-- [RFC 9001 — Using TLS to Secure QUIC](https://www.rfc-editor.org/rfc/rfc9001.html)
-- [RFC 9204 — QPACK: Field Compression for HTTP/3](https://www.rfc-editor.org/rfc/rfc9204.html)
-
----
+- [RFC 9114 - HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [RFC 9000 - QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html)
+- [RFC 9001 - Using TLS to Secure QUIC](https://www.rfc-editor.org/rfc/rfc9001.html)
+- [RFC 9204 - QPACK: Field Compression for HTTP/3](https://www.rfc-editor.org/rfc/rfc9204.html)
 
 **Next topic:** [TLS Overview](../../05-tls-and-security/29-tls/README.md)
