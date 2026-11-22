@@ -9,7 +9,6 @@
 ---
 
 ## Why This Topic Matters
-
 Devices on the same Ethernet LAN need a way to deliver frames without sending every frame to every device. An Ethernet switch learns which MAC addresses are reachable through which ports and uses that information to forward frames selectively.
 
 This topic builds on your notes about MAC addresses, IP vs MAC addresses, ARP, and **VLAN**s. Add links to those existing README files using the correct paths in your repository.
