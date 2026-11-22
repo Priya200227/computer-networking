@@ -1,10 +1,12 @@
-# TCP — Transmission Control Protocol
+# TCP - Transmission Control Protocol
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/ly6ixTfKpjM?si=aNttAkR9W902eMUn)
+>[!NOTE]
+>
+> **Section:** Computer Networking - [TCP](https://youtu.be/ly6ixTfKpjM?si=aNttAkR9W902eMUn)
 >
 > **Learning objective:** Understand TCP as a connection-oriented transport-layer protocol, explain how TCP establishes and terminates connections, interpret TCP segments and port numbers, and identify how TCP provides a reliable, ordered byte stream.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
 
 ---
 
