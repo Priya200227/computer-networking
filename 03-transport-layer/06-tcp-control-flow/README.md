@@ -1,10 +1,13 @@
 # TCP Flow Control
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/PL_6aNL_KqY?si=WrfbZwMiyYEh2WUz)
+> [!NOTE]
+>
+>**Section:** Computer Networking - [TCP Flow Control](https://youtu.be/PL_6aNL_KqY?si=WrfbZwMiyYEh2WUz)
 >
 > **Learning objective:** Understand why TCP needs receiver-side flow control, how the advertised receive window (`rwnd`) works, how sliding-window transmission differs from stop-and-wait, and how the TCP Window Scale option overcomes the 16-bit window-field limit.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
+
 
 ---
 
