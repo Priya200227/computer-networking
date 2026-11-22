@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
->**Section:** Computer Networking - [TLS and Security](https://youtu.be/x1AY140_JXE?si=nYh8SNW87cef-S_a)
+>**Section:** Computer Networking - [TLS 1.2 handshake](https://youtu.be/x1AY140_JXE?si=nYh8SNW87cef-S_a)
 >   
 > **Purpose:** Understand how a client and server negotiate TLS 1.2 parameters, authenticate the server, derive shared traffic keys, and verify that the handshake has not been tampered with.
 
