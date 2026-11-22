@@ -1,7 +1,7 @@
 # Why Is HTTP/2 a Binary Protocol?
 
 > [!NOTE]
-> **Section:** Computer Networking - [HTTP/2](https://youtu.be/9M-i2QIBZ9c?si=jQeJ6FBPhRE3CTOi)
+> **Section:** Computer Networking - [HTTP/2 Binary Protocol](https://youtu.be/9M-i2QIBZ9c?si=jQeJ6FBPhRE3CTOi)
 >
 > **Learning objective:** Understand why HTTP/2 uses binary framing instead of HTTP/1.1's text-based message format, how frames are structured, and how HTTP/2 carries headers and application data.
 
