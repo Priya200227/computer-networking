@@ -1,192 +1,174 @@
-# TLS - Transport Layer Security
+# TLS 1.2 Handshake
 
-> [!NOTE]
-> **Section:** Computer Networking - [TLS Overview](https://youtu.be/iM8Dx61uNRc?si=483JcHGJYkyi62rM)
-> 
-> **Purpose:** Understand why TLS is needed, what security properties it provides, the roles of symmetric and asymmetric cryptography, and how HTTPS uses TLS to protect HTTP communication.
+> **Section:** Computer Networking - [TLS and Security](https://youtu.be/x1AY140_JXE?si=nYh8SNW87cef-S_a)
+>   
+> **Learning objective:** Understand how a client and server negotiate TLS 1.2 parameters, authenticate the server, derive shared traffic keys, and verify that the handshake has not been tampered with.
 
-[← Back to Security Repository](https://github.com/Priya200227/computer-networking/tree/main/06-security)
+[← Back to TLS](../README.md) · [← Back to Computer Networking Repository](../../../README.md)
 
 ---
 
-## 1. What Is TLS?
+## 1. Why does TLS need a handshake?
 
-**TLS (Transport Layer Security)** is a cryptographic protocol that provides secure communication between two endpoints over an untrusted network.
+HTTPS is HTTP carried over a TLS-protected connection. Before the browser and server exchange protected application data, they need to establish security parameters.
 
-Without TLS, data exchanged using HTTP can travel in plaintext. Anyone able to observe the traffic may be able to read it or potentially modify it.
+The handshake is responsible for:
 
-TLS protects communication by providing three important security properties:
+- **Negotiation:** agree on the TLS version and a mutually supported cipher suite.
+- **Authentication:** normally authenticate the server using its certificate.
+- **Key establishment:** establish shared secret material from which traffic keys are derived.
+- **Handshake integrity:** verify that both sides have the same view of the handshake.
 
-| Security property | Meaning |
-|---|---|
-| **Confidentiality** | Prevents unauthorized parties from reading transmitted data |
-| **Integrity** | Helps detect whether transmitted data has been modified |
-| **Authentication** | Verifies the identity of the communicating endpoint, typically the server |
-
-### Why do we need TLS?
-
-Consider a browser communicating with a web server using ordinary HTTP.
-
-- The browser sends an HTTP request.
-- The server returns an HTTP response.
-- Without encryption, an attacker who can observe the traffic may read sensitive information.
-
-TLS protects the communication channel so that application data is encrypted while travelling across the network.
+After the handshake, symmetric cryptography protects application data because it is much more efficient than public-key operations.
 
 > [!IMPORTANT]
-> TLS protects data in transit. It does not automatically protect data stored on a device or server, nor does it prevent every type of attack.
+> The handshake does not simply send a symmetric key from the server to the browser. It establishes shared secret material securely; both sides derive matching traffic keys from it.
 
-## 2. HTTP vs HTTPS
+## 2. The high-level picture
 
-**HTTPS = HTTP over TLS.**
+![Purpose of the TLS 1.2 handshake and symmetric encryption](assets/01-tls-1.2-handshake-purpose-and-cipher-suites.png)
 
-HTTP defines how requests and responses work. TLS provides security for the communication carrying those HTTP messages.
+The client and server must arrive at matching key material without exposing it to an on-path attacker. The exact key-establishment steps depend on the negotiated key-exchange method.
 
-### Traditional protocol stack
+## 3. TLS 1.2 full handshake: message flow
 
-For HTTP/1.1 and HTTP/2 over TCP:
+The following is a simplified full handshake. It illustrates the common certificate-authenticated flow; optional messages and exact message order can vary with the cipher suite and extensions.
 
-```text
-       HTTP
-         |
-        TLS
-         |
-        TCP
-         |
-         IP
-```
+![ClientHello, ServerHello and server certificate exchange](assets/02-client-hello-server-hello-and-certificate.png)
 
-The combination of HTTP and TLS is commonly called **HTTPS**.
+### Step 1 — ClientHello
 
-When a browser communicates with a server using HTTPS:
+The client starts the handshake and sends information such as:
 
-1. A connection is established.
-2. The client and server perform a TLS handshake.
-3. They establish the cryptographic parameters and session keys.
-4. HTTP requests and responses are exchanged as encrypted application data.
+- Supported TLS versions (in TLS 1.2, the client indicates its supported version).
+- Client random value.
+- Session ID or session-resumption information.
+- Supported cipher suites.
+- Extensions, such as Server Name Indication (SNI), supported groups and signature algorithms.
 
-> [!NOTE]
-> HTTP/3 is different: it uses QUIC, which integrates TLS 1.3 security rather than placing TLS over TCP as in the traditional HTTP/1.1 and HTTP/2 stack.
+### Step 2 — ServerHello
 
-## 3. Two Types of Cryptography
+The server selects parameters for the connection and responds with:
 
-TLS uses both symmetric and asymmetric cryptographic techniques, but they serve different purposes.
+- The negotiated TLS version.
+- Server random value.
+- Session ID.
+- The selected cipher suite.
+- Any negotiated extensions.
 
-### 3.1 Symmetric Encryption
+The client checks that the selected parameters are acceptable and were among the options it offered.
 
-In symmetric encryption, **the same secret key is used for both encryption and decryption**.
+### Step 3 — Certificate
 
-```text
-Client                         Server
+The server sends its certificate chain. The leaf certificate identifies the server's hostname and contains the server's public key.
 
-Plaintext
-    |
-    | Encrypt using secret key
-    v
-Encrypted data  -------------> Encrypted data
-                                  |
-                                  | Decrypt using same key
-                                  v
-                               Plaintext
-```
+The client validates the certificate chain and checks, among other things:
 
-Both endpoints must securely obtain the same secret key.
+- The requested hostname matches a name in the certificate's Subject Alternative Name (SAN).
+- The certificate is within its validity period.
+- The chain leads to a trusted root CA.
+- The certificate's usage and signature constraints are acceptable.
 
-**Characteristics:**
+A certificate is not itself the symmetric session key. It supports authentication and, depending on the key-exchange method, may provide a public key used in the handshake.
 
-- Uses one shared secret key.
-- The same key encrypts and decrypts data.
-- Efficient and fast.
-- Suitable for protecting large amounts of application data.
+### Step 4 — Key-exchange messages
 
-**Example:** AES (Advanced Encryption Standard).
+The messages depend on the negotiated cipher suite.
 
-### 3.2 Asymmetric Cryptography
+- With **ECDHE**, the server sends ephemeral Diffie–Hellman parameters and signs them; the client sends its own ephemeral key share in `ClientKeyExchange`. Both sides independently calculate the same shared secret.
+- With **legacy RSA key exchange**, the client generates a pre-master secret and encrypts it with the server's certificate public key. The server decrypts it with its private key. This is the older RSA key-transport flow shown in the supplied diagram.
 
-Asymmetric cryptography uses a **public key and a corresponding private key**.
-
-- The public key can be shared.
-- The private key must be kept secret.
-- The two keys are mathematically related and are used in cryptographic operations.
-
-Asymmetric cryptography supports operations such as digital signatures and key establishment.
-
-**Characteristics:**
-
-- Uses a public/private key pair.
-- Supports authentication and secure key-establishment mechanisms.
-- Generally more computationally expensive than symmetric encryption.
-
-**Examples:** RSA and elliptic-curve cryptography.
+The server may send `ServerKeyExchange` when the selected key-exchange method requires it, followed by `ServerHelloDone` in the classic full handshake.
 
 > [!WARNING]
-> A common simplified explanation says that the client encrypts all data with the server's public key and the server decrypts it with its private key. That is not how modern TLS generally protects application traffic.
+> Do not treat the RSA key-exchange example as the modern default. `TLS_RSA_*` cipher suites do not provide forward secrecy and are obsolete for modern deployments. TLS 1.2 deployments should use ephemeral key exchange such as ECDHE.
 
-### How TLS uses both
+![Key exchange and derivation of matching traffic keys](assets/03-key-exchange-and-session-key-derivation.png)
 
-Modern TLS uses public-key cryptography during the handshake for authentication and key establishment. The client and server then derive shared symmetric traffic keys.
+## 4. From shared secret to traffic keys
 
-After the handshake, application data is protected using symmetric authenticated encryption.
+TLS 1.2 uses the negotiated cipher suite's key-establishment method and the TLS pseudo-random function (PRF) to derive key material.
 
-This gives TLS the benefits of both approaches:
+In the classic TLS 1.2 key schedule:
 
-- Public-key cryptography helps establish trust and shared secrets.
-- Symmetric cryptography efficiently protects application data.
+1. The client and server obtain the same **pre-master secret** (or equivalent shared secret from the key-exchange method).
+2. They combine it with the client and server random values through the TLS PRF to derive the **master secret**.
+3. They use the master secret and random values to derive the **key block**.
+4. The key block supplies the required client/server write keys and, depending on the cipher suite, IV or other keying material.
 
-![TLS overview: symmetric and asymmetric encryption](./assets/tls-overview-encryption-types.png)
+Both sides perform the derivation independently. Matching inputs and the same negotiated parameters produce matching traffic keys.
 
-## 4. How HTTPS Protects Communication
+The client-to-server and server-to-client traffic keys are separate. This prevents both directions from reusing the same traffic key.
 
-### Without TLS - HTTP
+## 5. ChangeCipherSpec and Finished
 
-In an ordinary HTTP exchange:
+![ChangeCipherSpec and Finished message verification](assets/04-change-cipher-spec-and-finished-messages.png)
 
-1. The client sends a request such as `GET /index.html`.
-2. The server sends an HTTP response.
-3. The application data is not protected by TLS encryption.
+After deriving the keys:
 
-An attacker able to observe the traffic may be able to read its contents.
+1. The client sends `ChangeCipherSpec` to signal that subsequent records will use the negotiated protection state.
+2. The client sends an encrypted `Finished` message.
+3. The server verifies the client's Finished message.
+4. The server sends its own `ChangeCipherSpec`.
+5. The server sends its encrypted `Finished` message.
+6. The client verifies the server's Finished message.
 
-### With TLS - HTTPS
+The Finished message contains verification data derived from the master secret and a hash of the handshake transcript. It confirms that the peer derived the expected key material and that the handshake messages have not been altered unnoticed.
 
-In an HTTPS exchange:
+Once the handshake completes successfully, the parties can exchange protected application data, such as HTTP requests and responses.
 
-1. The client connects to the server.
-2. The TLS handshake takes place.
-3. The server proves its identity using its certificate.
-4. The client and server establish shared traffic keys.
-5. HTTP requests and responses are transmitted as encrypted application data.
+## 6. Cipher suites: read the name correctly
 
-An attacker observing the network traffic cannot simply read the protected HTTP contents.
+A TLS 1.2 cipher-suite name describes a set of cryptographic choices. For example:
 
-![HTTP vs HTTPS and TLS handshake](./assets/http-vs-https-tls-handshake.png)
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 
-> [!IMPORTANT]
-> HTTPS does not hide every piece of network information. Depending on the connection and deployment, information such as IP addresses, ports, traffic timing, and traffic volume may still be observable.
+- `ECDHE` — ephemeral elliptic-curve Diffie–Hellman key exchange.
+- `RSA` — RSA is used for server authentication/signatures.
+- `AES_128_GCM` — authenticated symmetric encryption for record data.
+- `SHA256` — hash function used by the suite's TLS 1.2 PRF construction.
 
-## 5. Key Takeaways
+The exact interpretation depends on the suite. In particular, `RSA` in an ECDHE-RSA suite means RSA authentication; it does **not** mean RSA encrypts the pre-master secret.
 
-| Concept | Remember |
+The screenshot also shows `TLS_RSA_WITH_AES_128_CBC_SHA256`. This is a legacy RSA key-transport suite using CBC-mode encryption. It is useful to recognize historically, but it should not be presented as a recommended modern configuration.
+
+## 7. Important distinctions
+
+| Concept | What it does |
 |---|---|
-| TLS | Secures communication over an untrusted network |
-| Confidentiality | Protects data from being read by unauthorized parties |
-| Integrity | Helps detect data modification |
-| Authentication | Verifies the identity of the server |
-| HTTP | Application protocol for requests and responses |
-| HTTPS | HTTP protected using TLS |
-| Symmetric encryption | Same secret key for encryption and decryption |
-| Asymmetric cryptography | Uses a public/private key pair |
-| TLS handshake | Establishes security parameters and traffic keys |
-| Application data | Protected using symmetric traffic keys |
+| Certificate | Binds a server identity (such as a hostname) to a public key and is signed by an issuer |
+| Public/private key pair | Supports authentication and/or key establishment, depending on the algorithm |
+| Key exchange | Establishes shared secret material |
+| Master secret | Root secret used by the TLS 1.2 key schedule |
+| Traffic/session keys | Symmetric keys used to protect records in each direction |
+| PRF | Derives key material from the secret and handshake random values |
+| Finished | Verifies the handshake transcript and possession of the negotiated secret |
 
-**The core idea:** TLS secures communication by authenticating endpoints, establishing shared cryptographic keys, and protecting application data using efficient symmetric encryption.
+## 8. TLS 1.2 vs TLS 1.3 — preview
+
+TLS 1.3 simplifies the handshake, removes several legacy algorithms and uses ephemeral (EC)DHE or PSK-based key establishment. It does not use the TLS 1.2 RSA key-transport mechanism. TLS 1.3 also encrypts more of the handshake after the ServerHello.
+
+Study TLS 1.3 separately rather than assuming the TLS 1.2 message sequence applies unchanged.
+
+## 9. Key takeaways
+
+- TLS protects application traffic after a handshake establishes security parameters and traffic keys.
+- The client and server negotiate a cipher suite and exchange random values.
+- The server certificate authenticates the server; the client validates the certificate chain and hostname.
+- Key establishment varies by cipher suite. ECDHE is the modern TLS 1.2 choice; RSA key transport is legacy.
+- Both endpoints derive traffic keys independently.
+- `ChangeCipherSpec` and `Finished` mark and verify the transition to protected communication.
+- Separate traffic keys protect client-to-server and server-to-client data.
 
 ## References
 
-- [RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446.html)
-- [RFC 9325 - Recommendations for Secure Use of TLS and DTLS](https://www.rfc-editor.org/rfc/rfc9325.html)
-- [MDN - Transport Layer Security (TLS)](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)
-  
-**Next topic:** [TLS Certificates Explained in Depth](./tls-certificates/README.md)
+- [RFC 5246 — The Transport Layer Security (TLS) Protocol Version 1.2](https://datatracker.ietf.org/doc/html/rfc5246)
+  - [Section 7.4 — Handshake Protocol](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4)
+  - [Section 7.4.9 — Finished](https://datatracker.ietf.org/doc/html/rfc5246#section-7.4.9)
+  - [Section 6.3 — Key Calculation](https://datatracker.ietf.org/doc/html/rfc5246#section-6.3)
+- [RFC 8446 — The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446)
 
+## Next topic
+
+[ TLS 1.3 Handshake ](../tls-1.3-handshake/README.md)
 
