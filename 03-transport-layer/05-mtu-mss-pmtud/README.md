@@ -1,10 +1,12 @@
 # MTU, MSS, and Path MTU Discovery (PMTUD)
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/18-nbrEEU9o?si=mvScSP4egtOtgLux)
+>[!NOTE]
+>
+> **Section:** Computer Networking — [MTU MSS PMTUD](https://youtu.be/18-nbrEEU9o?si=mvScSP4egtOtgLux)
 >
 > **Learning objective:** Distinguish MTU, Path MTU, and TCP MSS; calculate the TCP payload size for a given MTU; understand IPv4 fragmentation and its header fields; and explain how Path MTU Discovery helps endpoints avoid packets that are too large for a network path.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
 
 ---
 
