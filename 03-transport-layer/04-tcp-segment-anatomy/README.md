@@ -1,10 +1,13 @@
 # TCP Segment Anatomy
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/_d4_vkSQIEk?si=s3YnKpFmPkM1mjEQ)
+>[!NOTE]
+>
+>**Section:** Computer Networking — [Anatomy of a TCP Segment](https://youtu.be/_d4_vkSQIEk?si=s3YnKpFmPkM1mjEQ)
 >
 > **Learning objective:** Understand the structure of a TCP segment, identify every field in the TCP header, calculate the minimum and maximum header sizes, and explain how options and control flags affect TCP communication.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
+
 
 ---
 
