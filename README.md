@@ -255,7 +255,7 @@ Some primary references include:
 - [IETF Datatracker](https://datatracker.ietf.org/) - Internet standards and working-group documents.
 - [MDN Web Docs](https://developer.mozilla.org/) - HTTP and web technology documentation.
 - [AWS Documentation](https://docs.aws.amazon.com/) - Cloud networking and VPC concepts.
-- [Computer Networking — Chai aur Code](https://www.youtube.com/@chaiaurcode) - Video-based learning resource.
+- [Computer Networking - Chai aur Code](https://www.youtube.com/@chaiaurcode) - Video-based learning resource.
 
 Relevant RFCs, official documentation and video resources are linked within individual topic notes wherever applicable.
 
