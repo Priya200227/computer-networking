@@ -29,7 +29,7 @@ A load balancer provides a stable entry point in front of those instances:
 
 ![Load balancer architecture](./assets/01-load-balancer-architecture.png)
 
-*Figure 1 — A client reaches a load balancer, which selects a backend target. The backend pool can grow or shrink without requiring clients to know each server address.*
+*Figure 1 - A client reaches a load balancer, which selects a backend target. The backend pool can grow or shrink without requiring clients to know each server address.*
 
 ### What a load balancer does
 
@@ -139,7 +139,7 @@ The backend terminates TLS. The load balancer forwards encrypted traffic without
 
 A load-balancing algorithm is the policy used to choose a backend. There is no universally best algorithm. The right choice depends on connection duration, request cost, target capacity, session design and the information the load balancer can observe.
 
-![Load-balancing algorithms](./assets/03-load-balancing-algorithms.png)
+![Load-balancing algorithms](./assets/Common-Load-Balancing-Algorithms.png)
 
 ### 5.1 Round robin
 
