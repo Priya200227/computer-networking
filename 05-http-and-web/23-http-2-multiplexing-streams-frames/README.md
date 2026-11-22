@@ -5,7 +5,7 @@
 >
 > **Learning objective:** Understand how HTTP/2 multiplexes multiple streams over a single TCP connection, how requests and responses are represented using frames, and how HTTP/2 traffic can be inspected using Wireshark.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -25,9 +25,9 @@ Each request/response exchange belongs to a separate **stream**, identified by a
 
 For example, a browser can request:
 
-- `GET /index.html` — Stream ID 1
-- `GET /api/users` — Stream ID 3
-- `GET /image.png` — Stream ID 5
+- `GET /index.html` - Stream ID 1
+- `GET /api/users` - Stream ID 3
+- `GET /image.png` - Stream ID 5
 
 The server can send frames belonging to these streams in an interleaved order.
 
@@ -271,11 +271,9 @@ In the packet capture, observe:
 
 ## References
 
-- [RFC 9113 — HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
-- [RFC 7541 — HPACK: Header Compression for HTTP/2](https://www.rfc-editor.org/rfc/rfc7541.html)
-- [MDN — Introduction to HTTP/2](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages)
-- [Wireshark — HTTP/2 Display Filter Reference](https://www.wireshark.org/docs/dfref/h/http2.html)
-
----
+- [RFC 9113 - HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
+- [RFC 7541 - HPACK: Header Compression for HTTP/2](https://www.rfc-editor.org/rfc/rfc7541.html)
+- [MDN - Introduction to HTTP/2](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages)
+- [Wireshark - HTTP/2 Display Filter Reference](https://www.wireshark.org/docs/dfref/h/http2.html)
 
 **Next:** [Why HTTP/2 is binary protocol](../24-http-2-binary-protocol/README.md)
