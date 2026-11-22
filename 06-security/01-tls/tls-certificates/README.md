@@ -1,8 +1,13 @@
 # TLS Certificates
 
-## Purpose
+>[!NOTE]
+>
+> **Purpose:**
+>Understand how TLS certificates establish a server's identity, how Certificate Authorities (CAs) issue them, and how browsers verify them before trusting a secure connection.
 
-Understand how TLS certificates establish a server's identity, how Certificate Authorities (CAs) issue them, and how browsers verify them before trusting a secure connection.
+[← Back to Security Repository](https://github.com/Priya200227/computer-networking/tree/main/06-security)
+
+---
 
 ## 1. What is a TLS certificate?
 
