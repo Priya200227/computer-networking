@@ -5,7 +5,7 @@
 >   
 > **Learning objective:** Understand why IPv6 was introduced, how IPv6 addresses are written and shortened, how IPv6 differs from IPv4, and the key mechanisms used for IPv6 addressing and communication.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
