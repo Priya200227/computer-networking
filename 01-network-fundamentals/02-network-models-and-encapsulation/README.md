@@ -43,13 +43,13 @@ The **Open Systems Interconnection (OSI) model** is a seven-layer reference mode
 
 ### Understanding the layers
 
-- **Layer 7 — Application:** Defines the network communication used by applications, such as an HTTP request.
-- **Layer 6 — Presentation:** Deals with data representation, encoding, and transformation.
-- **Layer 5 — Session:** Describes how communication sessions are established and managed.
-- **Layer 4 — Transport:** Supports communication between processes using protocols such as TCP and UDP.
-- **Layer 3 — Network:** Uses IP addresses to identify destinations and route packets.
-- **Layer 2 — Data Link:** Delivers frames across a local network link using link-layer addressing.
-- **Layer 1 — Physical:** Transmits bits through electrical, optical, or radio signals.
+- **Layer 7 - Application:** Defines the network communication used by applications, such as an HTTP request.
+- **Layer 6 - Presentation:** Deals with data representation, encoding, and transformation.
+- **Layer 5 - Session:** Describes how communication sessions are established and managed.
+- **Layer 4 - Transport:** Supports communication between processes using protocols such as TCP and UDP.
+- **Layer 3 - Network:** Uses IP addresses to identify destinations and route packets.
+- **Layer 2 - Data Link:** Delivers frames across a local network link using link-layer addressing.
+- **Layer 1 - Physical:** Transmits bits through electrical, optical, or radio signals.
 
 ![Why network layering matters](./assests/02-why-layering-matters.png)
 
@@ -201,14 +201,14 @@ Remember the complete data journey:
 
 At the receiver, the process happens in reverse through decapsulation.
 
+---
+
 ## References
 
-- [RFC 1122 — Requirements for Internet Hosts](https://www.rfc-editor.org/rfc/rfc1122.html)
-- [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293.html)
-- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
-- [ISO 7498-1 — OSI Basic Reference Model](https://www.iso.org/standard/20269.html)
-- [Cisco — TCP/IP Overview](https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf)
-
----
+- [RFC 1122  Requirements for Internet Hosts](https://www.rfc-editor.org/rfc/rfc1122.html)
+- [RFC 9293 - Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293.html)
+- [RFC 9114 - HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [ISO 7498-1 - OSI Basic Reference Model](https://www.iso.org/standard/20269.html)
+- [Cisco - TCP/IP Overview](https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.pdf)
 
 **Next:** [Routing and Packet Travel](../09-routing-and-packet-travel/README.md)
