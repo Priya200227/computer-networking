@@ -5,7 +5,7 @@
 >
 > **Learning objective:** Understand how routers forward IP packets between networks, how switches deliver frames within a LAN, and how ARP and default gateways help devices communicate with local, remote, and cloud-hosted destinations.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
