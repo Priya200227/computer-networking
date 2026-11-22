@@ -1,9 +1,13 @@
 # Security Groups
 
-## Learning Objective
-
-Understand how cloud Security Groups control inbound and outbound
+> [!NOTE]
+>
+>**Purpose:** Understand how cloud Security Groups control inbound and outbound
 network traffic to cloud resources.
+
+[← Back to Cloud Networking Repository](https://github.com/Priya200227/computer-networking/tree/main/07-cloud-networking)
+
+---
 
 ## 1. What Is a Security Group?
 
