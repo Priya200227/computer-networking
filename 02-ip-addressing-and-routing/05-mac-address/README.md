@@ -5,7 +5,7 @@
 >
 > **Learning objective:** Understand what a MAC address identifies, how it is structured, how it differs from an IP address, and how both work together during network communication.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
