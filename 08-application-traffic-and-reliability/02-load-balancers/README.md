@@ -192,7 +192,7 @@ The load balancer prefers a server with lower measured response time or latency,
 
 ### 5.5 IP hash / source hash
 
-A hash function uses a client key—often the source IP address—to select a backend.
+A hash function uses a client key-often the source IP address-to select a backend.
 
 Conceptually:
 
@@ -297,7 +297,7 @@ Do not assume that every load balancer always sends zero traffic when all target
 
 Backend health checks protect against unhealthy backend targets. They do not, by themselves, protect against failure of the load balancer itself.
 
-Production load-balancing services commonly address this with redundant load-balancer nodes, multiple availability zones, health monitoring and provider-managed failover. A self-managed deployment needs its own high-availability design—for example, redundant instances and a mechanism to move or advertise the service address.
+Production load-balancing services commonly address this with redundant load-balancer nodes, multiple availability zones, health monitoring and provider-managed failover. A self-managed deployment needs its own high-availability design-for example, redundant instances and a mechanism to move or advertise the service address.
 
 ---
 
@@ -407,7 +407,7 @@ A load balancer can provide a controlled entry point and may integrate with TLS 
 
 ## 12. Monitoring and observability
 
-A load balancer should be monitored as part of the full request path—not in isolation.
+A load balancer should be monitored as part of the full request path-not in isolation.
 
 ![Load balancer monitoring metrics](./assets/05-load-balancer-observability.png)
 
@@ -495,28 +495,25 @@ The application services can then call databases, caches and other services. The
 
 ### Official technical documentation
 
-1. [AWS Elastic Load Balancing — Overview and API concepts](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/Welcome.html)
-2. [AWS — Health checks for Application Load Balancer target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html)
-3. [AWS — Network Load Balancer listeners and TLS behavior](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
-4. [NGINX — HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
-5. [NGINX — TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/)
-6. [HAProxy — Backends and load-balancing algorithms](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/proxying-essentials/configuration-basics/backends/)
+1. [AWS Elastic Load Balancing - Overview and API concepts](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/Welcome.html)
+2. [AWS - Health checks for Application Load Balancer target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html)
+3. [AWS - Network Load Balancer listeners and TLS behavior](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+4. [NGINX - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
+5. [NGINX - TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/)
+6. [HAProxy - Backends and load-balancing algorithms](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/proxying-essentials/configuration-basics/backends/)
 
 ### Video learning sources
 
 The following videos informed the initial learning notes. The README distinguishes their teaching explanations from implementation-specific details verified against official documentation.
 
-1. [Load Balancer Explained — PowerCert Animated Videos](https://youtu.be/1fN2UDbtGDQ)
-2. [What is a Load Balancer? — Rohit Negi](https://youtu.be/88vl3BfLqUY)
-3. [What is a Load Balancer Really About? — ByteByteGo](https://youtu.be/LQuuoHTyYz8)
-4. [What are L4 Load Balancers and How Do They Work? — Arpit Bhayani](https://www.youtube.com/@AsliEngineering)
-5. [Layer 4 vs Layer 7 Load Balancer — IT k Funde](https://www.youtube.com/@ITkFunde)
-6. [Proxy vs Reverse Proxy vs Load Balancer — TechWorld with Nana](https://www.youtube.com/@TechWorldwithNana)
-7. [Load Balancers Explained in 16 Minutes — Coding for All](https://www.youtube.com/@codingforallnewtonschool)
+1. [Load Balancer Explained - PowerCert Animated Videos](https://youtu.be/1fN2UDbtGDQ)
+2. [What is a Load Balancer? - Rohit Negi](https://youtu.be/88vl3BfLqUY)
+3. [What is a Load Balancer Really About? - ByteByteGo](https://youtu.be/LQuuoHTyYz8)
+4. [What are L4 Load Balancers and How Do They Work? - Arpit Bhayani](https://www.youtube.com/@AsliEngineering)
+5. [Layer 4 vs Layer 7 Load Balancer - IT k Funde](https://www.youtube.com/@ITkFunde)
+6. [Proxy vs Reverse Proxy vs Load Balancer - TechWorld with Nana](https://www.youtube.com/@TechWorldwithNana)
+7. [Load Balancers Explained in 16 Minutes - Coding for All](https://www.youtube.com/@codingforallnewtonschool)
 
 ---
-
-[← Back to Application Traffic & Reliability](../README.md)  
-[← Back to Computer Networking Repository](../../README.md)
 
 **Understand the traffic. Choose the target. Keep the application available.**
