@@ -176,7 +176,7 @@ The policy should be narrow:
 
 Example database ports include TCP `5432` for PostgreSQL and TCP `3306` for MySQL. Use the port actually configured for the service.
 
-![Three-tier security-group access model](./assets/security-group-three-tier-architecture.png)
+![Security Group Infograogic](assets/Security-Groups-Infographic.png)
 
 ### Why not allow everything inside the private network?
 
