@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Section:** Computer Networking - [TLS Overview](https://youtu.be/iM8Dx61uNRc?si=483JcHGJYkyi62rM)
 > 
-> **Learning objective:** Understand why TLS is needed, what security properties it provides, the roles of symmetric and asymmetric cryptography, and how HTTPS uses TLS to protect HTTP communication.
+> **Purpose:** Understand why TLS is needed, what security properties it provides, the roles of symmetric and asymmetric cryptography, and how HTTPS uses TLS to protect HTTP communication.
 
 [← Back to Security Repository](https://github.com/Priya200227/computer-networking/tree/main/06-security)
 
