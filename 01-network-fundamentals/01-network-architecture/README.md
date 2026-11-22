@@ -348,12 +348,12 @@ A cloud provider delivers computing resources and services over a network. The c
 
 ## References 
 
-- [Cisco — What Is a Computer Network?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-computer-network.html)
-- [Cisco — What Is a LAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html)
-- [Cisco — What Is a WAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-wan-wide-area-network.html)
-- [Cisco — What Is a Network Switch?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-network-switch.html)
-- [Cisco — What Is a Router?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-router.html)
-- [Cisco — What Is a VLAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-vlan-virtual-local-area-network.html)
-- [Cisco — Campus LAN and Wireless LAN Design Guide](https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html)
-- [AWS — What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
-- [AWS — Cloud Computing Concepts: IaaS, PaaS and SaaS](https://aws.amazon.com/types-of-cloud-computing/)
+- [Cisco - What Is a Computer Network?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-computer-network.html)
+- [Cisco - What Is a LAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html)
+- [Cisco - What Is a WAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-wan-wide-area-network.html)
+- [Cisco - What Is a Network Switch?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-network-switch.html)
+- [Cisco - What Is a Router?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-router.html)
+- [Cisco - What Is a VLAN?](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-vlan-virtual-local-area-network.html)
+- [Cisco - Campus LAN and Wireless LAN Design Guide](https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html)
+- [AWS - What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [AWS - Cloud Computing Concepts: IaaS, PaaS and SaaS](https://aws.amazon.com/types-of-cloud-computing/)
