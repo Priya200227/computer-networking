@@ -5,7 +5,7 @@
 >
 > **Learning objective:** Observe HTTP/1.1 persistent connection reuse in browser developer tools and Wireshark, understand the difference between TCP Keep-Alive and HTTP Keep-Alive, and investigate head-of-line blocking.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -16,7 +16,7 @@ HTTP/1.1 uses **persistent connections by default**, allowing multiple HTTP requ
 To observe this behaviour, we can use:
 
 - **FreeAPI.app:** A website/API that generates HTTP requests.
-- **Chrome DevTools — Network:** Inspect request timing, protocol, connection ID, and connection reuse.
+- **Chrome DevTools - Network:** Inspect request timing, protocol, connection ID, and connection reuse.
 - **Wireshark:** Inspect TCP packets, connection activity, and TCP-level Keep-Alive probes.
 
 ### What to observe
@@ -144,11 +144,9 @@ Reusing an existing connection avoids repeating connection establishment for eve
 
 ## References
 
-- [RFC 9112 — HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
-- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
-- [Chrome DevTools — Network Reference](https://developer.chrome.com/docs/devtools/network/reference/)
-- [RFC 1122 — Requirements for Internet Hosts](https://www.rfc-editor.org/rfc/rfc1122.html)
-
----
+- [RFC 9112 - HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
+- [RFC 9110 - HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [Chrome DevTools - Network Reference](https://developer.chrome.com/docs/devtools/network/reference/)
+- [RFC 1122 - Requirements for Internet Hosts](https://www.rfc-editor.org/rfc/rfc1122.html)
 
 **Next:** [HTTP/2: Multiplexing, Streams and Frames](../23-http-2-multiplexing-streams-frames/README.md)
