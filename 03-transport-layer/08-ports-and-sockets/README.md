@@ -4,7 +4,7 @@
 >
 > **Learning objective:** Understand how transport-layer port numbers identify application endpoints, how operating systems expose network communication through sockets, and how TCP and UDP sockets differ.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
 
 ---
 
