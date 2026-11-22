@@ -5,7 +5,7 @@
 >
 >**Purpose:** Understand the structure of an IPv4 packet, the purpose of each IP header field, and how IPv4 handles packet fragmentation.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
