@@ -5,7 +5,7 @@
 >
 > **Learning objective:** Understand the structure of HTTP requests and responses, the purpose of commonly used headers, and how ETags support conditional requests and caching.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -38,8 +38,8 @@ GET /api/v1/public/randomusers?page=1&limit=10 HTTP/1.1
 
 **Understanding the request target:**
 
-- **Path:** `/api/v1/public/randomusers` — identifies the API endpoint.
-- **Query string:** `?page=1&limit=10` — passes additional parameters as key-value pairs separated by `&`.
+- **Path:** `/api/v1/public/randomusers` - identifies the API endpoint.
+- **Query string:** `?page=1&limit=10` - passes additional parameters as key-value pairs separated by `&`.
 
 For example:
 
@@ -88,9 +88,9 @@ The request body carries data sent by the client to the server.
 
 It is commonly used with methods such as:
 
-- `POST` — submit data or create a resource.
-- `PUT` — create or replace a resource.
-- `PATCH` — partially update a resource.
+- `POST` - submit data or create a resource.
+- `PUT` - create or replace a resource.
+- `PATCH` - partially update a resource.
 
 Example:
 
@@ -209,7 +209,7 @@ It helps clients determine whether a cached representation is still valid, reduc
 
 Consider a browser requesting a user list.
 
-**Step 1 — Initial request**
+**Step 1 - Initial request**
 
 The client requests the resource:
 
@@ -218,7 +218,7 @@ GET /api/users HTTP/1.1
 Host: example.com
 ```
 
-**Step 2 — Server response**
+**Step 2 - Server response**
 
 The server returns the resource with an ETag:
 
@@ -232,7 +232,7 @@ ETag: "users-v1"
 
 The browser stores the response and its ETag.
 
-**Step 3 — Conditional request**
+**Step 3 - Conditional request**
 
 When the client requests the same resource again, it can send the saved ETag:
 
@@ -242,7 +242,7 @@ Host: example.com
 If-None-Match: "users-v1"
 ```
 
-**Step 4 — Server validation**
+**Step 4 - Server validation**
 
 The server compares the supplied validator with the current representation's ETag.
 
@@ -299,13 +299,11 @@ If the representation has changed, the server returns a new response, typically 
 
 ## References
 
-- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
-- [RFC 9112 — HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
-- [MDN — HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)
-- [MDN — HTTP Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
-- [MDN — ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)
-- [MDN — If-None-Match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match)
-
----
+- [RFC 9110 - HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC 9112 - HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
+- [MDN - HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages)
+- [MDN - HTTP Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
+- [MDN - ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)
+- [MDN - If-None-Match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match)
 
 **Next:** [HTTP 1.1 in action](../22-http1.1-connection-reuse-and-blocking-in-action/README.md)
