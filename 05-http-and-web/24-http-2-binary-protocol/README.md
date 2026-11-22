@@ -1,15 +1,15 @@
 # Why Is HTTP/2 a Binary Protocol?
 
 > [!NOTE]
-> **Section:** Computer Networking — HTTP/2
+> **Section:** Computer Networking -[HTTP/2](https://youtu.be/9M-i2QIBZ9c?si=jQeJ6FBPhRE3CTOi)
 >
 > **Learning objective:** Understand why HTTP/2 uses binary framing instead of HTTP/1.1's text-based message format, how frames are structured, and how HTTP/2 carries headers and application data.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
-## 1. HTTP/1.1 — Text-Based Protocol
+## 1. HTTP/1.1 - Text-Based Protocol
 
 HTTP/1.1 uses a **text-based message format**. Requests and responses are represented using readable textual elements such as methods, paths, protocol versions, headers, and message bodies.
 
@@ -77,7 +77,7 @@ The parser follows HTTP grammar to identify the request line, headers, and messa
 
 ---
 
-## 2. HTTP/2 — Binary Framing Protocol
+## 2. HTTP/2 - Binary Framing Protocol
 
 HTTP/2 introduced a **binary framing layer**.
 
@@ -240,10 +240,8 @@ Frames from different streams can be interleaved over the same TCP connection. T
 
 ## References
 
-- [RFC 9112 — HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
-- [RFC 9113 — HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
-- [RFC 7541 — HPACK: Header Compression for HTTP/2](https://www.rfc-editor.org/rfc/rfc7541.html)
-
----
+- [RFC 9112 - HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
+- [RFC 9113 - HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
+- [RFC 7541 - HPACK: Header Compression for HTTP/2](https://www.rfc-editor.org/rfc/rfc7541.html)
 
 **Next:** HPACK — [HTTP/2 Header Compression - HPACK](../25-hpack-header-compression/README.md)
