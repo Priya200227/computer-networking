@@ -1,10 +1,12 @@
 # TCP Sequence and Acknowledgment Numbers
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/YryEKDfMXQw?si=TWe-l_NhKMEQCWXH)
+>[!NOTE]
+>
+>**Section:** Computer Networking - [Chai aur Networking](https://youtu.be/YryEKDfMXQw?si=TWe-l_NhKMEQCWXH)
 >
 > **Learning objective:** Understand how TCP sequence numbers identify byte positions in a connection, how acknowledgment numbers report the next byte expected, and how these mechanisms support ordered delivery, duplicate detection, and retransmission.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
 
 ---
 
