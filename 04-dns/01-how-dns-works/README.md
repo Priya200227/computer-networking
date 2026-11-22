@@ -32,7 +32,8 @@ The address above is an illustrative value from the supplied demonstration scree
 - **Traffic distribution:** DNS-based techniques such as geo-aware answers and multiple address records can help distribute clients across infrastructure. DNS is not, by itself, a precise real-time load balancer.
 - **Caching:** Resolvers can reuse valid answers until their time-to-live (TTL) expires, reducing repeated queries and latency.
 
-> **Important correction:** DNS does not mean that computers never use domain names. Applications commonly pass hostnames to a resolver, but the resolver obtains address information that the application/network stack can use to establish a connection.
+> [!IMPORTANT]
+> DNS does not mean that computers never use domain names. Applications commonly pass hostnames to a resolver, but the resolver obtains address information that the application/network stack can use to establish a connection.
 
 ## 2. Domain-name hierarchy
 
@@ -350,6 +351,5 @@ This is a conceptual learning flow, not a literal packet trace. In practice, bro
 - [RFC 8499 — DNS Terminology](https://www.rfc-editor.org/rfc/rfc8499.html)
 - [Microsoft Learn — DNS Queries and Lookups](https://learn.microsoft.com/en-us/windows-server/networking/dns/queries-lookups)
 - [IANA — Root Servers](https://www.iana.org/domains/root/servers)
-
----
-**Next: ** [Major DNS Records](../19-major-dns-records/README.md)
+  
+**Next:** [Major DNS Records](../19-major-dns-records/README.md)
