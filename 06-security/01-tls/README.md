@@ -5,7 +5,7 @@
 > 
 > **Learning objective:** Understand why TLS is needed, what security properties it provides, the roles of symmetric and asymmetric cryptography, and how HTTPS uses TLS to protect HTTP communication.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Security Repository](https://github.com/Priya200227/computer-networking/tree/main/06-security)
 
 ---
 
@@ -137,7 +137,7 @@ This gives TLS the benefits of both approaches:
 
 ## 4. How HTTPS Protects Communication
 
-### Without TLS — HTTP
+### Without TLS - HTTP
 
 In an ordinary HTTP exchange:
 
@@ -147,7 +147,7 @@ In an ordinary HTTP exchange:
 
 An attacker able to observe the traffic may be able to read its contents.
 
-### With TLS — HTTPS
+### With TLS - HTTPS
 
 In an HTTPS exchange:
 
@@ -183,11 +183,9 @@ An attacker observing the network traffic cannot simply read the protected HTTP 
 
 ## References
 
-- [RFC 8446 — The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446.html)
-- [RFC 9325 — Recommendations for Secure Use of TLS and DTLS](https://www.rfc-editor.org/rfc/rfc9325.html)
-- [MDN — Transport Layer Security (TLS)](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)
-
----
-
+- [RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446.html)
+- [RFC 9325 - Recommendations for Secure Use of TLS and DTLS](https://www.rfc-editor.org/rfc/rfc9325.html)
+- [MDN - Transport Layer Security (TLS)](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)
+  
 **Next topic:** [TLS Certificates Explained in Depth](./tls-certificates/README.md)
 
