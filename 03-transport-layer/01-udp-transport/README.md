@@ -1,10 +1,10 @@
 # User Datagram Protocol (UDP)
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/SjMw3nwAhuI?si=b5sY3gTxSDdbhS3h)
+> **Section:** Computer Networking — [UDP](https://youtu.be/SjMw3nwAhuI?si=b5sY3gTxSDdbhS3h)
 >
 > **Learning objective:** Understand how UDP transports application messages with minimal protocol overhead, how ports identify application endpoints, how the eight-byte UDP header is structured, why applications choose UDP, and how to inspect UDP traffic—especially DNS queries—in Wireshark.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
 
 ---
 
