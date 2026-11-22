@@ -1,11 +1,11 @@
 # HTTP: Overview, HTTP/1.0 and HTTP/1.1
 
 > [!NOTE]
-> **Section:** Computer Networking — [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH) & [HTTP 1.0 vs HTTP 1.1](https://youtu.be/tNulpc4RLWU?si=cVeK7pRQJ1BlA1Zx)
+> **Section:** Computer Networking  [HTTP Fundamentals](https://youtu.be/5n5_IRlYr64?si=SeT5GA2L0bGL8kkH) & [HTTP 1.0 vs HTTP 1.1](https://youtu.be/tNulpc4RLWU?si=cVeK7pRQJ1BlA1Zx)
 >
 > **Learning objective:** Understand HTTP client-server communication and how HTTP/1.0 and HTTP/1.1 differ in TCP connection management, connection reuse, and request pipelining.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -76,7 +76,7 @@ The application workflow:
 
 ---
 
-## 2. HTTP/1.0 — Non-Persistent Connections by Default
+## 2. HTTP/1.0 - Non-Persistent Connections by Default
 
 HTTP/0.9 was the earliest version of HTTP. It was extremely simple:
 
@@ -129,7 +129,7 @@ When supported by both sides, the connection could be reused for multiple reques
 
 ---
 
-## 3. HTTP/1.1 — Persistent Connections by Default
+## 3. HTTP/1.1 - Persistent Connections by Default
 
 HTTP/1.1 improved connection management by making **persistent connections the default behaviour**.
 
@@ -258,13 +258,11 @@ HTTP/1.0 generally created a separate TCP connection for each request/response e
 
 ## References
 
-- [RFC 1945 — HTTP/1.0](https://www.rfc-editor.org/rfc/rfc1945.html)
-- [RFC 2068 — HTTP/1.1 (Original Specification)](https://www.rfc-editor.org/rfc/rfc2068.html)
-- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
-- [RFC 9112 — HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
-- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
-- [MDN — HTTP Overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
-
----
+- [RFC 1945 - HTTP/1.0](https://www.rfc-editor.org/rfc/rfc1945.html)
+- [RFC 2068 - HTTP/1.1 (Original Specification)](https://www.rfc-editor.org/rfc/rfc2068.html)
+- [RFC 9110 - HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
+- [RFC 9112 - HTTP/1.1](https://www.rfc-editor.org/rfc/rfc9112.html)
+- [RFC 9114 - HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
+- [MDN - HTTP Overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
 
 **Next:** [HTTP Request Response Structure](../21-http-request-response-structure/README.md)
