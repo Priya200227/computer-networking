@@ -12,6 +12,7 @@ The objective is not simply to memorize networking terminology. It is to underst
 - How cloud networks and application infrastructure are organised.
 - How networking concepts support backend systems, distributed applications and data engineering.
 
+[Mindmap](../Computer-Networking-Complete-Concept-Map.png)
 ---
 
 ## Learning Roadmap
