@@ -1,10 +1,12 @@
-# DNS Fundamentals — Domain Name System
+# DNS Fundamentals - Domain Name System
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/pNfNTgEVvQg?si=olhb5VJzPM0588k6)
+> [!NOTE]
+>
+>**Section:** Computer Networking - [How DNS works](https://youtu.be/pNfNTgEVvQg?si=olhb5VJzPM0588k6)
 >
 > **Learning objective:** Understand why DNS exists, how domain names are structured, how a recursive resolver follows the DNS hierarchy, how authoritative name servers provide records, and how caching and common DNS record types affect name resolution.
 
-[← Back to Computer Networking repository](https://github.com/Priya200227/computer-networking)
+[← Back to DNS Repository](https://github.com/Priya200227/computer-networking/tree/main/04-dns)
 
 ---
 
