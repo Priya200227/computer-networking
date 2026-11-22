@@ -5,7 +5,7 @@
 >
 > **Purpose:** Understand how IPv4 addresses identify network interfaces, how their 32-bit structure is represented in dotted-decimal notation, and how IPv4 addressing enables devices to communicate across local networks and routed networks.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
