@@ -5,7 +5,7 @@
 >
 > **Learning objective:** Understand how ARP resolves an IPv4 address to a MAC address on a local network, how ARP requests and replies work, and how the ARP cache stores discovered mappings.
 
-[← Back to Networking Fundamentals Repository](https://github.com/Priya200227/computer-networking/tree/main/01-network-fundamentals) 
+[← Back to IP Addressing & Routing Repository](https://github.com/Priya200227/computer-networking/tree/main/02-ip-addressing-and-routing)
 
 ---
 
