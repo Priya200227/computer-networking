@@ -1,284 +1,270 @@
-# AWS Security Groups
+# Security Groups and Resource-Level Network Access Control
 
-> **Learning objective:** Understand how AWS Security Groups control inbound and outbound traffic to cloud resources, how stateful filtering works, and how to restrict communication between a load balancer, application servers, and a database.
+> **Learning objective:** Understand how security-group-style policies restrict communication between systems, how inbound and outbound rules work, what stateful filtering means, and how to apply least-privilege access between application tiers.
 
 [← Back to Cloud Networking Repository](https://github.com/Priya200227/computer-networking/tree/main/07-cloud-networking)
 
 ---
 
-## 1. What Is a Security Group?
+## 1. What is a Security Group?
 
-An **AWS Security Group (SG)** is a virtual, stateful firewall that controls the network traffic allowed to reach and leave supported resources in an Amazon VPC.
+A **security group** is a named set of network access rules associated with a resource, network interface, or group of resources. It controls which network traffic is permitted to reach or leave the associated resource.
 
-A Security Group is associated with a resource's **network interface (ENI)**. For example, it can be associated with:
+The term **Security Group** is commonly used by cloud platforms. It is not a universal networking protocol or a single standardized firewall technology. Different platforms implement similar ideas with different attachment points, defaults, rule syntax, and capabilities.
 
-- An EC2 instance (through its network interface).
-- An Application Load Balancer.
-- An Amazon RDS database.
-- Other supported resources that use VPC network interfaces.
+For vendor-neutral learning, think of a security group as:
 
-A Security Group is not attached to a subnet. This is an important distinction:
+> A resource-associated, usually stateful, allow-list policy that defines permitted network communication.
 
-- **Security Group:** controls traffic at the resource/network-interface level.
-- **Network ACL (NACL):** controls traffic at the subnet boundary.
+It is a form of network access control. It does not replace every other security control, and it should not be confused with a subnet-level access-control list.
 
-Think of a Security Group as a set of rules describing which connections a resource is allowed to accept and initiate.
+### Where is it applied?
 
-### Important characteristics
+Depending on the platform, a security-group-style policy may be associated with:
 
-- Security Groups contain **allow rules only**; they do not have explicit deny rules.
-- They are **stateful**: response traffic for an allowed, tracked connection is automatically permitted.
-- Rules specify protocol, port or port range, and a source (inbound) or destination (outbound).
-- Multiple Security Groups can be associated with a resource. Their rules are aggregated.
-- Security Groups are associated with resources in a VPC; they are not a replacement for route tables, an Internet Gateway, or network ACLs.
+- A virtual network interface attached to a compute instance.
+- A virtual machine or workload.
+- A managed service endpoint.
+- A collection of resources that share a policy.
+
+The important idea is that the policy is enforced at or for the protected resource/interface, not necessarily as one perimeter firewall for the entire network.
 
 ---
 
-## 2. Where Security Groups Fit in a VPC
+## 2. Inbound vs. outbound rules
 
-A VPC provides an isolated virtual network. Subnets divide its IP address space, route tables determine where packets can go, and Security Groups control which traffic is allowed to reach or leave a resource.
+Rules are described from the perspective of the protected resource.
 
-A route being available does not mean a connection is automatically permitted. The relevant network path and security controls must all allow the traffic.
-
-### Resource-level placement
-
-![Security Groups protect resources inside a VPC](./assets/security-group-three-tier-architecture.png)
-
-In a typical web application, separate Security Groups can protect the load balancer, application servers, and database.
-
----
-
-## 3. Inbound vs Outbound Rules
-
-Security Group rules are directional.
-
-### Inbound rules (ingress)
-
-Inbound rules control traffic that is attempting to enter the resource associated with the Security Group.
-
-Example: allow users on the internet to connect to an Application Load Balancer over HTTPS.
-
-| Protocol | Port | Source | Meaning |
-|---|---:|---|---|
-| TCP | 443 | `0.0.0.0/0` | Allow HTTPS from IPv4 internet clients |
-| TCP | 443 | `198.51.100.25/32` | Allow HTTPS from one specific IPv4 address |
-
-`0.0.0.0/0` means every IPv4 address. It is broad; use it only when the service is intentionally public. For IPv6, the equivalent all-address range is `::/0`.
-
-### Outbound rules (egress)
-
-Outbound rules control traffic initiated by the resource toward another destination.
-
-Example: allow an application server to connect to a database on TCP port 3306.
-
-| Protocol | Port | Destination | Meaning |
-|---|---:|---|---|
-| TCP | 3306 | `sg-database` | Allow database connections to resources associated with `sg-database` |
-| TCP | 443 | `0.0.0.0/0` | Allow HTTPS connections to IPv4 destinations |
-
-For an outbound rule, the target is called the **destination**, not the source.
-
-### How to read a rule
-
-A rule can be understood through four main fields:
-
-| Field | What it specifies | Example |
+| Rule direction | Meaning | Example |
 |---|---|---|
-| Protocol | Network protocol | TCP, UDP, ICMP |
-| Port / port range | Destination service port for TCP/UDP | `443`, `3306`, `8000-8100` |
-| Source (inbound) | Where incoming traffic may originate | CIDR, prefix list, another SG |
-| Destination (outbound) | Where outgoing traffic may go | CIDR, prefix list, another SG |
+| **Inbound** | Traffic attempting to enter the protected resource | Permit TCP traffic to port `443` from an approved client range |
+| **Outbound** | Traffic initiated by the protected resource toward another destination | Permit the application to connect to a database on TCP port `5432` |
 
-A port identifies the service endpoint on the destination side of a TCP or UDP connection. Security Group rules do not mean that a client must use the same source port.
+A direction is not the same as a source or destination:
+
+- For an **inbound** rule, the source is the system sending traffic toward the protected resource.
+- For an **outbound** rule, the destination is the system the protected resource is trying to reach.
+
+Some platforms have default outbound permissions; others allow more restrictive configuration. Never assume the defaults are identical across products.
 
 ---
 
-## 4. Stateful Behaviour
+## 3. Anatomy of a rule
 
-Security Groups are **stateful**.
+A network access rule commonly describes these fields:
 
-This means that when a connection is allowed in one direction, the response traffic for that tracked connection is automatically allowed in the opposite direction. You do not need to add a separate rule just to permit the response packets.
+| Field | What it identifies | Example |
+|---|---|---|
+| Direction | Inbound or outbound | Inbound |
+| Protocol | Network/transport protocol | TCP |
+| Port or port range | Destination service port, where applicable | `443` |
+| Source | Where inbound traffic may originate | `203.0.113.0/24` |
+| Destination | Where outbound traffic may go | `10.20.2.15/32` |
+| Action | What to do with matching traffic | Allow |
+
+A rule such as:
+
+```text
+Direction: Inbound
+Protocol:  TCP
+Port:      443
+Source:    203.0.113.0/24
+Action:    Allow
+```
+
+means: permit TCP traffic arriving at the protected resource's port 443 when it comes from the specified source range.
+
+**Port numbers identify services at the transport layer.** For example, TCP port 443 is conventionally used for HTTPS. A port number alone does not prove that the application is secure or even that it is actually speaking HTTPS.
+
+### Source and destination can be more than IP addresses
+
+Depending on the implementation, rules may support:
+
+- A single IP address or CIDR range.
+- A predefined network range.
+- A reference to another security group or resource group.
+- A service identity or managed prefix/list.
+
+A group reference is an abstraction: instead of maintaining a changing list of instance IP addresses, a rule can allow traffic from resources associated with a specified group. The exact meaning and supported direction are platform-specific.
+
+---
+
+## 4. Stateful behaviour
+
+Many security-group implementations are **stateful**.
+
+Stateful filtering tracks permitted connections. When an inbound connection is allowed, the corresponding response traffic is generally allowed automatically, without writing a separate reverse-direction rule for every response packet.
 
 Example:
 
-1. A client sends an HTTPS request to an application.
-2. The Security Group allows the inbound TCP connection on port 443.
-3. The server sends response packets back through that tracked connection.
-4. The response traffic is automatically allowed by the Security Group's stateful behaviour.
+1. A client opens a TCP connection to a service on port `443`.
+2. The inbound policy permits that connection.
+3. The filtering system tracks the connection state.
+4. The service sends response packets back to the client.
+5. The related response traffic is permitted as part of that tracked connection.
 
-![Stateful behaviour and Security Group rule components](./assets/security-group-rules-and-stateful-behaviour.png)
+This does **not** mean that all outbound traffic is automatically allowed. It means the return traffic associated with a permitted connection is treated differently from an unrelated, newly initiated connection.
 
-**Do not misunderstand statefulness:** it does not mean that all outbound traffic is allowed. It means response traffic associated with a tracked connection is automatically permitted. A resource still needs an outbound rule to initiate a new connection.
+### Stateful vs. stateless
 
----
+| Stateful filtering | Stateless filtering |
+|---|---|
+| Tracks connection state | Evaluates packets independently |
+| Related return traffic is generally permitted automatically | Rules must account for both directions |
+| Often simpler to express for application flows | Requires careful reverse-path rule design |
+| Common in security-group-style controls | Common in network ACLs and traditional packet-filtering designs |
 
-## 5. Referencing Another Security Group
-
-One Security Group can reference another Security Group as the source of an inbound rule or the destination of an outbound rule.
-
-This is more maintainable than hard-coding private IP addresses for a group of application resources.
-
-For example:
-
-- `App-SG` allows inbound application traffic from `ALB-SG`.
-- `DB-SG` allows inbound database traffic from `App-SG`.
-
-The reference means: allow traffic from network interfaces associated with the referenced Security Group, subject to the rule's protocol and port.
-
-It does **not** copy the referenced Security Group's rules into the receiving group.
-
-### Example
-
-Suppose:
-
-- The load balancer has `ALB-SG`.
-- Application instances have `App-SG`.
-- The database has `DB-SG`.
-
-The database rule can use `App-SG` as its inbound source. When application instances are added to or removed from `App-SG`, the rule continues to refer to the group rather than requiring you to update a list of instance IP addresses.
-
-**Scope note:** Security Group references have supported VPC connectivity requirements. The straightforward case is groups in the same VPC. Cross-VPC references depend on supported connectivity such as VPC peering or Transit Gateway and have additional limitations. Check the AWS documentation for the exact topology.
+The precise implementation varies. For example, connection tracking may have limits, timeouts, and protocol-specific behaviour.
 
 ---
 
-## 6. Practical Example: Load Balancer → Application → Database
+## 5. Referencing one security group from another
 
-Consider a three-tier web application:
+Some platforms allow a rule to reference another security group rather than an IP range.
 
-1. **Load balancer:** public entry point for user requests.
-2. **Application servers:** run business logic and are not directly exposed to the internet.
-3. **Database:** stores application data and should accept connections only from the application tier.
+Conceptually:
 
-Create a separate Security Group for each tier.
+- The application tier permits inbound traffic from resources belonging to the load-balancer group.
+- The database tier permits inbound database traffic from resources belonging to the application group.
 
-### Recommended rule design
+Why this is useful:
 
-The port numbers below are examples. Use the actual listener, target and database ports configured in your application.
+- Resource addresses can change as workloads scale or are replaced.
+- The policy expresses *which workload group* is trusted, rather than relying on manually maintained IP lists.
+- It makes the intended architecture easier to understand.
 
-#### A. `ALB-SG` — Load Balancer
+This capability is **implementation-specific**. Do not assume every firewall or access-control system supports group-to-group references.
 
-| Direction | Protocol | Port | Source / Destination | Purpose |
-|---|---|---:|---|---|
-| Inbound | TCP | 443 | `0.0.0.0/0` | Allow public HTTPS requests |
-| Outbound | TCP | 8080 | `App-SG` | Forward requests to application targets |
+---
 
-If the load balancer also listens on HTTP, add TCP port 80 and normally redirect clients to HTTPS. Configure the outbound rule for the target and health-check ports actually used.
+## 6. Practical example: protect a three-tier application
 
-#### B. `App-SG` — Application Servers
+Consider a web application with three logical tiers:
 
-| Direction | Protocol | Port | Source / Destination | Purpose |
-|---|---|---:|---|---|
-| Inbound | TCP | 8080 | `ALB-SG` | Accept application traffic only from the load balancer |
-| Outbound | TCP | 3306 | `DB-SG` | Initiate MySQL database connections |
+1. **Load balancer:** Public entry point for client requests.
+2. **Application servers:** Run application code and business logic.
+3. **Database:** Stores persistent application data.
 
-The application servers do not need public inbound access for normal user requests. The load balancer is their permitted entry point.
-
-#### C. `DB-SG` — Database
-
-| Direction | Protocol | Port | Source / Destination | Purpose |
-|---|---|---:|---|---|
-| Inbound | TCP | 3306 | `App-SG` | Accept MySQL connections only from the application tier |
-
-For PostgreSQL, the typical port is TCP 5432. Use the port configured for the database engine.
-
-Outbound database rules should be restricted according to actual requirements, such as maintenance, backup, monitoring, or other required connections. Stateful response traffic for allowed tracked connections does not require a broad outbound rule merely to return the database response.
-
-### Traffic path
+The intended access path is:
 
 ```text
-Internet user
-     |
-     | HTTPS / TCP 443
-     v
-Application Load Balancer
-     |
-     | HTTP / TCP 8080
-     v
-Application server
-     |
-     | MySQL / TCP 3306
-     v
+Internet client
+      |
+      | HTTPS (TCP 443)
+      v
+Load balancer
+      |
+      | Application service port
+      v
+Application servers
+      |
+      | Database service port
+      v
 Database
 ```
 
-The key security design is:
+The policy should be narrow:
 
-- The internet can reach the load balancer.
-- Only the load balancer can reach the application listener.
-- Only the application tier can reach the database listener.
-- The database is not exposed directly to the internet.
-
-This is an example of **least privilege**: permit only the traffic each tier needs.
-
----
-
-## 7. Security Groups vs Network ACLs
-
-Both are VPC security controls, but they operate at different levels.
-
-| Characteristic | Security Group | Network ACL |
+| Protected tier | Example inbound permission | Should not be allowed |
 |---|---|---|
-| Applied at | Resource / network interface | Subnet |
-| Rule types | Allow only | Allow and deny |
-| Behaviour | Stateful | Stateless |
-| Rule evaluation | All applicable rules are considered together | Rules are evaluated in ascending rule-number order until a match |
-| Return traffic | Automatically allowed for tracked connections | Must be explicitly allowed |
-| Typical role | Fine-grained resource access | Additional subnet-level traffic control |
+| Load balancer | HTTPS from approved public/client ranges | Unneeded management ports from the internet |
+| Application | Application traffic from the load-balancer group | Direct public access |
+| Database | Database port from the application group | Direct internet access or arbitrary client access |
 
-For your current learning goal, understand Security Groups first. You only need the distinction above to avoid confusing SGs with NACLs.
+Example database ports include TCP `5432` for PostgreSQL and TCP `3306` for MySQL. Use the port actually configured for the service.
+
+![Three-tier security-group access model](./assets/security-group-three-tier-architecture.png)
+
+### Why not allow everything inside the private network?
+
+A private address does not automatically mean a workload is trusted. If every internal system can connect to every other system, a compromised workload may have too many paths to sensitive services.
+
+Use **least privilege**:
+
+- Permit only the required protocol.
+- Permit only the required port or port range.
+- Permit only the required source or destination.
+- Avoid broad network ranges when a narrower resource/group reference is available.
+- Review rules when application architecture changes.
 
 ---
 
-## 8. Common Misunderstandings
+## 7. How to reason through a connection
 
-- **“A Security Group is attached to a subnet.”** No. It is associated with resources/network interfaces. NACLs are associated with subnets.
-- **“Security Groups have allow and deny rules.”** No. Security Groups support allow rules only.
-- **“Stateful means all outbound traffic is allowed.”** No. It automatically permits response traffic for tracked connections; new outbound connections still need to be allowed.
-- **“Referencing an SG copies all its rules.”** No. The reference matches resources associated with that SG for the specified protocol and port.
-- **“Opening port 443 on the load balancer makes the database public.”** No. Each tier has its own rules, and the database should accept traffic only from the application tier.
-- **“A route to an Internet Gateway makes every resource public.”** No. Routing, public addressing, and security rules all matter.
+When investigating whether traffic should be allowed, ask:
+
+1. Which resource is being protected?
+2. Is the traffic inbound or outbound from that resource's perspective?
+3. Which protocol is used: TCP, UDP, ICMP, or something else?
+4. Which destination service port is required?
+5. Which source is allowed to initiate the connection?
+6. Is this a new connection or response traffic belonging to an existing tracked connection?
+7. Is the rule narrower than necessary, or does it permit more access than the application needs?
+
+![Rule anatomy and stateful connection flow](./assets/security-group-rule-anatomy-stateful-flow.png)
 
 ---
 
-## 9. Quick Revision
+## 8. Security groups vs. firewalls vs. ACLs
 
-| Question | Short answer |
+These terms overlap, but they are not interchangeable.
+
+| Term | General meaning |
 |---|---|
-| What is an SG? | A stateful, resource-level virtual firewall in a VPC |
-| Inbound? | Traffic entering the associated resource |
-| Outbound? | Traffic leaving the associated resource |
-| What does a rule define? | Protocol, port, and source or destination |
-| Stateful? | Response traffic for tracked connections is automatically allowed |
-| Can an SG reference another SG? | Yes, as an inbound source or outbound destination where supported |
-| Can an SG explicitly deny traffic? | No |
-| SG vs NACL? | Resource-level and stateful vs subnet-level and stateless |
+| **Firewall** | A security mechanism that inspects and filters network traffic according to policy |
+| **Security group** | A resource-associated collection of network permissions; often stateful in cloud environments |
+| **ACL (Access Control List)** | An ordered or unordered set of allow/deny rules applied to a network or resource, depending on the system |
+| **Network ACL** | A subnet/network-bound filtering mechanism in some cloud architectures; commonly stateless in those implementations |
 
-**Remember this flow:**
-
-`Internet → ALB-SG → App-SG → DB-SG`
-
-The internet reaches the load balancer; the load balancer reaches the app; the app reaches the database. Each tier trusts only the tier that needs to communicate with it.
+A security group is best understood as one kind of network access-control mechanism, not as a replacement name for every firewall or ACL.
 
 ---
 
-## 10. References & Further Learning
+## 9. What security groups do not do
 
-### Official AWS documentation
+Security groups are only one layer of defense. They do not, by themselves:
 
-- [Control traffic to your AWS resources using Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
-- [Security Group rules](https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html)
-- [Security Group referencing](https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html#security-group-referencing)
-- [Create a Security Group for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/creating-security-groups.html)
-- [Example: VPC for web and database servers](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-web-database-servers.html)
-- [Security Groups and Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html)
+- Authenticate a user or prove that a request is legitimate.
+- Replace application authorization (for example, whether a user may read a record).
+- Encrypt application data; use TLS for transport encryption.
+- Guarantee protection against vulnerabilities in an application.
+- Replace monitoring, logging, patching, endpoint protection, or DDoS protection.
+- Automatically make a resource safe just because it has a private IP address.
 
-### Suggested learning sequence
+Network access control answers: **Can this network traffic reach the resource?**
 
-1. Understand this README and redraw the three-tier rule design.
-2. Open the AWS documentation and inspect the inbound/outbound rule examples.
-3. Practise identifying which tier should be the source of each rule.
-4. Move on to Load Balancers and how they route requests to healthy application targets.
+Application authorization answers: **Is this authenticated identity allowed to perform this action or access this data?**
+
+Both are needed.
 
 ---
 
-[⬅ Back to Computer Networking Repository](../../README.md)
+## 10. Key takeaways
+
+- A security group is a resource-associated network access policy; the exact implementation is platform-dependent.
+- Inbound rules control traffic entering the protected resource; outbound rules control traffic leaving it.
+- Rules commonly match direction, protocol, port, and source/destination.
+- Stateful filtering tracks connections and generally permits related response traffic.
+- Some implementations support references between security groups.
+- In a three-tier design, allow client traffic to the public entry point, entry-point traffic to the application, and application traffic to the database.
+- Apply least privilege. Do not expose internal application or database services unnecessarily.
+- Security groups control network reachability; they do not replace identity, application authorization, or TLS.
+
+---
+
+## 11. References
+
+The following are useful for the underlying concepts. Product documentation is included as an example of how one platform implements the broader idea—not as a requirement to learn that platform.
+
+- [NIST SP 800-41 Rev. 1 — Guidelines on Firewalls and Firewall Policy](https://csrc.nist.gov/pubs/sp/800/41/r1/final)
+- [NIST SP 800-207 — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
+- [RFC 2979 — Behaviour of and Requirements for Internet Firewalls](https://www.rfc-editor.org/rfc/rfc2979)
+- [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293)
+- [Cloud Security Alliance — Security Guidance](https://cloudsecurityalliance.org/research/guidance)
+- [AWS documentation — Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) — optional vendor-specific example of stateful resource-level filtering.
+
+---
+
+## 12. Suggested next topic
+
+Continue with **Load Balancers** to understand how incoming application traffic is distributed across multiple application instances, and how network access policies protect each tier.
