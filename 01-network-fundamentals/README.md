@@ -1,23 +1,11 @@
 # Network Fundamentals
 
-> IPv4 addressing, subnetting, local communication, routing, NAT, and IP packet structure.
+> Network types, network architecture, topologies, networking devices, Ethernet switching, VLANs and firewalls
 
 [⬅️ Back to Computer Networking](../README.md)
 
 ## Topics
 
-- [Network Host Cidr](./02-network-host-cidr/README.md)
-- [Ipv4 Addressing](./03-ipv4-addressing/README.md)
-- [Subnet Masks](./04-subnet-masks/README.md)
-- [Default Gateway](./05-default-gateway/README.md)
-- [Mac Address](./06-mac-address/README.md)
-- [Arp](./07-arp/README.md)
-- [Osi Tcp Encapsulation](./08-osi_tcp_encapsulation/README.md)
-- [Routing And Packet Travel](./09-routing-and-packet-travel/README.md)
-- [Icmp Ping Traceroute](./10-icmp-ping-traceroute/README.md)
-- [Nat](./30-nat/README.md)
-- [Ip Packet Anatomy](./31-ip-packet-anatomy/README.md)
-- [DHCP - DORA](../32-dhcp/README.md)
-- [IPv6](../33-ipv6/README.md)
-- [Port and Sockets](../34-ports-and-sockets/README.md)
-
+- [01-Network Architecture](../01-network-fundamentals/01-network-architecture/README.md) - Networking, Networking Devices, Networking Types, VLAN, 3-tier & 2-tier architecture, VPN, On-premises vs Cloud & service Models
+- [02-Network Models & Encapsulation](../01-network-fundamentals/02-network-models-and-encapsulation/README.md) --> OSI Model, TCP/IP Model, Data Encapsulation & Decapsulation, What happenns at a Router
+- [03-Ethernet Switching](../01-network-fundamentals/03-ethernet-switching/README.md) --> Ethernet Switch, Hub, MAC Address Table (CAM Table), Unknown-Unicast Flooding vs MAC Flooding Attack, MAC Address Aging, MAC Address Flapping, CAM vs TCAM, VLAN-aware MAC Address learning, Layer 2 vs Layer 3 Switch, Collision Domains & Broadcast Domains
