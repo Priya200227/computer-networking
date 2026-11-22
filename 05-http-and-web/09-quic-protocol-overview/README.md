@@ -5,7 +5,7 @@
 > 
 > **Learning objective:** Understand why QUIC was developed, why it uses UDP, how it integrates TLS 1.3, how it reduces connection-establishment latency, and how connection migration works.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -160,8 +160,8 @@ One of QUIC's major advantages is reducing the time required to establish a secu
 
 With a new TCP connection using TLS 1.3, the simplified process is:
 
-1. TCP three-way handshake — approximately 1 RTT.
-2. TLS 1.3 handshake — approximately 1 additional RTT.
+1. TCP three-way handshake - approximately 1 RTT.
+2. TLS 1.3 handshake - approximately 1 additional RTT.
 3. Application data can then be exchanged.
 
 This is approximately **2 RTTs** before normal application data in the simplified full-handshake case.
@@ -313,11 +313,9 @@ This is called **QUIC connection migration**.
 
 ## References
 
-- [RFC 9000 — QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html)
-- [RFC 9001 — Using TLS to Secure QUIC](https://www.rfc-editor.org/rfc/rfc9001.html)
-- [RFC 9002 — QUIC Loss Detection and Congestion Control](https://www.rfc-editor.org/rfc/rfc9002.html)
-- [RFC 9114 — HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
-
----
+- [RFC 9000 - QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html)
+- [RFC 9001 - Using TLS to Secure QUIC](https://www.rfc-editor.org/rfc/rfc9001.html)
+- [RFC 9002 - QUIC Loss Detection and Congestion Control](https://www.rfc-editor.org/rfc/rfc9002.html)
+- [RFC 9114 - HTTP/3](https://www.rfc-editor.org/rfc/rfc9114.html)
 
 **Next:** [HTTP/3 - QUIC](../28-http-3/README.md) 
