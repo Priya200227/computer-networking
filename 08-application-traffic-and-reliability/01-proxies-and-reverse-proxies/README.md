@@ -6,6 +6,8 @@
 > 
 > **Learning objective:** Understand what a proxy does, distinguish a forward proxy from a reverse proxy, trace request/response flow, and recognize why reverse proxies are common in web application architecture. This is a conceptual networking note—not an NGINX administration guide.
 
+[← Back to Application Traffic & Reliability Repository](https://github.com/Priya200227/computer-networking/tree/main/08-application-traffic-and-reliability)
+
 ---
 
 ## 1. What is a proxy server?
@@ -54,7 +56,7 @@ A **forward proxy** sits between clients and external destinations. The client, 
 > [!IMPORTANT]
 > A forward proxy does not automatically make a user anonymous or guarantee privacy. The proxy operator may be able to observe traffic metadata, and HTTPS content visibility depends on whether TLS inspection is configured.
 
-### HTTPS and the `CONNECT` method — just the concept
+### HTTPS and the `CONNECT` method - just the concept
 
 For HTTPS, a browser can ask an HTTP proxy to establish a tunnel using the HTTP `CONNECT` method. The proxy creates a path for the TLS connection to the destination. In a basic tunnel, the proxy forwards encrypted bytes; it does not automatically decrypt the HTTPS content.
 
