@@ -1,7 +1,6 @@
 # HTTP Fundamentals - Requests, Responses, Methods, Cookies & HTTPS
 
 > [!NOTE]
-> **Section:** Computer Networking - HTTP
 > 
 > **Learning objective:** Understand HTTP's client-server model, statelessness, URL structure, request and response semantics, methods, status codes, headers, cookies, sessions, and HTTPS.
 
