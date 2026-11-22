@@ -4,7 +4,7 @@
 > **Section:** Computer Networking - [HTTP/2 - HPACK Header Compression](https://youtu.be/M5ecS9oPRtk?si=opC6x84Wg3kF6zJd)  
 > **Learning objective:** Understand why HPACK exists, how it reduces HTTP/2 header overhead, and how its static table, dynamic table, and header representations work.
 
-[← Back to Computer Networking Repository](https://github.com/Priya200227/computer-networking)
+[← Back to HTTP Repository](https://github.com/Priya200227/computer-networking/tree/main/05-http-and-web)
 
 ---
 
@@ -30,9 +30,9 @@ HPACK reduces this overhead by using:
 - Compact integer and string representations.
 - Optional **Huffman encoding**.
 
-<blockquote>
-  **Important:** HPACK compresses HTTP/2 header fields. It does not compress the request or response body.
-</blockquote>
+
+> [!IMPORTANT]
+> HPACK compresses HTTP/2 header fields. It does not compress the request or response body.
 
 ## 2. Compression and Encoding Fundamentals
 
@@ -215,7 +215,7 @@ Do not confuse HPACK with QPACK.
 
 HTTP/2 uses HPACK. HTTP/3 uses **QPACK**, which was designed to avoid the blocking problems that HPACK's connection-level synchronization could create when used with independently progressing QUIC streams.
 
-See [RFC 9204 — QPACK](https://www.rfc-editor.org/rfc/rfc9204.html).
+See [RFC 9204 - QPACK](https://www.rfc-editor.org/rfc/rfc9204.html).
 
 ---
 
@@ -239,12 +239,10 @@ See [RFC 9204 — QPACK](https://www.rfc-editor.org/rfc/rfc9204.html).
 
 ## References
 
-- [RFC 7541 — HPACK: Header Compression for HTTP/2](https://www.rfc-editor.org/rfc/rfc7541.html)
-- [RFC 9113 — HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
-- [RFC 9204 — QPACK: Field Compression for HTTP/3](https://www.rfc-editor.org/rfc/rfc9204.html)
-- [MDN — HTTP Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
-
----
+- [RFC 7541 - HPACK: Header Compression for HTTP/2](https://www.rfc-editor.org/rfc/rfc7541.html)
+- [RFC 9113 - HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html)
+- [RFC 9204 - QPACK: Field Compression for HTTP/3](https://www.rfc-editor.org/rfc/rfc9204.html)
+- [MDN - HTTP Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
 
 **Next:** [HTTP/2 Head-of-Line Blocking](../26-http-2-head-line-blocking/README.md)
 
