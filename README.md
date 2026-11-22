@@ -1,6 +1,6 @@
-# Computer Networking — From Fundamentals to Protocol Internals
+# Computer Networking - From Fundamentals to Protocol Internals
 
-A structured, practical journey through computer networking — from understanding how devices communicate to exploring the protocols and infrastructure that power modern applications.
+A structured, practical journey through computer networking - from understanding how devices communicate to exploring the protocols and infrastructure that power modern applications.
 
 This repository contains **technical notes, diagrams, protocol breakdowns, practical examples, and curated learning resources** developed while studying computer networking.
 
@@ -18,7 +18,7 @@ The objective is not simply to memorize networking terminology. It is to underst
 
 The repository is organised into eight subject-based modules.
 
-| # | Module | Topics covered |
+|  | Module | Topics covered |
 |---|---|---|
 | 01 | [Network Fundamentals](./01-network-fundamentals/) | Network types, network architecture, topologies, networking devices, Ethernet switching, VLANs and firewalls |
 | 02 | [IP Addressing & Routing](./02-ip-addressing-and-routing/) | IPv4, IPv6, subnetting, CIDR, subnet masks, MAC addresses, ARP, gateways, routing, ICMP, NAT and DHCP |
@@ -249,43 +249,13 @@ The notes are developed using a combination of structured video lessons, officia
 
 Some primary references include:
 
-- [RFC Editor](https://www.rfc-editor.org/) — Internet protocol specifications.
-- [IETF Datatracker](https://datatracker.ietf.org/) — Internet standards and working-group documents.
-- [MDN Web Docs](https://developer.mozilla.org/) — HTTP and web technology documentation.
-- [AWS Documentation](https://docs.aws.amazon.com/) — Cloud networking and VPC concepts.
-- [Computer Networking — Chai aur Code](https://www.youtube.com/@chaiaurcode) — Video-based learning resource.
+- [RFC Editor](https://www.rfc-editor.org/) - Internet protocol specifications.
+- [IETF Datatracker](https://datatracker.ietf.org/) - Internet standards and working-group documents.
+- [MDN Web Docs](https://developer.mozilla.org/) - HTTP and web technology documentation.
+- [AWS Documentation](https://docs.aws.amazon.com/) - Cloud networking and VPC concepts.
+- [Computer Networking — Chai aur Code](https://www.youtube.com/@chaiaurcode) - Video-based learning resource.
 
 Relevant RFCs, official documentation and video resources are linked within individual topic notes wherever applicable.
-
----
-
-## Repository Structure
-
-```text
-computer-networking/
-│
-├── 01-network-fundamentals/
-│
-├── 02-ip-addressing-and-routing/
-│
-├── 03-transport-layer/
-│
-├── 04-dns/
-│
-├── 05-http-and-web/
-│
-├── 06-security/
-│
-├── 07-cloud-networking/
-│
-├── 08-application-traffic-and-reliability/
-│
-├── Computer Networking Complete Concept Map...
-│
-└── README.md
-```
-
-Each module contains its own topic folders, README files, diagrams and supporting resources.
 
 ---
 
