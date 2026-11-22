@@ -1,6 +1,8 @@
 # Security Groups and Resource-Level Network Access Control
 
-> **Learning objective:** Understand how security-group-style policies restrict communication between systems, how inbound and outbound rules work, what stateful filtering means, and how to apply least-privilege access between application tiers.
+>[!NOTE]
+>
+>**Purpose:** Understand how security-group-style policies restrict communication between systems, how inbound and outbound rules work, what stateful filtering means, and how to apply least-privilege access between application tiers.
 
 [← Back to Cloud Networking Repository](https://github.com/Priya200227/computer-networking/tree/main/07-cloud-networking)
 
@@ -14,6 +16,7 @@ The term **Security Group** is commonly used by cloud platforms. It is not a uni
 
 For vendor-neutral learning, think of a security group as:
 
+>[!NOTE]
 > A resource-associated, usually stateful, allow-list policy that defines permitted network communication.
 
 It is a form of network access control. It does not replace every other security control, and it should not be confused with a subnet-level access-control list.
@@ -189,23 +192,7 @@ Use **least privilege**:
 
 ---
 
-## 7. How to reason through a connection
-
-When investigating whether traffic should be allowed, ask:
-
-1. Which resource is being protected?
-2. Is the traffic inbound or outbound from that resource's perspective?
-3. Which protocol is used: TCP, UDP, ICMP, or something else?
-4. Which destination service port is required?
-5. Which source is allowed to initiate the connection?
-6. Is this a new connection or response traffic belonging to an existing tracked connection?
-7. Is the rule narrower than necessary, or does it permit more access than the application needs?
-
-![Rule anatomy and stateful connection flow](./assets/security-group-rule-anatomy-stateful-flow.png)
-
----
-
-## 8. Security groups vs. firewalls vs. ACLs
+## 7. Security groups vs. firewalls vs. ACLs
 
 These terms overlap, but they are not interchangeable.
 
@@ -220,7 +207,7 @@ A security group is best understood as one kind of network access-control mechan
 
 ---
 
-## 9. What security groups do not do
+## 8. What security groups do not do
 
 Security groups are only one layer of defense. They do not, by themselves:
 
@@ -239,7 +226,7 @@ Both are needed.
 
 ---
 
-## 10. Key takeaways
+## Key takeaways
 
 - A security group is a resource-associated network access policy; the exact implementation is platform-dependent.
 - Inbound rules control traffic entering the protected resource; outbound rules control traffic leaving it.
@@ -252,19 +239,13 @@ Both are needed.
 
 ---
 
-## 11. References
+## References
 
-The following are useful for the underlying concepts. Product documentation is included as an example of how one platform implements the broader idea—not as a requirement to learn that platform.
+The following are useful for the underlying concepts. Product documentation is included as an example of how one platform implements the broader idea - not as a requirement to learn that platform.
 
-- [NIST SP 800-41 Rev. 1 — Guidelines on Firewalls and Firewall Policy](https://csrc.nist.gov/pubs/sp/800/41/r1/final)
-- [NIST SP 800-207 — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
+- [NIST SP 800-41 Rev. 1 - Guidelines on Firewalls and Firewall Policy](https://csrc.nist.gov/pubs/sp/800/41/r1/final)
+- [NIST SP 800-207 - Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
 - [RFC 2979 — Behaviour of and Requirements for Internet Firewalls](https://www.rfc-editor.org/rfc/rfc2979)
-- [RFC 9293 — Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293)
-- [Cloud Security Alliance — Security Guidance](https://cloudsecurityalliance.org/research/guidance)
-- [AWS documentation — Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) — optional vendor-specific example of stateful resource-level filtering.
-
----
-
-## 12. Suggested next topic
-
-Continue with **Load Balancers** to understand how incoming application traffic is distributed across multiple application instances, and how network access policies protect each tier.
+- [RFC 9293 - Transmission Control Protocol (TCP)](https://www.rfc-editor.org/rfc/rfc9293)
+- [Cloud Security Alliance - Security Guidance](https://cloudsecurityalliance.org/research/guidance)
+- [AWS documentation - Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) - optional vendor-specific example of stateful resource-level filtering.
