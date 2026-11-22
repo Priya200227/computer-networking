@@ -1,10 +1,12 @@
 # TCP Congestion Control
 
-> **Section:** Computer Networking — [Chai aur Networking](https://youtu.be/B3JwzcPTZDw?si=mdvL4rvRHvcERgz5)
+> [!NOTE]
+>
+>**Section:** Computer Networking - [TCP Congestion Control](https://youtu.be/B3JwzcPTZDw?si=mdvL4rvRHvcERgz5)
 >
 > **Learning objective:** Understand why TCP needs congestion control, how the congestion window (`cwnd`) limits data in flight, how Slow Start and Congestion Avoidance grow the sending rate, how loss signals affect the congestion-control state, and how Explicit Congestion Notification (ECN) can signal congestion without first dropping a packet.
 
-[← Back to Computer Networking](https://github.com/Priya200227/computer-networking)
+[← Back to Transport Layer Repository](https://github.com/Priya200227/computer-networking/tree/main/03-transport-layer)
 
 ---
 
