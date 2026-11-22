@@ -491,7 +491,7 @@ The application services can then call databases, caches and other services. The
 
 ---
 
-## 16. References and further reading
+## References
 
 ### Official technical documentation
 
