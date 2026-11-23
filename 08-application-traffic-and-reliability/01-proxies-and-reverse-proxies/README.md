@@ -4,7 +4,7 @@
 >
 > **Section:** Computer Networking - [Source 1](https://youtu.be/2fsilBrlNsY?si=c-DrzkR7hvV2u1wh) , [Source 2](https://youtu.be/HrG0MHkSsCA?si=By0hAbTfVMbhumzL)
 > 
-> **Learning objective:** Understand what a proxy does, distinguish a forward proxy from a reverse proxy, trace request/response flow, and recognize why reverse proxies are common in web application architecture. This is a conceptual networking note—not an NGINX administration guide.
+> **Purpose:** Understand what a proxy does, distinguish a forward proxy from a reverse proxy, trace request/response flow, and recognize why reverse proxies are common in web application architecture. This is a conceptual networking note—not an NGINX administration guide.
 
 [← Back to Application Traffic & Reliability Repository](https://github.com/Priya200227/computer-networking/tree/main/08-application-traffic-and-reliability)
 
