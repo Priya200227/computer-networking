@@ -20,13 +20,13 @@ The repository is organised into eight subject-based modules.
 
 |  | Module | Topics covered |
 |---|---|---|
-| 01 | [Network Fundamentals](./01-network-fundamentals/) | Network types, network architecture, topologies, networking devices, Ethernet switching, VLANs and firewalls |
-| 02 | [IP Addressing & Routing](./02-ip-addressing-and-routing/) | IPv4, IPv6, subnetting, CIDR, subnet masks, MAC addresses, ARP, gateways, routing, ICMP, NAT and DHCP |
+| 01 | [Network Fundamentals](./01-network-fundamentals/) | Network types, network architecture, topologies, networking devices, network models & encapsulation, Ethernet switching |
+| 02 | [IP Addressing & Routing](./02-ip-addressing-and-routing/) | network, host, cidr, IPv4, IPv6, subnetting, subnet masks, MAC addresses, ARP, gateways, routing, ICMP, NAT and DHCP |
 | 03 | [Transport Layer](./03-transport-layer/) | TCP, UDP, ports, sockets, sequence numbers, acknowledgements, reliability, flow control and congestion control |
 | 04 | [DNS](./04-dns/) | DNS architecture, hierarchy, resolution, caching and DNS record types |
 | 05 | [HTTP & Web](./05-http-and-web/) | HTTP fundamentals, request-response structure, HTTP/1.1, HTTP/2, multiplexing, HPACK, QUIC and HTTP/3 |
-| 06 | [Security](./06-security/) | TLS, encryption, digital certificates, certificate authorities and secure connection establishment |
-| 07 | [Cloud Networking](./07-cloud-networking/) | Virtual Private Cloud (VPC), subnets, route tables, Internet Gateway and cloud network isolation, security groups |
+| 06 | [Security](./06-security/) | TLS, encryption, digital certificates, certificate authorities, secure connection establishment and firewalls |
+| 07 | [Cloud Networking](./07-cloud-networking/) | Virtual Private Cloud (VPC), subnets, route tables, IGW, cloud network isolation, security groups |
 | 08 | [Application Traffic & Reliability](./08-application-traffic-and-reliability/) | Proxies, reverse proxies, load balancing, connection pooling and timeouts |
 
 ---
