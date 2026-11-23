@@ -1,8 +1,12 @@
 # Database Connection Pooling
 
-> **Learning objective:** Understand why opening database connections repeatedly is expensive, how a connection pool reuses them, how pool sizing and timeouts work, and how pooling protects an application and its database under load.
+> [!NOTE]
+>
+> **Section:** Computer Networking - [Database Connections & Connection Pooling Explained (TCP, Auth, PgBouncer) - Bankai Senpai](https://youtu.be/bMUaTc1LZAg) , [Ep. 10: Connection Pooling Explained in About 14 Minutes - Systemic Stack English](https://youtu.be/vhepBDb_F8M)
+> 
+>**Purpose:** Understand why opening database connections repeatedly is expensive, how a connection pool reuses them, how pool sizing and timeouts work, and how pooling protects an application and its database under load.
 
-**Scope:** Practical application/backend knowledge — not a deep dive into database-driver internals or production tuning.
+[← Back to Application Traffic & Reliability Repository](https://github.com/Priya200227/computer-networking/tree/main/08-application-traffic-and-reliability)
 
 ---
 
@@ -97,9 +101,9 @@ The database may also need connections for:
 
 So the total connection budget must stay within the database's usable capacity, with headroom reserved for other clients and operational needs.
 
-<blockquote>
-**Important:** A pool size of 10 in one application replica does not mean the whole system uses only 10 connections. Multiply the per-instance maximum by the maximum number of replicas, and include overflow if the pool supports it.
-</blockquote>
+> [!IMPORTANT]
+> A pool size of 10 in one application replica does not mean the whole system uses only 10 connections. Multiply the per-instance maximum by the maximum number of replicas, and include overflow if the pool supports it.
+
 
 ### Too small vs. too large
 
@@ -170,7 +174,7 @@ For example, if Service A's pool is full, a separate pool for Service B may stil
 
 ## 6. Database pooling vs. HTTP connection reuse
 
-The same broad idea — reusing established connections — appears in HTTP clients, but the resources and protocol behavior are different.
+The same broad idea - reusing established connections - appears in HTTP clients, but the resources and protocol behavior are different.
 
 ![Database connection pooling compared with HTTP client connection reuse](./assets/06-database-vs-http-reuse.png)
 
@@ -261,9 +265,8 @@ The `with` block ensures the connection is returned to the pool when the block e
 
 ## 9. What to remember
 
-<blockquote>
-**Connection pooling = reuse + bounded concurrency + lifecycle management.**
-</blockquote>
+> [!IMPORTANT]
+> Connection pooling = reuse + bounded concurrency + lifecycle management.
 
 - Creating a database connection has setup cost; pooling avoids repeating that work for every operation.
 - A request **acquires → uses → releases** a connection.
@@ -275,33 +278,13 @@ The `with` block ensures the connection is returned to the pool when the block e
 - Backpressure and separate resource pools can help contain failures.
 - Database pooling and HTTP connection reuse are related, but they manage different resources.
 
-### Quick self-check
-
-1. Why is opening a new database connection for every query inefficient?
-2. What happens when all connections in a pool are busy?
-3. If 8 application replicas each allow 12 connections, what is the potential maximum before counting other clients or overflow?
-4. Why can increasing pool size make database performance worse?
-5. What is the difference between an acquire timeout and a query timeout?
-6. How is database connection pooling different from HTTP/2 multiplexing?
-
 ---
 
-## 10. References and learning resources
+## References
 
-### Videos reviewed
-
-1. [Database Connections & Connection Pooling Explained (TCP, Auth, PgBouncer) — Bankai Senpai](https://youtu.be/bMUaTc1LZAg)
-2. [Ep. 10: Connection Pooling Explained in About 14 Minutes — Systemic Stack English](https://youtu.be/vhepBDb_F8M)
-
-### Documentation
-
-- [SQLAlchemy — Connection Pooling (2.1)](https://docs.sqlalchemy.org/en/21/core/pooling.html) — Python-oriented reference for pool size, overflow, timeouts, recycling and connection invalidation.
-- [PgBouncer — Usage](https://www.pgbouncer.org/usage) — External PostgreSQL connection pooler and its pooling modes.
-- [PgBouncer — Features and pooling modes](https://www.pgbouncer.org/features) — Differences between session, transaction and statement pooling.
-- [HikariCP — Project documentation](https://github.com/brettwooldridge/HikariCP) — Common Java JDBC connection pool and its configuration options.
-- [MDN — Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) — HTTP connection management and persistent connections.
-- [RFC 9113 — HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html) — Standard defining HTTP/2 connection and stream behavior.
-
----
-
-**Next topic:** Timeouts — understand how connect, acquire, read, write and request deadlines work across an application.
+- [SQLAlchemy - Connection Pooling (2.1)](https://docs.sqlalchemy.org/en/21/core/pooling.html) - Python-oriented reference for pool size, overflow, timeouts, recycling and connection invalidation.
+- [PgBouncer - Usage](https://www.pgbouncer.org/usage) - External PostgreSQL connection pooler and its pooling modes.
+- [PgBouncer - Features and pooling modes](https://www.pgbouncer.org/features) - Differences between session, transaction and statement pooling.
+- [HikariCP - Project documentation](https://github.com/brettwooldridge/HikariCP) - Common Java JDBC connection pool and its configuration options.
+- [MDN - Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) - HTTP connection management and persistent connections.
+- [RFC 9113 - HTTP/2](https://www.rfc-editor.org/rfc/rfc9113.html) - Standard defining HTTP/2 connection and stream behavior.
