@@ -12,8 +12,6 @@ The objective is not simply to memorize networking terminology. It is to underst
 - How cloud networks and application infrastructure are organised.
 - How networking concepts support backend systems, distributed applications and data engineering.
 
-![Mindmap](Mindmap/Computer-Networking-Complete-Concept-Map.png)
-
 ---
 
 ## Learning Roadmap
@@ -32,6 +30,8 @@ The repository is organised into eight subject-based modules.
 | 08 | [Application Traffic & Reliability](./08-application-traffic-and-reliability/) | Proxies, reverse proxies, load balancing, connection pooling and timeouts |
 
 ---
+
+![Mindmap](Mindmap/Computer-Networking-Complete-Concept-Map.png)
 
 ## What You'll Learn
 
