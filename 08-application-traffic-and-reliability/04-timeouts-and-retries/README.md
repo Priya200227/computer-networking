@@ -325,13 +325,7 @@ A robust design uses an **overall deadline** and allocates smaller budgets to in
 
 Conceptually:
 
-\[
-T_{\text{total}} \geq
-T_{\text{connect}} +
-T_{\text{queue}} +
-T_{\text{processing}} +
-T_{\text{response}}
-\]
+**T_total ≥ T_connect + T_queue + T_processing + T_response**
 
 This is a planning model, not a universal exact equation: stages can overlap, request-read time may be separate, and retries consume additional time.
 
