@@ -1,8 +1,12 @@
 # Backend Timeouts
 
+> [!NOTE]
+>
+> **Section:** Computer Networking - [Frontend & Backend Timeouts](https://youtu.be/2GAQVXGT_Zw?si=TsVf7OOf-1BrEINc)
+> 
 > **Learning objective:** Understand where timeouts belong in a backend request lifecycle, what each timeout protects, why a timeout does not necessarily cancel server-side work, and how proxies and retries can amplify failures.
 
-**Scope:** Platform-neutral backend and distributed-systems concepts. The examples apply to web applications, APIs, reverse proxies, service-to-service calls and background processing.
+[← Back to Application Traffic & Reliability Repository](https://github.com/Priya200227/computer-networking/tree/main/08-application-traffic-and-reliability)
 
 ---
 
@@ -43,9 +47,8 @@ Cancellation requires an explicit mechanism and cooperation from the processing 
 
 ![A timeout does not necessarily cancel server-side processing](./assets/01-timeout-vs-cancellation.png)
 
-<blockquote>
-**Remember:** A caller giving up is not proof that the server stopped working. This distinction matters when requests are expensive, mutate data, or call other services.
-</blockquote>
+> [!IMPORTANT]
+> A caller giving up is not proof that the server stopped working. This distinction matters when requests are expensive, mutate data, or call other services.
 
 ---
 
@@ -99,7 +102,7 @@ The backend may receive data gradually. If it waits too long for the request to 
 
 A request-read timeout bounds that waiting period.
 
-**Why it matters — slow-client attacks:** A malicious or malfunctioning client can send a request extremely slowly, perhaps one small piece at a time, trying to keep server resources occupied. This pattern is commonly associated with Slowloris-style attacks.
+**Why it matters - slow-client attacks:** A malicious or malfunctioning client can send a request extremely slowly, perhaps one small piece at a time, trying to keep server resources occupied. This pattern is commonly associated with Slowloris-style attacks.
 
 The timeout should reflect the application's real request sizes and upload behavior. A small JSON API request and a large file upload may need different limits.
 
@@ -275,9 +278,9 @@ This can contribute to a **retry storm** or **thundering herd**:
 - **Consider idempotency.** Retrying a read is often safer than retrying a payment, order creation or other mutation.
 - **Use idempotency keys where appropriate.** The server can recognize duplicate attempts and avoid applying the same logical operation more than once.
 
-<blockquote>
-**Rule:** A retry policy is part of overload control, not just error handling. Unbounded or synchronized retries can turn a partial outage into a larger outage.
-</blockquote>
+> [!NOTE]
+> A retry policy is part of overload control, not just error handling. Unbounded or synchronized retries can turn a partial outage into a larger outage.
+
 
 ---
 
@@ -336,24 +339,7 @@ As a request travels downstream, propagate the remaining deadline or an equivale
 
 ---
 
-## 8. Practical checklist for designing timeouts
-
-- [ ] Define an overall deadline for synchronous requests.
-- [ ] Configure connection timeouts for outbound dependencies.
-- [ ] Protect request parsing and uploads with suitable read limits.
-- [ ] Bound worker queues and queue wait time.
-- [ ] Set processing / query limits based on operation type.
-- [ ] Configure client response deadlines.
-- [ ] Distinguish timeouts from actual cancellation.
-- [ ] Propagate cancellation to database queries and downstream calls where supported.
-- [ ] Keep retries bounded and use backoff with jitter.
-- [ ] Make retry safety explicit for non-idempotent operations.
-- [ ] Align proxy and origin timeout budgets.
-- [ ] Monitor timeout counts, queue wait, connection-acquire wait, processing duration and downstream latency.
-
----
-
-## 9. Quick revision
+## 8. Quick revision
 
 | Concept | Remember |
 |---|---|
@@ -368,34 +354,14 @@ As a request travels downstream, propagate the remaining deadline or an equivale
 | Retry storm | Retries add load while the original attempts may still be running |
 | Deadline | Overall time budget across the request path |
 
-### Test your understanding
-
-1. If a browser times out while an API is executing a database query, has the query necessarily stopped? Why?
-2. Which timeout protects a backend from a client that slowly sends request headers or a body?
-3. What is the difference between a queue-wait timeout and a processing timeout?
-4. Why can a reverse proxy return `504` even when the origin eventually completes its work?
-5. Why can retrying a timed-out payment request be dangerous?
-6. How is a connection-pool acquire timeout different from a connection timeout?
-7. Why should downstream services use the remaining request deadline rather than each receiving a fresh full timeout?
-
 ---
 
-## 10. Source and further reading
+## References
 
-### Primary video reviewed
+- [RFC 9110 - HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html) - HTTP status-code semantics, including `408`, `403` and `504`.
+- [MDN - 408 Request Timeout](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408)
+- [MDN - 504 Gateway Timeout](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504)
+- [Google SRE Book - Addressing Cascading Failures](https://sre.google/sre-book/addressing-cascading-failures/) - overload, retries and cascading failure patterns.
+- [AWS Builders' Library - Timeouts, retries, and backoff with jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) - useful general distributed-systems guidance; the concepts are not limited to AWS.
 
-- [Frontend and Backends Timeouts — Hussein Nasser](https://www.youtube.com/@hnasr)
-
-The notes follow the video's five timeout categories and its discussion of cancellation, proxies and retries. The examples and diagrams are reorganized for revision.
-
-### Standards and documentation
-
-- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html) — HTTP status-code semantics, including `408`, `403` and `504`.
-- [MDN — 408 Request Timeout](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408)
-- [MDN — 504 Gateway Timeout](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504)
-- [Google SRE Book — Addressing Cascading Failures](https://sre.google/sre-book/addressing-cascading-failures/) — overload, retries and cascading failure patterns.
-- [AWS Builders' Library — Timeouts, retries, and backoff with jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) — useful general distributed-systems guidance; the concepts are not limited to AWS.
-
----
-
-**Related topic:** [Connection Pooling](../connection-pooling/README.md) — understand how acquire waits, pool limits and connection lifecycles interact with backend timeouts.
+**Related topic:** [Connection Pooling](../connection-pooling/README.md) - understand how acquire waits, pool limits and connection lifecycles interact with backend timeouts.
