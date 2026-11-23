@@ -31,8 +31,6 @@ The repository is organised into eight subject-based modules.
 
 ---
 
-![Mindmap](Mindmap/Computer-Networking-Complete-Concept-Map.png)
-
 ## What You'll Learn
 
 ### 01. Network Fundamentals
@@ -213,6 +211,8 @@ These concepts connect networking fundamentals with the way modern backend appli
 ## How the Concepts Connect
 
 Networking concepts are easier to understand when viewed as one complete application workflow.
+
+![Mindmap](Mindmap/Computer-Networking-Complete-Concept-Map.png)
 
 Consider opening a website in your browser:
 
