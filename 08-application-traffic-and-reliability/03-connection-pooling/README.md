@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
-> **Section:** Computer Networking - [Database Connections & Connection Pooling Explained (TCP, Auth, PgBouncer) - Bankai Senpai](https://youtu.be/bMUaTc1LZAg) , [Ep. 10: Connection Pooling Explained in About 14 Minutes - Systemic Stack English](https://youtu.be/vhepBDb_F8M)
+> **Section:** Computer Networking - [Source 1](https://youtu.be/bMUaTc1LZAg) , [Source 2](https://youtu.be/vhepBDb_F8M)
 > 
 >**Purpose:** Understand why opening database connections repeatedly is expensive, how a connection pool reuses them, how pool sizing and timeouts work, and how pooling protects an application and its database under load.
 
